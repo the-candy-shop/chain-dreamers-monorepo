@@ -14,13 +14,13 @@ const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
   },
 }));
 
-type FooterLink = {
+type FooterLinkProps = {
   src: string;
   url: string;
   tooltip: string;
 }
 
-function FooterLink({ src, url, tooltip }: FooterLink) {
+function FooterLink({ src, url, tooltip }: FooterLinkProps) {
   return (
     <CustomTooltip title={tooltip}>
       <Link
