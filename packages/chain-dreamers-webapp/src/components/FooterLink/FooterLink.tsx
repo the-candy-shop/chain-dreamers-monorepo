@@ -33,7 +33,7 @@ function FooterLink({ src, url, tooltip }: FooterLinkProps) {
         href={url}
         target="_blank"
       >
-        <img className="logo" src={src} />
+        <img className="logo" src={src} alt="logo" />
       </Link>
     </CustomTooltip>
   );
