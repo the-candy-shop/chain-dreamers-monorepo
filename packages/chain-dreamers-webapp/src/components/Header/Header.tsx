@@ -13,7 +13,7 @@ function Header() {
         alignItems: 'center',
         justifyContent: 'space-between',
       }}>
-        <Box sx={{ "& .logo": { height: '68px' }, height: '68px' }}>
+        <Box sx={{ "& .logo": { height: '68px' }, height: '68px', marginLeft: '32px' }}>
           <img src={logo} alt="logo" className="logo" />
         </Box>
         <Box sx={{
