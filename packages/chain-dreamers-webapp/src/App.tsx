@@ -2,6 +2,7 @@ import React from 'react';
 import Header from "./components/Header/Header";
 import Box from "@mui/material/Box";
 import Body from "./components/Body/Body";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Box sx={{ width: '100%', maxWidth: '1312px' }}>
         <Header />
         <Body />
+        <Footer />
       </Box>
     </Box>
   );
