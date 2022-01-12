@@ -1,8 +1,13 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import dayjs, { Dayjs } from "dayjs";
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
 
-const launchDate = dayjs('2022-01-30');
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+const launchDate = dayjs('2022-01-30 10:00').tz("America/Los_Angeles");
 
 function CountDownButton() {
   const [now, setNow] = React.useState<Dayjs>(dayjs());

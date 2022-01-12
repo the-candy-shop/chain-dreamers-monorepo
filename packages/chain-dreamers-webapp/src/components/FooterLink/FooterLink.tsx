@@ -1,5 +1,5 @@
 import React from 'react';
-import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
 import Tooltip, { tooltipClasses, TooltipProps } from "@mui/material/Tooltip";
 import { styled } from '@mui/material/styles';
 
@@ -23,17 +23,18 @@ type FooterLink = {
 function FooterLink({ src, url, tooltip }: FooterLink) {
   return (
     <CustomTooltip title={tooltip}>
-      <Box
+      <Link
         sx={{
           "& .logo": { height: '32px', width: '32px' },
           margin: '24px 12px',
           '&:hover': { opacity: 0.8 },
           cursor: 'pointer',
         }}
-        onClick={() => window.open(url, '_blank')}
+        href={url}
+        target="_blank"
       >
         <img className="logo" src={src} />
-      </Box>
+      </Link>
     </CustomTooltip>
   );
 }
