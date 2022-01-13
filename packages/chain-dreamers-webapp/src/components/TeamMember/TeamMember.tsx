@@ -28,7 +28,6 @@ function TeamMember({ name, children, image }: TeamMemberProps) {
       </Box>
       <Box
         sx={{
-          fontWeight: 590,
           fontSize: isMobile ? "20px" : "24px",
           color: "white",
           marginTop: "32px",
