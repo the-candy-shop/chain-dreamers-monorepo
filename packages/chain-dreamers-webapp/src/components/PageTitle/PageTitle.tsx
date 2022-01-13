@@ -33,6 +33,7 @@ function PageTitle({ label, background }: PageTitleProps) {
           alignItems: "center",
           justifyContent: "center",
           borderRadius: "8px 8px 0px 0px",
+          textTransform: "uppercase",
         }}
       >
         {label}
