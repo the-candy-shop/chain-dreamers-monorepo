@@ -12,7 +12,7 @@ function App() {
     <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
       <Box
         sx={{
-          width: isMobile ? "100%" : "calc(100vw - 128px)",
+          width: isMobile ? "100%" : "calc(100vw - 192px)",
           minHeight: "100vh",
         }}
       >

@@ -26,10 +26,10 @@ function PageTitle({ label, background }: PageTitleProps) {
     >
       <Box
         sx={{
-          padding: "40px 72px",
+          padding: isMobile ? "32px 45px" : "40px 72px",
           color: "white",
           fontWeight: "bold",
-          fontSize: "40px",
+          fontSize: isMobile ? "28px" : "40px",
           background: "black",
           display: "flex",
           alignItems: "center",

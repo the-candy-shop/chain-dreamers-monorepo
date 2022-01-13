@@ -18,6 +18,9 @@ function HeaderLink({ label, to }: HeaderLinkProps) {
           color: "white",
           padding: "12px 20px",
           textAlign: "center",
+          "&:hover": {
+            color: "#44DFFD",
+          },
         }}
       >
         {label}

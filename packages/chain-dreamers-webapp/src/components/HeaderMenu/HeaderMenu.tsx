@@ -60,6 +60,9 @@ function HeaderMenu({ label }: HeaderMenuProps) {
               fontWeight: 600,
               fontSize: "16px",
               padding: "8px 24px",
+              "&:hover": {
+                color: "#44DFFD",
+              },
             },
           },
         }}
