@@ -21,6 +21,7 @@ function Content({ children, title }: ContentProps) {
         "& a": {
           color: "#44DFFD",
           textDecorationColor: "#44DFFD",
+          textDecoration: "none",
         },
       }}
     >
