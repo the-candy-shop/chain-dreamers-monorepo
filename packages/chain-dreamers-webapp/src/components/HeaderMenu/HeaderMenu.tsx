@@ -70,7 +70,7 @@ function HeaderMenu({ label }: HeaderMenuProps) {
         <Link to="team" className="menu-link">
           The Team
         </Link>
-        <Link to="chain-storage" className="menu-link">
+        <Link to="on-chain-storage" className="menu-link">
           On chain storage
         </Link>
       </Popover>

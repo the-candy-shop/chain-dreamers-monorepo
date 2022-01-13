@@ -17,7 +17,7 @@ function Story() {
           justifyContent: "center",
         }}
       >
-        <Box sx={{ maxWidth: "895px", padding: "0 12px" }}>
+        <Box sx={{ maxWidth: "895px" }}>
           <Content title="What is the Candy Shop?">
             <p>
               In the filthiest suburbs of Mega City, "Home to the content

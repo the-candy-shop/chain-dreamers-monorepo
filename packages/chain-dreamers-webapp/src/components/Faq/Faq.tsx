@@ -16,7 +16,7 @@ function Faq() {
           justifyContent: "center",
         }}
       >
-        <Box sx={{ maxWidth: "895px", padding: "0 12px" }}>
+        <Box sx={{ maxWidth: "895px" }}>
           <Content title="What is Chain Dreamers?">
             <p>
               Chain Dreamers is an NFT derivative project based on{" "}

@@ -23,8 +23,7 @@ function PageTitle({ label, background }: PageTitleProps) {
     >
       <Box
         sx={{
-          height: "120px",
-          width: "224px",
+          padding: "40px 72px",
           color: "white",
           fontWeight: "bold",
           fontSize: "40px",
