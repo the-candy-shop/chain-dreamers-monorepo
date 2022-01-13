@@ -4,8 +4,11 @@ import PageTitle from "../PageTitle/PageTitle";
 import background from "../Home/background.png";
 import TeamMember from "../TeamMember/TeamMember";
 import photo from "./photo.png";
+import { useMediaQuery } from "@mui/material";
 
 function Team() {
+  const isMobile = useMediaQuery("(max-width:915px)");
+
   return (
     <Box>
       <PageTitle label="The Team" background={background} />
@@ -14,6 +17,7 @@ function Team() {
           marginTop: "96px",
           display: "flex",
           justifyContent: "center",
+          padding: isMobile ? "0 16px" : 0,
         }}
       >
         <Box sx={{ maxWidth: "895px" }}>

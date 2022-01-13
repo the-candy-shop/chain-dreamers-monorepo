@@ -1,5 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
+import { useMediaQuery } from "@mui/material";
 
 type TeamMemberProps = {
   name: string;
@@ -8,6 +9,8 @@ type TeamMemberProps = {
 };
 
 function TeamMember({ name, children, image }: TeamMemberProps) {
+  const isMobile = useMediaQuery("(max-width:915px)");
+
   return (
     <Box sx={{ textAlign: "center", marginBottom: "64px" }}>
       <Box sx={{ "& .team-member-photo": { width: "234px" } }}>
@@ -16,7 +19,7 @@ function TeamMember({ name, children, image }: TeamMemberProps) {
       <Box
         sx={{
           fontWeight: "bold",
-          fontSize: "40px",
+          fontSize: isMobile ? "32px" : "40px",
           color: "white",
           marginTop: "32px",
         }}
@@ -26,7 +29,7 @@ function TeamMember({ name, children, image }: TeamMemberProps) {
       <Box
         sx={{
           fontWeight: 590,
-          fontSize: "24px",
+          fontSize: isMobile ? "20px" : "24px",
           color: "white",
           marginTop: "32px",
         }}

@@ -6,8 +6,11 @@ import Content from "../Content/Content";
 import Link from "@mui/material/Link";
 import spiceEffect from "./spice-effect.png";
 import sneakPeak from "./sneak-peak.png";
+import { useMediaQuery } from "@mui/material";
 
 function Story() {
+  const isMobile = useMediaQuery("(max-width:915px)");
+
   return (
     <Box>
       <PageTitle label="Story" background={background} />
@@ -16,6 +19,7 @@ function Story() {
           marginTop: "96px",
           display: "flex",
           justifyContent: "center",
+          padding: isMobile ? "0 16px" : 0,
         }}
       >
         <Box sx={{ maxWidth: "895px" }}>

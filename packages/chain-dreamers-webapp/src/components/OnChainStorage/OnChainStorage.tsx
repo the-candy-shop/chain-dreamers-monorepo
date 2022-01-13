@@ -3,8 +3,11 @@ import Box from "@mui/material/Box";
 import PageTitle from "../PageTitle/PageTitle";
 import background from "../Home/background.png";
 import Content from "../Content/Content";
+import { useMediaQuery } from "@mui/material";
 
 function OnChainStorage() {
+  const isMobile = useMediaQuery("(max-width:915px)");
+
   return (
     <Box>
       <PageTitle label="On Chain Storage" background={background} />
@@ -13,6 +16,7 @@ function OnChainStorage() {
           marginTop: "96px",
           display: "flex",
           justifyContent: "center",
+          padding: isMobile ? "0 16px" : 0,
         }}
       >
         <Box sx={{ maxWidth: "895px" }}>
