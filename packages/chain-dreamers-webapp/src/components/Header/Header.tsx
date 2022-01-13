@@ -25,7 +25,7 @@ function Header() {
           sx={{
             "& .logo": { height: "68px" },
             height: "68px",
-            marginLeft: "32px",
+            marginLeft: isMobile ? "0" : "32px",
           }}
         >
           <img src={logo} alt="logo" className="logo" />
