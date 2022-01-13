@@ -1,6 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import H1 from "../H1/H1";
+import { useMediaQuery } from "@mui/material";
 
 type ContentProps = {
   title: string;
@@ -8,6 +9,8 @@ type ContentProps = {
 };
 
 function Content({ children, title }: ContentProps) {
+  const isMobile = useMediaQuery("(max-width:915px)");
+
   return (
     <Box
       sx={{
@@ -15,7 +18,7 @@ function Content({ children, title }: ContentProps) {
 
         "& p": {
           color: "white",
-          fontSize: "24px",
+          fontSize: isMobile ? "20px" : "24px",
         },
 
         "& a": {

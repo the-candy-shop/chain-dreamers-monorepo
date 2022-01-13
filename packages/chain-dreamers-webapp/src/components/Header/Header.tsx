@@ -13,7 +13,7 @@ function Header() {
   return (
     <Box
       sx={{
-        height: "107px",
+        height: isMobile ? "80px" : "107px",
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
@@ -23,8 +23,8 @@ function Header() {
       <Link to="/">
         <Box
           sx={{
-            "& .logo": { height: "68px" },
-            height: "68px",
+            "& .logo": { height: isMobile ? "55px" : "68px" },
+            height: isMobile ? "55px" : "68px",
             marginLeft: isMobile ? "0" : "32px",
           }}
         >
@@ -39,7 +39,11 @@ function Header() {
       >
         <HeaderMenu label="Learn more" />
         <HeaderLink label="FAQ" to="faq" />
-        <CountDownButton />
+        <CountDownButton
+          sx={{
+            marginLeft: "20px",
+          }}
+        />
       </Box>
     </Box>
   );

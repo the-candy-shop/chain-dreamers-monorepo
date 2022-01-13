@@ -17,6 +17,7 @@ function HeaderLink({ label, to }: HeaderLinkProps) {
           lineHeight: "19px",
           color: "white",
           padding: "12px 20px",
+          textAlign: "center",
         }}
       >
         {label}
