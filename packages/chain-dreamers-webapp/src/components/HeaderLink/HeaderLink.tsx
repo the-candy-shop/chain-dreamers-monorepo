@@ -9,7 +9,7 @@ type HeaderLinkProps = {
 
 function HeaderLink({ label, to }: HeaderLinkProps) {
   return (
-    <Link to={to}>
+    <Link to={to} style={{ textDecoration: "none" }}>
       <Box
         sx={{
           fontWeight: 600,
