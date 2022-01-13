@@ -1,5 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
+import { useMediaQuery } from "@mui/material";
 
 type PageTitleProps = {
   label: string;
@@ -7,11 +8,13 @@ type PageTitleProps = {
 };
 
 function PageTitle({ label, background }: PageTitleProps) {
+  const isMobile = useMediaQuery("(max-width:915px)");
+
   return (
     <Box
       sx={{
         width: "100%",
-        height: "550px",
+        height: isMobile ? "400px" : "550px",
         backgroundImage: `url(${background})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
