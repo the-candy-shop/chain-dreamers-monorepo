@@ -4,15 +4,9 @@ import background from "./background.png";
 
 function Home() {
   return (
-    <Box
-      sx={{
-        height: "798px",
-        backgroundImage: `url(${background})`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPositionX: "center",
-      }}
-    />
+    <Box sx={{ "& .background": { width: "100%" } }}>
+      <img alt="Candy Shop" src={background} className="background" />
+    </Box>
   );
 }
 

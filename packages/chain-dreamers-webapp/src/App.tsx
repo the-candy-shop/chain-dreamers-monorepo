@@ -7,7 +7,7 @@ import RoutesWrapper from "./routes";
 function App() {
   return (
     <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
-      <Box sx={{ width: "100%", maxWidth: "1312px" }}>
+      <Box sx={{ width: "calc(100vw - 128px)", minHeight: "100vh" }}>
         <Header />
         <RoutesWrapper />
         <Footer />
