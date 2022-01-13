@@ -5,8 +5,11 @@ import HeaderLink from "../HeaderLink/HeaderLink";
 import CountDownButton from "../CountDownButton/CountDownButton";
 import { Link } from "react-router-dom";
 import HeaderMenu from "../HeaderMenu/HeaderMenu";
+import { useMediaQuery } from "@mui/material";
 
 function Header() {
+  const isMobile = useMediaQuery("(max-width:915px)");
+
   return (
     <Box
       sx={{
@@ -14,7 +17,7 @@ function Header() {
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: isMobile ? "center" : "space-between",
       }}
     >
       <Link to="/">
@@ -30,8 +33,8 @@ function Header() {
       </Link>
       <Box
         sx={{
-          display: "flex",
           flexDirection: "row",
+          display: isMobile ? "none" : "flex",
         }}
       >
         <HeaderMenu label="Learn more" />

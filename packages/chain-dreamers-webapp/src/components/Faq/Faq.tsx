@@ -4,8 +4,11 @@ import PageTitle from "../PageTitle/PageTitle";
 import background from "../Home/background.png";
 import Content from "../Content/Content";
 import Link from "@mui/material/Link";
+import { useMediaQuery } from "@mui/material";
 
 function Faq() {
+  const isMobile = useMediaQuery("(max-width:915px)");
+
   return (
     <Box>
       <PageTitle label="FAQ" background={background} />
@@ -14,6 +17,7 @@ function Faq() {
           marginTop: "96px",
           display: "flex",
           justifyContent: "center",
+          padding: isMobile ? "0 16px" : 0,
         }}
       >
         <Box sx={{ maxWidth: "895px" }}>
