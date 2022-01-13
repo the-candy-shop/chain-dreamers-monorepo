@@ -1,14 +1,13 @@
-import React from 'react';
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Body from "./components/Body/Body";
+import Home from "./components/Home/Home";
+import Faq from "./components/Faq/Faq";
 
 function RoutesWrapper() {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={<Body />}
-      />
+      <Route path="/" element={<Home />} />
+      <Route path="/faq" element={<Faq />} />
     </Routes>
   );
 }

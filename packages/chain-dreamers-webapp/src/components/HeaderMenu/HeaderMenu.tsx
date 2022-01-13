@@ -1,11 +1,11 @@
-import React from 'react';
-import Box from '@mui/material/Box';
+import React from "react";
+import Box from "@mui/material/Box";
 import Popover from "@mui/material/Popover";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 type HeaderMenuProps = {
   label: string;
-}
+};
 
 function HeaderMenu({ label }: HeaderMenuProps) {
   const [anchorEl, setAnchorEl] = React.useState<HTMLDivElement | null>(null);
@@ -23,10 +23,10 @@ function HeaderMenu({ label }: HeaderMenuProps) {
       onMouseLeave={handleClose}
       sx={{
         fontWeight: 600,
-        fontSize: '16px',
-        lineHeight: '19px',
-        color: 'white',
-        padding: '12px 20px',
+        fontSize: "16px",
+        lineHeight: "19px",
+        color: "white",
+        padding: "12px 20px",
       }}
     >
       <span>{label}</span>
@@ -36,37 +36,43 @@ function HeaderMenu({ label }: HeaderMenuProps) {
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
+          vertical: "bottom",
+          horizontal: "left",
         }}
         hideBackdrop={true}
         PaperProps={{
-          onMouseLeave: handleClose
+          onMouseLeave: handleClose,
         }}
         sx={{
-          pointerEvents: 'none',
+          pointerEvents: "none",
           "& .MuiPaper-root": {
-            pointerEvents: 'auto',
-            background: 'black',
-            color: 'white',
-            border: '1px solid white',
-            borderRadius: '4px',
-            padding: '6px 0',
+            pointerEvents: "auto",
+            background: "black",
+            color: "white",
+            border: "1px solid white",
+            borderRadius: "4px",
+            padding: "6px 0",
 
             "& .menu-link": {
-              display: 'block',
-              color: 'white',
-              textDecoration: 'none',
+              display: "block",
+              color: "white",
+              textDecoration: "none",
               fontWeight: 600,
-              fontSize: '16px',
-              padding: '8px 24px',
+              fontSize: "16px",
+              padding: "8px 24px",
             },
-          }
+          },
         }}
       >
-        <Link to="story" className="menu-link">The story</Link>
-        <Link to="team" className="menu-link">The Team</Link>
-        <Link to="chain-storage" className="menu-link">On chain storage</Link>
+        <Link to="story" className="menu-link">
+          The story
+        </Link>
+        <Link to="team" className="menu-link">
+          The Team
+        </Link>
+        <Link to="chain-storage" className="menu-link">
+          On chain storage
+        </Link>
       </Popover>
     </Box>
   );
