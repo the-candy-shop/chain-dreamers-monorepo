@@ -65,7 +65,7 @@ function HeaderMenu({ label }: HeaderMenuProps) {
         }}
       >
         <Link to="story" className="menu-link">
-          The story
+          The Story
         </Link>
         <Link to="team" className="menu-link">
           The Team
