@@ -6,7 +6,6 @@ import ConnectButton from "../ConnectButton/ConnectButton";
 import { Link } from "react-router-dom";
 import HeaderMenu from "../HeaderMenu/HeaderMenu";
 import { useMediaQuery } from "@mui/material";
-import WalletButton, { WALLET_TYPE } from "../WalletButton/WalletButton";
 
 function Header() {
   const isMobile = useMediaQuery("(max-width:915px)");
