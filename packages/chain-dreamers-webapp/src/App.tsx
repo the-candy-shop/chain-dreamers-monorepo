@@ -1,15 +1,23 @@
-import React from 'react';
+import React from "react";
 import Header from "./components/Header/Header";
 import Box from "@mui/material/Box";
-import Body from "./components/Body/Body";
 import Footer from "./components/Footer/Footer";
+import RoutesWrapper from "./routes";
+import { useMediaQuery } from "@mui/material";
 
 function App() {
+  const isMobile = useMediaQuery("(max-width:915px)");
+
   return (
-    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-      <Box sx={{ width: '100%', maxWidth: '1312px' }}>
+    <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
+      <Box
+        sx={{
+          width: isMobile ? "100%" : "calc(100vw - 192px)",
+          minHeight: "100vh",
+        }}
+      >
         <Header />
-        <Body />
+        <RoutesWrapper />
         <Footer />
       </Box>
     </Box>

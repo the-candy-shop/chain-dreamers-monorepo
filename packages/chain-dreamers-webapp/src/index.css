@@ -1,7 +1,11 @@
-html { font-family: "Inter", "system-ui"; }
+html {
+  font-family: "Inter", "system-ui";
+}
 
 @supports (font-variation-settings: normal) {
-  html { font-family: "Inter var", "system-ui"; }
+  html {
+    font-family: "Inter var", "system-ui";
+  }
 }
 
 body {
@@ -12,6 +16,6 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
