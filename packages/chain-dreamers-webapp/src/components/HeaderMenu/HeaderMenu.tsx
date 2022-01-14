@@ -1,7 +1,8 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import Popover from "@mui/material/Popover";
 import { Link } from "react-router-dom";
+import Paper from "@mui/material/Paper";
+import Grow from "@mui/material/Grow";
 
 type HeaderMenuProps = {
   label: string;
@@ -27,56 +28,55 @@ function HeaderMenu({ label }: HeaderMenuProps) {
         lineHeight: "19px",
         color: "white",
         padding: "12px 20px",
+        cursor: "pointer",
+        position: "relative",
       }}
     >
       <span>{label}</span>
-      <Popover
-        id="menu"
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-        hideBackdrop={true}
-        PaperProps={{
-          onMouseLeave: handleClose,
-        }}
+      <Box
         sx={{
-          pointerEvents: "none",
-          "& .MuiPaper-root": {
-            pointerEvents: "auto",
-            background: "black",
-            color: "white",
-            border: "1px solid white",
-            borderRadius: "4px",
-            padding: "6px 0",
-
-            "& .menu-link": {
-              display: "block",
-              color: "white",
-              textDecoration: "none",
-              fontWeight: 600,
-              fontSize: "16px",
-              padding: "8px 24px",
-              "&:hover": {
-                color: "#44DFFD",
-              },
-            },
-          },
+          display: open ? "block" : "none",
+          position: "absolute",
+          top: anchorEl?.offsetHeight,
+          left: 0,
         }}
       >
-        <Link to="story" className="menu-link">
-          The Story
-        </Link>
-        <Link to="team" className="menu-link">
-          The Team
-        </Link>
-        <Link to="on-chain-storage" className="menu-link">
-          On chain storage
-        </Link>
-      </Popover>
+        <Grow appear in={open}>
+          <Paper
+            sx={{
+              pointerEvents: "auto",
+              background: "black",
+              color: "white",
+              border: "1px solid white",
+              borderRadius: "4px",
+              padding: "6px 0",
+              width: "180px",
+
+              "& .menu-link": {
+                display: "block",
+                color: "white",
+                textDecoration: "none",
+                fontWeight: 600,
+                fontSize: "16px",
+                padding: "8px 24px",
+                "&:hover": {
+                  color: "#44DFFD",
+                },
+              },
+            }}
+          >
+            <Link to="story" className="menu-link">
+              The Story
+            </Link>
+            <Link to="team" className="menu-link">
+              The Team
+            </Link>
+            <Link to="on-chain-storage" className="menu-link">
+              On chain storage
+            </Link>
+          </Paper>
+        </Grow>
+      </Box>
     </Box>
   );
 }
