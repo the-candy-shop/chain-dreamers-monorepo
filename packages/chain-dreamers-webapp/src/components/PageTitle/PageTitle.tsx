@@ -14,7 +14,7 @@ function PageTitle({ label, background }: PageTitleProps) {
     <Box
       sx={{
         width: "100%",
-        height: isMobile ? "400px" : "550px",
+        height: isMobile ? "400px" : "450px",
         backgroundImage: `url(${background})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
