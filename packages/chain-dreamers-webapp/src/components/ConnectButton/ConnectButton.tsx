@@ -77,7 +77,7 @@ function ConnectButton({ sx }: CountDownButtonProps) {
           `${daysFromLaunch} Days ${andHoursFromLaunch} hours before opening`}
       </Button>
       <WalletConnectDialog
-        open={connectDialogOpen}
+        open={!account && connectDialogOpen}
         handleClose={closeConnectDialog}
       />
     </>
