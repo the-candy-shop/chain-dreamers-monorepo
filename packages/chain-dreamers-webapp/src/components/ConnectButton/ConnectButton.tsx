@@ -9,10 +9,11 @@ import { useEthers } from "@usedapp/core";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-const launchDateString =
-  process.env.NODE_ENV === "development" && process.env.REACT_APP_LAUNCH_DATE
-    ? process.env.REACT_APP_LAUNCH_DATE
-    : "2022-01-30 10:00";
+const localStorageLaunchDate = localStorage.getItem("LAUNCH_DATE");
+
+const launchDateString = localStorageLaunchDate
+  ? localStorageLaunchDate
+  : "2022-01-30 10:00";
 const launchDate = dayjs(launchDateString).tz("America/Los_Angeles");
 
 type CountDownButtonProps = Pick<ButtonProps, "sx">;
