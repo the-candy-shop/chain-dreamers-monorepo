@@ -2,10 +2,11 @@ import React from "react";
 import logo from "./logo.png";
 import Box from "@mui/material/Box";
 import HeaderLink from "../HeaderLink/HeaderLink";
-import CountDownButton from "../CountDownButton/CountDownButton";
+import ConnectButton from "../ConnectButton/ConnectButton";
 import { Link } from "react-router-dom";
 import HeaderMenu from "../HeaderMenu/HeaderMenu";
 import { useMediaQuery } from "@mui/material";
+import WalletButton, { WALLET_TYPE } from "../WalletButton/WalletButton";
 
 function Header() {
   const isMobile = useMediaQuery("(max-width:915px)");
@@ -39,7 +40,7 @@ function Header() {
       >
         <HeaderMenu label="Learn more" />
         <HeaderLink label="FAQ" to="faq" />
-        <CountDownButton
+        <ConnectButton
           sx={{
             marginLeft: "20px",
           }}

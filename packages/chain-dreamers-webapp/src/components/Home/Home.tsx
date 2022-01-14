@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import background from "./background.png";
 import { useMediaQuery } from "@mui/material";
-import CountDownButton from "../CountDownButton/CountDownButton";
+import ConnectButton from "../ConnectButton/ConnectButton";
 import HeaderLink from "../HeaderLink/HeaderLink";
 
 function Home() {
@@ -30,7 +30,7 @@ function Home() {
           }}
         >
           <Box>
-            <CountDownButton
+            <ConnectButton
               sx={{
                 marginTop: "16px",
               }}
