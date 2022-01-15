@@ -43,17 +43,18 @@ const WalletConnectDialog: React.FC<{
         </Box>
         <WalletButton
           walletType={WALLET_TYPE.metamask}
-          onClick={() => {
+          onClick={async () => {
             const injected = new InjectedConnector({
               supportedChainIds,
             });
-            activate(injected);
+            await activate(injected);
+            handleClose();
           }}
           sx={{ marginBottom: "32px", width: "100%" }}
         />
         <WalletButton
           walletType={WALLET_TYPE.walletconnect}
-          onClick={() => {
+          onClick={async () => {
             const walletlink = new WalletConnectConnector({
               supportedChainIds,
               chainId: CHAIN_ID,
@@ -61,7 +62,8 @@ const WalletConnectDialog: React.FC<{
                 [CHAIN_ID]: config.app.jsonRpcUri,
               },
             });
-            activate(walletlink);
+            await activate(walletlink);
+            handleClose();
           }}
           sx={{ width: "100%" }}
         />
