@@ -10,6 +10,9 @@ import { Web3ReactProvider } from "@web3-react/core";
 import { ChainId, DAppProvider } from "@usedapp/core";
 import { CHAIN_ID, createNetworkHttpUrl } from "./config";
 
+const Buffer = require("buffer/").Buffer;
+global.Buffer = Buffer;
+
 const useDappConfig = {
   readOnlyChainId: CHAIN_ID,
   readOnlyUrls: {
