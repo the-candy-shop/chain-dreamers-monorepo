@@ -1,8 +1,8 @@
+import React from "react";
 import { Dialog } from "@mui/material";
 import Box from "@mui/material/Box";
 import WalletButton, { WALLET_TYPE } from "../WalletButton/WalletButton";
 import { useEthers } from "@usedapp/core";
-import { InjectedConnector } from "@web3-react/injected-connector";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import config, { CHAIN_ID } from "../../config";
 
@@ -11,7 +11,7 @@ const WalletConnectDialog: React.FC<{
   handleClose: () => void;
 }> = (props) => {
   const supportedChainIds = [CHAIN_ID];
-  const { activate } = useEthers();
+  const { activate, activateBrowserWallet } = useEthers();
   const { open, handleClose } = props;
 
   return (
@@ -43,25 +43,21 @@ const WalletConnectDialog: React.FC<{
         </Box>
         <WalletButton
           walletType={WALLET_TYPE.metamask}
-          onClick={() => {
-            const injected = new InjectedConnector({
-              supportedChainIds,
-            });
-            activate(injected);
-          }}
+          onClick={activateBrowserWallet}
           sx={{ marginBottom: "32px", width: "100%" }}
         />
         <WalletButton
           walletType={WALLET_TYPE.walletconnect}
-          onClick={() => {
+          onClick={async () => {
             const walletlink = new WalletConnectConnector({
+              qrcode: true,
               supportedChainIds,
               chainId: CHAIN_ID,
               rpc: {
                 [CHAIN_ID]: config.app.jsonRpcUri,
               },
             });
-            activate(walletlink);
+            await activate(walletlink);
           }}
           sx={{ width: "100%" }}
         />

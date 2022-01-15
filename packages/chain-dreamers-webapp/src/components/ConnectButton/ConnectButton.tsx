@@ -19,7 +19,7 @@ const launchDate = dayjs(launchDateString).tz("America/Los_Angeles");
 type CountDownButtonProps = Pick<ButtonProps, "sx">;
 
 function ConnectButton({ sx }: CountDownButtonProps) {
-  const { account } = useEthers();
+  const { account, ...rest } = useEthers();
 
   const [connectDialogOpen, setConnectDialogOpen] =
     React.useState<boolean>(false);
