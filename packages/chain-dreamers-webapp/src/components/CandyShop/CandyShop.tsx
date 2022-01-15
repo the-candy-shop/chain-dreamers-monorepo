@@ -3,7 +3,9 @@ import Box from "@mui/material/Box";
 import { useRemainingTimeOpen } from "../../hooks/useRemainingTimeOpen";
 import candyShop from "./candy-shop.png";
 import allCandies from "./all-candies.png";
+import jaz from "./jaz.png";
 import ShopPanels from "../ShopPanels/ShopPanels";
+import Typist from "react-typist";
 
 function RemainingTimeBlock() {
   const { remainingTimeOpenInSeconds } = useRemainingTimeOpen();
@@ -54,6 +56,39 @@ function CandyShop() {
                 src={allCandies}
                 style={{ width: "100%" }}
               />
+            </Box>
+          </ShopPanels>
+          <ShopPanels
+            title="Jaz, the Candy Shop owner"
+            sx={{ marginTop: "24px" }}
+          >
+            <Box
+              sx={{
+                padding: "24px 50px",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <Box>
+                <img alt="Jaz" src={jaz} style={{ width: "60px" }} />
+              </Box>
+              <Box
+                sx={{
+                  color: "white",
+                  fontSize: "20px",
+                  fontFamily: "Share Tech Mono",
+                  marginLeft: "24px",
+                  padding: "60px 0",
+                }}
+              >
+                <Typist>
+                  Mettre ici une phrase de bienvenue du tenancier et explication
+                  sur à quoi sert le candy.
+                  <br />
+                  Mettre ici une phrase de bienvenue du tenancier et explication
+                  sur à quoi sert le candy.
+                </Typist>
+              </Box>
             </Box>
           </ShopPanels>
         </Box>
