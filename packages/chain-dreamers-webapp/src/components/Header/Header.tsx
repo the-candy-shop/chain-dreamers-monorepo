@@ -38,7 +38,7 @@ function Header() {
         }}
       >
         <HeaderLink label="Candy Shop" to="/candy-shop" />
-        <HeaderLink label="The Lab" to="/lab" />
+        <HeaderLink label="Basement" to="/basement" />
         <HeaderMenu label="Learn more" />
         <HeaderLink label="FAQ" to="/faq" />
         <ConnectButton

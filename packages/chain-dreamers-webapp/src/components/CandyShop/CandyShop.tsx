@@ -1,6 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { useRemainingTimeOpen } from "../../hooks/useRemainingTimeOpen";
+import candyShop from "./candy-shop.png";
 
 function RemainingTimeBlock() {
   const { remainingTimeOpenInSeconds } = useRemainingTimeOpen();
@@ -39,6 +40,9 @@ function CandyShop() {
   return (
     <Box>
       <RemainingTimeBlock />
+      <Box sx={{ marginTop: "23px", "& .candy-shop-img": { width: "100%" } }}>
+        <img alt="Candy Shop" src={candyShop} className="candy-shop-img" />
+      </Box>
     </Box>
   );
 }

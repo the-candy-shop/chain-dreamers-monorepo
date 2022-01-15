@@ -6,6 +6,7 @@ import Story from "./components/Story/Story";
 import OnChainStorage from "./components/OnChainStorage/OnChainStorage";
 import Team from "./components/Team/Team";
 import CandyShop from "./components/CandyShop/CandyShop";
+import Basement from "./components/Basement/Basement";
 import { useIsOpen } from "./hooks/useIsOpen";
 
 function RoutesWrapper() {
@@ -18,8 +19,8 @@ function RoutesWrapper() {
       <Route path="/story" element={<Story />} />
       <Route path="/on-chain-storage" element={<OnChainStorage />} />
       <Route path="/team" element={<Team />} />
-      {isCandyShopOpen && <Route path="/lab" element={<CandyShop />} />}
       {isCandyShopOpen && <Route path="/candy-shop" element={<CandyShop />} />}
+      {isCandyShopOpen && <Route path="/basement" element={<Basement />} />}
     </Routes>
   );
 }

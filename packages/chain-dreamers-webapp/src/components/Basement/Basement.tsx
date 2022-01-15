@@ -1,7 +1,7 @@
 import React from "react";
 
-function Lab() {
+function Basement() {
   return <>test</>;
 }
 
-export default Lab;
+export default Basement;
