@@ -1,22 +1,8 @@
 import React from "react";
 import Button, { ButtonProps } from "@mui/material/Button";
-import dayjs, { Dayjs } from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
 import WalletConnectDialog from "../WalletConnectDialog/WalletConnectDialog";
 import { useEthers } from "@usedapp/core";
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
-
-const localStorageLaunchDate =
-  window.location.hostname !== "chaindreamers.xyz" &&
-  localStorage.getItem("LAUNCH_DATE");
-
-const launchDateString = localStorageLaunchDate
-  ? localStorageLaunchDate
-  : "2022-01-30 10:00";
-const launchDate = dayjs(launchDateString).tz("America/Los_Angeles");
+import { useIsLaunched } from "../../hooks/useIsLaunched";
 
 type CountDownButtonProps = Pick<ButtonProps, "sx">;
 
@@ -34,26 +20,8 @@ function ConnectButton({ sx }: CountDownButtonProps) {
     []
   );
 
-  const [now, setNow] = React.useState<Dayjs>(dayjs());
-  const isLaunched = now.isAfter(launchDate);
+  const { isLaunched, hoursFromLaunch } = useIsLaunched();
 
-  React.useEffect(() => {
-    let interval: NodeJS.Timeout | undefined = undefined;
-
-    if (!isLaunched) {
-      interval = setInterval(() => {
-        setNow(dayjs());
-      }, 1000);
-    } else if (isLaunched && interval) {
-      clearInterval(interval);
-    }
-
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [isLaunched]);
-
-  const hoursFromLaunch = launchDate.diff(now, "hour");
   const daysFromLaunch = Math.floor(hoursFromLaunch / 24);
   const andHoursFromLaunch = hoursFromLaunch - daysFromLaunch * 24;
 

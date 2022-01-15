@@ -43,10 +43,10 @@ function Home() {
               justifyContent: "center",
             }}
           >
-            <HeaderLink label="The Story" to="story" />
-            <HeaderLink label="The Team" to="team" />
-            <HeaderLink label="On chain storage" to="on-chain-storage" />
-            <HeaderLink label="FAQ" to="faq" />
+            <HeaderLink label="The Story" to="/story" />
+            <HeaderLink label="The Team" to="/team" />
+            <HeaderLink label="On chain storage" to="/on-chain-storage" />
+            <HeaderLink label="FAQ" to="/faq" />
           </Box>
         </Box>
       )}

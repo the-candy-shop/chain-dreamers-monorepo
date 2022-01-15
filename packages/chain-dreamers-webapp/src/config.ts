@@ -1,4 +1,10 @@
 import { ChainId } from "@usedapp/core";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 interface AppConfig {
   jsonRpcUri: string;
@@ -52,5 +58,18 @@ const app: Record<SupportedChains, AppConfig> = {
 const config = {
   app: app[CHAIN_ID],
 };
+
+const localStorageLaunchDate =
+  window.location.hostname !== "chaindreamers.xyz" &&
+  localStorage.getItem("LAUNCH_DATE");
+
+const envVariableLaunchDate = process.env.REACT_APP_LAUNCH_DATE;
+
+const launchDateString =
+  envVariableLaunchDate || localStorageLaunchDate || "2022-01-30 10:00";
+
+export const openingDurationInDays = 7;
+export const launchDate = dayjs(launchDateString).tz("America/Los_Angeles");
+export const closeDate = launchDate.add(openingDurationInDays, "day");
 
 export default config;

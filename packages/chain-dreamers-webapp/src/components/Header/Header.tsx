@@ -37,8 +37,10 @@ function Header() {
           display: isMobile ? "none" : "flex",
         }}
       >
+        <HeaderLink label="Candy Shop" to="/candy-shop" />
+        <HeaderLink label="The Lab" to="/lab" />
         <HeaderMenu label="Learn more" />
-        <HeaderLink label="FAQ" to="faq" />
+        <HeaderLink label="FAQ" to="/faq" />
         <ConnectButton
           sx={{
             marginLeft: "20px",
