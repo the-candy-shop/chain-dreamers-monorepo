@@ -38,7 +38,7 @@ export const useIsLaunched = (): {
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [isLaunched]);
+  }, [isLaunched, hoursFromLaunch]);
 
   return { isLaunched, hoursFromLaunch };
 };
