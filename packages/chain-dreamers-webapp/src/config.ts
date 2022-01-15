@@ -10,7 +10,7 @@ interface AppConfig {
 type SupportedChains = ChainId.Rinkeby | ChainId.Mainnet | ChainId.Hardhat;
 
 export const CHAIN_ID: SupportedChains = parseInt(
-  process.env.REACT_APP_CHAIN_ID ?? "4"
+  process.env.REACT_APP_CHAIN_ID ?? "1"
 );
 
 export const INFURA_PROJECT_ID =
