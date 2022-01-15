@@ -9,7 +9,9 @@ import { useEthers } from "@usedapp/core";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-const localStorageLaunchDate = localStorage.getItem("LAUNCH_DATE");
+const localStorageLaunchDate =
+  window.location.hostname !== "chaindreamers.xyz" &&
+  localStorage.getItem("LAUNCH_DATE");
 
 const launchDateString = localStorageLaunchDate
   ? localStorageLaunchDate
@@ -19,7 +21,7 @@ const launchDate = dayjs(launchDateString).tz("America/Los_Angeles");
 type CountDownButtonProps = Pick<ButtonProps, "sx">;
 
 function ConnectButton({ sx }: CountDownButtonProps) {
-  const { account, ...rest } = useEthers();
+  const { account } = useEthers();
 
   const [connectDialogOpen, setConnectDialogOpen] =
     React.useState<boolean>(false);
