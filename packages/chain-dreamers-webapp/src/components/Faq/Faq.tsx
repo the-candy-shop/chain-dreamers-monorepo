@@ -4,6 +4,7 @@ import PageTitle from "../PageTitle/PageTitle";
 import background from "../Home/background.png";
 import Content from "../Content/Content";
 import Link from "@mui/material/Link";
+import { Link as InnerLink } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 
 function Faq() {
@@ -55,10 +56,7 @@ function Faq() {
               Yes, 100% stored on the Ethereum blockchain. <br />
               Data is stored via sstore. The renderer is built into contract.
               The output is svg. More details{" "}
-              <Link href="https://www.chainrunners.xyz/" target="_blank">
-                on this page
-              </Link>
-              .
+              <InnerLink to="/on-chain-storage">on this page</InnerLink>.
             </p>
           </Content>
           <Content title="What is the total supply?">
