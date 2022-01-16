@@ -64,13 +64,13 @@ function HeaderMenu({ label }: HeaderMenuProps) {
             }}
           >
             <Link to="/story" className="menu-link">
-              The Story
+              Story
             </Link>
             <Link to="/team" className="menu-link">
-              The Team
+              Team
             </Link>
             <Link to="/on-chain-storage" className="menu-link">
-              On chain storage
+              On-chain storage
             </Link>
           </Paper>
         </Grow>

@@ -10,7 +10,7 @@ function OnChainStorage() {
 
   return (
     <Box>
-      <PageTitle label="On Chain Storage" background={background} />
+      <PageTitle label="On-Chain Storage" background={background} />
       <Box
         sx={{
           marginTop: "96px",

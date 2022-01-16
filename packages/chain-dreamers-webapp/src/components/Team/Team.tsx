@@ -11,7 +11,7 @@ function Team() {
 
   return (
     <Box>
-      <PageTitle label="The Team" background={background} />
+      <PageTitle label="Team" background={background} />
       <Box
         sx={{
           marginTop: "96px",
