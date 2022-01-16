@@ -1,11 +1,11 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import PageTitle from "../PageTitle/PageTitle";
-import background from "../Home/background.png";
 import Content from "../Content/Content";
 import Link from "@mui/material/Link";
 import spiceEffect from "./spice-effect.png";
 import { useMediaQuery } from "@mui/material";
+import banner from "./banner.png";
 import ChainRunner827 from "./Chain_Runner_827.png";
 import ChainRunner10000 from "./Chain_Runner_10000.png";
 import ChainRunner780 from "./Chain_Runner_780.png";
@@ -56,7 +56,7 @@ function Story() {
 
   return (
     <Box>
-      <PageTitle label="Story" background={background} />
+      <PageTitle label="Story" background={banner} />
       <Box
         sx={{
           marginTop: "96px",
