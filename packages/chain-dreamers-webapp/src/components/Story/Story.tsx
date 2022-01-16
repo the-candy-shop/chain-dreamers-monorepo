@@ -170,8 +170,14 @@ function Story() {
                     display: "flex",
                     justifyContent: "center",
                     marginBottom: "32px",
-                    "& .runner": { width: "250px", borderRadius: "8px" },
-                    "& .dreamer": { width: "250px", borderRadius: "8px" },
+                    "& .runner": {
+                      width: isMobile ? "125px" : "250px",
+                      borderRadius: "8px",
+                    },
+                    "& .dreamer": {
+                      width: isMobile ? "125px" : "250px",
+                      borderRadius: "8px",
+                    },
                   }}
                 >
                   <Box sx={{ marginRight: "24px" }}>

@@ -21,7 +21,7 @@ function App() {
       >
         <Header />
         <RoutesWrapper />
-        <Footer fixed={isHome} />
+        <Footer fixed={!isMobile && isHome} />
       </Box>
     </Box>
   );
