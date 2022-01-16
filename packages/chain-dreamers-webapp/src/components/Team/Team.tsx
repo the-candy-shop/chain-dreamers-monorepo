@@ -40,10 +40,8 @@ function Team() {
             Vitae orci porta nulla scelerisque{" "}
           </TeamMember>
           <TeamMember name="Côme" image={photo}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum
-            duis iaculis ultrices lectus elit, pharetra donec venenatis. Nulla
-            risus lobortis congue a, tellus pharetra tempus tincidunt arcu.
-            Vitae orci porta nulla scelerisque{" "}
+            Product designer based in Paris, building the future of NFT mint
+            experiences. Also a passionate fisherman.
           </TeamMember>
           <TeamMember name="Georges" image={photo}>
             Web developer based in Paris. Love to tell chain-stories that won’t
