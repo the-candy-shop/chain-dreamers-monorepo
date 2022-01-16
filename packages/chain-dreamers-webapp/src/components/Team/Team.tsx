@@ -5,6 +5,8 @@ import TeamMember from "../TeamMember/TeamMember";
 import photo from "./photo.png";
 import { useMediaQuery } from "@mui/material";
 import banner from "./banner.png";
+import jaz from "./jaz.png";
+import georges from "./georges.png";
 
 function Team() {
   const isMobile = useMediaQuery("(max-width:915px)");
@@ -21,7 +23,7 @@ function Team() {
         }}
       >
         <Box sx={{ maxWidth: "895px" }}>
-          <TeamMember name="Jaz" image={photo}>
+          <TeamMember name="Jaz" image={jaz}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum
             duis iaculis ultrices lectus elit, pharetra donec venenatis. Nulla
             risus lobortis congue a, tellus pharetra tempus tincidunt arcu.
@@ -43,7 +45,7 @@ function Team() {
             Product designer based in Paris, building the future of NFT mint
             experiences. Also a passionate fisherman.
           </TeamMember>
-          <TeamMember name="Georges" image={photo}>
+          <TeamMember name="Georges" image={georges}>
             Web developer based in Paris. Love to tell chain-stories that won’t
             be lost like tears in rain.
           </TeamMember>
