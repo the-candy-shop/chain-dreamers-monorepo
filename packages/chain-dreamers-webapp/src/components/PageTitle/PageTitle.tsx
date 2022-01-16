@@ -19,6 +19,7 @@ function PageTitle({ label, background }: PageTitleProps) {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPositionX: "center",
+        backgroundPositionY: "center",
         display: "flex",
         alignItems: "flex-end",
         justifyContent: "center",

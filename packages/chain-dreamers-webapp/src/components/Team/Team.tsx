@@ -46,10 +46,8 @@ function Team() {
             Vitae orci porta nulla scelerisque{" "}
           </TeamMember>
           <TeamMember name="Georges" image={photo}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum
-            duis iaculis ultrices lectus elit, pharetra donec venenatis. Nulla
-            risus lobortis congue a, tellus pharetra tempus tincidunt arcu.
-            Vitae orci porta nulla scelerisque{" "}
+            Web developer based in Paris. Love to tell chain-stories that won’t
+            be lost like tears in rain.
           </TeamMember>
         </Box>
       </Box>

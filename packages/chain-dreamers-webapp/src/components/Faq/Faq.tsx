@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import PageTitle from "../PageTitle/PageTitle";
-import background from "../Home/background.png";
+import banner from "./banner.png";
 import Content from "../Content/Content";
 import Link from "@mui/material/Link";
 import { Link as InnerLink } from "react-router-dom";
@@ -12,7 +12,7 @@ function Faq() {
 
   return (
     <Box>
-      <PageTitle label="FAQ" background={background} />
+      <PageTitle label="FAQ" background={banner} />
       <Box
         sx={{
           marginTop: "96px",
