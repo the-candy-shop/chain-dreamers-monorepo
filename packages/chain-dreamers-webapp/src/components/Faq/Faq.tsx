@@ -34,22 +34,20 @@ function Faq() {
           </Content>
           <Content title="Why creating a derivative on Chain Runners?">
             <p>Because we love Chain Runners:</p>
-            <p>
-              <ul>
-                <li>they are beautiful af</li>
-                <li>they are 100% stored on-chain</li>
-                <li>they are CC0</li>
-                <li>
-                  they have great references to pop culture and science-fiction
-                </li>
-                <li>we loved the minting experience / the Hub</li>
-                <li>it's narrative-driven</li>
-                <li>
-                  the community is super creative with dozens of derivatives
-                </li>
-                <li>!vibes</li>
-              </ul>
-            </p>
+            <ul>
+              <li>they are beautiful af</li>
+              <li>they are 100% stored on-chain</li>
+              <li>they are CC0</li>
+              <li>
+                they have great references to pop culture and science-fiction
+              </li>
+              <li>we loved the minting experience / the Hub</li>
+              <li>it's narrative-driven</li>
+              <li>
+                the community is super creative with dozens of derivatives
+              </li>
+              <li>!vibes</li>
+            </ul>
           </Content>
           <Content title="Is it stored on chain?">
             <p>

@@ -18,34 +18,42 @@ import ChainDreamer1 from "./Chain_Dreamer_1.png";
 
 const beforeAfterRunnerDreamer = [
   {
+    id: 827,
     runner: ChainRunner827,
     dreamer: ChainDreamer1,
   },
   {
+    id: 10000,
     runner: ChainRunner10000,
     dreamer: ChainDreamer1,
   },
   {
+    id: 780,
     runner: ChainRunner780,
     dreamer: ChainDreamer1,
   },
   {
+    id: 2435,
     runner: ChainRunner2435,
     dreamer: ChainDreamer1,
   },
   {
+    id: 111,
     runner: ChainRunner111,
     dreamer: ChainDreamer1,
   },
   {
+    id: 6025,
     runner: ChainRunner6025,
     dreamer: ChainDreamer1,
   },
   {
+    id: 6482,
     runner: ChainRunner6482,
     dreamer: ChainDreamer1,
   },
   {
+    id: 9027,
     runner: ChainRunner9027,
     dreamer: ChainDreamer1,
   },
@@ -150,6 +158,7 @@ function Story() {
             >
               {beforeAfterRunnerDreamer.map((data) => (
                 <Box
+                  key={data.id}
                   sx={{
                     display: "flex",
                     justifyContent: "center",

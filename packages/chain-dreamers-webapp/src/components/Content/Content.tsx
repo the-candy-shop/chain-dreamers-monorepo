@@ -20,6 +20,10 @@ function Content({ children, title }: ContentProps) {
           fontSize: isMobile ? "20px" : "24px",
         },
 
+        "& ul": {
+          fontSize: isMobile ? "20px" : "24px",
+        },
+
         "& a": {
           color: "#44DFFD",
           textDecorationColor: "#44DFFD",
