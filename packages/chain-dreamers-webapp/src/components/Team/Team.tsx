@@ -8,6 +8,7 @@ import banner from "./banner.png";
 import jaz from "./jaz.png";
 import georges from "./georges.png";
 import law from "./law.png";
+import come from "./come.png";
 
 function Team() {
   const isMobile = useMediaQuery("(max-width:915px)");
@@ -42,7 +43,7 @@ function Team() {
             risus lobortis congue a, tellus pharetra tempus tincidunt arcu.
             Vitae orci porta nulla scelerisque{" "}
           </TeamMember>
-          <TeamMember name="Côme" image={photo}>
+          <TeamMember name="Côme" image={come}>
             Product designer based in Paris, building the future of NFT mint
             experiences. Also a passionate fisherman.
           </TeamMember>
