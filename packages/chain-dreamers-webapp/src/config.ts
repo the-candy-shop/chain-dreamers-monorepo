@@ -66,7 +66,9 @@ const localStorageLaunchDate =
 const envVariableLaunchDate = process.env.REACT_APP_LAUNCH_DATE;
 
 const launchDateString =
-  envVariableLaunchDate || localStorageLaunchDate || "2022-01-30 9:00";
+  envVariableLaunchDate ||
+  localStorageLaunchDate ||
+  "2022-01-30T09:00:00-08:00";
 
 export const openingDurationInDays = 7;
 export const launchDate = dayjs(launchDateString).tz("America/Los_Angeles");
