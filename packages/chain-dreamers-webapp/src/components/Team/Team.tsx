@@ -30,10 +30,7 @@ function Team() {
             off-chain.
           </TeamMember>
           <TeamMember name="Clément" image={photo}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum
-            duis iaculis ultrices lectus elit, pharetra donec venenatis. Nulla
-            risus lobortis congue a, tellus pharetra tempus tincidunt arcu.
-            Vitae orci porta nulla scelerisque{" "}
+            scientist and engineer, currently experimenting in solidity.
           </TeamMember>
           <TeamMember name="Law" image={law}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum
