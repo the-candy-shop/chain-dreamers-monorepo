@@ -38,7 +38,7 @@ function Footer({ fixed = false }: FooterProps) {
         />
         <FooterLink
           src={discord}
-          url="https://google.fr"
+          url="https://discord.gg/p583xTn4"
           tooltip="Join Discord"
         />
         <FooterLink
