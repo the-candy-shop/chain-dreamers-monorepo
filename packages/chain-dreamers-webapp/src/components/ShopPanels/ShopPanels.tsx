@@ -10,13 +10,19 @@ type ShopPanelsProps = {
 
 function ShopPanels({ title, children, sx }: ShopPanelsProps) {
   return (
-    <Box sx={{ background: "rgba(218, 74, 138, 0.1)", ...sx }}>
+    <Box
+      sx={{
+        background: "rgba(218, 74, 138, 0.1)",
+        display: "flex",
+        flexDirection: "column",
+        ...sx,
+      }}
+    >
       <Box className="title-container" sx={{ border: "1px solid #DA4A8A" }}>
         <Box
           className="title"
           sx={{
             padding: "4px",
-            color: "white",
             background: "#DA4A8A",
             display: "inline-block",
           }}
@@ -26,7 +32,7 @@ function ShopPanels({ title, children, sx }: ShopPanelsProps) {
       </Box>
       <Box
         className="content"
-        sx={{ border: "1px solid #DA4A8A", borderTop: 0 }}
+        sx={{ border: "1px solid #DA4A8A", borderTop: 0, flex: 1 }}
       >
         {children}
       </Box>

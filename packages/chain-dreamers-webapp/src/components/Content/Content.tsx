@@ -17,7 +17,6 @@ function Content({ children, title }: ContentProps) {
         marginBottom: "72px",
 
         "& p": {
-          color: "white",
           fontSize: isMobile ? "20px" : "24px",
         },
 

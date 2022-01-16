@@ -32,7 +32,6 @@ const WalletConnectDialog: React.FC<{
       >
         <Box
           sx={{
-            color: "white",
             fontWeight: 600,
             fontSize: "24px",
             textAlign: "center",

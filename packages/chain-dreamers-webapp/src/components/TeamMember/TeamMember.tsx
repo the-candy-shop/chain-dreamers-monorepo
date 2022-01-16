@@ -20,7 +20,6 @@ function TeamMember({ name, children, image }: TeamMemberProps) {
         sx={{
           fontWeight: "bold",
           fontSize: isMobile ? "32px" : "40px",
-          color: "white",
           marginTop: "32px",
         }}
       >
@@ -29,7 +28,6 @@ function TeamMember({ name, children, image }: TeamMemberProps) {
       <Box
         sx={{
           fontSize: isMobile ? "20px" : "24px",
-          color: "white",
           marginTop: "32px",
         }}
       >

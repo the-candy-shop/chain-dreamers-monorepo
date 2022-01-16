@@ -26,7 +26,6 @@ function HeaderMenu({ label }: HeaderMenuProps) {
         fontWeight: 600,
         fontSize: "16px",
         lineHeight: "19px",
-        color: "white",
         padding: "12px 20px",
         cursor: "pointer",
         position: "relative",
@@ -46,7 +45,6 @@ function HeaderMenu({ label }: HeaderMenuProps) {
             sx={{
               pointerEvents: "auto",
               background: "black",
-              color: "white",
               border: "1px solid white",
               borderRadius: "4px",
               padding: "6px 0",
@@ -54,7 +52,6 @@ function HeaderMenu({ label }: HeaderMenuProps) {
 
               "& .menu-link": {
                 display: "block",
-                color: "white",
                 textDecoration: "none",
                 fontWeight: 600,
                 fontSize: "16px",
