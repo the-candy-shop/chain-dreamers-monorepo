@@ -67,10 +67,10 @@ function Faq() {
             </p>
           </Content>
           <Content title="When does the Candy Shop open for minting?">
-            <p>Phase 1 of minting will launch on January, 30th at 10AM PST</p>
+            <p>Phase 1 of minting will launch on January, 30th at 9AM PST</p>
             <p>
               Phase 2 of minting will launch 7 days after on February, 6th at
-              10AM PST
+              9AM PST
             </p>
           </Content>
           <Content title="Who can mint a Chain Dreamer during phase 1?">
