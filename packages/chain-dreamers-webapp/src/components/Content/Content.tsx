@@ -18,10 +18,19 @@ function Content({ children, title }: ContentProps) {
 
         "& p": {
           fontSize: isMobile ? "20px" : "24px",
+          lineHeight: isMobile ? "30px" : "36px",
         },
 
         "& ul": {
           fontSize: isMobile ? "20px" : "24px",
+          lineHeight: isMobile ? "30px" : "36px",
+        },
+
+        "& code": {
+          color: "#78e168",
+          backgroundColor: "rgba(135, 131, 120, 0.15)",
+          borderRadius: "3px",
+          padding: "2.72px 5.44px",
         },
 
         "& a": {
