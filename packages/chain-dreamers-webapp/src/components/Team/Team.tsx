@@ -7,6 +7,7 @@ import { useMediaQuery } from "@mui/material";
 import banner from "./banner.png";
 import jaz from "./jaz.png";
 import georges from "./georges.png";
+import law from "./law.png";
 
 function Team() {
   const isMobile = useMediaQuery("(max-width:915px)");
@@ -35,7 +36,7 @@ function Team() {
             risus lobortis congue a, tellus pharetra tempus tincidunt arcu.
             Vitae orci porta nulla scelerisque{" "}
           </TeamMember>
-          <TeamMember name="Law" image={photo}>
+          <TeamMember name="Law" image={law}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum
             duis iaculis ultrices lectus elit, pharetra donec venenatis. Nulla
             risus lobortis congue a, tellus pharetra tempus tincidunt arcu.
