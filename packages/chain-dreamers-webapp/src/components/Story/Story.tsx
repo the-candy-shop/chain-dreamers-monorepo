@@ -75,7 +75,7 @@ function Story() {
             <p>
               The Candy Shop has just opened and is held by Jaz,{" "}
               <Link
-                href="https://opensea.io/assets/0x97597002980134bea46250aa0510c9b90d87a587/8335"
+                href="https://www.chainrunners.xyz/hub/runners/8335"
                 target="_blank"
               >
                 Runner #8335
