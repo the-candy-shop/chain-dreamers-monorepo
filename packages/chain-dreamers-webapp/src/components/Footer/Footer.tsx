@@ -33,7 +33,7 @@ function Footer({ fixed = false }: FooterProps) {
       >
         <FooterLink
           src={twitter}
-          url="https://google.fr"
+          url="https://twitter.com/chain_dreamers"
           tooltip="View Twitter"
         />
         <FooterLink
