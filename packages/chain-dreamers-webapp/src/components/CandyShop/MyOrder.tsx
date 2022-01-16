@@ -9,6 +9,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Button from "@mui/material/Button";
 import { heliumSpicePrice } from "../../config";
+import { useRunnerIds } from "../../hooks/useRunnerIds";
 
 function MyOrder() {
   const [heliumSpiceQuantity, setHeliumSpiceQuantity] =
@@ -25,6 +26,9 @@ function MyOrder() {
       }),
     []
   );
+
+  const runnerCount = useRunnerIds();
+  console.log("runnerCount", runnerCount);
 
   return (
     <ShopPanels title="My order" sx={{ flex: 1 }}>
