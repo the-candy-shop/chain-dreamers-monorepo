@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import PageTitle from "../PageTitle/PageTitle";
-import background from "../Home/background.png";
+import banner from "./banner.png";
 import Content from "../Content/Content";
 import { useMediaQuery } from "@mui/material";
 
@@ -10,7 +10,7 @@ function OnChainStorage() {
 
   return (
     <Box>
-      <PageTitle label="On-Chain Storage" background={background} />
+      <PageTitle label="On-Chain Storage" background={banner} />
       <Box
         sx={{
           marginTop: "96px",
