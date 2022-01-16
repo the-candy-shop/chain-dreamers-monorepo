@@ -14,48 +14,55 @@ import ChainRunner111 from "./Chain_Runner_111.png";
 import ChainRunner6025 from "./Chain_Runner_6025.png";
 import ChainRunner6482 from "./Chain_Runner_6482.png";
 import ChainRunner9027 from "./Chain_Runner_9027.png";
-import ChainDreamer1 from "./Chain_Dreamer_1.png";
+import ChainDreamer827 from "./Chain_Dreamer_827.png";
+import ChainDreamer10000 from "./Chain_Dreamer_10000.png";
+import ChainDreamer780 from "./Chain_Dreamer_780.png";
+import ChainDreamer2435 from "./Chain_Dreamer_2435.png";
+import ChainDreamer111 from "./Chain_Dreamer_111.png";
+import ChainDreamer6025 from "./Chain_Dreamer_6025.png";
+import ChainDreamer6482 from "./Chain_Dreamer_6482.png";
+import ChainDreamer9027 from "./Chain_Dreamer_9027.png";
 
 const beforeAfterRunnerDreamer = [
   {
     id: 827,
     runner: ChainRunner827,
-    dreamer: ChainDreamer1,
+    dreamer: ChainDreamer827,
   },
   {
     id: 10000,
     runner: ChainRunner10000,
-    dreamer: ChainDreamer1,
+    dreamer: ChainDreamer10000,
   },
   {
     id: 780,
     runner: ChainRunner780,
-    dreamer: ChainDreamer1,
+    dreamer: ChainDreamer780,
   },
   {
     id: 2435,
     runner: ChainRunner2435,
-    dreamer: ChainDreamer1,
+    dreamer: ChainDreamer2435,
   },
   {
     id: 111,
     runner: ChainRunner111,
-    dreamer: ChainDreamer1,
+    dreamer: ChainDreamer111,
   },
   {
     id: 6025,
     runner: ChainRunner6025,
-    dreamer: ChainDreamer1,
+    dreamer: ChainDreamer6025,
   },
   {
     id: 6482,
     runner: ChainRunner6482,
-    dreamer: ChainDreamer1,
+    dreamer: ChainDreamer6482,
   },
   {
     id: 9027,
     runner: ChainRunner9027,
-    dreamer: ChainDreamer1,
+    dreamer: ChainDreamer9027,
   },
 ];
 
@@ -163,8 +170,8 @@ function Story() {
                     display: "flex",
                     justifyContent: "center",
                     marginBottom: "32px",
-                    "& .runner": { width: "130px", borderRadius: "8px" },
-                    "& .dreamer": { width: "130px" },
+                    "& .runner": { width: "250px", borderRadius: "8px" },
+                    "& .dreamer": { width: "250px", borderRadius: "8px" },
                   }}
                 >
                   <Box sx={{ marginRight: "24px" }}>

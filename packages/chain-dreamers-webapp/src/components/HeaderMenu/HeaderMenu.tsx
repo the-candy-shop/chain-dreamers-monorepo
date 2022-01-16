@@ -48,7 +48,7 @@ function HeaderMenu({ label }: HeaderMenuProps) {
               border: "1px solid white",
               borderRadius: "4px",
               padding: "6px 0",
-              width: "180px",
+              width: "190px",
 
               "& .menu-link": {
                 display: "block",
