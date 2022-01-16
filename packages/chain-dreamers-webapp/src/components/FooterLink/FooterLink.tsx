@@ -7,7 +7,7 @@ const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} classes={{ popper: className }} />
 ))(() => ({
   [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: "transparent",
+    backgroundColor: "black",
     color: "#44DFFD",
     border: "1px solid #AC0BF7",
     borderRadius: "4px",
@@ -29,6 +29,7 @@ function FooterLink({ src, url, tooltip }: FooterLinkProps) {
           margin: "24px 12px",
           "&:hover": { opacity: 0.8 },
           cursor: "pointer",
+          display: "block",
         }}
         href={url}
         target="_blank"

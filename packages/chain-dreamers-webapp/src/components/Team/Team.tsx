@@ -26,10 +26,8 @@ function Team() {
       >
         <Box sx={{ maxWidth: "895px" }}>
           <TeamMember name="Jaz" image={jaz}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum
-            duis iaculis ultrices lectus elit, pharetra donec venenatis. Nulla
-            risus lobortis congue a, tellus pharetra tempus tincidunt arcu.
-            Vitae orci porta nulla scelerisque{" "}
+            Proud holder of a Candy Shop on-chain, passionate web3 product guy
+            off-chain.
           </TeamMember>
           <TeamMember name="Clément" image={photo}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum

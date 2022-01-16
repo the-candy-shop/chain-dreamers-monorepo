@@ -27,7 +27,8 @@ function Footer({ fixed = false }: FooterProps) {
         sx={{
           background: "black",
           borderRadius: "8px 8px 0px 0px",
-          padding: "24px 40px",
+          padding: "0px 28px",
+          display: "flex",
         }}
       >
         <FooterLink
