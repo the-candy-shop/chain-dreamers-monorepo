@@ -36,6 +36,7 @@ const WalletConnectDialog: React.FC<{
             fontSize: "24px",
             textAlign: "center",
             marginBottom: "32px",
+            color: "white",
           }}
         >
           Connect to your wallet to enter the project

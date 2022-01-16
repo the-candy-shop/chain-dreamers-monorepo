@@ -55,6 +55,7 @@ function HeaderMenu({ label }: HeaderMenuProps) {
                 textDecoration: "none",
                 fontWeight: 600,
                 fontSize: "16px",
+                color: "white",
                 padding: "8px 24px",
                 "&:hover": {
                   color: "#44DFFD",
