@@ -1,17 +1,17 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import PageTitle from "../PageTitle/PageTitle";
-import background from "../Home/background.png";
 import TeamMember from "../TeamMember/TeamMember";
 import photo from "./photo.png";
 import { useMediaQuery } from "@mui/material";
+import banner from "./banner.png";
 
 function Team() {
   const isMobile = useMediaQuery("(max-width:915px)");
 
   return (
     <Box>
-      <PageTitle label="Team" background={background} />
+      <PageTitle label="Team" background={banner} />
       <Box
         sx={{
           marginTop: "96px",
