@@ -2,13 +2,17 @@ import React from "react";
 import logo from "./logo.png";
 import Box from "@mui/material/Box";
 import HeaderLink from "../HeaderLink/HeaderLink";
-import CountDownButton from "../CountDownButton/CountDownButton";
+import ConnectButton from "../ConnectButton/ConnectButton";
 import { Link } from "react-router-dom";
 import HeaderMenu from "../HeaderMenu/HeaderMenu";
 import { useMediaQuery } from "@mui/material";
+import { useEthers } from "@usedapp/core";
+import { useIsOpen } from "../../hooks/useIsOpen";
 
 function Header() {
   const isMobile = useMediaQuery("(max-width:915px)");
+  const { account } = useEthers();
+  const { isCandyShopOpen } = useIsOpen();
 
   return (
     <Box
@@ -37,9 +41,15 @@ function Header() {
           display: isMobile ? "none" : "flex",
         }}
       >
+        {account && isCandyShopOpen && (
+          <HeaderLink label="Candy Shop" to="/candy-shop" />
+        )}
+        {account && isCandyShopOpen && (
+          <HeaderLink label="Basement" to="/basement" />
+        )}
         <HeaderMenu label="Learn more" />
-        <HeaderLink label="FAQ" to="faq" />
-        <CountDownButton
+        <HeaderLink label="FAQ" to="/faq" />
+        <ConnectButton
           sx={{
             marginLeft: "20px",
           }}

@@ -12,7 +12,6 @@ function H1({ children }: H1Props) {
   return (
     <Box
       sx={{
-        color: "white",
         fontWeight: "bold",
         fontSize: isMobile ? "32px" : "40px",
         marginBottom: "24px",

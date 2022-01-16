@@ -1,6 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 type HeaderLinkProps = {
   label: string;
@@ -8,6 +8,9 @@ type HeaderLinkProps = {
 };
 
 function HeaderLink({ label, to }: HeaderLinkProps) {
+  const location = useLocation();
+  const isCurrent = location.pathname === to;
+
   return (
     <Link to={to} style={{ textDecoration: "none" }}>
       <Box
@@ -15,7 +18,7 @@ function HeaderLink({ label, to }: HeaderLinkProps) {
           fontWeight: 600,
           fontSize: "16px",
           lineHeight: "19px",
-          color: "white",
+          color: isCurrent ? "#44DFFD" : "white",
           padding: "12px 20px",
           textAlign: "center",
           "&:hover": {

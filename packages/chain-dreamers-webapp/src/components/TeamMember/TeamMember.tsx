@@ -13,14 +13,17 @@ function TeamMember({ name, children, image }: TeamMemberProps) {
 
   return (
     <Box sx={{ textAlign: "center", marginBottom: "64px" }}>
-      <Box sx={{ "& .team-member-photo": { width: "234px" } }}>
+      <Box
+        sx={{
+          "& .team-member-photo": { width: "234px", borderRadius: "12px" },
+        }}
+      >
         <img alt="team member" src={image} className="team-member-photo" />
       </Box>
       <Box
         sx={{
           fontWeight: "bold",
           fontSize: isMobile ? "32px" : "40px",
-          color: "white",
           marginTop: "32px",
         }}
       >
@@ -29,7 +32,6 @@ function TeamMember({ name, children, image }: TeamMemberProps) {
       <Box
         sx={{
           fontSize: isMobile ? "20px" : "24px",
-          color: "white",
           marginTop: "32px",
         }}
       >

@@ -1,17 +1,22 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import PageTitle from "../PageTitle/PageTitle";
-import background from "../Home/background.png";
 import TeamMember from "../TeamMember/TeamMember";
-import photo from "./photo.png";
 import { useMediaQuery } from "@mui/material";
+import banner from "./banner.png";
+import clement from "./clement.png";
+import jaz from "./jaz.png";
+import georges from "./georges.png";
+import law from "./law.png";
+import come from "./come.png";
+import Link from "@mui/material/Link";
 
 function Team() {
   const isMobile = useMediaQuery("(max-width:915px)");
 
   return (
     <Box>
-      <PageTitle label="The Team" background={background} />
+      <PageTitle label="Team" background={banner} />
       <Box
         sx={{
           marginTop: "96px",
@@ -21,35 +26,50 @@ function Team() {
         }}
       >
         <Box sx={{ maxWidth: "895px" }}>
-          <TeamMember name="Jaz" image={photo}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum
-            duis iaculis ultrices lectus elit, pharetra donec venenatis. Nulla
-            risus lobortis congue a, tellus pharetra tempus tincidunt arcu.
-            Vitae orci porta nulla scelerisque{" "}
+          <TeamMember name="Jaz" image={jaz}>
+            Proud holder of a Candy Shop on-chain, passionate web3 product guy
+            off-chain.
           </TeamMember>
-          <TeamMember name="Clément" image={photo}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum
-            duis iaculis ultrices lectus elit, pharetra donec venenatis. Nulla
-            risus lobortis congue a, tellus pharetra tempus tincidunt arcu.
-            Vitae orci porta nulla scelerisque{" "}
+          <TeamMember name="Clément" image={clement}>
+            scientist and engineer, currently experimenting in solidity.
           </TeamMember>
-          <TeamMember name="Law" image={photo}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum
-            duis iaculis ultrices lectus elit, pharetra donec venenatis. Nulla
-            risus lobortis congue a, tellus pharetra tempus tincidunt arcu.
-            Vitae orci porta nulla scelerisque{" "}
+          <TeamMember name="Law" image={law}>
+            <Box>Graphic Designer - Illustrateur</Box>
+            <Box marginTop="6px">
+              <Link
+                href="https://www.instagram.com/antoinelalou/"
+                target="_blank"
+                sx={{ color: "#44DFFD" }}
+              >
+                @antoinelalou
+              </Link>
+            </Box>
+            <Box marginTop="6px">
+              <Link
+                href="https://www.instagram.com/micmac.industrie/"
+                target="_blank"
+                sx={{ color: "#44DFFD" }}
+              >
+                @micmac.industrie
+              </Link>
+            </Box>
+            <Box marginTop="6px">
+              <Link
+                href="https://opensea.io/collection/focus-inside"
+                target="_blank"
+                sx={{ color: "#44DFFD" }}
+              >
+                opensea
+              </Link>
+            </Box>
           </TeamMember>
-          <TeamMember name="Côme" image={photo}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum
-            duis iaculis ultrices lectus elit, pharetra donec venenatis. Nulla
-            risus lobortis congue a, tellus pharetra tempus tincidunt arcu.
-            Vitae orci porta nulla scelerisque{" "}
+          <TeamMember name="Côme" image={come}>
+            Product designer based in Paris, building the future of NFT mint
+            experiences. Also a passionate fisherman.
           </TeamMember>
-          <TeamMember name="Georges" image={photo}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum
-            duis iaculis ultrices lectus elit, pharetra donec venenatis. Nulla
-            risus lobortis congue a, tellus pharetra tempus tincidunt arcu.
-            Vitae orci porta nulla scelerisque{" "}
+          <TeamMember name="Georges" image={georges}>
+            Web developer based in Paris. Love to tell chain-stories that won’t
+            be lost like tears in rain.
           </TeamMember>
         </Box>
       </Box>

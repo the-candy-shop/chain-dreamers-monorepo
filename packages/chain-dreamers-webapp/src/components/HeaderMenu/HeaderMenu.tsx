@@ -26,7 +26,6 @@ function HeaderMenu({ label }: HeaderMenuProps) {
         fontWeight: 600,
         fontSize: "16px",
         lineHeight: "19px",
-        color: "white",
         padding: "12px 20px",
         cursor: "pointer",
         position: "relative",
@@ -46,18 +45,17 @@ function HeaderMenu({ label }: HeaderMenuProps) {
             sx={{
               pointerEvents: "auto",
               background: "black",
-              color: "white",
               border: "1px solid white",
               borderRadius: "4px",
               padding: "6px 0",
-              width: "180px",
+              width: "190px",
 
               "& .menu-link": {
                 display: "block",
-                color: "white",
                 textDecoration: "none",
                 fontWeight: 600,
                 fontSize: "16px",
+                color: "white",
                 padding: "8px 24px",
                 "&:hover": {
                   color: "#44DFFD",
@@ -65,14 +63,14 @@ function HeaderMenu({ label }: HeaderMenuProps) {
               },
             }}
           >
-            <Link to="story" className="menu-link">
-              The Story
+            <Link to="/story" className="menu-link">
+              Story
             </Link>
-            <Link to="team" className="menu-link">
-              The Team
+            <Link to="/team" className="menu-link">
+              Team
             </Link>
-            <Link to="on-chain-storage" className="menu-link">
-              On chain storage
+            <Link to="/on-chain-storage" className="menu-link">
+              On-chain storage
             </Link>
           </Paper>
         </Grow>
