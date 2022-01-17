@@ -93,10 +93,10 @@ function Faq() {
             </p>
           </Content>
           <Content title="When does the Candy Shop open for minting?">
-            <p>Phase 1 of minting will launch on January, 30th at 9AM PST</p>
+            <p>Phase 1 of minting will launch on January, 30th at 9AM PST.</p>
             <p>
               Phase 2 of minting will launch 7 days after on February, 6th at
-              9AM PST
+              9AM PST.
             </p>
           </Content>
           <Content title="Who can mint a Chain Dreamer during phase 1?">
@@ -139,7 +139,7 @@ function Faq() {
             <p>
               Then you go down to the Basement and give it to your Runner(s).
             </p>
-            <p>Eventually, your dreamer is minted</p>
+            <p>Eventually, your dreamer is minted.</p>
           </Content>
           <Content title="I have several Chain Runners, can I bulk mint all my Chain Dreamers?">
             <p>Yes.</p>
@@ -153,7 +153,7 @@ function Faq() {
           <Content title="What is the utility?">
             <p>
               By owning a Chain Dreamer, you'll be able to vote for the next
-              project on top of which we'll build our next NFT Derivative
+              project on top of which we'll build our next NFT Derivative.
             </p>
           </Content>
         </Box>
