@@ -28,8 +28,8 @@ function Faq() {
               <Link href="https://www.chainrunners.xyz/" target="_blank">
                 Chain Runners
               </Link>
-              . You have to own a Chain Runner to be able to mint your
-              associated Chain Dreamer on phase 1.
+              . You have to own a Chain Runner to mint your associated Chain
+              Dreamer on phase 1.
             </p>
           </Content>
           <Content title="What is the Candy Shop?">
@@ -117,7 +117,7 @@ function Faq() {
               be no phase 2.
             </p>
             <p>
-              If there are Chain dreamers left to be minted, our team will keep
+              If there are Chain Dreamers left to be minted, our team will keep
               50 of them and the remaining Chain Dreamers will be mintable by
               people on the White List.
             </p>
