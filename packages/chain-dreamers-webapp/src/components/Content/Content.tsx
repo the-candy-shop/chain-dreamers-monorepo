@@ -38,6 +38,10 @@ function Content({ children, title }: ContentProps) {
           textDecorationColor: "#44DFFD",
           textDecoration: "none",
         },
+
+        "& .twitter-tweet-rendered": {
+          margin: "auto",
+        },
       }}
     >
       <H1>{title}</H1>
