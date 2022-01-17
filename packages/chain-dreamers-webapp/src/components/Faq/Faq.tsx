@@ -50,12 +50,21 @@ function Faq() {
               <li>they are 100% stored on-chain</li>
               <li>they are CC0</li>
               <li>
-                they have great references to pop culture and science-fiction
+                they have great{" "}
+                <Link
+                  href=" https://abbeyjazzy.notion.site/Chain-Runner-References-e9c24e54c61d4429b002e1e67686d7b9"
+                  target="_blank"
+                >
+                  references to pop culture and science-fiction
+                </Link>
               </li>
               <li>we loved the minting experience / the Hub</li>
               <li>it's narrative-driven</li>
               <li>
-                the community is super creative with dozens of derivatives
+                the community is super creative with{" "}
+                <Link href="https://wiki.chainrunners.xyz/" target="_blank">
+                  dozens of derivatives
+                </Link>
               </li>
               <li>!vibes</li>
             </ul>
@@ -101,8 +110,9 @@ function Faq() {
           </Content>
           <Content title="Who can mint a Chain Dreamer during phase 2?">
             <p>
-              7 days after the mint, all the remaining Chain Dreamers will be
-              mintable by people on the White List.
+              Phase 2 will open exactly 7 days after the beginning of phase 1,
+              all the the remaining Chain Dreamers will be mintable by people on
+              the White List.
             </p>
           </Content>
           <Content title="What is the mint price?">

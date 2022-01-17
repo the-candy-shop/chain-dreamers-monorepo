@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dreamers utils getSvg Should match snapshot 1`] = `
+"<path d='M 0.0,0.0 H 255.0 V 255.0 H 0.0 V 0.0' fill='#ffffff' stroke='#000' stroke-linecap='round' stroke-linejoin='round' stroke-width='0.71' />
+<path d='M 41.0,255.0 H 102.0 C 102.0,255.0 137.0,204.0 102.0,138.0 C 67.0,72.0 132.0,0.0 132.0,0.0 H 41.0 V 255.0' fill='#7acbe1' stroke='#000' stroke-linecap='round' stroke-linejoin='round' stroke-width='0.71' />
+<path d='M 0.0,255.0 H 61.0 C 61.0,255.0 96.0,204.0 61.0,138.0 C 26.0,72.0 91.0,0.0 91.0,0.0 H 0.0 V 255.0' fill='#6d9cf8' stroke='#000' stroke-linecap='round' stroke-linejoin='round' stroke-width='0.71' />
+<path d='M 214.0,0.0 H 153.0 C 153.0,0.0 118.0,51.0 153.0,117.0 C 188.0,182.0 123.0,255.0 123.0,255.0 H 214.0 V 0.0' fill='#7acbe1' stroke='#000' stroke-linecap='round' stroke-linejoin='round' stroke-width='0.71' />
+<path d='M 255.0,0.0 H 194.0 C 194.0,0.0 159.0,51.0 194.0,117.0 C 229.0,182.0 164.0,255.0 164.0,255.0 H 255.0 V 0.0' fill='#6d9cf8' stroke='#000' stroke-linecap='round' stroke-linejoin='round' stroke-width='0.71' />"
+`;

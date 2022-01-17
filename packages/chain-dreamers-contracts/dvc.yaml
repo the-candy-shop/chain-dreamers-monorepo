@@ -1,0 +1,31 @@
+stages:
+  parse_svg:
+    cmd: python image_processing/parse_svg.py
+    deps:
+    - assets/VALISE_CHAIN_DREAMERS_TRAITS
+    - image_processing/parse_svg.py
+    outs:
+    - assets/VALISE_CHAIN_DREAMERS_COMPUTED
+    - palettes.json
+
+  convert_lines_h_v:
+    cmd: python image_processing/use_h_and_v_in_d.py
+    deps:
+    - palettes.json
+    - image_processing/use_h_and_v_in_d.py
+    outs:
+    - palettes-hv.json
+
+  concat_palettes:
+    cmd: npx hardhat concat-palettes --input palettes-hv.json --output palettes-storage.json
+    deps:
+    - palettes-hv.json
+    - tasks/concatPalettes.ts
+    outs:
+    - palettes-storage.json
+
+  deploy:
+    cmd: npx hardhat deploy
+    deps:
+    - palettes-storage.json
+    - deploy

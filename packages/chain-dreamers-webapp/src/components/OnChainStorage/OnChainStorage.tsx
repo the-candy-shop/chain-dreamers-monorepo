@@ -23,7 +23,10 @@ function OnChainStorage() {
         <Box sx={{ maxWidth: "895px" }}>
           <Content title="TL;DR">
             <ul>
-              <li>On-chain storage is the holy grail of any NFT project</li>
+              <li>
+                On-chain storage feels right as it enable JPEG to live as long
+                as the underlying blockchain
+              </li>
               <li>We pioneered bringing more complex images on-chain</li>
               <li>
                 We applied this innovation to a community we love: Chain Runners
@@ -35,6 +38,32 @@ function OnChainStorage() {
                 We developed a custom encoding to efficiently store the traits
               </li>
             </ul>
+            <blockquote className="twitter-tweet">
+              <p lang="en" dir="ltr">
+                the michelin guide to “”on chain”” nfts
+                <br />
+                <br />❌<br />
+                ipfs, arweave, or content hash
+                <br />
+                <br />
+                ⭐️ <br />
+                data stored via calldata
+                <br />
+                <br />
+                ⭐️ ⭐️ <br />
+                data stored via sstore. external script necessary to render data
+                <br />
+                <br />
+                ⭐️⭐️⭐️
+                <br />
+                data stored via sstore. renderer built into contract. outputs
+                svg or similar data uri
+              </p>
+              &mdash; dom (@dhof){" "}
+              <a href="https://twitter.com/dhof/status/1410060181849919489?ref_src=twsrc%5Etfw">
+                June 30, 2021
+              </a>
+            </blockquote>
           </Content>
           <Content title="The Chain Runners paradigm">
             <p>
@@ -75,6 +104,18 @@ function OnChainStorage() {
               </Link>
               .
             </p>
+            <blockquote className="twitter-tweet">
+              <p lang="en" dir="ltr">
+                web3 contracts and transactions being open source is a huge
+                advantage in onboarding new developers. <br />
+                <br />I learned Solidity by reading Nouns, Loot, and Punks
+                contracts, not from books, tutorials, or expensive courses.
+              </p>
+              &mdash; threepwave (@threepwave){" "}
+              <a href="https://twitter.com/threepwave/status/1464600483511689221?ref_src=twsrc%5Etfw">
+                November 27, 2021
+              </a>
+            </blockquote>
             <p>
               Nounders brought us a sort of enlightenment on the philosophy of
               NFTs and technically speaking, on what it takes to start a
