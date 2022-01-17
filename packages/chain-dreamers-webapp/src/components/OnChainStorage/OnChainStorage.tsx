@@ -12,7 +12,10 @@ function OnChainStorage() {
   React.useEffect(() => {
     // @ts-ignore
     const twttr = window.twttr;
-    twttr.widgets.load();
+
+    if (twttr) {
+      twttr.widgets.load();
+    }
   }, []);
 
   return (
