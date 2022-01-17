@@ -31,7 +31,7 @@ function Team() {
             off-chain.
           </TeamMember>
           <TeamMember name="Clément" image={clement}>
-            scientist and engineer, currently experimenting in solidity.
+            Scientist and engineer, currently experimenting in solidity.
           </TeamMember>
           <TeamMember name="law" image={law}>
             <Box>Graphic Designer - Illustrator</Box>
