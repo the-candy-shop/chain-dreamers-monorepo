@@ -105,7 +105,7 @@ function Faq() {
               mintable by people on the White List.
             </p>
           </Content>
-          <Content title="How much is the mint price?">
+          <Content title="What is the mint price?">
             <p>TBD</p>
           </Content>
           <Content title="How to mint a Chain Dreamer?">
