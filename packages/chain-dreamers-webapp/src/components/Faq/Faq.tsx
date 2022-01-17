@@ -32,6 +32,17 @@ function Faq() {
               associated Chain Dreamer on phase 1.
             </p>
           </Content>
+          <Content title="What is the Candy Shop?">
+            <p>Beyond the narrative, the Candy Shop is an NFT research lab.</p>
+            <p>Chain Dreamer is only our first project.</p>
+            <p>We'll keep building new collections with 3 golden rules: </p>
+            <ul>
+              <li>derivative on top of the best NFT projects</li>
+              <li>technical innovation</li>
+              <li>great minting experience</li>
+            </ul>
+            <p>Each new innovation will be a new drug of our Candy Shop.</p>
+          </Content>
           <Content title="Why creating a derivative on Chain Runners?">
             <p>Because we love Chain Runners:</p>
             <ul>
@@ -48,6 +59,14 @@ function Faq() {
               </li>
               <li>!vibes</li>
             </ul>
+            <p>
+              Thus, we believe the only way to create a derivative on Chain
+              Runners is to respect its DNA : great narrative and on chain.
+            </p>
+            <p>
+              We've worked hard to make Chain Dreamer check both with our little
+              touch.
+            </p>
           </Content>
           <Content title="Is it stored on chain?">
             <p>
