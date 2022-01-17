@@ -9,6 +9,12 @@ import Link from "@mui/material/Link";
 function OnChainStorage() {
   const isMobile = useMediaQuery("(max-width:915px)");
 
+  React.useEffect(() => {
+    // @ts-ignore
+    const twttr = window.twttr;
+    twttr.widgets.load();
+  }, []);
+
   return (
     <Box>
       <PageTitle label="On-Chain Storage" background={banner} />
