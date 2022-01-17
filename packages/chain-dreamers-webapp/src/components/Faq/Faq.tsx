@@ -70,7 +70,7 @@ function Faq() {
             </ul>
             <p>
               Thus, we believe the only way to create a derivative on Chain
-              Runners is to respect its DNA : great narrative and on chain.
+              Runners is to respect its DNA: great narrative and on chain.
             </p>
             <p>
               We've worked hard to make Chain Dreamer check both with our little

@@ -272,8 +272,8 @@ function OnChainStorage() {
             </p>
             <ul>
               <li>
-                <code>d</code> : a string containing letters for path command
-                and coordinates for the given command
+                <code>d</code>: a string containing letters for path command and
+                coordinates for the given command
               </li>
               <li>
                 <code>fill</code>: the color as a hexadecimal 3 bytes string
