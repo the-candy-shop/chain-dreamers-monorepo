@@ -32,7 +32,7 @@ function OnChainStorage() {
                 To do so, we switched from pixel-based to vector-based encoding
               </li>
               <li>
-                We develop a custom encoding to store efficiently the traits
+                We developed a custom encoding to efficiently store the traits
               </li>
             </ul>
           </Content>
@@ -342,7 +342,7 @@ function OnChainStorage() {
             <p>
               Chain Dreamers is another attempt at bringing more creativity to
               the chain, we hope that you liked it! We are just getting starting
-              with the Candy Shop, our innovative labs. With each new drug we
+              with the Candy Shop, our innovative lab. With each new drug we
               will strive to push forwards the limits of the chain,{" "}
               <i>Break the chain</i>.
             </p>

@@ -33,8 +33,8 @@ function Team() {
           <TeamMember name="Clément" image={clement}>
             scientist and engineer, currently experimenting in solidity.
           </TeamMember>
-          <TeamMember name="Law" image={law}>
-            <Box>Graphic Designer - Illustrateur</Box>
+          <TeamMember name="law" image={law}>
+            <Box>Graphic Designer - Illustrator</Box>
             <Box marginTop="6px">
               <Link
                 href="https://www.instagram.com/antoinelalou/"
