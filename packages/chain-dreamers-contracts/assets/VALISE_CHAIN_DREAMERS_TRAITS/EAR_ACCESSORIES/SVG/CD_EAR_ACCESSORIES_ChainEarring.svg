@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 283.5">
+    <path d="M212.5,209.5v6.8a4,4,0,0,0,3.9,3.9h6.7a4,4,0,0,0,4-3.9v-6.8a4,4,0,0,0-4-3.9h-6.7A4,4,0,0,0,212.5,209.5Zm10.6-1.8a1.8,1.8,0,0,1,1.9,1.8v6.8a1.8,1.8,0,0,1-1.9,1.8h-6.7a1.8,1.8,0,0,1-1.8-1.8v-6.8a1.8,1.8,0,0,1,1.8-1.8Z"
+          fill="#414141" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    <rect x="215.3" y="217.9" width="9.3" height="4.63" rx="2.3" transform="translate(440.2 0.3) rotate(90)"
+          fill="#969696" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    <path d="M212.5,193.6v6.7a3.9,3.9,0,0,0,3.9,3.9h6.7a3.9,3.9,0,0,0,4-3.9v-6.7a4,4,0,0,0-4-4h-6.7A4,4,0,0,0,212.5,193.6Zm10.6-1.9a1.8,1.8,0,0,1,1.9,1.9v6.7a1.8,1.8,0,0,1-1.9,1.8h-6.7a1.8,1.8,0,0,1-1.8-1.8v-6.7a1.8,1.8,0,0,1,1.8-1.9Z"
+          fill="#8b8b8b" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    <rect x="215.3" y="202" width="9.3" height="4.63" rx="2.3" transform="translate(424.2 -15.6) rotate(90)"
+          fill="#969696" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    <path d="M212.5,177.6v6.7a3.9,3.9,0,0,0,3.9,3.9h6.7a3.9,3.9,0,0,0,4-3.9v-6.7a3.9,3.9,0,0,0-4-3.9h-6.7A3.9,3.9,0,0,0,212.5,177.6Zm10.6-1.9a1.9,1.9,0,0,1,1.9,1.9v6.7a1.9,1.9,0,0,1-1.9,1.9h-6.7a1.9,1.9,0,0,1-1.8-1.9v-6.7a1.9,1.9,0,0,1,1.8-1.9Z"
+          fill="#414141" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    <rect x="215.3" y="186" width="9.3" height="4.63" rx="2.3" transform="translate(408.2 -31.6) rotate(90)"
+          fill="#969696" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    <rect x="216.4" y="172.2" width="9.3" height="4.63" rx="2.3" transform="translate(-40.5 278.7) rotate(-60)"
+          fill="#969696" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    <path d="M223.5,172.7a1.8,1.8,0,0,0-2.4.7c-.1,0-2.1,3.5-2,3.4a1.7,1.7,0,0,1-.2-2l1.9-3.2a1.7,1.7,0,0,1,2.4-.6h0a1.7,1.7,0,0,1,.8,2.1Z"
+          fill="#585858"/>
+    <path d="M218.7,189v-3.3a2.1,2.1,0,0,0-.5,1.3v3.7a1.8,1.8,0,1,0,3.5-.4A1.8,1.8,0,0,1,218.7,189Z" fill="#585858"/>
+    <path d="M218.7,205v-3.3a1.9,1.9,0,0,0-.5,1.3v3.6a1.8,1.8,0,1,0,3.5-.3A1.8,1.8,0,0,1,218.7,205Z" fill="#585858"/>
+    <path d="M218.7,221v-3.3a1.9,1.9,0,0,0-.5,1.3v3.6a1.8,1.8,0,1,0,3.5-.3A1.8,1.8,0,0,1,218.7,221Z" fill="#585858"/>
+</svg>
