@@ -11,7 +11,7 @@ function Home() {
   return (
     <>
       {!isMobile && (
-        <Box sx={{ "& .background": { width: "100%" } }}>
+        <Box sx={{ "& .background": { width: "100%" }, marginBottom: "84px" }}>
           <img alt="Candy Shop" src={background} className="background" />
         </Box>
       )}
