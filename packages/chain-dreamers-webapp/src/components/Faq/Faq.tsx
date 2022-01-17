@@ -110,17 +110,30 @@ function Faq() {
           </Content>
           <Content title="Who can mint a Chain Dreamer during phase 2?">
             <p>
-              Phase 2 will open exactly 7 days after the beginning of phase 1,
-              all the the remaining Chain Dreamers will be mintable by people on
-              the White List.
+              Phase 2 will open exactly 7 days after the beginning of phase 1.
+            </p>
+            <p>
+              If all Chain Dreamers have been mintet during Phase 1, there will
+              be no phase 2.
+            </p>
+            <p>
+              If there are Chain dreamers left to be minted, our team will keep
+              50 of them and the remaining Chain Dreamers will be mintable by
+              people on the White List.
             </p>
           </Content>
           <Content title="What is the mint price?">
-            <p>TBD</p>
-          </Content>
-          <Content title="How to mint a Chain Dreamer?">
+            <p>During phase 1, mint price is 0.06 ETH + gas fees.</p>
+            <p>During phase 2, mint price is 0.08 ETH + gas fees.</p>
             <p>
-              First, you buy as many HELIUM SPICE flasks as Chain Dreamers you
+              During phase 1, you will have to pay gas fees twice. Once for
+              buying Helium Spice and once for the minting. We have decided to
+              optimize the narrative over the minting experience cost.
+            </p>
+          </Content>
+          <Content title="How to mint a Chain Dreamer during phase 1?">
+            <p>
+              First, you buy as many Helium Spice flasks as Chain Dreamers you
               want to mint in the Candy Shop.
             </p>
             <p>
@@ -128,10 +141,19 @@ function Faq() {
             </p>
             <p>Eventually, your dreamer is minted</p>
           </Content>
+          <Content title="I have several Chain Runners, can I bulk mint all my Chain Dreamers?">
+            <p>Yes.</p>
+          </Content>
           <Content title="What rights do I have to the artwork?">
             <p>
               Same as Chain Runners, you are free to do whatever you want with
               your Chain Dreamer.
+            </p>
+          </Content>
+          <Content title="What is the utility?">
+            <p>
+              By owning a Chain Dreamer, you'll be able to vote for the next
+              project on top of which we'll build our next NFT Derivative
             </p>
           </Content>
         </Box>
