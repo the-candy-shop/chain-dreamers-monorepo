@@ -23,23 +23,23 @@ function OnChainStorage() {
         <Box sx={{ maxWidth: "895px" }}>
           <Content title="TL;DR">
             <ul>
-              <li>On-chain storage is the holy graal of NFTs project</li>
+              <li>On-chain storage is the holy grail of any NFT project</li>
+              <li>We pioneered bringing more complex images on-chain</li>
               <li>
-                We pioneered to bring more complex images on-chain by leveraging
-                on a community we love: Chain Runners
+                We applied this innovation to a community we love: Chain Runners
               </li>
               <li>
                 To do so, we switched from pixel-based to vector-based encoding
               </li>
               <li>
-                We develop a custom encoding to store efficiently the traits
+                We developed a custom encoding to efficiently store the traits
               </li>
             </ul>
           </Content>
           <Content title="The Chain Runners paradigm">
             <p>
               The story behind the Dreamers starts in mid-septembre when Jason
-              and I started to get lost into the blockchain world: DeFi, dApps,
+              and I started getting lost into the blockchain world: DeFi, dApps,
               NFT projets, protocols, WAGMI, wen moon, etc.
             </p>
             <p>
@@ -76,34 +76,32 @@ function OnChainStorage() {
               .
             </p>
             <p>
-              Nounders brought to us sort of an enlightenment both in terms of
-              the philosophy behind NFTs and in terms of what it means,
-              technically speaking, to start a collection. Publishing their repo
-              truly helped us start thinking about building on top of something.
-              And then came the Runners.
+              Nounders brought us a sort of enlightenment on the philosophy of
+              NFTs and technically speaking, on what it takes to start a
+              collection. Publishing their repo truly helped us to start
+              thinking about building on top of something. And then came the
+              Runners.
             </p>
             <p>
-              Runners were everything about the nouns in terms of values and
-              visons, but there were more. Like the Nouns are a forever evolving
-              collection, the Runners are a forever evolving story built and
-              maintained by the community itself. Mega City is a framework to
-              think, the create, to dream, collectively.
+              Runners were everything like the Nouns in terms of values and
+              visons, but there was more. Whilst the Nouns are a forever
+              evolving collection, the Runners are a forever evolving story,
+              built and maintained by the community itself. Mega City is a
+              framework for thinking, for creating, for dreaming, collectively.
             </p>
-            <p>
-              Next we go into the details of the technical aspects of your work.
-            </p>
+            <p>Below we go into the technicals details of our work.</p>
           </Content>
           <Content title="Deep Dive into the Runners rendering contrat">
             <p>
               The Runners came to life with a very innovative rendering
               mechanism that has already been described elsewhere on the
               internet. But it came with a cost: approximately 75M gas (7-14 ETH
-              at the time of writing depending on gas price). This is
-              unfortunate as this could prevent people from building Mega City,
-              and eventually could cause the project to collapse.
+              at the time of writing depending on the gas price). This is
+              unfortunate as this might prevent people from building Mega City,
+              and eventually may cause the project to collapse.
             </p>
             <p>
-              So I decided to experiment on gas saving with a dedicated
+              So we decided to experiment on gas saving with a dedicated
               repository: the{" "}
               <Link
                 href="https://github.com/ClementWalter/light-runners"
@@ -111,27 +109,28 @@ function OnChainStorage() {
               >
                 Light Runners
               </Link>
-              . Building on top of the Runners with the community (kudos to{" "}
-              <Link href="https://twitter.com/HypnoBrando" target="_blank">
-                @hypnobrando
-              </Link>{" "}
-              for{" "}
+              . By building on top of the Runners with the help of their
+              community we were able to reduce by more than 3x the deployment
+              cost of the original Runners, combining RLE encoding and
+              concatenation of layers data in few{" "}
               <Link
                 href="https://github.com/0xsequence/sstore2"
                 target="_blank"
               >
-                SSTORE2
+                sstore2
+              </Link>{" "}
+              slots (kudos to{" "}
+              <Link href="https://twitter.com/HypnoBrando" target="_blank">
+                @hypnobrando
               </Link>
-              ) made it possible to reduce by more than 3x the deployment cost
-              of the runners, combining RLE encoding and concatenation of layers
-              data in few SSTORE2 slots. But there were something else.
+              ). But there was something else.
             </p>
           </Content>
           <Content title="The full vectorial approach">
             <p>
-              Both the nouns and the runners use a pixel-wise approach, meaning
+              Both the nouns and the runners use a pixel-based approach, meaning
               that they store a given amount of data proportional to the number
-              of pixels of their image. However, these pixels are indeed *fake*
+              of pixels of their image. However, these pixels are indeed fake
               pixels made of <code>&lt;rect /&gt;</code> svg tags. In other
               words, encoding a pixel is eventually storing a bit of information
               that will be given to the svg tag (actually the <code>fill=</code>{" "}
@@ -184,9 +183,8 @@ function OnChainStorage() {
                 place points on a grid with a fixed precision
                 <ul>
                   <li>
-                    because coordinates need to be encoded in a fixed format
-                    size (<code>uint8</code>, <code>uint16</code> etc) in the
-                    contract
+                    because coordinates need to be encoded in a fixed format (
+                    <code>uint8</code>, <code>uint16</code> etc) in the contract
                   </li>
                   <li>
                     note that this is not related to the final resolution but
@@ -245,7 +243,9 @@ function OnChainStorage() {
               <li>
                 extract all the <code>fill</code>
               </li>
-              <li>extract all the d</li>
+              <li>
+                extract all the <code>d</code>
+              </li>
               <li>
                 create and store a global palette of colors for the dreamers
               </li>
@@ -270,9 +270,8 @@ function OnChainStorage() {
             <p>
               Each <code>d</code> attribute is a sequence of a command letter
               followed by its corresponding parameters. Each letter has a
-              different number of parameters. Each coordinates has a value
-              within the range defined in the <code>viewBox</code> global
-              attributes.
+              different number of parameters. Each coordinate has a value within
+              the range defined in the <code>viewBox</code> global attributes.
             </p>
             <p>We made the following decisions:</p>
             <ul>
@@ -308,8 +307,8 @@ function OnChainStorage() {
               </li>
             </ul>
             <p>
-              Each fill index is stored as a <code>uint16</code> and the color
-              is retrieved from the global palette.
+              Each <code>fillIndex</code> is stored as a <code>uint16</code> and
+              the color is retrieved from the global palette.
             </p>
             <h2>Storage</h2>
             <p>
@@ -342,8 +341,8 @@ function OnChainStorage() {
             <p>
               Chain Dreamers is another attempt at bringing more creativity to
               the chain, we hope that you liked it! We are just getting starting
-              with the Candy Shop, our innovative labs. With each new drug we
-              will strive to push forwards the limits of the chain,{" "}
+              with the Candy Shop, our innovative lab. With each new drug we
+              will strive to push forward the limits of the chain,{" "}
               <i>Break the chain</i>.
             </p>
           </Content>
