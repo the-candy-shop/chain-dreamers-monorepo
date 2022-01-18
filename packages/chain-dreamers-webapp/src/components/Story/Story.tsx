@@ -99,47 +99,96 @@ function Story() {
             </p>
             <p>
               In reality, candy is sold to NPC Mega City citizens while Runners
-              have access to a special drug which has many names:{" "}
+              have access to 3 special drugs:{" "}
               <Link
                 href="https://www.chainrunners.xyz/hub/runners/5074"
                 target="_blank"
               >
                 Chain-Meth
               </Link>
-              , Degen Gas or Somnus Tear but the most common is Helium Spice.
+              , Somnus Tears and Helium Spice, which have 3 different effects.
             </p>
             <p>
-              Once Helium Spice is consumed, Runners turn into a dreaming state,
-              and nothing matters anymore. Their appearance changes to round
-              shapes and they feel lighter than air.
+              Whatever the drug, once consumed, Runners turn into dreamers,
+              Chain Dreamers. Pixels give birth to vectors. Squares become
+              curves. All this on the chain, by the chain, for the chain.
             </p>
-            <p>Runners turn into dreamers, Chain Dreamers.</p>
             <p>
               Mega City is a hard place to live under Somnus and escaping this
               world is a necessity for any well respected renegate.
             </p>
-          </Content>
-          <Content title="Helium Spice effects">
             <p>
-              Helium Spice tends to act very quickly, producing an almost
-              instant lightness feeling.
-            </p>
-            <p>
-              This drug comes with a reality distortion field for whoever takes
-              it.
-            </p>
-            <p>
-              For lots of Runners, Helium Spice gives a big inspiration to HACK
-              the world.
-            </p>
-            <p>
-              Those are basic effects, in reality, every runners tells a
-              different story about his Helium Spice experience. Tell us yours
-              on our{" "}
+              Those are common effects, but in reality, all runners tell
+              different stories about their experiences. Tell us yours on our{" "}
               <Link href="https://discord.gg/p583xTn4" target="_blank">
                 dedicated Discord chan
               </Link>
               .
+            </p>
+          </Content>
+          <Content title="Chain-Meth effects">
+            <p>
+              Chain-Meth tends to act very quickly, producing an almost instant
+              escape feeling. It is the strongest way to find inspiration to
+              hack the world. This drug comes with a reality distortion field
+              for whoever takes it.
+            </p>
+            <p>
+              That’s why every non organic trait of your identity randomly
+              change. You are the same but in a different reality.
+            </p>
+            <Box
+              sx={{
+                "& .spice-effects": {
+                  maxWidth: "848px",
+                  width: "100%",
+                },
+              }}
+            >
+              <img
+                alt="Helium Spice effects"
+                src={spiceEffect}
+                className="spice-effects"
+              />
+            </Box>
+          </Content>
+          <Content title="Somnus Tears effects">
+            <p>
+              Somnus tears sends consciousness to a dream world where your
+              identity is lost, like tears in rain. In there, you are not
+              yourself anymore, your original body is merely a sleeve, a
+              residual self image.
+            </p>
+            <p>
+              That’s why your organic traits will change, why you will be
+              projected in someone else’s shape.
+            </p>
+            <Box
+              sx={{
+                "& .spice-effects": {
+                  maxWidth: "848px",
+                  width: "100%",
+                },
+              }}
+            >
+              <img
+                alt="Helium Spice effects"
+                src={spiceEffect}
+                className="spice-effects"
+              />
+            </Box>
+          </Content>
+          <Content title="Helium Spice effects">
+            <p>
+              Helium Spice is the finest drug you can find in the Candy Shop.
+              The only one that can release your spirit high without wrecking
+              your identity.
+            </p>
+            <p>
+              That’s why no trait is changed. With Helium Spice, you stay
+              yourself and get a 5% chance of reaching superconsciousness with a
+              whole new light background, the ultimate dreaming state where
+              nothing matters anymore.
             </p>
             <Box
               sx={{
