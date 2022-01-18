@@ -35,5 +35,17 @@ print(
 )
 
 #%% Load traits gas
-traits_gas = json.load(open("traits-gas.json", "r"))
-pd.Series(traits_gas).astype(int).sort_values(ascending=False)
+traits_gas = json.load(open("get-traits-gas.json", "r"))
+pd.Series(traits_gas).astype(int).sort_values(ascending=False).loc[
+    lambda s: s > 50000000
+]
+
+traits_svg_gas = json.load(open("get-traits-svg-gas.json", "r"))
+pd.Series(traits_svg_gas).astype(int).sort_values(ascending=False).loc[
+    lambda s: s > 50000000
+]
+
+dreamers_gas = json.load(open("dreamers-gas.json", "r"))
+pd.Series(dreamers_gas).astype(int).sort_values(ascending=False).loc[
+    lambda s: s > 50000000
+]

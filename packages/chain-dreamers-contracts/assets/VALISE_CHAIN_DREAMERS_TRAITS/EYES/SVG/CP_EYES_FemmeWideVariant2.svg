@@ -1,1 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 283.5"><path d="M143.8,182.3h0a5.8,5.8,0,0,1-1.1-8.2l50.6-68.8a5.8,5.8,0,0,1,8.2-1.1h0a6,6,0,0,1,1.1,8.2L152,181.2A5.8,5.8,0,0,1,143.8,182.3Z" fill="#cb5f66" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><circle cx="175.6" cy="157.9" r="18.4" fill="#3d478c" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><path d="M106.3,152.2A17,17,0,0,1,118,136a16,16,0,0,0-5.3-.9,17.1,17.1,0,0,0,0,34.2,16,16,0,0,0,5.3-.9A17.1,17.1,0,0,1,106.3,152.2Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><ellipse cx="118" cy="152.2" rx="11.7" ry="16.2" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><rect x="99.5" y="117.3" width="26.3" height="9.33" rx="4.7" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><path d="M164.5,152.2A17,17,0,0,1,176.2,136a16.1,16.1,0,0,0-5.4-.9,17.1,17.1,0,0,0,0,34.2,16.1,16.1,0,0,0,5.4-.9A17.1,17.1,0,0,1,164.5,152.2Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><ellipse cx="176.2" cy="152.2" rx="11.7" ry="16.2" fill="#ef7c78" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><rect x="157.6" y="117.3" width="26.3" height="9.33" rx="4.7" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><circle cx="118" cy="152.2" r="6.2" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><circle cx="176.2" cy="152.2" r="6.2" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/></svg>
+<svg id="EYES" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 283.5">
+  <g>
+    <path d="M201.5,104.2h0a5.8,5.8,0,0,0-8.2,1.1l-50.6,68.8a5.8,5.8,0,0,0,1.1,8.2h0a5.8,5.8,0,0,0,8.2-1.1l50.6-68.8A6,6,0,0,0,201.5,104.2Z" fill="#cb5f66" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    <circle cx="175.6" cy="157.9" r="18.4" transform="translate(-60.2 170.4) rotate(-45)" fill="#3d478c" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    <g>
+      <g>
+        <g>
+          <path d="M106.3,152.2A17,17,0,0,1,118,136a16,16,0,0,0-5.3-.9,17.1,17.1,0,0,0,0,34.2,16,16,0,0,0,5.3-.9A17.1,17.1,0,0,1,106.3,152.2Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+          <ellipse cx="118" cy="152.2" rx="11.7" ry="16.2" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+        </g>
+        <path d="M121.2,117.3h-17a4.6,4.6,0,0,0-4.7,4.6,4.7,4.7,0,0,0,4.7,4.7h17a4.7,4.7,0,0,0,4.6-4.7A4.6,4.6,0,0,0,121.2,117.3Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+        <g>
+          <path d="M164.5,152.2A17,17,0,0,1,176.2,136a16.1,16.1,0,0,0-5.4-.9,17.1,17.1,0,0,0,0,34.2,16.1,16.1,0,0,0,5.4-.9A17.1,17.1,0,0,1,164.5,152.2Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+          <ellipse cx="176.2" cy="152.2" rx="11.7" ry="16.2" fill="#ef7c78" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+        </g>
+        <path d="M179.3,117.3h-17a4.6,4.6,0,0,0-4.7,4.6,4.7,4.7,0,0,0,4.7,4.7h17a4.7,4.7,0,0,0,4.7-4.7A4.6,4.6,0,0,0,179.3,117.3Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+      </g>
+      <path d="M118,145.9a6.3,6.3,0,1,0,6.3,6.3A6.3,6.3,0,0,0,118,145.9Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+      <path d="M176.2,145.9a6.3,6.3,0,1,0,6.2,6.3A6.3,6.3,0,0,0,176.2,145.9Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    </g>
+  </g>
+</svg>

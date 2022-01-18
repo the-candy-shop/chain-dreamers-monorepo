@@ -1,0 +1,6 @@
+<svg id="EYES" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 283.5">
+  <path d="M128.8,128.4H103.1a5,5,0,0,0,0,9.9h25.7a5,5,0,0,0,0-9.9Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+  <path d="M182.6,128.4H156.9a5,5,0,0,0,0,9.9h25.7a5,5,0,1,0,0-9.9Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+  <line x1="95.9" y1="154.3" x2="133.7" y2="154.3" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.42"/>
+  <line x1="150.9" y1="154.3" x2="188.7" y2="154.3" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.42"/>
+</svg>

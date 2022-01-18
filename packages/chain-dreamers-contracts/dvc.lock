@@ -4,20 +4,20 @@ stages:
     cmd: python image_processing/parse_svg.py
     deps:
     - path: assets/VALISE_CHAIN_DREAMERS_TRAITS
-      md5: 84a5128e3cfdfe5a3bc287db82058949.dir
-      size: 952820
-      nfiles: 365
+      md5: 877c82d0baf393777dc35da7107b9698.dir
+      size: 1010273
+      nfiles: 385
     - path: image_processing/parse_svg.py
       md5: a2b106ef258c7bdbdb00b568657ed188
       size: 5048
     outs:
     - path: assets/VALISE_CHAIN_DREAMERS_COMPUTED
-      md5: 87159a76dde097ad8f8dfd5fe197e4b8.dir
-      size: 898303
-      nfiles: 338
+      md5: b11f73d3bde3cfaef3355c015dc487ab.dir
+      size: 927674
+      nfiles: 358
     - path: palettes.json
-      md5: dca191df456133321203fbf3c244145e
-      size: 833290
+      md5: bfe4f0af53f96443d1310e7be0840cfa
+      size: 857059
   convert_lines_h_v:
     cmd: python image_processing/use_h_and_v_in_d.py
     deps:
@@ -25,25 +25,25 @@ stages:
       md5: d8369e6369fad6f65c03bc142226d0ee
       size: 1353
     - path: palettes.json
-      md5: dca191df456133321203fbf3c244145e
-      size: 833290
+      md5: bfe4f0af53f96443d1310e7be0840cfa
+      size: 857059
     outs:
     - path: palettes-hv.json
-      md5: 9d45cea446c3afb1d940d86fa055110a
-      size: 780230
+      md5: d245f584972dbe201401a2976d7d4634
+      size: 804144
   concat_palettes:
     cmd: npx hardhat concat-palettes --input palettes-hv.json --output palettes-storage.json
     deps:
     - path: palettes-hv.json
-      md5: 9d45cea446c3afb1d940d86fa055110a
-      size: 780230
+      md5: d245f584972dbe201401a2976d7d4634
+      size: 804144
     - path: tasks/concatPalettes.ts
       md5: bbd00a7886c1c1124bc0989ec09f2e82
       size: 2392
     outs:
     - path: palettes-storage.json
-      md5: a923af94bfa47708f608ec451f2cde6e
-      size: 238998
+      md5: f02770174e11924d899d8c22ffbe1929
+      size: 245253
   get_runners_layers:
     cmd: npx hardhat get-chain-runners-layers --output runners-layers.json
     deps:
@@ -79,12 +79,12 @@ stages:
     cmd: npx hardhat deploy
     deps:
     - path: deploy
-      md5: 36bf9d6421b8a762c940402664f18b7a.dir
-      size: 5074
-      nfiles: 4
+      md5: c7361cfe784dca176abdbc57b0ea078e.dir
+      size: 5612
+      nfiles: 5
     - path: palettes-storage.json
-      md5: a923af94bfa47708f608ec451f2cde6e
-      size: 238998
+      md5: f02770174e11924d899d8c22ffbe1929
+      size: 245253
   traits_gas:
     cmd: npx hardhat dreamers-gas --output traits-gas.json
     deps:

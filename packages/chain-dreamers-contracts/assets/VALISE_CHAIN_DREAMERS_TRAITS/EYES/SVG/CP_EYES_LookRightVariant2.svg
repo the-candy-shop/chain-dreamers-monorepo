@@ -1,1 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 283.5"><path d="M112.7,151.6H95.6v29.5a3,3,0,0,0,3,3.1h0a3.1,3.1,0,0,0,3.1-3.1V179a1.5,1.5,0,0,1,1.5-1.5h0a1.4,1.4,0,0,1,1.4,1.5v11.1a4,4,0,0,0,4,4h0a4,4,0,0,0,4.1-4V151.6Z" fill="#2b2b2b" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><path d="M170.8,151.6h17.1v29.5a3.1,3.1,0,0,1-3.1,3.1h0a3,3,0,0,1-3-3.1V179a1.5,1.5,0,0,0-1.5-1.5h0a1.5,1.5,0,0,0-1.5,1.5v11.1a4,4,0,0,1-4,4h0a4,4,0,0,1-4-4V151.6Z" fill="#2b2b2b" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><path d="M106.3,152.2A17,17,0,0,1,118,136a16,16,0,0,0-5.3-.9,17.1,17.1,0,0,0,0,34.2,16,16,0,0,0,5.3-.9A17.1,17.1,0,0,1,106.3,152.2Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><ellipse cx="118" cy="152.2" rx="11.7" ry="16.2" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><path d="M164.5,152.2A17,17,0,0,1,176.2,136a16.1,16.1,0,0,0-5.4-.9,17.1,17.1,0,0,0,0,34.2,16.1,16.1,0,0,0,5.4-.9A17.1,17.1,0,0,1,164.5,152.2Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><ellipse cx="176.2" cy="152.2" rx="11.7" ry="16.2" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><circle cx="122.3" cy="145.4" r="3.7" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><circle cx="180.4" cy="145.4" r="3.7" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><path d="M107.8,114.7c4.8,7.4,11.8,15.2,21.8,19.8l-31.5-4.8a9.8,9.8,0,0,1-7.4-13.6h0A9.7,9.7,0,0,1,107.8,114.7Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/><path d="M175.7,114.7c-4.8,7.4-11.9,15.2-21.8,19.8l31.4-4.8a9.8,9.8,0,0,0,7.5-13.6h0A9.7,9.7,0,0,0,175.7,114.7Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/></svg>
+<svg id="EYES" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 283.5">
+  <g>
+    <path d="M95.6,151.6v29.5a3,3,0,0,0,3,3.1,3.1,3.1,0,0,0,3.1-3.1V179a1.5,1.5,0,0,1,1.5-1.5,1.4,1.4,0,0,1,1.4,1.5v11.1a4.1,4.1,0,0,0,8.1,0V151.6Z" fill="#2b2b2b" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    <path d="M170.8,151.6v38.5a4,4,0,0,0,8,0V179a1.5,1.5,0,0,1,3,0v2.1a3,3,0,0,0,3,3.1,3.1,3.1,0,0,0,3.1-3.1V151.6Z" fill="#2b2b2b" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    <g>
+      <g>
+        <g>
+          <g>
+            <path d="M106.3,152.2A17,17,0,0,1,118,136a16,16,0,0,0-5.3-.9,17.1,17.1,0,0,0,0,34.2,16,16,0,0,0,5.3-.9A17.1,17.1,0,0,1,106.3,152.2Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+            <ellipse cx="118" cy="152.2" rx="11.7" ry="16.2" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+          </g>
+          <g>
+            <path d="M164.5,152.2A17,17,0,0,1,176.2,136a16.1,16.1,0,0,0-5.4-.9,17.1,17.1,0,0,0,0,34.2,16.1,16.1,0,0,0,5.4-.9A17.1,17.1,0,0,1,164.5,152.2Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+            <ellipse cx="176.2" cy="152.2" rx="11.7" ry="16.2" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+          </g>
+        </g>
+        <path d="M122.3,141.7a3.8,3.8,0,0,0-3.7,3.7,3.7,3.7,0,0,0,3.7,3.6,3.6,3.6,0,0,0,3.6-3.6A3.7,3.7,0,0,0,122.3,141.7Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+        <circle cx="180.4" cy="145.4" r="3.7" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+      </g>
+      <path d="M107.8,114.7a9.7,9.7,0,0,0-17.1,1.4h0a9.8,9.8,0,0,0,7.4,13.6l31.5,4.8C119.6,129.9,112.6,122.1,107.8,114.7Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+      <path d="M192.8,116.1h0a9.7,9.7,0,0,0-17.1-1.4c-4.8,7.4-11.9,15.2-21.8,19.8l31.4-4.8A9.8,9.8,0,0,0,192.8,116.1Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    </g>
+  </g>
+</svg>
