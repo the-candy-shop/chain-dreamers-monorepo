@@ -69,14 +69,14 @@ const config: HardhatUserConfig = {
         url: node_url("mainnet"),
         // blockNumber: 13556221, // Block index for runners creation
       },
-      blockGasLimit: 100 * 12_450_000,
+      blockGasLimit: 10 * 50_000_000, // Geth new default is 50M, increased here for tests
     },
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY,
   },
   mocha: {
-    timeout: 100_000,
+    timeout: 500_000,
   },
 };
 
