@@ -86,7 +86,7 @@ function TraitsChangeTable({ drug, sx }: TraitsChangeTableProps) {
     <Box sx={sx}>
       <Box
         fontWeight="bold"
-        fontSize={isMobile ? "24px" : "32px"}
+        fontSize={isMobile ? "18px" : "32px"}
         marginBottom="48px"
       >
         List of all {drug.toString()} Effect, by trait.
@@ -104,12 +104,17 @@ function TraitsChangeTable({ drug, sx }: TraitsChangeTableProps) {
               alignItems="center"
               sx={{ "&:last-child": { border: 0 } }}
             >
-              <Box fontWeight="600">{traitName}</Box>
+              <Box fontWeight="600" fontSize={isMobile ? "14px" : "16px"}>
+                {traitName}
+              </Box>
               <Box>
                 <img
                   alt="effect"
                   src={changesTraits[traitName] ? shuffle : equal}
-                  style={{ height: "31px", width: "31px" }}
+                  style={{
+                    height: isMobile ? "18px" : "31px",
+                    width: isMobile ? "18px" : "31px",
+                  }}
                 />
               </Box>
             </Box>

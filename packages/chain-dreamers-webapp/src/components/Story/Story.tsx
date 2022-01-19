@@ -184,7 +184,7 @@ function Story() {
             >
               <TraitsChangeTable
                 drug={DrugList.SomnusTears}
-                sx={{ marginRight: isMobile ? "60px" : "120px" }}
+                sx={{ marginRight: isMobile ? "32px" : "120px" }}
               />
               <img
                 alt="Helium Spice effects"
