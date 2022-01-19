@@ -39,3 +39,9 @@ export type Runner = {
 };
 
 export type Runners = Runner[];
+
+export type SKU = {
+  price: number;
+  supply: number;
+  name: string;
+};

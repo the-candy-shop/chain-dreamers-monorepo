@@ -1,5 +1,5 @@
 import fs from "fs";
-import { Layers, Palettes, PalettesStorage, Runners } from "./types";
+import { Layers, Palettes, PalettesStorage, Runners, SKU } from "./types";
 
 export const MAX_CONTRACT_SIZE = 24_000;
 export const PALETTES_FILE = "palettes-hv.json";
@@ -7,6 +7,7 @@ export const PALETTES_STORAGE_FILE = "palettes-storage.json";
 export const RUNNERS_DNA_FILE = "runners-dna.json";
 export const RUNNERS_LAYERS_FILE = "runners-layers.json";
 export const NONE_COLOR = "000001";
+export const SKUS_FILE = "skus.json";
 
 export const loadPalettes = (): Palettes => {
   try {
@@ -57,6 +58,15 @@ export const loadRunnersLayers = (): Layers => {
   }
 };
 
+export const loadSkus = (): SKU[] => {
+  try {
+    return JSON.parse(fs.readFileSync(SKUS_FILE, "utf8"));
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+};
+
 export const chainRunnersBaseRendererAddress = (): string => {
   return process.env.CHAIN_RUNNERS_BASE_RENDERER_ADDRESS || "";
 };
@@ -70,4 +80,7 @@ export const TAGS = {
   DREAMERS_RENDERER: "DreamersRenderer",
   DREAMERS_PALETTES: "ChainDreamersPalettes",
   CHAIN_RUNNERS: "ChainRunners",
+  BYTES_SHIFT: "BytesShift",
+  CANDY_SHOP: "CandyShop",
+  CANDY_SHOP_INVENTORY: "CandyShopInventory",
 };

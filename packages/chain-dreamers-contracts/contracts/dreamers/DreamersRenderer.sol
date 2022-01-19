@@ -4,9 +4,14 @@ pragma solidity 0.8.4;
 import "@0xsequence/sstore2/contracts/SSTORE2.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
+
+import "hardhat/console.sol";
+
 import {Integers} from "../lib/Integers.sol";
 import "./ChainRunnersConstants.sol";
 import "../runners/IChainRunners.sol";
+import "solidity-bytes-utils/contracts/BytesLib.sol";
 
 /*  @title Dreamers Renderer
     @author Clement Walter
@@ -20,6 +25,7 @@ import "../runners/IChainRunners.sol";
 */
 contract DreamersRenderer is Ownable, ReentrancyGuard, ChainRunnersConstants {
     using Integers for uint8;
+    using Strings for uint256;
 
     // We have a total of 3 bytes = 24 bits per Path
     uint8 public constant BITS_PER_D_INDEX = 12;
@@ -31,17 +37,23 @@ contract DreamersRenderer is Ownable, ReentrancyGuard, ChainRunnersConstants {
     bytes8 public constant D_ATTRIBUTE_PALETTE = hex"4d4c51434148565a"; // M L Q C A H V Z
     bytes8 public constant D_ATTRIBUTE_PARAMETERS_COUNT = hex"0202040607010100"; // 2 2 4 6 7 1 1 0
     bytes3 public constant NONE_COLOR = hex"000001";
-    bytes public constant PATH_TAG_START = bytes("<path d='");
-    bytes public constant FILL_TAG = bytes("' fill='");
-    bytes public constant STROKE_TAG = bytes("' stroke='");
-    bytes public constant PATH_TAG_END = bytes("' />");
-    bytes1 public constant HASHTAG = hex"23";
+    bytes public constant PATH_TAG_START = bytes("%3cpath%20d='");
+    bytes public constant FILL_TAG = bytes("'%20fill='");
+    bytes public constant STROKE_TAG = bytes("'%20stroke='%23000");
+    bytes public constant PATH_TAG_END = bytes("'/%3e");
+    bytes public constant HASHTAG = bytes("%23");
     bytes public constant SVG_TAG_START =
         bytes(
-            "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 255 255' width='500px' height='500px'>"
+            "%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20255%20255'%20width='500px'%20height='500px'%3e"
         );
     bytes public constant SVG_TAG_END =
-        bytes("<style>path{stroke-width:0.71}</style></svg>");
+        bytes("%3cstyle%3epath{stroke-width:0.71}%3c/style%3e%3c/svg%3e");
+
+    struct Trait {
+        uint16 dIndex;
+        uint16 fillIndex;
+        bool stroke;
+    }
 
     address public fillPalette;
     address[] public dPalette;
@@ -104,13 +116,10 @@ contract DreamersRenderer is Ownable, ReentrancyGuard, ChainRunnersConstants {
         view
         returns (uint16)
     {
-        uint16 traitIndex = Integers.load16(
-            layerIndexes[_layerIndex * 2],
-            layerIndexes[_layerIndex * 2 + 1]
-        );
-        uint16 nextTraitIndex = Integers.load16(
-            layerIndexes[_layerIndex * 2 + 2],
-            layerIndexes[_layerIndex * 2 + 3]
+        uint16 traitIndex = BytesLib.toUint16(layerIndexes, _layerIndex * 2);
+        uint16 nextTraitIndex = BytesLib.toUint16(
+            layerIndexes,
+            (_layerIndex + 1) * 2
         );
         if (traitIndex + _itemIndex >= nextTraitIndex) {
             return type(uint16).max;
@@ -123,16 +132,10 @@ contract DreamersRenderer is Ownable, ReentrancyGuard, ChainRunnersConstants {
     function getFill(uint16 _index) public view returns (string memory) {
         // TODO: use assembly instead
         bytes memory palette = SSTORE2.read(fillPalette);
-        bytes memory color = bytes.concat(
-            palette[(_index * 3)],
-            palette[(_index * 3) + 1],
-            palette[(_index * 3) + 2]
-        );
-
         if (
-            color[0] == NONE_COLOR[0] &&
-            color[1] == NONE_COLOR[1] &&
-            color[2] == NONE_COLOR[2]
+            palette[(_index * 3)] == NONE_COLOR[0] &&
+            palette[(_index * 3) + 1] == NONE_COLOR[1] &&
+            palette[(_index * 3) + 2] == NONE_COLOR[2]
         ) {
             return "none";
         }
@@ -152,12 +155,8 @@ contract DreamersRenderer is Ownable, ReentrancyGuard, ChainRunnersConstants {
     function getDIndex(uint16 _index) public view returns (uint32, uint32) {
         // TODO: use assembly instead
         bytes memory _indexes = SSTORE2.read(dPaletteIndexes);
-        uint32 start = uint32(
-            Integers.load16(_indexes[_index * 2], _indexes[_index * 2 + 1])
-        );
-        uint32 next = uint32(
-            Integers.load16(_indexes[_index * 2 + 2], _indexes[_index * 2 + 3])
-        );
+        uint32 start = uint32(BytesLib.toUint16(_indexes, _index * 2));
+        uint32 next = uint32(BytesLib.toUint16(_indexes, _index * 2 + 2));
         // Magic reasonable number to deal with overflow
         if (uint32(_index) > 1000 && start < 20000) {
             start = uint32(type(uint16).max) + 1 + start;
@@ -253,7 +252,7 @@ contract DreamersRenderer is Ownable, ReentrancyGuard, ChainRunnersConstants {
             for (uint8 i = 0; i < dAttributeParameterCount; i++) {
                 d = bytes.concat(
                     d,
-                    hex"20", // space
+                    hex"2c", // comma
                     bytes(uint8(bytesBuffer[i]).toString())
                 );
             }
@@ -262,55 +261,80 @@ contract DreamersRenderer is Ownable, ReentrancyGuard, ChainRunnersConstants {
         return string(d);
     }
 
-    /// @dev Each trait is a list of tuples (d, fill) where d is the d attribute and fill is the color of the trait.
-    function getTrait(uint16 _index) public view returns (uint16[2][] memory) {
-        bytes memory _traitPaletteIndexes = SSTORE2.read(traitPaletteIndexes);
-        uint16 start = Integers.load16(
-            _traitPaletteIndexes[_index * 2],
-            _traitPaletteIndexes[_index * 2 + 1]
-        );
-        uint16 next = Integers.load16(
-            _traitPaletteIndexes[_index * 2 + 2],
-            _traitPaletteIndexes[_index * 2 + 3]
-        );
-        bytes memory _traitPalette = SSTORE2.read(traitPalette);
-        uint16 count = next - start;
-        uint16[2][] memory trait = new uint16[2][](count / 3);
-        for (uint16 i = start; i < next; i += 3) {
-            (uint16 dIndex, uint16 fillIndex) = Integers.load12x2(
-                _traitPalette[i],
-                _traitPalette[i + 1],
-                _traitPalette[i + 2]
-            );
-            trait[(i - start) / 3][0] = dIndex;
-            trait[(i - start) / 3][1] = fillIndex;
-        }
-        return trait;
-    }
-
-    /// @dev Each trait is the bytes representation of the final svg string concatenating several <path> elements.
-    function getSvg(uint16[2][] memory traits)
+    /// @dev Used to concat all the traits of a given dreamers given the array of trait indexes.
+    function getTraits(uint16[NUM_LAYERS] memory _index)
         public
         view
-        returns (string memory)
+        returns (Trait[] memory)
     {
-        bytes memory svg = SVG_TAG_START;
-        for (uint16 i = 0; i < traits.length; i++) {
-            svg = bytes.concat(
-                svg,
-                PATH_TAG_START,
-                bytes(getD(getDBytes(traits[i][0]))),
-                FILL_TAG,
-                bytes(getFill(traits[i][1])),
-                PATH_TAG_END
+        // First: retrieve all bytes indexes
+        bytes memory _traitPaletteIndexes = SSTORE2.read(traitPaletteIndexes);
+        bytes memory _traitPalette = SSTORE2.read(traitPalette);
+
+        bytes memory traitsBytes;
+        uint16 start;
+        uint16 next;
+        for (uint16 i = 0; i < NUM_LAYERS; i++) {
+            if (_index[i] == type(uint16).max) {
+                continue;
+            }
+            start = BytesLib.toUint16(_traitPaletteIndexes, _index[i] * 2);
+            next = BytesLib.toUint16(_traitPaletteIndexes, _index[i] * 2 + 2);
+            traitsBytes = bytes.concat(
+                traitsBytes,
+                BytesLib.slice(_traitPalette, start, next - start)
             );
         }
-        return string(bytes.concat(svg, SVG_TAG_END));
+
+        // Second: retrieve all traits
+        bool stroke;
+        Trait[] memory traits = new Trait[](traitsBytes.length / 3);
+        for (uint256 i = 0; i < traitsBytes.length; i += 3) {
+            (uint16 dIndex, uint16 fillIndex) = Integers.load12x2(
+                traitsBytes[i],
+                traitsBytes[i + 1],
+                traitsBytes[i + 2]
+            );
+            stroke = fillIndex % 2 > 0;
+            fillIndex = fillIndex >> 1;
+            traits[i / 3] = Trait(dIndex, fillIndex, stroke);
+        }
+        return traits;
+    }
+
+    /// @notice Useful for returning a single Traits in the Runner's meaning
+    function getTrait(uint16 _index) public view returns (Trait[] memory) {
+        uint16[NUM_LAYERS] memory _indexes;
+        _indexes[0] = _index;
+        for (uint256 i = 1; i < NUM_LAYERS; i++) {
+            _indexes[i] = type(uint16).max;
+        }
+        return getTraits(_indexes);
     }
 
     ////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////  Dreamers  ///////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
+
+    /// @dev Each trait is the bytes representation of the final svg string concatenating several <path> elements.
+    function getSvg(Trait[] memory traits) public view returns (string memory) {
+        bytes memory svg = SVG_TAG_START;
+        for (uint16 i = 0; i < traits.length; i++) {
+            svg = bytes.concat(
+                svg,
+                PATH_TAG_START,
+                bytes(getD(getDBytes(traits[i].dIndex))),
+                FILL_TAG,
+                bytes(getFill(traits[i].fillIndex))
+            );
+            if (traits[i].stroke) {
+                svg = bytes.concat(svg, STROKE_TAG);
+            }
+            svg = bytes.concat(svg, PATH_TAG_END);
+        }
+        return string(bytes.concat(svg, SVG_TAG_END));
+    }
+
     constructor(address _rendererAddress, address _runnersTokenAddress)
         ChainRunnersConstants(_rendererAddress)
     {
@@ -363,43 +387,20 @@ contract DreamersRenderer is Ownable, ReentrancyGuard, ChainRunnersConstants {
         return traitIndexes;
     }
 
-    function getSvg(uint256 tokenId) external view returns (string memory) {
-        bytes memory svg = SVG_TAG_START;
-
+    function tokenURI(uint256 tokenId) external view returns (string memory) {
         uint256 dna = runnersToken.getDna(tokenId);
         uint16[NUM_LAYERS] memory traitIndexes = getTokenData(dna);
-        for (uint8 i = 0; i < NUM_LAYERS; i++) {
-            if (traitIndexes[i] < type(uint16).max) {
-                // A trait is both one of the original design and on of its path components.
-                // Hence a trait is a sum of traits.
-                uint16[2][] memory traits = getTrait(traitIndexes[i]);
-                for (uint256 j = 0; j < traits.length; j++) {
-                    uint16 fillIndex = traits[j][1];
-                    bool strokeFlag = (traits[j][1] % 2) > 0;
-                    fillIndex = fillIndex >> 1;
-                    svg = bytes.concat(
-                        svg,
-                        PATH_TAG_START,
-                        bytes(getD(getDBytes(traits[j][0]))),
-                        FILL_TAG,
-                        bytes(getFill(fillIndex))
-                    );
-                    if (strokeFlag) {
-                        svg = bytes.concat(svg, STROKE_TAG, bytes("#000"));
-                    }
-                    svg = bytes.concat(svg, PATH_TAG_END);
-                }
-            }
-            svg = bytes.concat(
-                svg,
-                bytes.concat(
-                    bytes("<!--  End of layer "),
-                    bytes(i.toString()),
-                    bytes(" -->")
+        Trait[] memory traits = getTraits(traitIndexes);
+        string memory svg = getSvg(traits);
+        return
+            string(
+                abi.encodePacked(
+                    'data:application/json,{"image_data":',
+                    svg,
+                    '", "name", "Dreamer #',
+                    tokenId.toString(),
+                    '"}'
                 )
             );
-        }
-
-        return string(bytes.concat(svg, SVG_TAG_END));
     }
 }
