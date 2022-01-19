@@ -22,6 +22,9 @@ import ChainDreamer111 from "./Chain_Dreamer_111.png";
 import ChainDreamer6025 from "./Chain_Dreamer_6025.png";
 import ChainDreamer6482 from "./Chain_Dreamer_6482.png";
 import ChainDreamer9027 from "./Chain_Dreamer_9027.png";
+import TraitsChangeTable, {
+  DrugList,
+} from "../TraitsChangeTable/TraitsChangeTable";
 
 const beforeAfterRunnerDreamer = [
   {
@@ -138,13 +141,19 @@ function Story() {
               change. You are the same but in a different reality.
             </p>
             <Box
+              display="flex"
+              alignItems="center"
+              marginTop="64px"
               sx={{
                 "& .spice-effects": {
-                  maxWidth: "848px",
-                  width: "100%",
+                  width: "237px",
                 },
               }}
             >
+              <TraitsChangeTable
+                drug={DrugList.ChainMeth}
+                sx={{ marginRight: "120px" }}
+              />
               <img
                 alt="Helium Spice effects"
                 src={spiceEffect}
@@ -164,13 +173,19 @@ function Story() {
               projected in someone else’s shape.
             </p>
             <Box
+              display="flex"
+              alignItems="center"
+              marginTop="64px"
               sx={{
                 "& .spice-effects": {
-                  maxWidth: "848px",
-                  width: "100%",
+                  width: "237px",
                 },
               }}
             >
+              <TraitsChangeTable
+                drug={DrugList.SomnusTears}
+                sx={{ marginRight: "120px" }}
+              />
               <img
                 alt="Helium Spice effects"
                 src={spiceEffect}
@@ -191,13 +206,19 @@ function Story() {
               nothing matters anymore.
             </p>
             <Box
+              display="flex"
+              alignItems="center"
+              marginTop="64px"
               sx={{
                 "& .spice-effects": {
-                  maxWidth: "848px",
-                  width: "100%",
+                  width: "237px",
                 },
               }}
             >
+              <TraitsChangeTable
+                drug={DrugList.HeliumSpice}
+                sx={{ marginRight: "120px" }}
+              />
               <img
                 alt="Helium Spice effects"
                 src={spiceEffect}
