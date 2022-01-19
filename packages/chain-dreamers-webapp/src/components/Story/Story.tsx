@@ -146,13 +146,13 @@ function Story() {
               marginTop="64px"
               sx={{
                 "& .spice-effects": {
-                  width: "237px",
+                  width: isMobile ? "150px" : "237px",
                 },
               }}
             >
               <TraitsChangeTable
                 drug={DrugList.ChainMeth}
-                sx={{ marginRight: "120px" }}
+                sx={{ marginRight: isMobile ? "60px" : "120px" }}
               />
               <img
                 alt="Helium Spice effects"
@@ -178,13 +178,13 @@ function Story() {
               marginTop="64px"
               sx={{
                 "& .spice-effects": {
-                  width: "237px",
+                  width: isMobile ? "150px" : "237px",
                 },
               }}
             >
               <TraitsChangeTable
                 drug={DrugList.SomnusTears}
-                sx={{ marginRight: "120px" }}
+                sx={{ marginRight: isMobile ? "60px" : "120px" }}
               />
               <img
                 alt="Helium Spice effects"
@@ -211,13 +211,13 @@ function Story() {
               marginTop="64px"
               sx={{
                 "& .spice-effects": {
-                  width: "237px",
+                  width: isMobile ? "150px" : "237px",
                 },
               }}
             >
               <TraitsChangeTable
                 drug={DrugList.HeliumSpice}
-                sx={{ marginRight: "120px" }}
+                sx={{ marginRight: isMobile ? "60px" : "120px" }}
               />
               <img
                 alt="Helium Spice effects"
