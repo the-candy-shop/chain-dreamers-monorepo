@@ -27,49 +27,49 @@ export enum Traits {
 
 export const TraitChangesForDrugs = {
   [DrugList.ChainMeth]: {
-    [Traits.Background]: true,
-    [Traits.Race]: false,
-    [Traits.Face]: false,
-    [Traits.Mouth]: false,
-    [Traits.Nose]: false,
-    [Traits.Eyes]: false,
-    [Traits.EarAccessories]: true,
-    [Traits.FaceAccessories]: true,
-    [Traits.Mask]: true,
-    [Traits.HeadBelow]: false,
-    [Traits.EyesAccessories]: true,
-    [Traits.HeadAbove]: true,
-    [Traits.MouthAccessories]: true,
+    [Traits.Background]: 1,
+    [Traits.Race]: 0,
+    [Traits.Face]: 0,
+    [Traits.Mouth]: 0,
+    [Traits.Nose]: 0,
+    [Traits.Eyes]: 0,
+    [Traits.EarAccessories]: 1,
+    [Traits.FaceAccessories]: 1,
+    [Traits.Mask]: 1,
+    [Traits.HeadBelow]: 0,
+    [Traits.EyesAccessories]: 1,
+    [Traits.HeadAbove]: 1,
+    [Traits.MouthAccessories]: 1,
   },
   [DrugList.SomnusTears]: {
-    [Traits.Background]: false,
-    [Traits.Race]: true,
-    [Traits.Face]: true,
-    [Traits.Mouth]: true,
-    [Traits.Nose]: true,
-    [Traits.Eyes]: true,
-    [Traits.EarAccessories]: false,
-    [Traits.FaceAccessories]: false,
-    [Traits.Mask]: false,
-    [Traits.HeadBelow]: true,
-    [Traits.EyesAccessories]: false,
-    [Traits.HeadAbove]: false,
-    [Traits.MouthAccessories]: false,
+    [Traits.Background]: 0,
+    [Traits.Race]: 1,
+    [Traits.Face]: 1,
+    [Traits.Mouth]: 1,
+    [Traits.Nose]: 1,
+    [Traits.Eyes]: 1,
+    [Traits.EarAccessories]: 0,
+    [Traits.FaceAccessories]: 0,
+    [Traits.Mask]: 0,
+    [Traits.HeadBelow]: 1,
+    [Traits.EyesAccessories]: 0,
+    [Traits.HeadAbove]: 0,
+    [Traits.MouthAccessories]: 0,
   },
   [DrugList.HeliumSpice]: {
-    [Traits.Background]: true,
-    [Traits.Race]: false,
-    [Traits.Face]: false,
-    [Traits.Mouth]: false,
-    [Traits.Nose]: false,
-    [Traits.Eyes]: false,
-    [Traits.EarAccessories]: false,
-    [Traits.FaceAccessories]: false,
-    [Traits.Mask]: false,
-    [Traits.HeadBelow]: false,
-    [Traits.EyesAccessories]: false,
-    [Traits.HeadAbove]: false,
-    [Traits.MouthAccessories]: false,
+    [Traits.Background]: 0.1,
+    [Traits.Race]: 0,
+    [Traits.Face]: 0,
+    [Traits.Mouth]: 0,
+    [Traits.Nose]: 0,
+    [Traits.Eyes]: 0,
+    [Traits.EarAccessories]: 0,
+    [Traits.FaceAccessories]: 0,
+    [Traits.Mask]: 0,
+    [Traits.HeadBelow]: 0,
+    [Traits.EyesAccessories]: 0,
+    [Traits.HeadAbove]: 0,
+    [Traits.MouthAccessories]: 0,
   },
 };
 
@@ -107,15 +107,21 @@ function TraitsChangeTable({ drug, sx }: TraitsChangeTableProps) {
               <Box fontWeight="600" fontSize={isMobile ? "14px" : "16px"}>
                 {traitName}
               </Box>
-              <Box>
+              <Box display="flex" flexDirection="column" alignItems="center">
                 <img
                   alt="effect"
-                  src={changesTraits[traitName] ? shuffle : equal}
+                  src={changesTraits[traitName] === 0 ? equal : shuffle}
                   style={{
                     height: isMobile ? "18px" : "31px",
                     width: isMobile ? "18px" : "31px",
                   }}
                 />
+                {changesTraits[traitName] !== 0 &&
+                  changesTraits[traitName] !== 1 && (
+                    <span style={{ fontSize: "12px" }}>
+                      {changesTraits[traitName] * 100}%
+                    </span>
+                  )}
               </Box>
             </Box>
           );

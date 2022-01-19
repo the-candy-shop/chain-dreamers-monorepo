@@ -16,7 +16,7 @@ const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
 
 type FooterLinkProps = {
   src: string;
-  url: string;
+  url?: string;
   tooltip: string;
 };
 

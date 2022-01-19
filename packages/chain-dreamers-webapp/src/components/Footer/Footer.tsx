@@ -41,16 +41,8 @@ function Footer({ fixed = false }: FooterProps) {
           url="https://discord.gg/p583xTn4"
           tooltip="Join Discord"
         />
-        <FooterLink
-          src={etherScan}
-          url="https://google.fr"
-          tooltip="View Contract"
-        />
-        <FooterLink
-          src={openSea}
-          url="https://google.fr"
-          tooltip="View Collection"
-        />
+        <FooterLink src={etherScan} tooltip="Soon" />
+        <FooterLink src={openSea} tooltip="Soon" />
       </Box>
     </Box>
   );

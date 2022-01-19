@@ -146,7 +146,7 @@ function Story() {
               marginTop="64px"
               sx={{
                 "& .spice-effects": {
-                  width: isMobile ? "150px" : "237px",
+                  width: isMobile ? "150px" : "200px",
                 },
               }}
             >
@@ -178,7 +178,7 @@ function Story() {
               marginTop="64px"
               sx={{
                 "& .spice-effects": {
-                  width: isMobile ? "150px" : "237px",
+                  width: isMobile ? "150px" : "200px",
                 },
               }}
             >
@@ -211,7 +211,7 @@ function Story() {
               marginTop="64px"
               sx={{
                 "& .spice-effects": {
-                  width: isMobile ? "150px" : "237px",
+                  width: isMobile ? "150px" : "200px",
                 },
               }}
             >

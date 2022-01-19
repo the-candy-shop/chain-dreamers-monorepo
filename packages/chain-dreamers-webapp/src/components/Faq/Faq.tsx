@@ -24,7 +24,8 @@ function Faq() {
         <Box sx={{ maxWidth: "850px" }}>
           <Content title="What is Chain Dreamers?">
             <p>
-              Chain Dreamers is a on-chain NFT derivative project based on{" "}
+              Chain Dreamer is a on-chain and narrative-driven NFT spin-off
+              based on{" "}
               <Link href="https://www.chainrunners.xyz/" target="_blank">
                 Chain Runners
               </Link>
