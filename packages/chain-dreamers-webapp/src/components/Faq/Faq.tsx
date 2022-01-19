@@ -41,7 +41,6 @@ function Faq() {
               <li>technical innovation</li>
               <li>great minting experience</li>
             </ul>
-            <p>Each new innovation will be a new drug of our Candy Shop.</p>
           </Content>
           <Content title="Why creating a derivative on Chain Runners?">
             <p>Because we love Chain Runners:</p>
@@ -127,14 +126,14 @@ function Faq() {
             <p>During phase 2, mint price is 0.08 ETH + gas fees.</p>
             <p>
               During phase 1, you will have to pay gas fees twice. Once for
-              buying Helium Spice and once for the minting. We have decided to
-              optimize the narrative over the minting experience cost.
+              buying your chosen drug and once for the minting. We have decided
+              to optimize the narrative over the minting experience cost.
             </p>
           </Content>
           <Content title="How to mint a Chain Dreamer during phase 1?">
             <p>
-              First, you buy as many Helium Spice flasks as Chain Dreamers you
-              want to mint in the Candy Shop.
+              First, you buy as many drug flasks as Chain Dreamers you want to
+              mint in the Candy Shop.
             </p>
             <p>
               Then you go down to the Basement and give it to your Runner(s).
