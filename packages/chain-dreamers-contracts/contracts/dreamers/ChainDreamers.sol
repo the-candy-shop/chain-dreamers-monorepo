@@ -84,18 +84,11 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
         candyShop = IERC1155(candyShopAddress);
     }
 
-    constructor(
-        string memory name_,
-        string memory symbol_,
-        address renderingContractAddress_,
-        address chainRunnersAddress_,
-        address candyShopAddress_
-    ) ERC721(name_, symbol_) {
-        setRenderingContractAddress(renderingContractAddress_);
-        setChainRunnersContractAddress(chainRunnersAddress_);
-    }
+    constructor(string memory name_, string memory symbol_)
+        ERC721(name_, symbol_)
+    {}
 
-    function mint(uint256 tokenId) internal {
+    function mint(uint256 tokenId) public {
         _safeMint(_msgSender(), tokenId);
     }
 

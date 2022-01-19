@@ -77,9 +77,11 @@ export const chainRunnersAddress = (): string => {
 // Deploy constants
 export const TAGS = {
   INTEGERS: "Integers",
+  CHAIN_DREAMERS: "ChainDreamers",
   DREAMERS_RENDERER: "DreamersRenderer",
   DREAMERS_PALETTES: "ChainDreamersPalettes",
   CHAIN_RUNNERS: "ChainRunners",
+  CHAIN_RUNNERS_TRAITS: "ChainRunnersTraits",
   BYTES_SHIFT: "BytesShift",
   CANDY_SHOP: "CandyShop",
   CANDY_SHOP_INVENTORY: "CandyShopInventory",

@@ -197,7 +197,7 @@ contract ChainRunners is ERC721Enumerable, Ownable, ReentrancyGuard {
         return (firstMintedId, _count);
     }
 
-    function mint(uint256 tokenId) internal {
+    function mint(uint256 tokenId) public {
         ChainRunnersTypes.ChainRunner memory runner;
         runner.dna = uint256(
             keccak256(
