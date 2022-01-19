@@ -118,7 +118,7 @@ function TraitsChangeTable({ drug, sx }: TraitsChangeTableProps) {
                 />
                 {changesTraits[traitName] !== 0 &&
                   changesTraits[traitName] !== 1 && (
-                    <span style={{ fontSize: "12px" }}>
+                    <span style={{ fontSize: "12px", color: "#ac0cf7" }}>
                       {changesTraits[traitName] * 100}%
                     </span>
                   )}
