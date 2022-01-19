@@ -1,0 +1,16 @@
+service: chain-dreamers-api
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+  region: us-west-1
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: img
+          method: get
