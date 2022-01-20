@@ -1,0 +1,42 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/lib/BytesShift.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nlibrary BytesShift {\n    function shiftLeft(bytes memory x, uint256 n)\n        public\n        pure\n        returns (bytes memory)\n    {\n        bytes memory tmp = x;\n        assembly {\n            tmp := shl(n, x)\n        }\n        return tmp;\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 2000,
+      "details": {
+        "yul": true,
+        "yulDetails": {
+          "stackAllocation": true,
+          "optimizerSteps": "dhfoDgvulfnTUtnIf"
+        }
+      }
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

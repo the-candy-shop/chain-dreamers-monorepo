@@ -27,7 +27,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     {
       name: "Base",
       contract: "ChainRunnersLayerRenderer",
-      traits: "runners-layers.json",
+      traits: "assets/runners-layers.json",
       setLayers: "setLayers((string,bytes,uint8,uint8)[])",
     },
   ];
