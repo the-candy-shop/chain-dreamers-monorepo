@@ -118,7 +118,7 @@ function Story() {
             </p>
             <p>
               Mega City is a hard place to live under Somnus and escaping this
-              world is a necessity for any well respected renegate.
+              world is a necessity for any well respected renegade.
             </p>
             <p>
               Those are common effects, but in reality, all runners tell
