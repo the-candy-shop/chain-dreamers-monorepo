@@ -5,7 +5,7 @@ import { deployments, ethers } from "hardhat";
 import { encodeDToBytes, inlineTrait, normalizeD } from "../../utils/dreamers";
 import {
   loadPalettes,
-  loadPalettesStorage,
+  loadPalettesEncoded,
   NONE_COLOR,
   TAGS,
 } from "../../utils/constants";
@@ -17,7 +17,7 @@ chai.use(solidity);
 const { expect } = chai;
 
 const palettes = loadPalettes();
-const palettesStorage = loadPalettesStorage();
+const palettesEncoded = loadPalettesEncoded();
 
 before(async function () {
   await deployments.fixture(TAGS.DREAMERS_PALETTES);
@@ -38,7 +38,7 @@ describe("DreamersRenderer", async function () {
   });
 
   describe("getDIndex", () => {
-    palettesStorage.dIndexesDebug.slice(0, -1).forEach((d, index) => {
+    palettesEncoded.dIndexesDebug.slice(0, -1).forEach((d, index) => {
       it(`Index ${index} should return ${d}`, async function () {
         const res = await DreamersRenderer.getDIndex(index);
         expect(res[0]).to.equal(d);

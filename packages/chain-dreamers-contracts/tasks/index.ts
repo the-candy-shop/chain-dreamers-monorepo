@@ -1,5 +1,5 @@
 export * from "./accounts";
-export * from "./concatPalettes";
+export * from "./encodePalettes";
 export * from "./getChainRunnersLayers";
 export * from "./getChainRunnersDna";
 export * from "./getChainRunnersLayersSvg";

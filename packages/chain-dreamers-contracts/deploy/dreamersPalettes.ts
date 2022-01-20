@@ -2,7 +2,7 @@
 
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
-import { loadPalettesStorage, TAGS } from "../utils/constants";
+import { loadPalettesEncoded, TAGS } from "../utils/constants";
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployments, getNamedAccounts, ethers } = hre;
@@ -12,7 +12,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployer } = await getNamedAccounts();
   await deployments.get("DreamersRenderer");
 
-  const paletteStorage = loadPalettesStorage();
+  const palettesEncoded = loadPalettesEncoded();
 
   let gas = BigNumber.from(0);
   let tx = await execute(
@@ -22,7 +22,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       log: true,
     },
     "setFillPalette",
-    paletteStorage.fillBytes
+    palettesEncoded.fillBytes
   );
   gas = gas.add(BigNumber.from(tx.gasUsed));
 
@@ -33,7 +33,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       log: true,
     },
     "setDPalette",
-    paletteStorage.dBytes
+    palettesEncoded.dBytes
   );
   gas = gas.add(BigNumber.from(tx.gasUsed));
 
@@ -44,7 +44,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       log: true,
     },
     "setDPaletteIndex",
-    paletteStorage.dBytesIndexes
+    palettesEncoded.dBytesIndexes
   );
   gas = gas.add(BigNumber.from(tx.gasUsed));
 
@@ -55,7 +55,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       log: true,
     },
     "setTraitPalette",
-    paletteStorage.traitBytes
+    palettesEncoded.traitBytes
   );
   gas = gas.add(BigNumber.from(tx.gasUsed));
 
@@ -66,7 +66,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       log: true,
     },
     "setTraitPaletteIndex",
-    paletteStorage.traitBytesIndexes
+    palettesEncoded.traitBytesIndexes
   );
   gas = gas.add(BigNumber.from(tx.gasUsed));
 
@@ -77,7 +77,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       log: true,
     },
     "setLayerIndexes",
-    paletteStorage.layerIndexes
+    palettesEncoded.layerIndexes
   );
   gas = gas.add(BigNumber.from(tx.gasUsed));
   console.log(`Total gas used: ${gas.toString()}`);
