@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.4;
 
-import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
+import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Pausable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract CandyShop is ERC1155, Ownable, ReentrancyGuard {
+contract CandyShop is ERC1155Pausable, Ownable, ReentrancyGuard {
     struct SKU {
         uint256 id;
         uint256 price;
@@ -14,11 +14,13 @@ contract CandyShop is ERC1155, Ownable, ReentrancyGuard {
         uint256 circulating;
         string name;
     }
+
     struct SKUInput {
         uint256 price;
         uint256 supply;
         string name;
     }
+
     mapping(uint256 => SKU) public inventory;
     mapping(string => uint256) public skuIds;
 
@@ -94,15 +96,6 @@ contract CandyShop is ERC1155, Ownable, ReentrancyGuard {
             inventory[skuIds[tokenName]].supply;
     }
 
-    function rightValue(string calldata tokenName, uint256 amount)
-        internal
-        view
-        skuExists(tokenName)
-        returns (bool)
-    {
-        return msg.value == inventory[skuIds[tokenName]].price * amount;
-    }
-
     function mint(string calldata tokenName, uint256 amount)
         external
         payable
@@ -112,7 +105,7 @@ contract CandyShop is ERC1155, Ownable, ReentrancyGuard {
     {
         require(enoughSupply(tokenName, amount), "Not enough supply");
         require(
-            rightValue(tokenName, amount),
+            msg.value == inventory[skuIds[tokenName]].price * amount,
             "You have to pay the price to eat candies"
         );
 
@@ -181,5 +174,13 @@ contract CandyShop is ERC1155, Ownable, ReentrancyGuard {
     function withdraw() public onlyOwner {
         (bool success, ) = _msgSender().call{value: address(this).balance}("");
         require(success, "Withdrawal failed");
+    }
+
+    function pause() external onlyOwner {
+        _pause();
+    }
+
+    function unpause() external onlyOwner {
+        _unpause();
     }
 }
