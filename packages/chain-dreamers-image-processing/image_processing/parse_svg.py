@@ -6,31 +6,12 @@ import numpy as np
 import pandas as pd
 import svgpathtools as spt
 
+from image_processing.constants import NONE_COLOR, PALETTES_FILE, TRAITS_ORDERING, VALISE_COMPUTED_DIR, VALISE_DIR
 from image_processing.svg_to_path_ordered import svg2paths
 
 #%% Define constants
-ASSETS_DIR = Path("assets")
-VALISE_DIR = ASSETS_DIR / "VALISE_CHAIN_DREAMERS_TRAITS"
-VALISE_COMPUTED_DIR = ASSETS_DIR / "VALISE_CHAIN_DREAMERS_COMPUTED"
 shutil.rmtree(VALISE_COMPUTED_DIR, ignore_errors=True)
 VALISE_COMPUTED_DIR.mkdir(exist_ok=True)
-NONE_COLOR = "#000001"
-# See ChainRunnersBaseRendering.sol contract
-TRAITS_ORDERING = [
-    "BACKGROUND",
-    "RACE",
-    "FACE",
-    "MOUTH",
-    "NOSE",
-    "EYES",
-    "EAR_ACCESSORIES",
-    "FACE_ACCESSORIES",
-    "MASK",
-    "HEAD_BELOW",
-    "EYES_ACCESSORIES",
-    "HEAD_ABOVE",
-    "MOUTH_ACCESSORIES",
-]
 
 
 #%% Define functions
@@ -60,7 +41,7 @@ def get_fill(fill):
     return "#" + fill_palette[fill]
 
 
-def generate_svg(codes):
+def generate_svg(_codes):
     return (
         """<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 255 255\" width=\"500px\" height=\"500px\">"""
         + (
@@ -68,7 +49,7 @@ def generate_svg(codes):
                 [
                     f"""<path d="{d_palette[c['d']]}" fill="{get_fill(c['fill'])}" """
                     + f"""stroke="{'#000' if c['stroke'] else ''}" />"""
-                    for c in codes
+                    for c in _codes
                 ]
             )
         )
@@ -141,7 +122,7 @@ for file_name, codes in traits_codes.items():
 
 
 #%% Dump palettes and traits
-with open("palettes.json", "w") as f:
+with open(PALETTES_FILE, "w") as f:
     json.dump(
         {
             "d": d_palette.tolist(),

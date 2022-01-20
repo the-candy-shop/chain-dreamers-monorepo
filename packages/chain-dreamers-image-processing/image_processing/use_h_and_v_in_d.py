@@ -1,8 +1,6 @@
 import json
 import re
-
-#%% Load palette
-palettes = json.load(open("palettes.json", "r"))
+from image_processing.constants import PALETTES_FILE, PALETTES_HV_FILE
 
 
 #%% Define functions
@@ -41,5 +39,6 @@ def use_h_and_v_in_d(d):
 
 
 #%% Update palette
+palettes = json.load(open(PALETTES_FILE, "r"))
 palettes["d"] = [use_h_and_v_in_d(d) for d in palettes["d"]]
-json.dump(palettes, open("palettes-hv.json", "w"), indent=2)
+json.dump(palettes, open(PALETTES_HV_FILE, "w"), indent=2)
