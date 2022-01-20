@@ -1,6 +1,8 @@
 import Box, { BoxProps } from "@mui/material/Box";
 import equal from "./equal.png";
-import shuffle from "./shuffle.png";
+import shuffleChainMeth from "./shuffle-chain-meth.png";
+import shuffleHeliumSpice from "./shuffle-helium-spice.png";
+import shuffleSomnusTears from "./shuffle-somnus-tears.png";
 import { useMediaQuery } from "@mui/material";
 
 export enum DrugList {
@@ -8,6 +10,18 @@ export enum DrugList {
   SomnusTears = "Somnus Tears",
   HeliumSpice = "Helium Spice",
 }
+
+const shuffleImages = {
+  [DrugList.ChainMeth]: shuffleChainMeth,
+  [DrugList.SomnusTears]: shuffleSomnusTears,
+  [DrugList.HeliumSpice]: shuffleHeliumSpice,
+};
+
+const drugsColors = {
+  [DrugList.ChainMeth]: "#008aff",
+  [DrugList.SomnusTears]: "#ff0200",
+  [DrugList.HeliumSpice]: "#b101e6",
+};
 
 export enum Traits {
   Background = "Background",
@@ -81,13 +95,15 @@ type TraitsChangeTableProps = {
 function TraitsChangeTable({ drug, sx }: TraitsChangeTableProps) {
   const isMobile = useMediaQuery("(max-width:915px)");
   const changesTraits = TraitChangesForDrugs[drug];
+  const shuffle = shuffleImages[drug];
 
   return (
     <Box sx={sx}>
       <Box
         fontWeight="bold"
-        fontSize={isMobile ? "18px" : "32px"}
+        fontSize={isMobile ? "18px" : "24px"}
         marginBottom="48px"
+        color={drugsColors[drug]}
       >
         List of all {drug.toString()} effects, by trait
       </Box>
@@ -118,7 +134,9 @@ function TraitsChangeTable({ drug, sx }: TraitsChangeTableProps) {
                 />
                 {changesTraits[traitName] !== 0 &&
                   changesTraits[traitName] !== 1 && (
-                    <span style={{ fontSize: "12px", color: "#ac0cf7" }}>
+                    <span
+                      style={{ fontSize: "12px", color: drugsColors[drug] }}
+                    >
                       {changesTraits[traitName] * 100}%
                     </span>
                   )}

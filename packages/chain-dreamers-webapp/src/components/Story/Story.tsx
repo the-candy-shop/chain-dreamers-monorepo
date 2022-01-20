@@ -3,7 +3,9 @@ import Box from "@mui/material/Box";
 import PageTitle from "../PageTitle/PageTitle";
 import Content from "../Content/Content";
 import Link from "@mui/material/Link";
-import spiceEffect from "./spice-effect.png";
+import heliumSpiceEffects from "./helium-spice-effects.png";
+import chainMethEffects from "./chain-meth-effects.png";
+import somnusTears from "./somnus-tears-effects.png";
 import { useMediaQuery } from "@mui/material";
 import banner from "./banner.png";
 import ChainRunner827 from "./Chain_Runner_827.png";
@@ -152,11 +154,11 @@ function Story() {
             >
               <TraitsChangeTable
                 drug={DrugList.ChainMeth}
-                sx={{ marginRight: isMobile ? "32px" : "120px" }}
+                sx={{ marginRight: isMobile ? "32px" : "120px", flex: 1 }}
               />
               <img
-                alt="Helium Spice effects"
-                src={spiceEffect}
+                alt="Chain Meth effects"
+                src={chainMethEffects}
                 className="spice-effects"
               />
             </Box>
@@ -184,11 +186,11 @@ function Story() {
             >
               <TraitsChangeTable
                 drug={DrugList.SomnusTears}
-                sx={{ marginRight: isMobile ? "32px" : "120px" }}
+                sx={{ marginRight: isMobile ? "32px" : "120px", flex: 1 }}
               />
               <img
-                alt="Helium Spice effects"
-                src={spiceEffect}
+                alt="Somnus Tears effects"
+                src={somnusTears}
                 className="spice-effects"
               />
             </Box>
@@ -217,11 +219,11 @@ function Story() {
             >
               <TraitsChangeTable
                 drug={DrugList.HeliumSpice}
-                sx={{ marginRight: isMobile ? "32px" : "120px" }}
+                sx={{ marginRight: isMobile ? "32px" : "120px", flex: 1 }}
               />
               <img
                 alt="Helium Spice effects"
-                src={spiceEffect}
+                src={heliumSpiceEffects}
                 className="spice-effects"
               />
             </Box>
