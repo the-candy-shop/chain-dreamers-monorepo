@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
+import "../runners/IChainRunners.sol";
 import "./IDreamersRenderer.sol";
 
 contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
@@ -13,6 +14,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
     struct ChainDreamer {
         uint184 dna;
     }
+
     mapping(address => uint256) public dreamersMintedCounts;
     mapping(uint256 => ChainDreamer) public dreamers;
 
@@ -20,7 +22,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
     address public renderingContractAddress;
     address public chainRunnersAddress;
     address public candyShopAddress;
-    ERC721Enumerable chainRunners;
+    IChainRunners chainRunners;
     IERC1155 candyShop;
     IDreamersRenderer renderer;
 
@@ -73,7 +75,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
         address _chainRunnersContractAddress
     ) public onlyOwner {
         chainRunnersAddress = _chainRunnersContractAddress;
-        chainRunners = ERC721Enumerable(chainRunnersAddress);
+        chainRunners = IChainRunners(chainRunnersAddress);
     }
 
     function setCandyShopContractAddress(address _candyShopContractAddress)
@@ -89,7 +91,10 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
     {}
 
     function mint(uint256 tokenId) public {
+        uint256 dna = chainRunners.getDna(tokenId);
+        require(dna != 0, "Runner does not exist");
         _safeMint(_msgSender(), tokenId);
+        dreamers[tokenId] = ChainDreamer(uint184(dna));
     }
 
     function tokenURI(uint256 _tokenId)
