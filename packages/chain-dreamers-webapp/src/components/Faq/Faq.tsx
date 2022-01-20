@@ -5,7 +5,7 @@ import banner from "./banner.png";
 import Content from "../Content/Content";
 import Link from "@mui/material/Link";
 import { Link as InnerLink } from "react-router-dom";
-import { Tooltip, useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import CustomTooltip from "../CustomTooltip/CustomTooltip";
 
 function Faq() {
