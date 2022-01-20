@@ -43,8 +43,7 @@ export const hello = async (event) => {
   const tokenData = await DreamersRendererContract.getTokenData(dna);
   console.log("tokenData", tokenData);
 
-  let svg =
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 255" width="500px" height="500px">';
+  let svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 255">';
 
   for (const id of tokenData) {
     if (valise[id]) {

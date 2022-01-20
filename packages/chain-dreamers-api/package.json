@@ -9,8 +9,9 @@
     "postinstall": "npm run generate-types",
     "generate-types": "eth-sdk",
     "build-valise": "ts-node ./scripts/build-valise.ts",
-    "predeploy:staging": "npm run generate-types && npm run build-valise",
-    "predeploy:prod": "npm run generate-types && npm run build-valise"
+    "get-contracts": "cp ../chain-dreamers-contracts/deployments/rinkeby/export-all.json ./",
+    "predeploy:staging": "npm run generate-types && npm run build-valise && npm run get-contracts",
+    "predeploy:prod": "npm run generate-types && npm run build-valise && npm run get-contracts"
   },
   "author": "",
   "license": "ISC",
