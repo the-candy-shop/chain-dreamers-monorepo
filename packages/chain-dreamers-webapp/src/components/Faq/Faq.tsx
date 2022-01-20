@@ -80,7 +80,7 @@ function Faq() {
           <Content title="Is it stored on chain?">
             <p>
               Yes, 100% stored on the Ethereum blockchain. <br />
-              Data is stored via sstore. The renderer is built into contract.
+              Data is stored via sstore2. The renderer is built into contract.
               The output is svg. More details{" "}
               <InnerLink to="/on-chain-storage">on this page</InnerLink>.
             </p>
