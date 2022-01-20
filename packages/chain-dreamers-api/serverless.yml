@@ -23,3 +23,7 @@ package:
 plugins:
   - serverless-plugin-typescript
   - serverless-dotenv-plugin
+
+custom:
+  includeDependencies:
+    enableCaching: true

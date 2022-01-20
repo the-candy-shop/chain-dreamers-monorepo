@@ -1,8 +1,0 @@
-<svg id="EYES" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 283.5">
-  <path d="M98.2,154.3V168a2.6,2.6,0,0,0,2.6,2.6h0a2.6,2.6,0,0,0,2.6-2.6v-1.9a1.3,1.3,0,0,1,2.6,0v9.6a3.5,3.5,0,0,0,3.4,3.5,3.5,3.5,0,0,0,3.5-3.5v-10a2.1,2.1,0,0,1,2.2-2.2,2.2,2.2,0,0,1,2.2,2.2v6.7a2.2,2.2,0,0,0,2.2,2.2,2.2,2.2,0,0,0,2.3-2.2v-7.2A2.2,2.2,0,0,1,124,163a2.2,2.2,0,0,1,2.3,2.2v1.9a2.5,2.5,0,1,0,5,0V154.3Z" fill="#2b2b2b" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
-  <path d="M152.1,154.3v12.8a2.6,2.6,0,0,0,5.1,0v-1.9a2.2,2.2,0,0,1,2.2-2.2,2.2,2.2,0,0,1,2.3,2.2v7.2a2.2,2.2,0,0,0,2.3,2.2h0a2.2,2.2,0,0,0,2.2-2.2v-6.7a2.2,2.2,0,0,1,4.4,0v10a3.5,3.5,0,0,0,3.5,3.5,3.5,3.5,0,0,0,3.4-3.5v-9.6a1.3,1.3,0,0,1,1.3-1.3,1.2,1.2,0,0,1,1.2,1.3V168a2.7,2.7,0,0,0,5.3,0V154.3Z" fill="#2b2b2b" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
-  <path d="M128.8,128.4H103.1a5,5,0,0,0,0,9.9h25.7a5,5,0,0,0,0-9.9Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
-  <path d="M182.6,128.4H156.9a5,5,0,0,0,0,9.9h25.7a5,5,0,1,0,0-9.9Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
-  <line x1="95.9" y1="154.3" x2="133.7" y2="154.3" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.42"/>
-  <line x1="150.9" y1="154.3" x2="188.7" y2="154.3" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.42"/>
-</svg>

@@ -1,36 +1,46 @@
 import * as path from "path";
 import * as fs from "fs";
 
+const TRAITS_ORDER = [
+  "BACKGROUND",
+  "RACE",
+  "FACE",
+  "MOUTH",
+  "NOSE",
+  "EYES",
+  "EAR_ACCESSORIES",
+  "FACE_ACCESSORIES",
+  "MASK",
+  "HEAD_BELOW",
+  "EYES_ACCESSORIES",
+  "HEAD_ABOVE",
+  "MOUTH_ACCESSORIES",
+];
+
 (async function () {
   const files = getAllFiles(
-    path.join(__dirname, "../assets/VALISE_CHAIN_DREAMERS_TRAITS")
+    path.join(
+      __dirname,
+      "../../chain-dreamers-image-processing/assets/VALISE_CHAIN_DREAMERS_COMPUTED"
+    )
   );
 
-  const valiseValue: Record<string, Record<string, string>> = {};
+  const valiseValue: string[] = [];
 
-  for (const file of files) {
-    const { fileName, filePath } = file;
+  TRAITS_ORDER.forEach((category, index) => {
+    const categoryFile = files
+      .filter((file) => file.fileName.includes(category))
+      .sort();
 
-    const traitString = fileName
-      .replace("CD_", "")
-      .replace("CP_", "")
-      .replace(".svg", "");
-
-    const traitStringSplit = traitString.split("_");
-    const traitValue = traitStringSplit[traitStringSplit.length - 1];
-    const traitName = traitString.replace(`_${traitValue}`, "");
-
-    if (traitName && traitValue) {
-      if (!valiseValue[traitName]) {
-        valiseValue[traitName] = {};
-      }
-
-      valiseValue[traitName][traitValue] = fs
-        .readFileSync(filePath, "utf8")
-        .replace(/<svg.*?>/, "")
-        .replace("</svg>", "");
+    for (const file of categoryFile) {
+      valiseValue.push(
+        fs
+          .readFileSync(file.filePath, "utf8")
+          .replace(/<svg.*?>/, "")
+          .replace("</svg>", "")
+      );
     }
-  }
+  });
 
   fs.writeFileSync(
     path.join(__dirname, "../valise.json"),
