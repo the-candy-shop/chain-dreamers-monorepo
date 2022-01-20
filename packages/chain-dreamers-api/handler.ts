@@ -1,12 +1,13 @@
 import { ethers } from "ethers";
 import * as valise from "./valise.json";
+import * as contract from "./export-all.json";
 
-const DreamersAbi = [
-  "function getTokenData(uint256 _dna) public view returns (uint16[13] memory traitIndexes)",
-];
-const RunnersAbi = [
-  "function getDna(uint256 _tokenId) external view returns (uint256)",
-];
+const networkChainIds = {
+  rinkeby: "4",
+};
+
+const network = process.env.NETWORK || "rinkeby";
+const chainId = networkChainIds[network];
 
 const Provider = ethers.getDefaultProvider(process.env.NETWORK, {
   infura: process.env.INFURA_ID,
@@ -16,15 +17,20 @@ const Provider = ethers.getDefaultProvider(process.env.NETWORK, {
 });
 const Signer = ethers.Wallet.createRandom().connect(Provider);
 
+const runnersContractData =
+  contract[chainId][network].contracts["ChainRunners"];
+const dreamersRendererContractData =
+  contract[chainId][network].contracts["DreamersRenderer"];
+
 const RunnersContract = new ethers.Contract(
-  process.env.RUNNER_CONTRACT_ADDRESS || "",
-  RunnersAbi,
+  runnersContractData.address,
+  runnersContractData.abi,
   Signer
 );
 
 const DreamersRendererContract = new ethers.Contract(
-  process.env.DREAMERS_RENDERER_ADDRESS || "",
-  DreamersAbi,
+  dreamersRendererContractData.address,
+  dreamersRendererContractData.abi,
   Signer
 );
 
