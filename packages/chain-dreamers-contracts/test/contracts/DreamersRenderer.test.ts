@@ -26,9 +26,9 @@ before(async function () {
 describe("DreamersRenderer", async function () {
   const DreamersRenderer = await ethers.getContract("DreamersRenderer");
 
-  describe.only("getFill", () => {
+  describe("getFill", () => {
     palettes.fill
-      .map((f) => (f === NONE_COLOR ? "none" : `#${f.toUpperCase()}`))
+      .map((f) => (f === NONE_COLOR ? "none" : `%23${f.toUpperCase()}`))
       .forEach((fill, index) => {
         it(`Index ${index} should return ${fill}`, async function () {
           const res = await DreamersRenderer.getFill(index);
@@ -82,27 +82,24 @@ describe("DreamersRenderer", async function () {
     palettes.layerIndexes.forEach((layerIndex, _layerIndex) => {
       const itemIndexes =
         _layerIndex === palettes.layerIndexes.length - 1
-          ? [0]
+          ? [0] // don't know how many they should be
           : [
               ...Array(
                 palettes.layerIndexes[_layerIndex + 1] - layerIndex + 1
               ).keys(),
             ];
       itemIndexes.forEach((itemIndex) => {
-        it(`Layer ${_layerIndex}, item ${itemIndex} should return ${
+        const expected =
           itemIndex === palettes.layerIndexes[_layerIndex + 1] - layerIndex
             ? 65535
-            : layerIndex + itemIndex
-        }`, async function () {
+            : layerIndex + itemIndex;
+
+        it(`Layer ${_layerIndex}, item ${itemIndex} should return ${expected}`, async function () {
           const res = await DreamersRenderer.getTraitIndex(
             _layerIndex,
             itemIndex
           );
-          expect(res).to.equal(
-            itemIndex === palettes.layerIndexes[_layerIndex + 1] - layerIndex
-              ? 65535
-              : layerIndex + itemIndex
-          );
+          expect(res).to.equal(expected);
         });
       });
     });
