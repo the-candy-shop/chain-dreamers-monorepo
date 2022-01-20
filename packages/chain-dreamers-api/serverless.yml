@@ -19,6 +19,7 @@ package:
   include:
     - eth-sdk/**
     - valise.json
+    - export-all.json
 
 plugins:
   - serverless-plugin-typescript
