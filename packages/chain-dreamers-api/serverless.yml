@@ -12,5 +12,14 @@ functions:
     handler: handler.hello
     events:
       - http:
-          path: img
+          path: img/{id}
           method: get
+
+package:
+  include:
+    - eth-sdk/**
+    - valise.json
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-dotenv-plugin

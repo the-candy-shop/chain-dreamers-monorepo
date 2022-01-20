@@ -1,0 +1,28 @@
+{
+  "name": "chain-dreamers-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.ts",
+  "scripts": {
+    "deploy:staging": "serverless deploy --stage staging",
+    "deploy:prod": "serverless deploy --stage prod",
+    "postinstall": "npm run generate-types",
+    "generate-types": "eth-sdk",
+    "build-valise": "ts-node ./scripts/build-valise.ts",
+    "predeploy:staging": "npm run build-valise",
+    "predeploy:prod": "npm run build-valise"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@dethcrypto/eth-sdk": "^0.3.0",
+    "@dethcrypto/eth-sdk-client": "^0.1.6",
+    "ethers": "^5.5.3"
+  },
+  "devDependencies": {
+    "serverless-dotenv-plugin": "^3.12.2",
+    "serverless-plugin-typescript": "^2.1.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  }
+}

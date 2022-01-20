@@ -1,0 +1,33 @@
+<svg id="EYES" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 283.5">
+  <g>
+    <g>
+      <path d="M109.4,97.1c14.6,0,12,11.3,28.9,8.6s23-15.4,35.7-4.1" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+      <path d="M122,112.1c8.9,0,7.3,6.9,17.6,5.2s14-9.4,21.8-2.5" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    </g>
+    <path d="M201.5,104.2a5.8,5.8,0,0,0-8.2,1.1l-50.6,68.8a5.9,5.9,0,1,0,9.3,7.1l50.6-68.8A6,6,0,0,0,201.5,104.2Z" fill="#cb5f66" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    <circle cx="175.6" cy="157.9" r="18.4" transform="translate(-47.1 79.2) rotate(-22.5)" fill="#3d478c" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    <ellipse cx="106.8" cy="151.7" rx="22.5" ry="18.5" fill="#cb5f66" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    <g>
+      <g>
+        <g>
+          <path d="M92.4,130.4c16.5-5.2,26.7,3.8,31,9a7.3,7.3,0,1,0,10.9-9.7C112.2,107.1,92.4,130.4,92.4,130.4Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+          <path d="M149.2,129.7a7.3,7.3,0,0,0,3.9,12.3,7.1,7.1,0,0,0,6.9-2.6c4.4-5.2,14.6-14.2,31-9C191,130.4,171.2,107.1,149.2,129.7Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+        </g>
+        <g>
+          <g>
+            <path d="M106.3,152.2A17,17,0,0,1,118,136a16,16,0,0,0-5.3-.9,17.1,17.1,0,0,0,0,34.2,16,16,0,0,0,5.3-.9A17.1,17.1,0,0,1,106.3,152.2Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+            <ellipse cx="118" cy="152.2" rx="11.7" ry="16.2" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+          </g>
+          <g>
+            <path d="M164.5,152.2A17,17,0,0,1,176.2,136a16.1,16.1,0,0,0-5.4-.9,17.1,17.1,0,0,0,0,34.2,16.1,16.1,0,0,0,5.4-.9A17.1,17.1,0,0,1,164.5,152.2Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+            <path d="M176.2,136a17.1,17.1,0,0,0,0,32.4,17.1,17.1,0,0,0,0-32.4Z" fill="#ef7c78" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+          </g>
+        </g>
+      </g>
+      <g>
+        <path d="M118,145.9a5.7,5.7,0,1,0,5.6,5.7A5.7,5.7,0,0,0,118,145.9Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+        <path d="M176.2,145.9a5.7,5.7,0,1,0,5.6,5.7A5.7,5.7,0,0,0,176.2,145.9Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+      </g>
+    </g>
+  </g>
+</svg>

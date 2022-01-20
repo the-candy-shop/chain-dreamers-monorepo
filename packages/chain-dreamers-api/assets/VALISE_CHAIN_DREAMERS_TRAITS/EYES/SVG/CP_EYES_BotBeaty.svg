@@ -1,0 +1,20 @@
+<svg id="EYES" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 283.5">
+  <g>
+    <g>
+      <ellipse cx="111.1" cy="152.2" rx="24.6" ry="18.1" fill="#728490" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+      <g>
+        <path d="M111.1,136.8a15.4,15.4,0,0,0-15.4,15.4,12.7,12.7,0,0,0,.8,4.8,15.4,15.4,0,0,1,29.2,0,15.1,15.1,0,0,0,.7-4.8A15.3,15.3,0,0,0,111.1,136.8Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+        <path d="M111.1,146.5A15.4,15.4,0,0,0,96.5,157a15.4,15.4,0,0,0,29.2,0A15.4,15.4,0,0,0,111.1,146.5Z" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+      </g>
+      <path d="M111.1,154.5a5.4,5.4,0,0,0-5.5,5.4,5.5,5.5,0,1,0,10.9,0A5.4,5.4,0,0,0,111.1,154.5Z" fill="#edcd51" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    </g>
+    <g>
+      <ellipse cx="172.4" cy="152.2" rx="24.6" ry="18.1" fill="#728490" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+      <g>
+        <path d="M172.4,136.8A15.4,15.4,0,0,0,157,152.2a15.1,15.1,0,0,0,.8,4.8,15.4,15.4,0,0,1,29.2,0,15.1,15.1,0,0,0,.8-4.8A15.4,15.4,0,0,0,172.4,136.8Z" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+        <ellipse cx="172.4" cy="157" rx="14.6" ry="10.6" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+      </g>
+      <circle cx="172.4" cy="159.9" r="5.5" fill="#edcd51" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.71"/>
+    </g>
+  </g>
+</svg>
