@@ -5,4 +5,4 @@ export * from "./getChainRunnersDna";
 export * from "./getChainRunnersLayersSvg";
 export * from "./dreamers-gas";
 export * from "./generateDreamers";
-export * from "./mintRunner";
+export * from "./mint";
