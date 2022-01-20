@@ -3481,7 +3481,8 @@
               "type": "function"
             }
           ]
-        }
+        },
+        "export-all": {}
       }
     }
   },
