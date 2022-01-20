@@ -89,7 +89,7 @@ function TraitsChangeTable({ drug, sx }: TraitsChangeTableProps) {
         fontSize={isMobile ? "18px" : "32px"}
         marginBottom="48px"
       >
-        List of all {drug.toString()} Effects, by trait.
+        List of all {drug.toString()} effects, by trait
       </Box>
       <Box>
         {enumKeys(Traits).map((traitKey) => {

@@ -20,10 +20,7 @@ function ConnectButton({ sx }: CountDownButtonProps) {
     []
   );
 
-  const { isLaunched, hoursFromLaunch } = useIsLaunched();
-
-  const daysFromLaunch = Math.floor(hoursFromLaunch / 24);
-  const andHoursFromLaunch = hoursFromLaunch - daysFromLaunch * 24;
+  const { isLaunched } = useIsLaunched();
 
   return (
     <>
@@ -43,8 +40,7 @@ function ConnectButton({ sx }: CountDownButtonProps) {
       >
         {isLaunched && account && account.substring(0, 8)}
         {isLaunched && !account && "Connect"}
-        {!isLaunched &&
-          `${daysFromLaunch} Days ${andHoursFromLaunch} hours before opening`}
+        {!isLaunched && `Opening: TBD`}
       </Button>
       <WalletConnectDialog
         open={!account && connectDialogOpen}

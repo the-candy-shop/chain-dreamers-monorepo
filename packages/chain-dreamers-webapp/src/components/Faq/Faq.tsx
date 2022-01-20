@@ -93,11 +93,7 @@ function Faq() {
             </p>
           </Content>
           <Content title="When does the Candy Shop open for minting?">
-            <p>Phase 1 of minting will launch on January, 30th at 9AM PST.</p>
-            <p>
-              Phase 2 of minting will launch 7 days after on February, 6th at
-              9AM PST.
-            </p>
+            <p>TBD</p>
           </Content>
           <Content title="Who can mint a Chain Dreamer during phase 1?">
             <p>
@@ -109,9 +105,7 @@ function Faq() {
             </p>
           </Content>
           <Content title="Who can mint a Chain Dreamer during phase 2?">
-            <p>
-              Phase 2 will open exactly 7 days after the beginning of phase 1.
-            </p>
+            <p>Phase 2 will open a few days after the beginning of phase 1.</p>
             <p>
               If all Chain Dreamers have been mintet during Phase 1, there will
               be no phase 2.
@@ -123,13 +117,7 @@ function Faq() {
             </p>
           </Content>
           <Content title="What is the mint price?">
-            <p>During phase 1, mint price is 0.06 ETH + gas fees.</p>
-            <p>During phase 2, mint price is 0.08 ETH + gas fees.</p>
-            <p>
-              During phase 1, you will have to pay gas fees twice. Once for
-              buying your chosen drug and once for the minting. We have decided
-              to optimize the narrative over the minting experience cost.
-            </p>
+            <p>TBD</p>
           </Content>
           <Content title="How to mint a Chain Dreamer during phase 1?">
             <p>

@@ -117,12 +117,12 @@ function Story() {
               curves. All this on the chain, by the chain, for the chain.
             </p>
             <p>
-              Mega City is a hard place to live under Somnus and escaping this
-              world is a necessity for any well respected renegade.
+              And the sooner you take the drug once mint is open, the stronger
+              the effects.
             </p>
             <p>
-              Those are common effects, but in reality, all runners tell
-              different stories about their experiences. Tell us yours on our{" "}
+              But in reality, all runners tell different stories about their
+              experiences. Tell us yours on our{" "}
               <Link href="https://discord.gg/p583xTn4" target="_blank">
                 dedicated Discord chan
               </Link>
@@ -227,7 +227,7 @@ function Story() {
             </Box>
           </Content>
           <Content title="Sneak peak">
-            <p>Here are a few Chain Dreamers.</p>
+            <p>Here are a few Chain Dreamers under Helium Spice.</p>
             <Box
               sx={{
                 textAlign: "center",
