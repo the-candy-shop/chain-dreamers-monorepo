@@ -105,7 +105,7 @@ function TraitsChangeTable({ drug, sx }: TraitsChangeTableProps) {
         marginBottom="48px"
         color={drugsColors[drug]}
       >
-        List of all {drug.toString()} effects, by trait
+        List of {drug.toString()} effects, by trait
       </Box>
       <Box>
         {enumKeys(Traits).map((traitKey) => {
