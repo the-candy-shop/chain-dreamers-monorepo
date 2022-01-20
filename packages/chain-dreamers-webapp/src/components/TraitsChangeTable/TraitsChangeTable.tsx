@@ -17,7 +17,7 @@ const shuffleImages = {
   [DrugList.HeliumSpice]: shuffleHeliumSpice,
 };
 
-const drugsColors = {
+export const drugsColors = {
   [DrugList.ChainMeth]: "#008aff",
   [DrugList.SomnusTears]: "#ff0200",
   [DrugList.HeliumSpice]: "#b101e6",

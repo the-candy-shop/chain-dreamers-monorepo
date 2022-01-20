@@ -1,18 +1,6 @@
 import React from "react";
 import Link from "@mui/material/Link";
-import Tooltip, { tooltipClasses, TooltipProps } from "@mui/material/Tooltip";
-import { styled } from "@mui/material/styles";
-
-const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
-  <Tooltip {...props} classes={{ popper: className }} />
-))(() => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: "black",
-    color: "#44DFFD",
-    border: "1px solid #AC0BF7",
-    borderRadius: "4px",
-  },
-}));
+import CustomTooltip from "../CustomTooltip/CustomTooltip";
 
 type FooterLinkProps = {
   src: string;

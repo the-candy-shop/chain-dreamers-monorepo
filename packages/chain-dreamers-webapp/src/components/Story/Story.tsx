@@ -26,6 +26,7 @@ import ChainDreamer6482 from "./Chain_Dreamer_6482.png";
 import ChainDreamer9027 from "./Chain_Dreamer_9027.png";
 import TraitsChangeTable, {
   DrugList,
+  drugsColors,
 } from "../TraitsChangeTable/TraitsChangeTable";
 
 const beforeAfterRunnerDreamer = [
@@ -131,7 +132,10 @@ function Story() {
               .
             </p>
           </Content>
-          <Content title="Chain-Meth effects">
+          <Content
+            title="Chain-Meth"
+            titleColor={drugsColors[DrugList.ChainMeth]}
+          >
             <p>
               Chain-Meth tends to act very quickly, producing an almost instant
               escape feeling. It is the strongest way to find inspiration to
@@ -163,7 +167,10 @@ function Story() {
               />
             </Box>
           </Content>
-          <Content title="Somnus Tears effects">
+          <Content
+            title="Somnus Tears"
+            titleColor={drugsColors[DrugList.SomnusTears]}
+          >
             <p>
               Somnus tears sends consciousness to a dream world where your
               identity is lost, like tears in rain. In there, you are not
@@ -195,7 +202,10 @@ function Story() {
               />
             </Box>
           </Content>
-          <Content title="Helium Spice effects">
+          <Content
+            title="Helium Spice"
+            titleColor={drugsColors[DrugList.HeliumSpice]}
+          >
             <p>
               Helium Spice is the finest drug you can find in the Candy Shop.
               The only one that can release your spirit high without wrecking

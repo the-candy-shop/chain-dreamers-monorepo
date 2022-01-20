@@ -5,7 +5,8 @@ import banner from "./banner.png";
 import Content from "../Content/Content";
 import Link from "@mui/material/Link";
 import { Link as InnerLink } from "react-router-dom";
-import { useMediaQuery } from "@mui/material";
+import { Tooltip, useMediaQuery } from "@mui/material";
+import CustomTooltip from "../CustomTooltip/CustomTooltip";
 
 function Faq() {
   const isMobile = useMediaQuery("(max-width:915px)");
@@ -89,7 +90,7 @@ function Faq() {
             <p>
               10k.
               <br />
-              Every 10k Chain Runner have its associated Chain Dreamer.
+              Every 10k Chain Runner has its associated Chain Dreamer.
             </p>
           </Content>
           <Content title="When does the Candy Shop open for minting?">
@@ -113,7 +114,7 @@ function Faq() {
             <p>
               If there are Chain Dreamers left to be minted, our team will keep
               50 of them and the remaining Chain Dreamers will be mintable by
-              people on the White List.
+              anyone.
             </p>
           </Content>
           <Content title="What is the mint price?">
@@ -122,10 +123,18 @@ function Faq() {
           <Content title="How to mint a Chain Dreamer during phase 1?">
             <p>
               First, you buy as many drug flasks as Chain Dreamers you want to
-              mint in the Candy Shop.
+              mint in the{" "}
+              <CustomTooltip title="Soon">
+                <Link>Candy Shop</Link>
+              </CustomTooltip>
+              .
             </p>
             <p>
-              Then you go down to the Basement and give it to your Runner(s).
+              Then you go down to the{" "}
+              <CustomTooltip title="Soon">
+                <Link>Basement</Link>
+              </CustomTooltip>{" "}
+              and give it to your Runner(s).
             </p>
             <p>Eventually, your dreamer is minted.</p>
           </Content>

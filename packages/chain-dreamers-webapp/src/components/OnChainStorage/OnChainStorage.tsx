@@ -33,7 +33,7 @@ function OnChainStorage() {
           <Content title="TL;DR">
             <ul>
               <li>
-                On-chain storage feels right as it enable JPEG to live as long
+                On-chain storage feels right as it enable images to live as long
                 as the underlying blockchain
               </li>
               <li>We pioneered bringing more complex images on-chain</li>

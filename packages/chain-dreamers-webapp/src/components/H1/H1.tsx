@@ -1,12 +1,13 @@
 import React from "react";
-import Box from "@mui/material/Box";
+import Box, { BoxProps } from "@mui/material/Box";
 import { useMediaQuery } from "@mui/material";
 
 type H1Props = {
   children: React.ReactNode;
+  sx?: BoxProps["sx"];
 };
 
-function H1({ children }: H1Props) {
+function H1({ children, sx }: H1Props) {
   const isMobile = useMediaQuery("(max-width:915px)");
 
   return (
@@ -15,6 +16,7 @@ function H1({ children }: H1Props) {
         fontWeight: "bold",
         fontSize: isMobile ? "32px" : "40px",
         marginBottom: "24px",
+        ...sx,
       }}
     >
       {children}

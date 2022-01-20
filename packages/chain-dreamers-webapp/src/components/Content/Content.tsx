@@ -5,10 +5,11 @@ import { useMediaQuery } from "@mui/material";
 
 type ContentProps = {
   title: string;
+  titleColor?: string;
   children: React.ReactNode;
 };
 
-function Content({ children, title }: ContentProps) {
+function Content({ children, title, titleColor }: ContentProps) {
   const isMobile = useMediaQuery("(max-width:915px)");
 
   return (
@@ -44,7 +45,7 @@ function Content({ children, title }: ContentProps) {
         },
       }}
     >
-      <H1>{title}</H1>
+      <H1 sx={{ color: titleColor }}>{title}</H1>
       {children}
     </Box>
   );
