@@ -28,7 +28,7 @@ export const normalizeD = (d: string): string => {
 
 export const inlineTrait = (trait: Trait): string => {
   return trait
-    .map(({ d, fill }) => `d: ${d}; fill: ${fill}; `)
+    .map(({ d, fill, stroke }) => `d: ${d}; fill: ${fill}; stroke: ${stroke};`)
     .join(" ")
     .trim();
 };

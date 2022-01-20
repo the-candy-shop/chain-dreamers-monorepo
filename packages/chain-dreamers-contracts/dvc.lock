@@ -4,8 +4,8 @@ stages:
     cmd: python image_processing/parse_svg.py
     deps:
     - path: assets/VALISE_CHAIN_DREAMERS_TRAITS
-      md5: 877c82d0baf393777dc35da7107b9698.dir
-      size: 1010273
+      md5: 60bc5f94959e802700b619926a65ad4e.dir
+      size: 1010274
       nfiles: 385
     - path: image_processing/parse_svg.py
       md5: a2b106ef258c7bdbdb00b568657ed188
@@ -79,9 +79,9 @@ stages:
     cmd: npx hardhat deploy
     deps:
     - path: deploy
-      md5: c7361cfe784dca176abdbc57b0ea078e.dir
-      size: 5612
-      nfiles: 5
+      md5: 9716392637675d5f393ece962e0c0d00.dir
+      size: 7004
+      nfiles: 7
     - path: palettes-storage.json
       md5: f02770174e11924d899d8c22ffbe1929
       size: 245253
