@@ -26,7 +26,6 @@ function RemainingTimeBlock() {
         paddingBottom: "12px",
         border: "1px solid #DA4A8A",
         textAlign: "center",
-        marginTop: "40px",
       }}
     >
       The Shop closes in {remainingDays} days, {remainingHours} hours,{" "}

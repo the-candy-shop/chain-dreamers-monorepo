@@ -24,10 +24,8 @@ import ChainDreamer111 from "./Chain_Dreamer_111.png";
 import ChainDreamer6025 from "./Chain_Dreamer_6025.png";
 import ChainDreamer6482 from "./Chain_Dreamer_6482.png";
 import ChainDreamer9027 from "./Chain_Dreamer_9027.png";
-import TraitsChangeTable, {
-  DrugList,
-  drugsColors,
-} from "../TraitsChangeTable/TraitsChangeTable";
+import { DrugList, drugsColors } from "../../drugs";
+import TraitsChangeTable from "../TraitsChangeTable/TraitsChangeTable";
 
 const beforeAfterRunnerDreamer = [
   {

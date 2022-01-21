@@ -1,17 +1,24 @@
 import ShopPanels from "../ShopPanels/ShopPanels";
-import Box from "@mui/material/Box";
+import Box, { BoxProps } from "@mui/material/Box";
 import React from "react";
 import jaz from "./jaz.png";
 import Typist from "react-typist";
 
-function Jaz() {
+type JazProps = {
+  sx?: BoxProps["sx"];
+};
+
+function Jaz({ sx }: JazProps) {
   return (
-    <ShopPanels title="Jaz, the Candy Shop owner" sx={{ marginTop: "24px" }}>
+    <ShopPanels title="Jaz, the Candy Shop owner" sx={sx}>
       <Box
         sx={{
           padding: "24px 50px",
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
+          justifyContent: "center",
+          flex: 1,
         }}
       >
         <Box>
@@ -21,16 +28,17 @@ function Jaz() {
           sx={{
             fontSize: "20px",
             fontFamily: "Share Tech Mono",
-            marginLeft: "24px",
-            padding: "60px 0",
+            padding: "60px 35px",
+            textAlign: "center",
           }}
         >
           <Typist>
-            Mettre ici une phrase de bienvenue du tenancier et explication sur à
-            quoi sert le candy.
+            Hello! My name is Jaz, I am the Candy Shop Runner. I successfully
+            identified you as a verified Chain Runner. Usually I sell regular
+            candies, but you seam pretty informed.
             <br />
-            Mettre ici une phrase de bienvenue du tenancier et explication sur à
-            quoi sert le candy.
+            Indeed, I have a few things that you might be interested in. But be
+            carefull, never speak about it to Somnus.
           </Typist>
         </Box>
       </Box>

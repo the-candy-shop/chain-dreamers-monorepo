@@ -1,57 +1,66 @@
 import ShopPanels from "../ShopPanels/ShopPanels";
 import Box from "@mui/material/Box";
 import React from "react";
-import jaz from "./jaz.png";
-import Typist from "react-typist";
-import heliumSpice from "./helium-spice.png";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Button from "@mui/material/Button";
-import { heliumSpicePrice } from "../../config";
+import { drugPrice } from "../../config";
 import { useRunnerIds } from "../../hooks/useRunnerIds";
+import FlaskQuantitySelector from "./FlaskQuantitySelector";
+import { DrugList } from "../../drugs";
+import { Link } from "react-router-dom";
 
 function MyOrder() {
-  const [heliumSpiceQuantity, setHeliumSpiceQuantity] =
-    React.useState<number>(0);
-  const addHeliumSpice = React.useCallback(
-    () => setHeliumSpiceQuantity((previous) => previous + 1),
-    []
-  );
-  const removeHeliumSpice = React.useCallback(
-    () =>
-      setHeliumSpiceQuantity((previous) => {
-        if (previous > 0) return previous - 1;
-        return previous;
+  const [quantity, setQuantity] = React.useState<Record<DrugList, number>>({
+    [DrugList.ChainMeth]: 0,
+    [DrugList.HeliumSpice]: 0,
+    [DrugList.SomnusTears]: 0,
+  });
+
+  const setChainMethQuantity = React.useCallback(
+    (chainMethQuantity: number) =>
+      setQuantity({
+        ...quantity,
+        [DrugList.ChainMeth]: chainMethQuantity,
       }),
-    []
+    [quantity]
+  );
+
+  const setHeliumSpiceQuantity = React.useCallback(
+    (heliumSpiceQuantity: number) =>
+      setQuantity({
+        ...quantity,
+        [DrugList.HeliumSpice]: heliumSpiceQuantity,
+      }),
+    [quantity]
+  );
+
+  const setSomnusTearsQuantity = React.useCallback(
+    (somnusTearsQuantity: number) =>
+      setQuantity({
+        ...quantity,
+        [DrugList.SomnusTears]: somnusTearsQuantity,
+      }),
+    [quantity]
   );
 
   const runnerCount = useRunnerIds();
   console.log("runnerCount", runnerCount);
 
+  const total = React.useMemo(
+    () =>
+      quantity[DrugList.ChainMeth] +
+      quantity[DrugList.HeliumSpice] +
+      quantity[DrugList.SomnusTears],
+    [quantity]
+  );
+
   return (
     <ShopPanels title="My order" sx={{ flex: 1 }}>
       <Box sx={{ padding: "24px 110px 46px 110px", textAlign: "center" }}>
         <Box sx={{ margin: "18px 46px 24px 46px" }}>
-          <img alt="Jaz" src={jaz} style={{ width: "48px" }} />
-          <Box
-            sx={{
-              fontSize: "20px",
-              fontFamily: "Share Tech Mono",
-              marginTop: "24px",
-            }}
-          >
-            <Typist>
-              OK, here is something that will make you dream for a while...
-            </Typist>
-          </Box>
           <Box sx={{ marginTop: "24px" }}>
-            <img
-              src={heliumSpice}
-              alt="Helium Spice"
-              style={{ height: "200px" }}
-            />
             <Box
               sx={{
                 fontWeight: 600,
@@ -59,67 +68,58 @@ function MyOrder() {
                 marginTop: "24px",
               }}
             >
-              PLEASE SELECT A FLASK QUANTITY
+              PLEASE SELECT THE NEEDED FLASK QUANTITY
             </Box>
-            <Box
-              sx={{
-                marginTop: "12px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <IconButton
-                aria-label="Remove Helium Spice"
-                onClick={removeHeliumSpice}
-                sx={{
-                  border: "1px solid #AC0BF7",
-                  borderRadius: 0,
-                  color: "#44DFFD",
-                }}
-              >
-                <RemoveIcon />
-              </IconButton>
-              <Box
-                sx={{
-                  fontSize: "24px",
-                  marginRight: "35px",
-                  marginLeft: "35px",
-                }}
-              >
-                {heliumSpiceQuantity}
-              </Box>
-              <IconButton
-                aria-label="Add Helium Spice"
-                onClick={addHeliumSpice}
-                sx={{
-                  border: "1px solid #AC0BF7",
-                  borderRadius: 0,
-                  color: "#44DFFD",
-                }}
-              >
-                <AddIcon />
-              </IconButton>
+            <Box marginTop="44px">
+              <FlaskQuantitySelector
+                quantity={quantity[DrugList.ChainMeth]}
+                setQuantity={setChainMethQuantity}
+                drug={DrugList.ChainMeth}
+                sx={{ marginBottom: "24px" }}
+              />
+              <FlaskQuantitySelector
+                quantity={quantity[DrugList.SomnusTears]}
+                setQuantity={setSomnusTearsQuantity}
+                drug={DrugList.SomnusTears}
+                sx={{ marginBottom: "24px" }}
+              />
+              <FlaskQuantitySelector
+                quantity={quantity[DrugList.HeliumSpice]}
+                setQuantity={setHeliumSpiceQuantity}
+                drug={DrugList.HeliumSpice}
+                sx={{ marginBottom: "24px" }}
+              />
             </Box>
             <Button
               variant="contained"
               sx={{
-                marginTop: "24px",
+                marginTop: "20px",
                 fontSize: "20px",
                 fontWeight: 600,
                 padding: "12px 24px",
                 color: "black",
                 background: "#44DFFD",
 
+                "&.Mui-disabled": {
+                  background: "rgba(68,223,253,.2)",
+                },
+
                 "&:hover": {
                   background: "#44DFFD",
                 },
               }}
+              disabled={total === 0}
             >
-              Buy for {heliumSpicePrice} ETH
+              Buy{total !== 0 && ` for ${drugPrice * total} ETH`}
             </Button>
-            <Box sx={{ marginTop: "24px", fontSize: "15px" }}>
-              1 Helium Spice Flask is needed to mint 1 Chain Dreamer
+            <Box sx={{ marginTop: "44px", fontSize: "15px" }}>
+              At least 1 Flask of drug is needed to mint 1 Dreamer.{" "}
+              <Link
+                to="/faq"
+                style={{ color: "#44DFFD", textDecoration: "none" }}
+              >
+                Learn More
+              </Link>
             </Box>
           </Box>
         </Box>

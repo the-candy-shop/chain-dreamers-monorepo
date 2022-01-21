@@ -4,23 +4,12 @@ import shuffleChainMeth from "./shuffle-chain-meth.png";
 import shuffleHeliumSpice from "./shuffle-helium-spice.png";
 import shuffleSomnusTears from "./shuffle-somnus-tears.png";
 import { useMediaQuery } from "@mui/material";
-
-export enum DrugList {
-  ChainMeth = "Chain Meth",
-  SomnusTears = "Somnus Tears",
-  HeliumSpice = "Helium Spice",
-}
+import { DrugList, drugsColors } from "../../drugs";
 
 const shuffleImages = {
   [DrugList.ChainMeth]: shuffleChainMeth,
   [DrugList.SomnusTears]: shuffleSomnusTears,
   [DrugList.HeliumSpice]: shuffleHeliumSpice,
-};
-
-export const drugsColors = {
-  [DrugList.ChainMeth]: "#008aff",
-  [DrugList.SomnusTears]: "#ff0200",
-  [DrugList.HeliumSpice]: "#b101e6",
 };
 
 export enum Traits {

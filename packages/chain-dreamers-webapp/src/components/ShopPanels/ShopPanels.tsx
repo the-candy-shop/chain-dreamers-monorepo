@@ -32,7 +32,12 @@ function ShopPanels({ title, children, sx }: ShopPanelsProps) {
       </Box>
       <Box
         className="content"
-        sx={{ border: "1px solid #DA4A8A", borderTop: 0, flex: 1 }}
+        sx={{
+          border: "1px solid #DA4A8A",
+          borderTop: 0,
+          flex: 1,
+          display: "flex",
+        }}
       >
         {children}
       </Box>
