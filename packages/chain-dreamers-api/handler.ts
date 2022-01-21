@@ -17,15 +17,23 @@ const Provider = ethers.getDefaultProvider(process.env.NETWORK, {
 });
 const Signer = ethers.Wallet.createRandom().connect(Provider);
 
+const MainnetProvider = ethers.getDefaultProvider("mainnet", {
+  infura: process.env.INFURA_ID,
+  etherscan: process.env.ETHERSCAN_API_KEY,
+  alchemy: process.env.ALCHEMY_API_KEY,
+  pocket: process.env.POCKET_APPLICATION_KEY,
+});
+const MainnetSigner = ethers.Wallet.createRandom().connect(MainnetProvider);
+
 const runnersContractData =
   contract[chainId][network].contracts["ChainRunners"];
 const dreamersRendererContractData =
   contract[chainId][network].contracts["DreamersRenderer"];
 
 const RunnersContract = new ethers.Contract(
-  runnersContractData.address,
+  "0x97597002980134beA46250Aa0510C9B90d87A587",
   runnersContractData.abi,
-  Signer
+  MainnetSigner
 );
 
 const DreamersRendererContract = new ethers.Contract(
