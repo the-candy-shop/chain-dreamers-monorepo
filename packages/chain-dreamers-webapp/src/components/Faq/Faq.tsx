@@ -9,7 +9,7 @@ import { useMediaQuery } from "@mui/material";
 import CustomTooltip from "../CustomTooltip/CustomTooltip";
 
 function Faq() {
-  const isMobile = useMediaQuery("(max-width:915px)");
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
 
   return (
     <Box>
@@ -19,7 +19,7 @@ function Faq() {
           marginTop: "96px",
           display: "flex",
           justifyContent: "center",
-          padding: isMobile ? "0 16px" : 0,
+          padding: isSmallWidth ? "0 16px" : 0,
         }}
       >
         <Box sx={{ maxWidth: "850px" }}>

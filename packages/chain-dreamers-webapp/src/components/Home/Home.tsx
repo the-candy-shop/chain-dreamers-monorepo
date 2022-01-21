@@ -6,16 +6,16 @@ import ConnectButton from "../ConnectButton/ConnectButton";
 import HeaderLink from "../HeaderLink/HeaderLink";
 
 function Home() {
-  const isMobile = useMediaQuery("(max-width:915px)");
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
 
   return (
     <>
-      {!isMobile && (
+      {!isSmallWidth && (
         <Box sx={{ "& .background": { width: "100%" }, marginBottom: "84px" }}>
           <img alt="Candy Shop" src={background} className="background" />
         </Box>
       )}
-      {isMobile && (
+      {isSmallWidth && (
         <Box
           sx={{
             background: `url(${background})`,

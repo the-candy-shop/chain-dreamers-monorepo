@@ -10,26 +10,26 @@ import { useEthers } from "@usedapp/core";
 import { useIsOpen } from "../../hooks/useIsOpen";
 
 function Header() {
-  const isMobile = useMediaQuery("(max-width:915px)");
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
   const { account } = useEthers();
   const { isCandyShopOpen } = useIsOpen();
 
   return (
     <Box
       sx={{
-        height: isMobile ? "80px" : "107px",
+        height: isSmallWidth ? "80px" : "107px",
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: isMobile ? "center" : "space-between",
+        justifyContent: isSmallWidth ? "center" : "space-between",
       }}
     >
       <Link to="/">
         <Box
           sx={{
-            "& .logo": { height: isMobile ? "55px" : "68px" },
-            height: isMobile ? "55px" : "68px",
-            marginLeft: isMobile ? "0" : "32px",
+            "& .logo": { height: isSmallWidth ? "55px" : "68px" },
+            height: isSmallWidth ? "55px" : "68px",
+            marginLeft: isSmallWidth ? "0" : "32px",
           }}
         >
           <img src={logo} alt="logo" className="logo" />
@@ -38,7 +38,7 @@ function Header() {
       <Box
         sx={{
           flexDirection: "row",
-          display: isMobile ? "none" : "flex",
+          display: isSmallWidth ? "none" : "flex",
         }}
       >
         {account && isCandyShopOpen && (

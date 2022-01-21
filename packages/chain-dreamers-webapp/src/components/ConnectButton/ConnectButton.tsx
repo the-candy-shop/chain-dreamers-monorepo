@@ -1,18 +1,34 @@
 import React from "react";
+import { isMobile } from "react-device-detect";
 import Button, { ButtonProps } from "@mui/material/Button";
 import WalletConnectDialog from "../WalletConnectDialog/WalletConnectDialog";
 import { useEthers } from "@usedapp/core";
 import { useIsLaunched } from "../../hooks/useIsLaunched";
+import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
+import config, { CHAIN_ID } from "../../config";
 
 type CountDownButtonProps = Pick<ButtonProps, "sx">;
 
 function ConnectButton({ sx }: CountDownButtonProps) {
-  const { account } = useEthers();
+  const supportedChainIds = [CHAIN_ID];
+  const { activate, account } = useEthers();
 
   const [connectDialogOpen, setConnectDialogOpen] =
     React.useState<boolean>(false);
+
+  const openConnectDialogMobile = React.useCallback(async () => {
+    const walletlink = new WalletConnectConnector({
+      supportedChainIds,
+      chainId: CHAIN_ID,
+      rpc: {
+        [CHAIN_ID]: config.app.jsonRpcUri,
+      },
+    });
+    await activate(walletlink);
+  }, []);
+
   const openConnectDialog = React.useCallback(
-    () => setConnectDialogOpen(true),
+    () => (isMobile ? openConnectDialogMobile() : setConnectDialogOpen(true)),
     []
   );
   const closeConnectDialog = React.useCallback(

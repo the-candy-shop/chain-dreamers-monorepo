@@ -8,20 +8,20 @@ import { useLocation } from "react-router-dom";
 
 function App() {
   const location = useLocation();
-  const isMobile = useMediaQuery("(max-width:915px)");
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
   const isHome = location.pathname === "/";
 
   return (
     <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
       <Box
         sx={{
-          width: isMobile ? "100%" : "calc(100vw - 192px)",
+          width: isSmallWidth ? "100%" : "calc(100vw - 192px)",
           minHeight: "100vh",
         }}
       >
         <Header />
         <RoutesWrapper />
-        <Footer fixed={!isMobile && isHome} />
+        <Footer fixed={!isSmallWidth && isHome} />
       </Box>
     </Box>
   );

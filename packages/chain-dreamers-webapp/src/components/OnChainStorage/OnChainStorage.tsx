@@ -7,7 +7,7 @@ import { useMediaQuery } from "@mui/material";
 import Link from "@mui/material/Link";
 
 function OnChainStorage() {
-  const isMobile = useMediaQuery("(max-width:915px)");
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
 
   React.useEffect(() => {
     // @ts-ignore
@@ -26,7 +26,7 @@ function OnChainStorage() {
           marginTop: "96px",
           display: "flex",
           justifyContent: "center",
-          padding: isMobile ? "0 16px" : 0,
+          padding: isSmallWidth ? "0 16px" : 0,
         }}
       >
         <Box sx={{ maxWidth: "895px" }}>

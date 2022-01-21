@@ -9,7 +9,7 @@ type TeamMemberProps = {
 };
 
 function TeamMember({ name, children, image }: TeamMemberProps) {
-  const isMobile = useMediaQuery("(max-width:915px)");
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
 
   return (
     <Box sx={{ textAlign: "center", marginBottom: "64px" }}>
@@ -23,7 +23,7 @@ function TeamMember({ name, children, image }: TeamMemberProps) {
       <Box
         sx={{
           fontWeight: "bold",
-          fontSize: isMobile ? "32px" : "40px",
+          fontSize: isSmallWidth ? "32px" : "40px",
           marginTop: "32px",
         }}
       >
@@ -31,7 +31,7 @@ function TeamMember({ name, children, image }: TeamMemberProps) {
       </Box>
       <Box
         sx={{
-          fontSize: isMobile ? "20px" : "24px",
+          fontSize: isSmallWidth ? "20px" : "24px",
           marginTop: "32px",
         }}
       >

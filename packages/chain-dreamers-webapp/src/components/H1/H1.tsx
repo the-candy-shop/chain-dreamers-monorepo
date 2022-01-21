@@ -8,13 +8,13 @@ type H1Props = {
 };
 
 function H1({ children, sx }: H1Props) {
-  const isMobile = useMediaQuery("(max-width:915px)");
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
 
   return (
     <Box
       sx={{
         fontWeight: "bold",
-        fontSize: isMobile ? "32px" : "40px",
+        fontSize: isSmallWidth ? "32px" : "40px",
         marginBottom: "24px",
         ...sx,
       }}

@@ -93,7 +93,7 @@ type TraitsChangeTableProps = {
 };
 
 function TraitsChangeTable({ drug, sx }: TraitsChangeTableProps) {
-  const isMobile = useMediaQuery("(max-width:915px)");
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
   const changesTraits = TraitChangesForDrugs[drug];
   const shuffle = shuffleImages[drug];
 
@@ -101,7 +101,7 @@ function TraitsChangeTable({ drug, sx }: TraitsChangeTableProps) {
     <Box sx={sx}>
       <Box
         fontWeight="bold"
-        fontSize={isMobile ? "18px" : "24px"}
+        fontSize={isSmallWidth ? "18px" : "24px"}
         marginBottom="48px"
         color={drugsColors[drug]}
       >
@@ -120,7 +120,7 @@ function TraitsChangeTable({ drug, sx }: TraitsChangeTableProps) {
               alignItems="center"
               sx={{ "&:last-child": { border: 0 } }}
             >
-              <Box fontWeight="600" fontSize={isMobile ? "14px" : "16px"}>
+              <Box fontWeight="600" fontSize={isSmallWidth ? "14px" : "16px"}>
                 {traitName}
               </Box>
               <Box display="flex" flexDirection="column" alignItems="center">
@@ -128,8 +128,8 @@ function TraitsChangeTable({ drug, sx }: TraitsChangeTableProps) {
                   alt="effect"
                   src={changesTraits[traitName] === 0 ? equal : shuffle}
                   style={{
-                    height: isMobile ? "18px" : "31px",
-                    width: isMobile ? "18px" : "31px",
+                    height: isSmallWidth ? "18px" : "31px",
+                    width: isSmallWidth ? "18px" : "31px",
                   }}
                 />
                 {changesTraits[traitName] !== 0 &&

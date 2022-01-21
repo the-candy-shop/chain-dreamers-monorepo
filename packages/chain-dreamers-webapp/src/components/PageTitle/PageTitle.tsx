@@ -8,13 +8,13 @@ type PageTitleProps = {
 };
 
 function PageTitle({ label, background }: PageTitleProps) {
-  const isMobile = useMediaQuery("(max-width:915px)");
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
 
   return (
     <Box
       sx={{
         width: "100%",
-        height: isMobile ? "400px" : "450px",
+        height: isSmallWidth ? "400px" : "450px",
         backgroundImage: `url(${background})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -27,9 +27,9 @@ function PageTitle({ label, background }: PageTitleProps) {
     >
       <Box
         sx={{
-          padding: isMobile ? "32px 45px" : "40px 72px",
+          padding: isSmallWidth ? "32px 45px" : "40px 72px",
           fontWeight: "bold",
-          fontSize: isMobile ? "28px" : "40px",
+          fontSize: isSmallWidth ? "28px" : "40px",
           background: "black",
           display: "flex",
           alignItems: "center",

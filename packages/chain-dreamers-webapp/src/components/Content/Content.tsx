@@ -10,7 +10,7 @@ type ContentProps = {
 };
 
 function Content({ children, title, titleColor }: ContentProps) {
-  const isMobile = useMediaQuery("(max-width:915px)");
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
 
   return (
     <Box
@@ -18,13 +18,13 @@ function Content({ children, title, titleColor }: ContentProps) {
         marginBottom: "72px",
 
         "& p": {
-          fontSize: isMobile ? "20px" : "24px",
-          lineHeight: isMobile ? "30px" : "36px",
+          fontSize: isSmallWidth ? "20px" : "24px",
+          lineHeight: isSmallWidth ? "30px" : "36px",
         },
 
         "& ul": {
-          fontSize: isMobile ? "20px" : "24px",
-          lineHeight: isMobile ? "30px" : "36px",
+          fontSize: isSmallWidth ? "20px" : "24px",
+          lineHeight: isSmallWidth ? "30px" : "36px",
         },
 
         "& code": {

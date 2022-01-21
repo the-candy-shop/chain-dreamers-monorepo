@@ -73,7 +73,7 @@ const beforeAfterRunnerDreamer = [
 ];
 
 function Story() {
-  const isMobile = useMediaQuery("(max-width:915px)");
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
 
   return (
     <Box>
@@ -83,7 +83,7 @@ function Story() {
           marginTop: "96px",
           display: "flex",
           justifyContent: "center",
-          padding: isMobile ? "0 16px" : 0,
+          padding: isSmallWidth ? "0 16px" : 0,
         }}
       >
         <Box sx={{ maxWidth: "895px" }}>
@@ -152,13 +152,13 @@ function Story() {
               marginTop="64px"
               sx={{
                 "& .spice-effects": {
-                  width: isMobile ? "150px" : "200px",
+                  width: isSmallWidth ? "150px" : "200px",
                 },
               }}
             >
               <TraitsChangeTable
                 drug={DrugList.ChainMeth}
-                sx={{ marginRight: isMobile ? "32px" : "120px", flex: 1 }}
+                sx={{ marginRight: isSmallWidth ? "32px" : "120px", flex: 1 }}
               />
               <img
                 alt="Chain Meth effects"
@@ -187,13 +187,13 @@ function Story() {
               marginTop="64px"
               sx={{
                 "& .spice-effects": {
-                  width: isMobile ? "150px" : "200px",
+                  width: isSmallWidth ? "150px" : "200px",
                 },
               }}
             >
               <TraitsChangeTable
                 drug={DrugList.SomnusTears}
-                sx={{ marginRight: isMobile ? "32px" : "120px", flex: 1 }}
+                sx={{ marginRight: isSmallWidth ? "32px" : "120px", flex: 1 }}
               />
               <img
                 alt="Somnus Tears effects"
@@ -223,13 +223,13 @@ function Story() {
               marginTop="64px"
               sx={{
                 "& .spice-effects": {
-                  width: isMobile ? "150px" : "200px",
+                  width: isSmallWidth ? "150px" : "200px",
                 },
               }}
             >
               <TraitsChangeTable
                 drug={DrugList.HeliumSpice}
-                sx={{ marginRight: isMobile ? "32px" : "120px", flex: 1 }}
+                sx={{ marginRight: isSmallWidth ? "32px" : "120px", flex: 1 }}
               />
               <img
                 alt="Helium Spice effects"
@@ -253,11 +253,11 @@ function Story() {
                     justifyContent: "center",
                     marginBottom: "32px",
                     "& .runner": {
-                      width: isMobile ? "125px" : "250px",
+                      width: isSmallWidth ? "125px" : "250px",
                       borderRadius: "8px",
                     },
                     "& .dreamer": {
-                      width: isMobile ? "125px" : "250px",
+                      width: isSmallWidth ? "125px" : "250px",
                       borderRadius: "8px",
                     },
                   }}
