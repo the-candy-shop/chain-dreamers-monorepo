@@ -1,14 +1,17 @@
 import ShopPanels from "../ShopPanels/ShopPanels";
-import Box from "@mui/material/Box";
+import Box, { BoxProps } from "@mui/material/Box";
 import React from "react";
 import Button from "@mui/material/Button";
 import { drugPrice } from "../../config";
-import { useRunnerIds } from "../../hooks/useRunnerIds";
 import FlaskQuantitySelector from "./FlaskQuantitySelector";
 import { DrugList } from "../../drugs";
 import { Link } from "react-router-dom";
 
-function MyOrder() {
+type MyOrderProps = {
+  sx?: BoxProps["sx"];
+};
+
+function MyOrder({ sx }: MyOrderProps) {
   const [quantity, setQuantity] = React.useState<Record<DrugList, number>>({
     [DrugList.ChainMeth]: 0,
     [DrugList.HeliumSpice]: 0,
@@ -42,9 +45,6 @@ function MyOrder() {
     [quantity]
   );
 
-  const runnerCount = useRunnerIds();
-  console.log("runnerCount", runnerCount);
-
   const total = React.useMemo(
     () =>
       quantity[DrugList.ChainMeth] +
@@ -54,7 +54,7 @@ function MyOrder() {
   );
 
   return (
-    <ShopPanels title="My order" sx={{ flex: 1 }}>
+    <ShopPanels title="My order" sx={{ flex: 1, ...sx }}>
       <Box sx={{ padding: "24px 110px 46px 110px", textAlign: "center" }}>
         <Box sx={{ margin: "18px 46px 24px 46px" }}>
           <Box sx={{ marginTop: "24px" }}>
