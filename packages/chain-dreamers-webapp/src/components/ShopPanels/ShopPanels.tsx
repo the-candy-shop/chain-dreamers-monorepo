@@ -37,6 +37,7 @@ function ShopPanels({ title, children, sx }: ShopPanelsProps) {
           borderTop: 0,
           flex: 1,
           display: "flex",
+          justifyContent: "center",
         }}
       >
         {children}
