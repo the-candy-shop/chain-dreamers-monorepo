@@ -116,8 +116,8 @@ function Faq() {
               Phase 2 will open a few days after the beginning of chapter 1.
             </p>
             <p>
-              If all Chain Dreamers have been mintet during Phase 1, there will
-              be no chapter 2.
+              If all Chain Dreamers have been minteted during chapter 1, there
+              will be no chapter 2.
             </p>
             <p>
               If there are Chain Dreamers left to be minted, our team will keep
