@@ -31,7 +31,7 @@ function Faq() {
                 Chain Runners
               </Link>
               . You have to own a Chain Runner to mint your associated Chain
-              Dreamer during chapter 1.
+              Dreamer during Chapter 1.
             </p>
           </Content>
           <Content title="What is the Candy Shop?">
@@ -102,7 +102,7 @@ function Faq() {
           <Content title="When does the Candy Shop open for minting?">
             <p>TBD</p>
           </Content>
-          <Content title="Who can mint a Chain Dreamer during chapter 1?">
+          <Content title="Who can mint a Chain Dreamer during Chapter 1?">
             <p>
               Only wallets owning Chain Runners can mint the associated Chain
               Dreamers.
@@ -111,13 +111,13 @@ function Faq() {
               You can mint as many Chain Dreamers as you have Chain Runners.
             </p>
           </Content>
-          <Content title="Who can mint a Chain Dreamer during chapter 2?">
+          <Content title="Who can mint a Chain Dreamer during Chapter 2?">
             <p>
-              Chapter 2 will open a few days after the beginning of chapter 1.
+              Chapter 2 will open a few days after the beginning of Chapter 1.
             </p>
             <p>
-              If all Chain Dreamers have been minteted during chapter 1, there
-              will be no chapter 2.
+              If all Chain Dreamers have been minteted during Chapter 1, there
+              will be no Chapter 2.
             </p>
             <p>
               If there are Chain Dreamers left to be minted, our team will keep
@@ -128,7 +128,7 @@ function Faq() {
           <Content title="What is the mint price?">
             <p>TBD</p>
           </Content>
-          <Content title="How to mint a Chain Dreamer during chapter 1?">
+          <Content title="How to mint a Chain Dreamer during Chapter 1?">
             <p>
               First, you buy as many drug flasks as Chain Dreamers you want to
               mint in the{" "}
