@@ -9,8 +9,9 @@ import config, { CHAIN_ID } from "../../config";
 
 type CountDownButtonProps = Pick<ButtonProps, "sx">;
 
+const supportedChainIds = [CHAIN_ID];
+
 function ConnectButton({ sx }: CountDownButtonProps) {
-  const supportedChainIds = [CHAIN_ID];
   const { activate, account } = useEthers();
 
   const [connectDialogOpen, setConnectDialogOpen] =
