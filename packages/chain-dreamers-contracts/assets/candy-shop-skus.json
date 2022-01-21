@@ -1,17 +1,14 @@
 [
   {
     "price": 0.05,
-    "supply": 0,
     "name": "CHAIN_METH"
   },
   {
     "price": 0.05,
-    "supply": 0,
     "name": "SOMNUS_TEARS"
   },
   {
     "price": 0.05,
-    "supply": 0,
     "name": "HELIUM_SPICE"
   }
 ]

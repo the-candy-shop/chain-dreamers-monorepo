@@ -6,18 +6,17 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract CandyShop is ERC1155Pausable, Ownable, ReentrancyGuard {
+import "../interfaces/ICandyShop.sol";
+
+contract CandyShop is ICandyShop, ERC1155Pausable, Ownable, ReentrancyGuard {
     struct SKU {
         uint256 id;
         uint256 price;
-        uint256 supply;
-        uint256 circulating;
         string name;
     }
 
     struct SKUInput {
         uint256 price;
-        uint256 supply;
         string name;
     }
 
@@ -38,13 +37,7 @@ contract CandyShop is ERC1155Pausable, Ownable, ReentrancyGuard {
             uint256 tokenId = names.length;
             skuIds[_skus[i].name] = tokenId;
             names.push(keccak256(bytes(_skus[i].name)));
-            inventory[tokenId] = SKU(
-                tokenId,
-                _skus[i].price,
-                _skus[i].supply,
-                0,
-                _skus[i].name
-            );
+            inventory[tokenId] = SKU(tokenId, _skus[i].price, _skus[i].name);
         }
     }
 
@@ -56,115 +49,60 @@ contract CandyShop is ERC1155Pausable, Ownable, ReentrancyGuard {
     {
         return
             string(
-                abi.encodePacked('{"name": "', inventory[_tokenId].name, '"}')
+                abi.encodePacked(
+                    'data:application/json,{"name": "',
+                    inventory[_tokenId].name,
+                    '"}'
+                )
             );
     }
 
-    modifier inventoryExists() {
-        require(names.length > 0, "The candy shop is empty");
-        _;
-    }
-
-    modifier skuExists(string calldata skuName) {
-        require(
-            names[skuIds[skuName]] == keccak256(bytes(skuName)),
-            "This candy does not exist yet"
-        );
-        _;
-    }
-    modifier skuExist(string[] calldata skuNames) {
-        for (uint256 i = 0; i < skuNames.length; i++) {
-            require(
-                names[skuIds[skuNames[i]]] == keccak256(bytes(skuNames[i])),
-                "This candy does not exist yet"
-            );
-        }
-        _;
-    }
-
-    function enoughSupply(string calldata tokenName, uint256 amount)
-        internal
-        view
-        skuExists(tokenName)
-        returns (bool)
-    {
-        if (inventory[skuIds[tokenName]].supply == 0) {
-            return true;
-        }
-        return
-            inventory[skuIds[tokenName]].circulating + amount <=
-            inventory[skuIds[tokenName]].supply;
-    }
-
-    function mint(string calldata tokenName, uint256 amount)
+    function mint(uint256 tokenId, uint256 amount)
         external
         payable
         nonReentrant
-        inventoryExists
-        skuExists(tokenName)
     {
-        require(enoughSupply(tokenName, amount), "Not enough supply");
+        require(tokenId < names.length, "This candy does not exist yet");
         require(
-            msg.value == inventory[skuIds[tokenName]].price * amount,
+            msg.value == inventory[tokenId].price * amount,
             "You have to pay the price to eat candies"
         );
-
-        _mint(_msgSender(), skuIds[tokenName], amount, "");
-
-        inventory[skuIds[tokenName]].circulating += amount;
+        _mint(_msgSender(), tokenId, amount, "");
     }
 
-    function mintBatch(string[] calldata tokenNames, uint256[] calldata amounts)
+    function mintBatch(uint256[] calldata tokenIds, uint256[] calldata amounts)
         external
         payable
         nonReentrant
-        inventoryExists
-        skuExist(tokenNames)
     {
         uint256 price;
-        uint256[] memory tokenIds = new uint256[](tokenNames.length);
-        for (uint256 i = 0; i < tokenNames.length; i++) {
+        for (uint256 i = 0; i < tokenIds.length; i++) {
             require(
-                enoughSupply(tokenNames[i], amounts[i]),
-                "Not enough supply"
+                tokenIds[i] < names.length,
+                "This candy does not exist yet"
             );
-            price += inventory[skuIds[tokenNames[i]]].price * amounts[i];
-            tokenIds[i] = skuIds[tokenNames[i]];
+            price += inventory[tokenIds[i]].price * amounts[i];
         }
 
         require(msg.value == price, "You have to pay the price to eat candies");
 
         _mintBatch(_msgSender(), tokenIds, amounts, "");
-
-        for (uint256 i = 0; i < tokenNames.length; i++) {
-            inventory[tokenIds[i]].circulating += amounts[i];
-        }
     }
 
-    function burn(string calldata tokenName, uint256 amount)
+    function burn(uint256 tokenId, uint256 amount)
         external
+        override
         nonReentrant
-        inventoryExists
-        skuExists(tokenName)
     {
-        _burn(_msgSender(), skuIds[tokenName], amount);
-        inventory[skuIds[tokenName]].circulating -= amount;
+        _burn(_msgSender(), tokenId, amount);
     }
 
-    function burnBatch(string[] calldata tokenNames, uint256[] calldata amounts)
+    function burnBatch(uint256[] calldata tokenIds, uint256[] calldata amounts)
         external
+        override
         nonReentrant
-        inventoryExists
-        skuExist(tokenNames)
     {
-        uint256[] memory tokenIds = new uint256[](tokenNames.length);
-        for (uint256 i = 0; i < tokenNames.length; i++) {
-            tokenIds[i] = skuIds[tokenNames[i]];
-        }
         _burnBatch(_msgSender(), tokenIds, amounts);
-        for (uint256 i = 0; i < tokenNames.length; i++) {
-            inventory[tokenIds[i]].circulating -= amounts[i];
-        }
     }
 
     constructor(string memory uri_) ERC1155(uri_) {}
