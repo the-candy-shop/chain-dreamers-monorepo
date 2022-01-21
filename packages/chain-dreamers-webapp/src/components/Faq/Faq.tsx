@@ -113,7 +113,7 @@ function Faq() {
           </Content>
           <Content title="Who can mint a Chain Dreamer during chapter 2?">
             <p>
-              Phase 2 will open a few days after the beginning of chapter 1.
+              Chapter 2 will open a few days after the beginning of chapter 1.
             </p>
             <p>
               If all Chain Dreamers have been minteted during chapter 1, there
