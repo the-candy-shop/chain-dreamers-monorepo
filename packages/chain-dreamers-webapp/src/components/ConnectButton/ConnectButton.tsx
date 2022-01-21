@@ -25,7 +25,7 @@ function ConnectButton({ sx }: CountDownButtonProps) {
       },
     });
     await activate(walletlink);
-  }, [activate, supportedChainIds]);
+  }, [activate]);
 
   const openConnectDialog = React.useCallback(
     () => (isMobile ? openConnectDialogMobile() : setConnectDialogOpen(true)),
