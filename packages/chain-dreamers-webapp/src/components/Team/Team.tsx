@@ -10,6 +10,7 @@ import georges from "./georges.png";
 import law from "./law.png";
 import come from "./come.png";
 import Link from "@mui/material/Link";
+import Content from "../Content/Content";
 
 function Team() {
   const isMobile = useMediaQuery("(max-width:915px)");
@@ -26,6 +27,15 @@ function Team() {
         }}
       >
         <Box sx={{ maxWidth: "895px" }}>
+          <Content>
+            <p>
+              We are an autonomous 5 people team and our long-term goal is to
+              bring innovation to the Chain with our lab: the Candy Shop.
+            </p>
+            <p>
+              We have all been working in the web industry for at least 6 years.
+            </p>
+          </Content>
           <TeamMember name="Jaz" image={jaz}>
             Proud holder of a Candy Shop on-chain, passionate web3 product guy
             off-chain.

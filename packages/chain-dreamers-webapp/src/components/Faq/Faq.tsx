@@ -35,13 +35,19 @@ function Faq() {
             </p>
           </Content>
           <Content title="What is the Candy Shop?">
-            <p>Beyond the narrative, the Candy Shop is an NFT research lab.</p>
+            <p>
+              Beyond the narrative,{" "}
+              <Link href="https://thecandyshop.wtf/" target="_blank">
+                The Candy Shop
+              </Link>{" "}
+              is an NFT research lab.
+            </p>
             <p>Chain Dreamer is only our first project.</p>
             <p>We'll keep building new collections with 3 golden rules: </p>
             <ul>
-              <li>derivative on top of the best NFT projects</li>
-              <li>technical innovation</li>
-              <li>great minting experience</li>
+              <li>Innovation mechanism (tech & minting experience)</li>
+              <li>Expanding what we consider the best NFT franchises</li>
+              <li>Narrative-driven</li>
             </ul>
           </Content>
           <Content title="Why creating a derivative on Chain Runners?">

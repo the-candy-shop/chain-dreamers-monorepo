@@ -4,7 +4,7 @@ import H1 from "../H1/H1";
 import { useMediaQuery } from "@mui/material";
 
 type ContentProps = {
-  title: string;
+  title?: string;
   titleColor?: string;
   children: React.ReactNode;
 };
@@ -45,7 +45,7 @@ function Content({ children, title, titleColor }: ContentProps) {
         },
       }}
     >
-      <H1 sx={{ color: titleColor }}>{title}</H1>
+      {title && <H1 sx={{ color: titleColor }}>{title}</H1>}
       {children}
     </Box>
   );
