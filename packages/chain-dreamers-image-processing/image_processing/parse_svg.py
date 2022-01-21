@@ -5,8 +5,12 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import svgpathtools as spt
-
-from image_processing.constants import NONE_COLOR, PALETTES_FILE, TRAITS_ORDERING, VALISE_COMPUTED_DIR, VALISE_DIR
+from image_processing.constants import (
+    NONE_COLOR,
+    PALETTES_FILE,
+    VALISE_COMPUTED_DIR,
+    VALISE_DIR,
+)
 from image_processing.svg_to_path_ordered import svg2paths
 
 #%% Define constants
@@ -103,13 +107,18 @@ traits_codes = (
     )
     .reset_index()
     .assign(
-        trait_category=lambda df: pd.Categorical(
-            df.file.str.split("/", expand=True)[2], categories=TRAITS_ORDERING
-        )
+        layer_index=lambda df: df.file.str.split("/", expand=True)
+        .iloc[:, -1]
+        .str.extract(r"(?P<layer_name>\d+)")
+        .layer_name.astype(int),
+        item_index=lambda df: df.file.str.split("/", expand=True)
+        .iloc[:, -1]
+        .str.extract(r"\d+\-(?P<item_index>\d+)")
+        .item_index.astype(int),
     )
-    .sort_values(["trait_category", "file"])
-    .set_index("file")
-    .drop(columns=["trait_category"])[0]
+    .sort_values(["layer_index", "item_index"])
+    .set_index(["file"])
+    .drop(columns=["layer_index", "item_index"])[0]
 )
 
 #%% Dump reconstructed SVG files for visual check
