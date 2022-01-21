@@ -33,8 +33,8 @@ function OnChainStorage() {
           <Content title="TL;DR">
             <ul>
               <li>
-                On-chain storage feels right as it enable images to live as long
-                as the underlying blockchain
+                On-chain storage feels right as it enables images to live as
+                long as the underlying blockchain lives
               </li>
               <li>We pioneered bringing more complex images on-chain</li>
               <li>
@@ -76,14 +76,14 @@ function OnChainStorage() {
           </Content>
           <Content title="The Chain Runners paradigm">
             <p>
-              The story behind the Dreamers starts in mid-septembre when Jason
-              and I started getting lost into the blockchain world: DeFi, dApps,
-              NFT projets, protocols, WAGMI, wen moon, etc.
+              The story behind the Dreamers started in mid-Septembre when Jason
+              and I started getting lost in the blockchain world: DeFi, dApps,
+              NFT projects, protocols, WAGMI, wen moon, etc.
             </p>
             <p>
-              From a technical point of view, everything was new and to be
-              learnt. On our way to the Dreamers we definitely have to give a
-              huge thank to the eternal{" "}
+              From a technical point of view, everything was new and had to be
+              learnt. On our way to the Dreamers, we definitely have to give a
+              huge thanks to the eternal{" "}
               <Link href="https://cryptozombies.io/" target="_blank">
                 Crypto Zombies
               </Link>{" "}
@@ -95,7 +95,7 @@ function OnChainStorage() {
               <Link href="https://twitter.com/_buildspace" target="_blank">
                 @_buildspace
               </Link>
-              ,{" "}
+              , the
               <Link href="https://twitter.com/HardhatHQ" target="_blank">
                 @HardhatHQ
               </Link>{" "}
@@ -128,9 +128,8 @@ function OnChainStorage() {
             <p>
               Nounders brought us a sort of enlightenment on the philosophy of
               NFTs and technically speaking, on what it takes to start a
-              collection. Publishing their repo truly helped us to start
-              thinking about building on top of something. And then came the
-              Runners.
+              collection. Their published repo truly helped us to start thinking
+              about building on top of something. And then came the Runners.
             </p>
             <p>
               Runners were everything like the Nouns in terms of values and
@@ -139,7 +138,7 @@ function OnChainStorage() {
               built and maintained by the community itself. Mega City is a
               framework for thinking, for creating, for dreaming, collectively.
             </p>
-            <p>Below we go into the technicals details of our work.</p>
+            <p>Below we go into the technical details of our work.</p>
           </Content>
           <Content title="Deep Dive into the Runners rendering contrat">
             <p>
@@ -162,7 +161,7 @@ function OnChainStorage() {
               . By building on top of the Runners with the help of their
               community we were able to reduce by more than 3x the deployment
               cost of the original Runners, combining RLE encoding and
-              concatenation of layers data in few{" "}
+              concatenation of layer data in few{" "}
               <Link
                 href="https://github.com/0xsequence/sstore2"
                 target="_blank"
@@ -180,7 +179,7 @@ function OnChainStorage() {
             <p>
               Both the nouns and the runners use a pixel-based approach, meaning
               that they store a given amount of data proportional to the number
-              of pixels of their image. However, these pixels are indeed fake
+              of pixels in their image. However, these pixels are indeed fake
               pixels made of <code>&lt;rect /&gt;</code> svg tags. In other
               words, encoding a pixel is eventually storing a bit of information
               that will be given to the svg tag (actually the <code>fill=</code>{" "}
@@ -230,7 +229,7 @@ function OnChainStorage() {
             </p>
             <ul>
               <li>
-                place points on a grid with a fixed precision
+                placing points on a grid with a fixed precision
                 <ul>
                   <li>
                     because coordinates need to be encoded in a fixed format (
@@ -251,16 +250,16 @@ function OnChainStorage() {
                 </ul>
               </li>
               <li>
-                minimize the number of points used thanks to svg layering (only
-                the front layer is visible)
+                minimizing the number of points used thanks to svg layering
+                (only the front layer is visible)
                 <ul>
                   <li>simplify parts that are not visible</li>
                   <li>create image as a stack of layers with the same color</li>
                 </ul>
               </li>
-              <li>beware of no transparency in svg</li>
+              <li>the fact there is no transparency in svg</li>
               <li>
-                export as svg converting every shape to{" "}
+                exporting as svg converting every shape to{" "}
                 <code>&lt;path /&gt;</code>
               </li>
             </ul>
@@ -387,13 +386,54 @@ function OnChainStorage() {
               given trait.{" "}
             </p>
           </Content>
+          <Content title="On-chain rendering">
+            <h2>Rendering the Dreamer</h2>
+            <p>
+              Though the rendering of a Dreamer has been implemented and tested
+              on-chain (see the <code>DreamersRenderer.getSvg</code> function),
+              we didn't manage to keep the gas required by this function below
+              the limit (depending on the nodes but around few dozen millions of
+              gas). Hence we opened an API to compute the rendering off-chain
+              and point to this API in the token metadata. This leads to few
+              comments:
+              <ul>
+                <li>
+                  though the rendering is actually off-chain, this doesn't mean
+                  in any sense that the project is not 100% on-chain because the
+                  chain embeds everything required to generate a Dreamer;
+                </li>
+                <li>
+                  it is actually possible to call the rendering function from
+                  etherscan and see the corresponding SVG;
+                </li>
+                <li>
+                  on our way to the storage optimization, we didn't realize that
+                  we were transferring that much computing cost to the rendering
+                  function. Our first priority will be to optimize this
+                  rendering function;
+                </li>
+                <li>
+                  we however think that this tradeoff between storage and
+                  computation is definitely meaningful in the context of the
+                  blockchain. The ultimate goal of the blockchain is to
+                  permanently store and allow for the retrieval of data, not
+                  necessarily to recompute everything, everytime. In this
+                  context even a working rendering function has its output
+                  cached by, e.g. OpenSea.
+                </li>
+              </ul>
+            </p>
+          </Content>
           <Content title="Conclusion">
             <p>
               Chain Dreamers is another attempt at bringing more creativity to
-              the chain, we hope that you liked it! We are just getting starting
-              with the Candy Shop, our innovative lab. With each new drug we
-              will strive to push forward the limits of the chain,{" "}
-              <i>Break the chain</i>.
+              the chain, we hope that you like it! We are only getting starting
+              with the{" "}
+              <Link href="https://thecandyshop.wtf" target="_blank">
+                Candy Shop
+              </Link>
+              , our innovative lab. With each new drug we will strive to push
+              forward the limits of the chain. <i>Break the chain</i>.
             </p>
           </Content>
         </Box>
