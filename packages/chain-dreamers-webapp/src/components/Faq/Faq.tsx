@@ -31,7 +31,7 @@ function Faq() {
                 Chain Runners
               </Link>
               . You have to own a Chain Runner to mint your associated Chain
-              Dreamer on phase 1.
+              Dreamer during chapter 1.
             </p>
           </Content>
           <Content title="What is the Candy Shop?">
@@ -81,8 +81,8 @@ function Faq() {
           <Content title="Is it stored on chain?">
             <p>
               Yes, 100% stored on the Ethereum blockchain. <br />
-              Data is stored via sstore2. The renderer is built into contract.
-              The output is svg. More details{" "}
+              Data is stored via sstore2. The renderer is built into the
+              contract. The output is svg. More details{" "}
               <InnerLink to="/on-chain-storage">on this page</InnerLink>.
             </p>
           </Content>
@@ -96,7 +96,7 @@ function Faq() {
           <Content title="When does the Candy Shop open for minting?">
             <p>TBD</p>
           </Content>
-          <Content title="Who can mint a Chain Dreamer during phase 1?">
+          <Content title="Who can mint a Chain Dreamer during chapter 1?">
             <p>
               Only wallets owning Chain Runners can mint the associated Chain
               Dreamers.
@@ -105,11 +105,13 @@ function Faq() {
               You can mint as many Chain Dreamers as you have Chain Runners.
             </p>
           </Content>
-          <Content title="Who can mint a Chain Dreamer during phase 2?">
-            <p>Phase 2 will open a few days after the beginning of phase 1.</p>
+          <Content title="Who can mint a Chain Dreamer during chapter 2?">
+            <p>
+              Phase 2 will open a few days after the beginning of chapter 1.
+            </p>
             <p>
               If all Chain Dreamers have been mintet during Phase 1, there will
-              be no phase 2.
+              be no chapter 2.
             </p>
             <p>
               If there are Chain Dreamers left to be minted, our team will keep
@@ -120,7 +122,7 @@ function Faq() {
           <Content title="What is the mint price?">
             <p>TBD</p>
           </Content>
-          <Content title="How to mint a Chain Dreamer during phase 1?">
+          <Content title="How to mint a Chain Dreamer during chapter 1?">
             <p>
               First, you buy as many drug flasks as Chain Dreamers you want to
               mint in the{" "}
@@ -145,12 +147,6 @@ function Faq() {
             <p>
               Same as Chain Runners, you are free to do whatever you want with
               your Chain Dreamer.
-            </p>
-          </Content>
-          <Content title="What is the utility?">
-            <p>
-              By owning a Chain Dreamer, you'll be able to vote for the next
-              project on top of which we'll build our next NFT Derivative.
             </p>
           </Content>
         </Box>
