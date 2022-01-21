@@ -35,5 +35,5 @@ export const useRunnerIds = (): number[] => {
     }
   }, [account, sdk, runnerCount]);
 
-  return [1];
+  return runnerIds;
 };
