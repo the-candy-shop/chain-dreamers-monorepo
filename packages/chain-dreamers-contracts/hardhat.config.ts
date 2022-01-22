@@ -65,9 +65,11 @@ const config: HardhatUserConfig = {
     },
     hardhat: {
       tags: ["local"],
+      chainId: 1337,
       forking: {
+        enabled: true,
         url: node_url("mainnet"),
-        // blockNumber: 13556221, // Block index for runners creation
+        blockNumber: 13556221, // Block index for runners creation
       },
       blockGasLimit: 10 * 50_000_000, // Geth new default is 50M, increased here for tests
     },

@@ -73,6 +73,6 @@ const launchDateString =
 export const openingDurationInDays = 7;
 export const launchDate = dayjs(launchDateString).tz("America/Los_Angeles");
 export const closeDate = launchDate.add(openingDurationInDays, "day");
-export const drugPrice = 0.04;
+export const drugPrice = 0.05;
 
 export default config;

@@ -6,12 +6,15 @@ import { drugPrice } from "../../config";
 import FlaskQuantitySelector from "./FlaskQuantitySelector";
 import { DrugList } from "../../drugs";
 import { Link } from "react-router-dom";
+import { useCandyShopContract } from "../../hooks/useCandyShopContract";
 
 type MyOrderProps = {
   sx?: BoxProps["sx"];
 };
 
 function MyOrder({ sx }: MyOrderProps) {
+  const { mint } = useCandyShopContract();
+
   const [quantity, setQuantity] = React.useState<Record<DrugList, number>>({
     [DrugList.ChainMeth]: 0,
     [DrugList.HeliumSpice]: 0,
@@ -51,6 +54,11 @@ function MyOrder({ sx }: MyOrderProps) {
       quantity[DrugList.HeliumSpice] +
       quantity[DrugList.SomnusTears],
     [quantity]
+  );
+
+  const handleBuyButtonClick = React.useCallback(
+    () => mint(quantity),
+    [mint, quantity]
   );
 
   return (
@@ -106,6 +114,7 @@ function MyOrder({ sx }: MyOrderProps) {
                 },
               }}
               disabled={total === 0}
+              onClick={handleBuyButtonClick}
             >
               Buy{total !== 0 && ` for ${drugPrice * total} ETH`}
             </Button>
