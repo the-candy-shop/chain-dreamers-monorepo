@@ -39,6 +39,7 @@ function Header() {
         sx={{
           flexDirection: "row",
           display: isSmallWidth ? "none" : "flex",
+          alignItems: "center",
         }}
       >
         {account && isCandyShopOpen && (

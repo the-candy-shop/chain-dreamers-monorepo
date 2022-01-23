@@ -6,13 +6,54 @@ import { useEthers } from "@usedapp/core";
 import { useIsLaunched } from "../../hooks/useIsLaunched";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import config, { CHAIN_ID } from "../../config";
+import { useCandyShopContract } from "../../hooks/useCandyShopContract";
+import Box from "@mui/material/Box";
+import flasks from "./flasks.png";
 
 type CountDownButtonProps = Pick<ButtonProps, "sx">;
 
 const supportedChainIds = [CHAIN_ID];
 
+function buildButtonLabel(
+  isLaunched: boolean,
+  account: string | null | undefined,
+  totalDrugQuantity: number
+): React.ReactNode {
+  if (!isLaunched) {
+    return "Opening: TBD";
+  }
+
+  if (!account) {
+    return "Connect";
+  }
+
+  if (totalDrugQuantity === 0) {
+    return account.substring(0, 8);
+  }
+
+  return (
+    <Box display="flex" alignItems="center">
+      <Box display="flex">
+        <img alt="flasks" src={flasks} style={{ height: "28px" }} />
+        <Box
+          marginLeft="4px"
+          marginRight="10px"
+          fontSize="12px"
+          color="white"
+          fontWeight={400}
+          sx={{ textTransform: "none" }}
+        >
+          x{totalDrugQuantity}
+        </Box>
+      </Box>
+      <Box>{account.substring(0, 8)}</Box>
+    </Box>
+  );
+}
+
 function ConnectButton({ sx }: CountDownButtonProps) {
   const { activate, account } = useEthers();
+  const { totalQuantity } = useCandyShopContract();
 
   const [connectDialogOpen, setConnectDialogOpen] =
     React.useState<boolean>(false);
@@ -55,9 +96,7 @@ function ConnectButton({ sx }: CountDownButtonProps) {
         }}
         onClick={isLaunched && !account ? openConnectDialog : undefined}
       >
-        {isLaunched && account && account.substring(0, 8)}
-        {isLaunched && !account && "Connect"}
-        {!isLaunched && `Opening: TBD`}
+        {buildButtonLabel(isLaunched, account, totalQuantity)}
       </Button>
       <WalletConnectDialog
         open={!account && connectDialogOpen}

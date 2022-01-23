@@ -2,6 +2,7 @@ import { ChainId } from "@usedapp/core";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
+import { BigNumber } from "bignumber.js";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -73,6 +74,6 @@ const launchDateString =
 export const openingDurationInDays = 7;
 export const launchDate = dayjs(launchDateString).tz("America/Los_Angeles");
 export const closeDate = launchDate.add(openingDurationInDays, "day");
-export const drugPrice = 0.05;
+export const drugPrice = new BigNumber(0.05);
 
 export default config;
