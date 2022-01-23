@@ -1,7 +1,7 @@
 import ShopPanels from "../ShopPanels/ShopPanels";
 import Box, { BoxProps } from "@mui/material/Box";
 import React from "react";
-import Button from "@mui/material/Button";
+import Button from "@mui/lab/LoadingButton";
 import { drugPrice } from "../../config";
 import FlaskQuantitySelector from "./FlaskQuantitySelector";
 import { DrugList } from "../../drugs";
@@ -13,7 +13,7 @@ type MyOrderProps = {
 };
 
 function MyOrder({ sx }: MyOrderProps) {
-  const { mint } = useCandyShopContract();
+  const { mint, isMinting } = useCandyShopContract();
 
   const [quantity, setQuantity] = React.useState<Record<DrugList, number>>({
     [DrugList.ChainMeth]: 0,
@@ -113,6 +113,7 @@ function MyOrder({ sx }: MyOrderProps) {
                   background: "#44DFFD",
                 },
               }}
+              loading={isMinting}
               disabled={total === 0}
               onClick={handleBuyButtonClick}
             >
