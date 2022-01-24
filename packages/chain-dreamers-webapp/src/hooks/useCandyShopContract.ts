@@ -39,11 +39,11 @@ export const useCandyShopContract = () => {
       });
       setIsLoading(false);
     }
-  }, [sdk, account]);
+  }, [sdk, account, setDrugQuantities]);
 
   React.useEffect(() => {
     fetchDrugQuantities();
-  }, [account, sdk]);
+  }, [account, fetchDrugQuantities]);
 
   const mint = React.useCallback(
     async (quantity: Record<DrugList, number>): Promise<void> => {
@@ -77,7 +77,7 @@ export const useCandyShopContract = () => {
         }
       });
     },
-    [sdk, account]
+    [sdk, account, fetchDrugQuantities]
   );
 
   return {

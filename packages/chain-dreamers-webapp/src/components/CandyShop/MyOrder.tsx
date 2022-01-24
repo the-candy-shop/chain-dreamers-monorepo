@@ -62,7 +62,7 @@ function MyOrder({ sx }: MyOrderProps) {
   const handleBuyButtonClick = React.useCallback(async () => {
     await mint(quantity);
     resetQuantity();
-  }, [mint, quantity]);
+  }, [mint, quantity, resetQuantity]);
 
   return (
     <ShopPanels title="My order" sx={{ flex: 1, ...sx }}>
