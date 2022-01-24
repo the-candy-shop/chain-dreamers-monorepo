@@ -4,7 +4,7 @@ export const svgToPng = async (
   svg: string,
   width: number,
   height: number
-): Promise<string> => {
+): Promise<Buffer> => {
   const buffer = Buffer.from(svg);
 
   const resultBuffer = await sharp(buffer, { density: 600 })
@@ -12,5 +12,5 @@ export const svgToPng = async (
     .png()
     .toBuffer();
 
-  return resultBuffer.toString("base64");
+  return resultBuffer;
 };

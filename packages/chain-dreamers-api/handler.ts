@@ -1,9 +1,26 @@
 import { getRinkebySdk, getMainnetSdk } from "./src/utils/getSdk";
 import { renderSvg } from "./src/utils/renderSvg";
 import { svgToPng } from "./src/utils/svgToPng";
+import { getS3Image } from "./src/utils/getS3Image";
+import { storeS3Image } from "./src/utils/storeS3Image";
 
 export const img = async (event) => {
   const id = event.pathParameters.id;
+  const noCache =
+    event.queryStringParameters && event.queryStringParameters["no-cache"];
+
+  const s3Image = await getS3Image("img", id);
+
+  if (s3Image && !noCache) {
+    return {
+      statusCode: 200,
+      body: s3Image,
+      isBase64Encoded: true,
+      headers: {
+        "Content-Type": "image/png",
+      },
+    };
+  }
 
   const sdk = getRinkebySdk(); // TODO: change to adapt to env var
 
@@ -22,11 +39,13 @@ export const img = async (event) => {
   const tokenData = await sdk.dreamersRenderer.getTokenData(fullDna);
 
   const svg = renderSvg(tokenData);
-  const png = await svgToPng(svg, 500, 500);
+  const pngBuffer = await svgToPng(svg, 500, 500);
+
+  storeS3Image("img", id, pngBuffer);
 
   return {
     statusCode: 200,
-    body: png,
+    body: pngBuffer.toString("base64"),
     isBase64Encoded: true,
     headers: {
       "Content-Type": "image/png",
@@ -36,6 +55,22 @@ export const img = async (event) => {
 
 export const runnerToDreamer = async (event) => {
   const id = event.pathParameters.id;
+  const noCache =
+    event.queryStringParameters && event.queryStringParameters["no-cache"];
+
+  const s3Image = await getS3Image("runnerToDreamer", id);
+
+  if (s3Image && !noCache) {
+    return {
+      statusCode: 200,
+      body: s3Image,
+      isBase64Encoded: true,
+      headers: {
+        "Content-Type": "image/png",
+      },
+    };
+  }
+
   const mainnetSdk = getMainnetSdk();
   const rinkebySdk = getRinkebySdk();
 
@@ -57,11 +92,13 @@ export const runnerToDreamer = async (event) => {
   const tokenData = await rinkebySdk.dreamersRenderer.getTokenData(fullDna);
 
   const svg = renderSvg(tokenData);
-  const png = await svgToPng(svg, 500, 500);
+  const pngBuffer = await svgToPng(svg, 500, 500);
+
+  storeS3Image("runnerToDreamer", id, pngBuffer);
 
   return {
     statusCode: 200,
-    body: png,
+    body: pngBuffer.toString("base64"),
     isBase64Encoded: true,
     headers: {
       "Content-Type": "image/png",

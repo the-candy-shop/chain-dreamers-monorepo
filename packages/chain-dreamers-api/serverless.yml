@@ -7,6 +7,13 @@ provider:
   lambdaHashingVersion: 20201221
   stage: ${opt:stage, 'staging'}
   region: us-west-1
+  environment:
+    API_ASSETS_BUCKET_NAME: ${self:custom.s3.apiAssetsBucketName}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "arn:aws:s3:::${self:custom.s3.apiAssetsBucketName}/*"
 
 functions:
   img:
@@ -36,6 +43,8 @@ plugins:
 custom:
   includeDependencies:
     enableCaching: true
+  s3:
+    apiAssetsBucketName: chain-dreamers-api-assets-${self:provider.stage}
   domainPath:
     test: 'test'
     staging: 'staging'
@@ -50,3 +59,14 @@ custom:
       - 'image/png'
       - 'image/*'
       - '*/*'
+
+resources:
+  Resources:
+    ApiAssetsBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.s3.apiAssetsBucketName}
+  Outputs:
+    ApiAssetsBucketNameOutputKey:
+      Value: !Ref ApiAssetsBucket
+
