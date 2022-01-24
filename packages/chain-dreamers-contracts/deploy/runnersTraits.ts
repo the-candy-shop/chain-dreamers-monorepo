@@ -7,6 +7,9 @@ import { Layers } from "../utils/types";
 import { TAGS } from "../utils/constants";
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
+  if (!hre.network.tags.local) {
+    return;
+  }
   const { deployments, getNamedAccounts } = hre;
   const { execute } = deployments;
 

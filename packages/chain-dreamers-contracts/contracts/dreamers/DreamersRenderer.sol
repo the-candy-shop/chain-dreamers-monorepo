@@ -443,7 +443,7 @@ contract DreamersRenderer is
         return
             string(
                 abi.encodePacked(
-                    "data:application/json,{",
+                    "{",
                     '"image_data": "',
                     getSvg(traits),
                     '", ',

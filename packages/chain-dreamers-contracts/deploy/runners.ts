@@ -5,6 +5,9 @@ import { DeployFunction } from "hardhat-deploy/types";
 import { TAGS } from "../utils/constants";
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
+  if (hre.network.tags.mainnet) {
+    return;
+  }
   const { deployments, getNamedAccounts, network } = hre;
   const { deploy, execute } = deployments;
 

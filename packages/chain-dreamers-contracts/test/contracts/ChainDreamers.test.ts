@@ -10,7 +10,11 @@ import { solidity } from "ethereum-waffle";
 import { loadSkus, TAGS } from "../../utils/constants";
 import { uint16ToBytes } from "../../utils/dreamers";
 import { BigNumber } from "ethers";
+import fs from "fs";
+import path from "path";
+import { jestSnapshotPlugin } from "mocha-chai-jest-snapshot";
 
+chai.use(jestSnapshotPlugin());
 chai.use(solidity);
 const { expect } = chai;
 
@@ -20,6 +24,7 @@ const setup = async () => {
     TAGS.CHAIN_RUNNERS,
     TAGS.CANDY_SHOP_INVENTORY,
     TAGS.BIND_DREAMERS_AND_CANDY_SHOP,
+    TAGS.DREAMERS_PALETTES,
   ]);
   const contracts = {
     ChainDreamers: await ethers.getContract("ChainDreamers"),
@@ -471,6 +476,20 @@ describe("ChainDreamers", function () {
         candyIds.push(dna % 4);
       }
       expect(candyIds).to.deep.equal([0, 1, 2, 0]);
+    });
+  });
+  describe("tokenURI", async () => {
+    [...Array(10_001).keys()].slice(1).forEach((runnerId) => {
+      it(`should return base64 token data for token ${runnerId}`, async () => {
+        const { users } = await runnersAccessFixture();
+        const tokenData = await users[0].ChainDreamers.functions[
+          "tokenURI(uint256,uint8)"
+        ](runnerId, 3);
+        const outputFile = `./test/contracts/__snapshots__/DREAMERS/${runnerId}.b64`;
+        fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+        fs.writeFileSync(outputFile, tokenData[0]);
+        expect(tokenData).to.toMatchSnapshot();
+      });
     });
   });
 });
