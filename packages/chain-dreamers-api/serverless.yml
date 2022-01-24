@@ -4,9 +4,10 @@ frameworkVersion: '2'
 provider:
   name: aws
   runtime: nodejs14.x
+  memorySize: 2048
   lambdaHashingVersion: 20201221
   stage: ${opt:stage, 'staging'}
-  region: us-west-1
+  region: ${opt:region, 'us-west-1'}
   environment:
     API_ASSETS_BUCKET_NAME: ${self:custom.s3.apiAssetsBucketName}
   iamRoleStatements:
@@ -22,6 +23,11 @@ functions:
       - http:
           path: tokens/{id}/img
           method: get
+          caching:
+            enabled: true
+            cacheKeyParameters:
+              - name: request.path.id
+
   runnerToDreamer:
     handler: handler.runnerToDreamer
     events:
@@ -39,6 +45,7 @@ plugins:
   - serverless-dotenv-plugin
   - serverless-domain-manager
   - serverless-apigw-binary
+  - serverless-api-gateway-caching
 
 custom:
   includeDependencies:
@@ -54,6 +61,8 @@ custom:
     basePath: ${self:custom.domainPath.${self:provider.stage}}
     stage: ${self:provider.stage}
     createRoute53Record: false
+  apiGatewayCaching:
+    enabled: true
   apigwBinary:
     types:
       - 'image/png'

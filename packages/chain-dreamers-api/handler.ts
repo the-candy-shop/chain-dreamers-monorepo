@@ -39,7 +39,7 @@ export const img = async (event) => {
   const tokenData = await sdk.dreamersRenderer.getTokenData(fullDna);
 
   const svg = renderSvg(tokenData);
-  const pngBuffer = await svgToPng(svg, 500, 500);
+  const pngBuffer = await svgToPng(svg, 288, 288);
 
   storeS3Image("img", id, pngBuffer);
 
@@ -92,7 +92,7 @@ export const runnerToDreamer = async (event) => {
   const tokenData = await rinkebySdk.dreamersRenderer.getTokenData(fullDna);
 
   const svg = renderSvg(tokenData);
-  const pngBuffer = await svgToPng(svg, 500, 500);
+  const pngBuffer = await svgToPng(svg, 288, 288);
 
   storeS3Image("runnerToDreamer", id, pngBuffer);
 
