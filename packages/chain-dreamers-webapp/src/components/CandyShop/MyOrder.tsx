@@ -1,22 +1,34 @@
 import ShopPanels from "../ShopPanels/ShopPanels";
 import Box, { BoxProps } from "@mui/material/Box";
 import React from "react";
-import Button from "@mui/material/Button";
+import Button from "@mui/lab/LoadingButton";
 import { drugPrice } from "../../config";
 import FlaskQuantitySelector from "./FlaskQuantitySelector";
 import { DrugList } from "../../drugs";
 import { Link } from "react-router-dom";
+import { useCandyShopContract } from "../../hooks/useCandyShopContract";
+import LoadingDrugMintDialog from "../LoadingDrugMintDialog/LoadingDrugMintDialog";
+
+const defaultDrugQuantity = {
+  [DrugList.ChainMeth]: 0,
+  [DrugList.HeliumSpice]: 0,
+  [DrugList.SomnusTears]: 0,
+};
 
 type MyOrderProps = {
   sx?: BoxProps["sx"];
 };
 
 function MyOrder({ sx }: MyOrderProps) {
-  const [quantity, setQuantity] = React.useState<Record<DrugList, number>>({
-    [DrugList.ChainMeth]: 0,
-    [DrugList.HeliumSpice]: 0,
-    [DrugList.SomnusTears]: 0,
-  });
+  const { mint, isMinting, isWaitingForPayment } = useCandyShopContract();
+
+  const [quantity, setQuantity] =
+    React.useState<Record<DrugList, number>>(defaultDrugQuantity);
+
+  const resetQuantity = React.useCallback(
+    () => setQuantity(defaultDrugQuantity),
+    []
+  );
 
   const setChainMethQuantity = React.useCallback(
     (chainMethQuantity: number) =>
@@ -45,13 +57,12 @@ function MyOrder({ sx }: MyOrderProps) {
     [quantity]
   );
 
-  const total = React.useMemo(
-    () =>
-      quantity[DrugList.ChainMeth] +
-      quantity[DrugList.HeliumSpice] +
-      quantity[DrugList.SomnusTears],
-    [quantity]
-  );
+  const total = Object.values(quantity).reduce((res, q) => res + q, 0);
+
+  const handleBuyButtonClick = React.useCallback(async () => {
+    await mint(quantity);
+    resetQuantity();
+  }, [mint, quantity]);
 
   return (
     <ShopPanels title="My order" sx={{ flex: 1, ...sx }}>
@@ -105,9 +116,12 @@ function MyOrder({ sx }: MyOrderProps) {
                   background: "#44DFFD",
                 },
               }}
+              loading={isWaitingForPayment || isMinting}
               disabled={total === 0}
+              onClick={handleBuyButtonClick}
             >
-              Buy{total !== 0 && ` for ${drugPrice * total} ETH`}
+              Buy
+              {total !== 0 && ` for ${drugPrice.times(total).toString()} ETH`}
             </Button>
             <Box sx={{ marginTop: "44px", fontSize: "15px" }}>
               At least 1 Flask of drug is needed to mint 1 Dreamer.{" "}
@@ -121,6 +135,7 @@ function MyOrder({ sx }: MyOrderProps) {
           </Box>
         </Box>
       </Box>
+      <LoadingDrugMintDialog open={isMinting} />
     </ShopPanels>
   );
 }

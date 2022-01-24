@@ -9,6 +9,7 @@
     "@emotion/styled": "^11.6.0",
     "@ethersproject/providers": "^5.5.2",
     "@mui/icons-material": "^5.2.5",
+    "@mui/lab": "^5.0.0-alpha.65",
     "@mui/material": "^5.2.8",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -21,6 +22,7 @@
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/walletconnect-connector": "^6.2.8",
+    "bignumber.js": "^9.0.2",
     "buffer": "^6.0.3",
     "dayjs": "^1.10.7",
     "dayjs-plugin-utc": "^0.1.2",
@@ -36,10 +38,11 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "build": "dotenv -e .env.staging react-app-rewired build",
+    "prebuild": "dotenv -e .env.staging npm run generate-types",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
-    "postinstall": "npm run generate-types",
+    "postinstall": "dotenv -e .env.local npm run generate-types",
     "generate-types": "eth-sdk"
   },
   "eslintConfig": {
@@ -62,6 +65,7 @@
   },
   "devDependencies": {
     "@types/react-typist": "^2.0.3",
+    "dotenv-cli": "^4.1.1",
     "prettier": "2.5.1",
     "react-app-rewired": "^2.1.11",
     "ts-node": "^10.4.0",

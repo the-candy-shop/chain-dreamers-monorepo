@@ -1,16 +1,13 @@
 import React from "react";
-import { getMainnetSdk } from ".dethcrypto/eth-sdk-client";
 import { useEthers } from "@usedapp/core";
+import { useSdk } from "./useSdk";
 
 export const useRunnerIds = (): number[] => {
-  const { account, library } = useEthers();
+  const { account } = useEthers();
   const [runnerCount, setRunnerCount] = React.useState<number>(0);
   const [runnerIds, setRunnerIds] = React.useState<number[]>([]);
 
-  const sdk = React.useMemo(
-    () => (library ? getMainnetSdk(library.getSigner()) : null),
-    [library]
-  );
+  const sdk = useSdk();
 
   React.useEffect(() => {
     if (sdk && account) {
@@ -35,5 +32,6 @@ export const useRunnerIds = (): number[] => {
     }
   }, [account, sdk, runnerCount]);
 
+  console.log("runnerIds", runnerIds);
   return runnerIds;
 };
