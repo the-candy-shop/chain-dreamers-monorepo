@@ -236,7 +236,6 @@ contract DreamersRenderer is
             dAttributeParameterCount = uint8(
                 D_ATTRIBUTE_PARAMETERS_COUNT[dAttributeIndex]
             );
-            d = bytes.concat(d, D_ATTRIBUTE_PALETTE[dAttributeIndex]);
 
             bitsShift += BITS_PER_D_ATTRIBUTE;
             byteIndex = uint16(bitsShift / 8);
@@ -254,7 +253,12 @@ contract DreamersRenderer is
                 }
             }
 
-            for (uint8 i = 0; i < dAttributeParameterCount; i++) {
+            d = bytes.concat(
+                d,
+                D_ATTRIBUTE_PALETTE[dAttributeIndex],
+                bytes(uint8(bytesBuffer[0]).toString())
+            );
+            for (uint8 i = 1; i < dAttributeParameterCount; i++) {
                 d = bytes.concat(
                     d,
                     hex"2c", // comma
@@ -346,13 +350,40 @@ contract DreamersRenderer is
         runnersToken = IChainRunners(_runnersTokenAddress);
     }
 
+    /// @notice The Dreamer's full DNA is an alteration of its corresponding Runner's DNA with it's consumed candy.
+    ///      The candy ids are hardcoded while it should be better to retrieve their effects from the CandyShop
+    ///      contract.
     /// @dev Somehow copied from the original code but returns an array of trait indexes instead of Layer structs.
     ///      Flags for no layer is also updated from empty `Layer` to index = type(uint16).max.
-    function getTokenData(uint16[NUM_LAYERS] memory dna)
+    function getTokenData(uint256 runnerDna, uint8 dreamerDna)
         public
         view
         returns (uint16[NUM_LAYERS] memory traitIndexes)
     {
+        uint16[NUM_LAYERS] memory dna = splitNumber(runnerDna);
+        uint16[NUM_LAYERS] memory candyEffect = splitNumber(
+            uint256(keccak256(abi.encodePacked(dreamerDna)))
+        );
+
+        if (dreamerDna % 4 == 0) {
+            // CHAIN_METH
+            dna[0] = candyEffect[0];
+            dna[6] = candyEffect[6];
+            dna[7] = candyEffect[7];
+            dna[8] = candyEffect[8];
+            dna[10] = candyEffect[10];
+            dna[11] = candyEffect[11];
+            dna[12] = candyEffect[12];
+        } else if (dreamerDna % 4 == 1) {
+            // SOMNUS_TEARS
+            dna[1] = candyEffect[1];
+            dna[2] = candyEffect[2];
+            dna[3] = candyEffect[3];
+            dna[4] = candyEffect[4];
+            dna[5] = candyEffect[5];
+            dna[9] = candyEffect[9];
+        }
+
         uint16 raceIndex = chainRunnersBaseRenderer.getRaceIndex(dna[1]);
         bool hasFaceAcc = dna[7] < (NUM_RUNNERS - WEIGHTS[raceIndex][7][7]);
         bool hasMask = dna[8] < (NUM_RUNNERS - WEIGHTS[raceIndex][8][7]);
@@ -366,6 +397,12 @@ contract DreamersRenderer is
                 i,
                 raceIndex
             );
+            if (dreamerDna % 4 == 2) {
+                // HELIUM_SPICE
+                if (candyEffect[0] % 10 == 0) {
+                    layerTraitIndex = 44;
+                }
+            }
             uint16 traitIndex = getTraitIndex(i, layerTraitIndex);
             /*
             These conditions help make sure layer selection meshes well visually.
@@ -391,18 +428,6 @@ contract DreamersRenderer is
         return traitIndexes;
     }
 
-    /// @dev The Dreamer's full DNA is an alteration of its corresponding Runner's DNA with it's consumed candy.
-    ///      The candy ids are hardcoded while it should be better to retrieve their effects from the CandyShop
-    ///      contract.
-    function getDreamerFullDna(uint256 runnerDna, uint8 dreamerDna)
-        public
-        view
-        returns (uint16[NUM_LAYERS] memory)
-    {
-        uint16[NUM_LAYERS] memory dna = splitNumber(runnerDna);
-        return dna;
-    }
-
     function tokenURI(uint256 tokenId, uint8 dreamerDna)
         external
         view
@@ -410,21 +435,23 @@ contract DreamersRenderer is
         returns (string memory)
     {
         uint256 runnerDna = runnersToken.getDna(tokenId);
-        uint16[NUM_LAYERS] memory dna = getDreamerFullDna(
+        uint16[NUM_LAYERS] memory traitIndexes = getTokenData(
             runnerDna,
             dreamerDna
         );
-        uint16[NUM_LAYERS] memory traitIndexes = getTokenData(dna);
         Trait[] memory traits = getTraits(traitIndexes);
-        string memory svg = getSvg(traits);
         return
             string(
                 abi.encodePacked(
-                    'data:application/json,{"image_data":',
-                    svg,
-                    '", "name", "Dreamer #',
+                    "data:application/json,{",
+                    '"image_data": "',
+                    getSvg(traits),
+                    '", ',
+                    '"name": "Dreamer #',
                     tokenId.toString(),
-                    '"}'
+                    '", ',
+                    '"description": "Runners run, but sometimes they dream. This is one of their dreams.", ',
+                    '"attributes": ""}'
                 )
             );
     }

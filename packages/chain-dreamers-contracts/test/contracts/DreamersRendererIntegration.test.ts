@@ -1,7 +1,11 @@
 import chai from "chai";
 import { solidity } from "ethereum-waffle";
 import { deployments, ethers } from "hardhat";
-import { loadPalettes, loadRunnersDna, TAGS } from "../../utils/constants";
+import {
+  loadPalettes,
+  loadRunnersTokenData,
+  TAGS,
+} from "../../utils/constants";
 import fs from "fs";
 import path from "path";
 
@@ -13,34 +17,36 @@ const { expect } = chai;
 
 const palettes = loadPalettes();
 
-before(async function () {
-  await deployments.fixture(TAGS.DREAMERS_PALETTES);
-});
-
 describe("DreamersRendererIntegration", async function () {
-  const DreamersRenderer = await ethers.getContract("DreamersRenderer");
-
   describe("getTokenData", () => {
     const palettes = loadPalettes();
-    loadRunnersDna().forEach((runner) => {
-      it(`Should match snapshot for runner ${runner.runnerId}`, async () => {
-        const dna = await DreamersRenderer.getDreamerFullDna(
-          ethers.BigNumber.from(runner.dna),
-          0
+
+    loadRunnersTokenData().forEach((runner, index) => {
+      it(`Should match runner's data with no drug for runner ${
+        index + 1
+      }`, async () => {
+        await deployments.fixture([TAGS.DREAMERS_PALETTES]);
+        const DreamersRenderer = await ethers.getContract("DreamersRenderer");
+        let tokenData = await DreamersRenderer.getTokenData(runner.dna, 3);
+        tokenData = tokenData
+          .filter((i: number) => i < 65535)
+          .map((i: number) => Object.keys(palettes.trait)[i])
+          .map(
+            (fileName: string) =>
+              fileName.match(/\d+-\d+-(?<traitName>[a-zA-Z \d\-']+)\.svg$/)
+                ?.groups?.traitName
+          );
+        expect(tokenData).to.have.members(
+          runner.tokenData.filter((name) => !!name)
         );
-        const tokenData = await DreamersRenderer.getTokenData(dna);
-        expect(
-          tokenData.map((i: number) => ({
-            index: i,
-            name: Object.keys(palettes.trait)[i],
-          }))
-        ).to.toMatchSnapshot();
       });
     });
   });
   describe("getSvg", () => {
     Object.keys(palettes.trait).forEach((traitName, index) => {
       it(`Index ${index} should return ${traitName}`, async function () {
+        await deployments.fixture([TAGS.DREAMERS_PALETTES]);
+        const DreamersRenderer = await ethers.getContract("DreamersRenderer");
         const traitIndexes = await DreamersRenderer.getTrait(index);
         const gas = await DreamersRenderer.estimateGas.getSvg(traitIndexes);
         if (gas > ethers.BigNumber.from(50_000_000)) {
@@ -62,6 +68,8 @@ describe("DreamersRendererIntegration", async function () {
   describe("tokenURI", () => {
     [...Array(10_001).keys()].slice(1, 2).forEach((runnerId) => {
       it(`Index ${runnerId} should match snapshot`, async function () {
+        await deployments.fixture([TAGS.DREAMERS_PALETTES]);
+        const DreamersRenderer = await ethers.getContract("DreamersRenderer");
         const gas = await DreamersRenderer.estimateGas.tokenURI(runnerId);
         if (gas > ethers.BigNumber.from(50_000_000)) {
           throw new Error(

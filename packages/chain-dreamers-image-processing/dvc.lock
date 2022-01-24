@@ -4,30 +4,30 @@ stages:
     cmd: python image_processing/parse_svg.py
     deps:
     - path: assets/VALISE_CHAIN_DREAMERS_TRAITS
-      md5: a3f3ed23efcef35b4d4c64c8e8b41437.dir
-      size: 778820
-      nfiles: 352
+      md5: 23be3c1186ce692ce56061805423bf47.dir
+      size: 781948
+      nfiles: 353
     - path: image_processing/parse_svg.py
       md5: dc37e93b6bfc1499933536c3fa2f8939
       size: 4970
     outs:
     - path: assets/VALISE_CHAIN_DREAMERS_COMPUTED
-      md5: 0336034952d28adaec2edecc521a65be.dir
-      size: 692943
-      nfiles: 338
+      md5: 2a093dbd4894e3cb54a83690185c9d6e.dir
+      size: 695679
+      nfiles: 339
     - path: assets/palettes.json
-      md5: 4ccd7f12f2210b08ae8e5b8c03a09c88
-      size: 622784
+      md5: b14536c1fc13bc244903919ab6f77fd7
+      size: 626590
   convert_lines_h_v:
     cmd: python image_processing/use_h_and_v_in_d.py
     deps:
     - path: assets/palettes.json
-      md5: 4ccd7f12f2210b08ae8e5b8c03a09c88
-      size: 622784
+      md5: b14536c1fc13bc244903919ab6f77fd7
+      size: 626590
     - path: image_processing/use_h_and_v_in_d.py
       md5: 7527bc81990a2041a95ef99c59c6e959
       size: 1402
     outs:
     - path: assets/palettes-hv.json
-      md5: 81a681d4dcda3ccd6b0f6267f8902911
-      size: 604474
+      md5: a717fb425c4c6bf09393e4c5ad65261a
+      size: 608012

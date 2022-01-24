@@ -1,5 +1,12 @@
 import fs from "fs";
-import { Layers, Palettes, PalettesStorage, Runners, SKU } from "./types";
+import {
+  Layers,
+  Palettes,
+  PalettesStorage,
+  Runners,
+  SKU,
+  TokenData,
+} from "./types";
 
 export const MAX_CONTRACT_SIZE = 24_000;
 export const PALETTES_FILE =
@@ -45,6 +52,15 @@ export const loadPalettesEncoded = (): PalettesStorage => {
 export const loadRunnersDna = (): Runners => {
   try {
     return JSON.parse(fs.readFileSync(RUNNERS_DNA_FILE, "utf8"));
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+};
+
+export const loadRunnersTokenData = (): TokenData[] => {
+  try {
+    return JSON.parse(fs.readFileSync(RUNNERS_TOKEN_DATA_FILE, "utf8"));
   } catch (e) {
     console.error(e);
     return [];
