@@ -65,19 +65,18 @@ describe("DreamersRendererIntegration", async function () {
       });
     });
   });
-  describe("tokenURI", () => {
-    [...Array(10_001).keys()].slice(1, 2).forEach((runnerId) => {
+  describe.only("tokenURI", () => {
+    [...Array(10_001).keys()].slice(1).forEach((runnerId) => {
       it(`Index ${runnerId} should match snapshot`, async function () {
         await deployments.fixture([TAGS.DREAMERS_PALETTES]);
         const DreamersRenderer = await ethers.getContract("DreamersRenderer");
-        const gas = await DreamersRenderer.estimateGas.tokenURI(runnerId);
+        const gas = await DreamersRenderer.estimateGas.tokenURI(runnerId, 3);
         if (gas > ethers.BigNumber.from(50_000_000)) {
           throw new Error(
             `Gas cost of ${gas} is too high. Please adjust the gas limit.`
           );
         }
-        const res = await DreamersRenderer.tokenURI(runnerId);
-        console.log(res);
+        const res = await DreamersRenderer.tokenURI(runnerId, 3);
         const outputFile = `./test/contracts/__snapshots__/DREAMERS/${runnerId}.json`;
         fs.mkdirSync(path.dirname(outputFile), { recursive: true });
         fs.writeFileSync(outputFile, res);

@@ -447,10 +447,11 @@ contract DreamersRenderer is
                     '"image_data": "',
                     getSvg(traits),
                     '", ',
-                    '"name": "Dreamer #',
+                    '"name": "Dreamer%20',
+                    HASHTAG,
                     tokenId.toString(),
                     '", ',
-                    '"description": "Runners run, but sometimes they dream. This is one of their dreams.", ',
+                    '"description": "Runners%20run,%20but%20sometimes%20they%20dream.%20This%20is%20one%20of%20their%20dreams.",',
                     '"attributes": ""}'
                 )
             );
