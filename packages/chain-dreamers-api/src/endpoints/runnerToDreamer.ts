@@ -36,8 +36,7 @@ export const runnerToDreamer = async (event) => {
     };
   }
 
-  const fullDna = await sdk.dreamersRenderer.getDreamerFullDna(runnerDna, 0);
-  const tokenData = await sdk.dreamersRenderer.getTokenData(fullDna);
+  const tokenData = await sdk.dreamersRenderer.getTokenData(runnerDna, 3);
 
   const svg = renderSvg(tokenData);
   const pngBuffer = await svgToPng(svg, 500, 500);

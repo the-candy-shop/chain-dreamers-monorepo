@@ -24,6 +24,7 @@ export const img = async (event) => {
 
   const sdk = getSdk();
 
+  const dreamerDna = await sdk.dreamers.dreamers(id);
   const runnerDna = await sdk.runners.getDna(id);
 
   if (runnerDna.isZero()) {
@@ -35,8 +36,10 @@ export const img = async (event) => {
     };
   }
 
-  const fullDna = await sdk.dreamersRenderer.getDreamerFullDna(runnerDna, 0); // TODO: replace 0 with dreamer value
-  const tokenData = await sdk.dreamersRenderer.getTokenData(fullDna);
+  const tokenData = await sdk.dreamersRenderer.getTokenData(
+    runnerDna,
+    dreamerDna
+  );
 
   const svg = renderSvg(tokenData);
   const pngBuffer = await svgToPng(svg, 500, 500);

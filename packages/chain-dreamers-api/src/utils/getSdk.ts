@@ -5,7 +5,7 @@ import {
 } from "@dethcrypto/eth-sdk-client";
 
 export const getOriginalRunnerSdk = () => {
-  const rinkebyProvider = ethers.getDefaultProvider("rinkeby", {
+  const rinkebyProvider = ethers.getDefaultProvider("mainnet", {
     etherscan: process.env.ETHERSCAN_API_KEY,
     infura: process.env.INFURA_ID,
     alchemy: process.env.ALCHEMY_API_KEY,
@@ -17,7 +17,7 @@ export const getOriginalRunnerSdk = () => {
 };
 
 export const getSdk = () => {
-  const mainnetProvider = ethers.getDefaultProvider("mainnet", {
+  const mainnetProvider = ethers.getDefaultProvider(process.env.NETWORK, {
     etherscan: process.env.ETHERSCAN_API_KEY,
     infura: process.env.INFURA_ID,
     alchemy: process.env.ALCHEMY_API_KEY,
