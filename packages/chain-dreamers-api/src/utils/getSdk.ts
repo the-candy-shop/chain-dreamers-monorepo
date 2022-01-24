@@ -1,10 +1,10 @@
 import { ethers } from "ethers";
 import {
-  getMainnetSdk as mainnetSdk,
-  getRinkebySdk as rinkebySdk,
+  getMainSdk,
+  getOriginalRunnerSdk as originalRunnerSdk,
 } from "@dethcrypto/eth-sdk-client";
 
-export const getRinkebySdk = () => {
+export const getOriginalRunnerSdk = () => {
   const rinkebyProvider = ethers.getDefaultProvider("rinkeby", {
     etherscan: process.env.ETHERSCAN_API_KEY,
     infura: process.env.INFURA_ID,
@@ -13,10 +13,10 @@ export const getRinkebySdk = () => {
   });
   const defaultSigner = ethers.Wallet.createRandom().connect(rinkebyProvider);
 
-  return rinkebySdk(defaultSigner);
+  return originalRunnerSdk(defaultSigner);
 };
 
-export const getMainnetSdk = () => {
+export const getSdk = () => {
   const mainnetProvider = ethers.getDefaultProvider("mainnet", {
     etherscan: process.env.ETHERSCAN_API_KEY,
     infura: process.env.INFURA_ID,
@@ -25,5 +25,5 @@ export const getMainnetSdk = () => {
   });
   const defaultSigner = ethers.Wallet.createRandom().connect(mainnetProvider);
 
-  return mainnetSdk(defaultSigner);
+  return getMainSdk(defaultSigner);
 };

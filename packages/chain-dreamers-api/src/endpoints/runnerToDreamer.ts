@@ -1,5 +1,5 @@
 import { getS3Image } from "../utils/getS3Image";
-import { getMainnetSdk, getRinkebySdk } from "../utils/getSdk";
+import { getOriginalRunnerSdk, getSdk } from "../utils/getSdk";
 import { renderSvg } from "../utils/renderSvg";
 import { svgToPng } from "../utils/svgToPng";
 import { storeS3Image } from "../utils/storeS3Image";
@@ -22,10 +22,10 @@ export const runnerToDreamer = async (event) => {
     };
   }
 
-  const mainnetSdk = getMainnetSdk();
-  const rinkebySdk = getRinkebySdk();
+  const originalRunnerSdk = getOriginalRunnerSdk();
+  const sdk = getSdk();
 
-  const runnerDna = await mainnetSdk.runners.getDna(id);
+  const runnerDna = await originalRunnerSdk.runners.getDna(id);
 
   if (runnerDna.isZero()) {
     return {
@@ -36,11 +36,8 @@ export const runnerToDreamer = async (event) => {
     };
   }
 
-  const fullDna = await rinkebySdk.dreamersRenderer.getDreamerFullDna(
-    runnerDna,
-    0
-  );
-  const tokenData = await rinkebySdk.dreamersRenderer.getTokenData(fullDna);
+  const fullDna = await sdk.dreamersRenderer.getDreamerFullDna(runnerDna, 0);
+  const tokenData = await sdk.dreamersRenderer.getTokenData(fullDna);
 
   const svg = renderSvg(tokenData);
   const pngBuffer = await svgToPng(svg, 500, 500);

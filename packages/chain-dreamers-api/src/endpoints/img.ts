@@ -1,5 +1,5 @@
 import { getS3Image } from "../utils/getS3Image";
-import { getRinkebySdk } from "../utils/getSdk";
+import { getSdk } from "../utils/getSdk";
 import { renderSvg } from "../utils/renderSvg";
 import { svgToPng } from "../utils/svgToPng";
 import { storeS3Image } from "../utils/storeS3Image";
@@ -22,7 +22,7 @@ export const img = async (event) => {
     };
   }
 
-  const sdk = getRinkebySdk(); // TODO: change to adapt to env var
+  const sdk = getSdk();
 
   const runnerDna = await sdk.runners.getDna(id);
 
