@@ -42,7 +42,6 @@
     "prebuild": "dotenv -e .env.staging npm run generate-types",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
-    "postinstall": "dotenv -e .env.local npm run generate-types",
     "generate-types": "eth-sdk"
   },
   "eslintConfig": {
