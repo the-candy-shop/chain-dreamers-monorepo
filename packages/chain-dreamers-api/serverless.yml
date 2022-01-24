@@ -1,0 +1,52 @@
+service: chain-dreamers-api
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+  stage: ${opt:stage, 'staging'}
+  region: us-west-1
+
+functions:
+  img:
+    handler: handler.img
+    events:
+      - http:
+          path: tokens/{id}/img
+          method: get
+  runnerToDreamer:
+    handler: handler.runnerToDreamer
+    events:
+      - http:
+          path: tokens/{id}/runnerToDreamer
+          method: get
+
+package:
+  include:
+    - eth-sdk/**
+    - valise.json
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-dotenv-plugin
+  - serverless-domain-manager
+  - serverless-apigw-binary
+
+custom:
+  includeDependencies:
+    enableCaching: true
+  domainPath:
+    test: 'test'
+    staging: 'staging'
+    prod: ''
+  customDomain:
+    domainName: api.chaindreamers.xyz
+    basePath: ${self:custom.domainPath.${self:provider.stage}}
+    stage: ${self:provider.stage}
+    createRoute53Record: false
+  apigwBinary:
+    types:
+      - 'image/png'
+      - 'image/*'
+      - '*/*'

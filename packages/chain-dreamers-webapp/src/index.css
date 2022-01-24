@@ -1,0 +1,22 @@
+html {
+  font-family: "Inter", "system-ui";
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", "system-ui";
+  }
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: black;
+  color: white;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

@@ -1,0 +1,35 @@
+{
+  "name": "chain-dreamers-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.ts",
+  "scripts": {
+    "deploy:test": "serverless deploy --stage test",
+    "deploy:staging": "serverless deploy --stage staging",
+    "deploy:prod": "serverless deploy --stage prod",
+    "postinstall": "npm run generate-types",
+    "generate-types": "eth-sdk",
+    "build-valise": "ts-node ./scripts/build-valise.ts",
+    "predeploy:test": "npm run generate-types && npm run build-valise && rm -fr node_modules/sharp && SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install --arch=x64 --platform=linux sharp",
+    "predeploy:staging": "npm run generate-types && npm run build-valise && rm -fr node_modules/sharp && SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install --arch=x64 --platform=linux sharp",
+    "predeploy:prod": "npm run generate-types && npm run build-valise && rm -fr node_modules/sharp && SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install --arch=x64 --platform=linux sharp"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@dethcrypto/eth-sdk-client": "^0.1.6",
+    "ethers": "^5.5.3",
+    "sharp": "^0.29.3"
+  },
+  "devDependencies": {
+    "@dethcrypto/eth-sdk": "^0.3.0",
+    "@types/sharp": "^0.29.5",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-domain-manager": "^5.4.1",
+    "serverless-dotenv-plugin": "^3.12.2",
+    "serverless-plugin-include-dependencies": "^5.0.0",
+    "serverless-plugin-typescript": "^2.1.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  }
+}

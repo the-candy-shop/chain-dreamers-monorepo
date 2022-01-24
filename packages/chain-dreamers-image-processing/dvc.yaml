@@ -1,0 +1,17 @@
+stages:
+  parse_svg:
+    cmd: python image_processing/parse_svg.py
+    deps:
+    - assets/VALISE_CHAIN_DREAMERS_TRAITS
+    - image_processing/parse_svg.py
+    outs:
+    - assets/VALISE_CHAIN_DREAMERS_COMPUTED
+    - assets/palettes.json
+
+  convert_lines_h_v:
+    cmd: python image_processing/use_h_and_v_in_d.py
+    deps:
+    - assets/palettes.json
+    - image_processing/use_h_and_v_in_d.py
+    outs:
+    - assets/palettes-hv.json
