@@ -34,6 +34,21 @@ functions:
       - http:
           path: tokens/{id}/runnerToDreamer
           method: get
+          caching:
+            enabled: true
+            cacheKeyParameters:
+              - name: request.path.id
+
+  candyImg:
+    handler: handler.candyImg
+    events:
+      - http:
+          path: candy/tokens/{id}/img
+          method: get
+          caching:
+            enabled: true
+            cacheKeyParameters:
+              - name: request.path.id
 
 package:
   include:
