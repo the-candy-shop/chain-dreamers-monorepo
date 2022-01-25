@@ -1,18 +1,9 @@
 import React from "react";
 import Box, { BoxProps } from "@mui/material/Box";
-import { DrugList } from "../../drugs";
-import heliumSpice from "./helium-spice.png";
-import somnusTears from "./somnus-tears.png";
-import chainMeth from "./chain-meth.png";
+import { DrugList, imageByDrug } from "../../drugs";
 import IconButton from "@mui/material/IconButton";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-
-const imageByDrug = {
-  [DrugList.SomnusTears]: somnusTears,
-  [DrugList.ChainMeth]: chainMeth,
-  [DrugList.HeliumSpice]: heliumSpice,
-};
 
 type FlaskQuantitySelectorProps = {
   quantity: number;

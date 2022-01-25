@@ -15,7 +15,7 @@ function CandyShop() {
         {runnerCount.length > 0 && (
           <>
             <Box flex={1} marginRight="12px">
-              <Jaz sx={{ height: "100%" }} />
+              <Jaz message="candyShopWithRunner" sx={{ height: "100%" }} />
             </Box>
             <Box
               sx={{
@@ -29,7 +29,7 @@ function CandyShop() {
         )}
         {runnerCount.length <= 0 && (
           <Box flex={1}>
-            <Jaz sx={{ height: "100%" }} />
+            <Jaz message="candyShopWithoutRunner" sx={{ height: "100%" }} />
           </Box>
         )}
       </Box>

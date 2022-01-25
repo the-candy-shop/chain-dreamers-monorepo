@@ -14,6 +14,8 @@ const config: EthSdkConfig = {
   contracts: {
     main: {
       runners: process.env.REACT_APP_RUNNERS_CONTRACT_ADDRESS as `0x${string}`,
+      dreamers: process.env
+        .REACT_APP_DREAMERS_CONTRACT_ADDRESS as `0x${string}`,
       candyShop: process.env
         .REACT_APP_CANDY_SHOP_CONTRACT_ADDRESS as `0x${string}`,
     },
