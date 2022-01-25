@@ -12,6 +12,7 @@ import "./ChainRunnersConstants.sol";
 
 import "../interfaces/IChainRunners.sol";
 import "../interfaces/IDreamersRenderer.sol";
+import "./ChainDreamersTypes.sol";
 
 /*  @title Dreamers Renderer
     @author Clement Walter
@@ -47,6 +48,7 @@ contract DreamersRenderer is
     bytes public constant STROKE_TAG = bytes("'%20stroke='%23000");
     bytes public constant PATH_TAG_END = bytes("'/%3e");
     bytes public constant HASHTAG = bytes("%23");
+    bytes public constant SPACE = bytes("%20");
     bytes public constant SVG_TAG_START =
         bytes(
             "%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20255%20255'%20width='500px'%20height='500px'%3e"
@@ -261,7 +263,7 @@ contract DreamersRenderer is
             for (uint8 i = 1; i < dAttributeParameterCount; i++) {
                 d = bytes.concat(
                     d,
-                    hex"2c", // comma
+                    SPACE, // comma
                     bytes(uint8(bytesBuffer[i]).toString())
                 );
             }
@@ -355,17 +357,21 @@ contract DreamersRenderer is
     ///      contract.
     /// @dev Somehow copied from the original code but returns an array of trait indexes instead of Layer structs.
     ///      Flags for no layer is also updated from empty `Layer` to index = type(uint16).max.
-    function getTokenData(uint256 runnerDna, uint8 dreamerDna)
+    function getTokenData(uint256 runnerDna, uint8 candy)
         public
         view
         returns (uint16[NUM_LAYERS] memory traitIndexes)
     {
         uint16[NUM_LAYERS] memory dna = splitNumber(runnerDna);
         uint16[NUM_LAYERS] memory candyEffect = splitNumber(
-            uint256(keccak256(abi.encodePacked(dreamerDna)))
+            uint256(keccak256(abi.encodePacked(candy, dna)))
         );
 
-        if (dreamerDna % 4 == 0) {
+        // Get the raceIndex before any updates as the WEIGHTS are not the same for each race but we want to
+        // keep changes tractable in terms of candy effect
+        uint16 raceIndex = chainRunnersBaseRenderer.getRaceIndex(dna[1]);
+
+        if (candy % 4 == 0) {
             // CHAIN_METH
             dna[0] = candyEffect[0];
             dna[6] = candyEffect[6];
@@ -374,7 +380,7 @@ contract DreamersRenderer is
             dna[10] = candyEffect[10];
             dna[11] = candyEffect[11];
             dna[12] = candyEffect[12];
-        } else if (dreamerDna % 4 == 1) {
+        } else if (candy % 4 == 1) {
             // SOMNUS_TEARS
             dna[1] = candyEffect[1];
             dna[2] = candyEffect[2];
@@ -384,7 +390,6 @@ contract DreamersRenderer is
             dna[9] = candyEffect[9];
         }
 
-        uint16 raceIndex = chainRunnersBaseRenderer.getRaceIndex(dna[1]);
         bool hasFaceAcc = dna[7] < (NUM_RUNNERS - WEIGHTS[raceIndex][7][7]);
         bool hasMask = dna[8] < (NUM_RUNNERS - WEIGHTS[raceIndex][8][7]);
         bool hasHeadBelow = dna[9] < (NUM_RUNNERS - WEIGHTS[raceIndex][9][36]);
@@ -397,7 +402,7 @@ contract DreamersRenderer is
                 i,
                 raceIndex
             );
-            if (dreamerDna % 4 == 2) {
+            if ((i == 0) && (candy % 4 == 2)) {
                 // HELIUM_SPICE
                 if (candyEffect[0] % 10 == 0) {
                     layerTraitIndex = 44;
@@ -428,31 +433,33 @@ contract DreamersRenderer is
         return traitIndexes;
     }
 
-    function tokenURI(uint256 tokenId, uint8 dreamerDna)
+    /// @notice On-chain rendering of any runner with a given candy
+    ///         For on-chain rendering of a given token, retrieve first its candy with `dreamers(tokenId)`
+    ///         and give it here. The output can be directly copied/pasted into the browser bar for displaying the image.
+    function imageURI(uint256 tokenId, uint8 candy)
         external
         view
-        override
         returns (string memory)
     {
         uint256 runnerDna = runnersToken.getDna(tokenId);
-        uint16[NUM_LAYERS] memory traitIndexes = getTokenData(
-            runnerDna,
-            dreamerDna
-        );
+        uint16[NUM_LAYERS] memory traitIndexes = getTokenData(runnerDna, candy);
         Trait[] memory traits = getTraits(traitIndexes);
+        return string(abi.encodePacked("data:image/svg+xml,", getSvg(traits)));
+    }
+
+    /// @notice Off-chain rendering because of Twitter, MetaMask, etc.
+    function tokenURI(uint256 tokenId, ChainDreamersTypes.ChainDreamer memory)
+        external
+        pure
+        override
+        returns (string memory)
+    {
         return
             string(
                 abi.encodePacked(
-                    "{",
-                    '"image_data": "',
-                    getSvg(traits),
-                    '", ',
-                    '"name": "Dreamer%20',
-                    HASHTAG,
-                    tokenId.toString(),
-                    '", ',
-                    '"description": "Runners%20run,%20but%20sometimes%20they%20dream.%20This%20is%20one%20of%20their%20dreams.",',
-                    '"attributes": ""}'
+                    "https://api.chaindreamers.xyz/test/tokens/",
+                    tokenId,
+                    "/metadata"
                 )
             );
     }

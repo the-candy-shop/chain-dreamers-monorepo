@@ -7,3 +7,4 @@ export * from "./dreamers-gas";
 export * from "./generateDreamers";
 export * from "./mint";
 export * from "./getChainRunnersTokenData";
+export * from "./verify-fix";

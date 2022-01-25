@@ -12,7 +12,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   await deploy("CandyShop", {
     from: deployer,
     log: true,
-    args: [""],
+    args: ["https://api.chaindreamers.xyz/test/candy/tokens/{id}/metadata"],
   });
 };
 
