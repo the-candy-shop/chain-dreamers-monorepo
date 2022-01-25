@@ -17,9 +17,8 @@ export const img = async (event) => {
   return {
     statusCode: 200,
     body: s3Json,
-    isBase64Encoded: true,
     headers: {
-      "Content-Type": "image/png",
+      "Content-Type": "application/json",
     },
   };
 };
