@@ -36,7 +36,7 @@ function Jaz({ sx }: JazProps) {
           }}
         >
           {runnerCount.length > 0 && (
-            <Typist>
+            <Typist avgTypingDelay={40}>
               Hello! My name is Jaz, I am the Candy Shop Runner. I successfully
               identified you as a verified Chain Runner. Usually I sell regular
               candies, but you seam pretty informed.
