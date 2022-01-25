@@ -3,12 +3,10 @@ import * as fs from "fs";
 
 (async function () {
   const files = getValiseSVGFiles();
-  console.log("files", files.length);
 
   const valiseValue: string[] = [];
 
   for (const file of files) {
-    console.log("filename", file.fileName);
     valiseValue.push(
       fs
         .readFileSync(file.filePath, "utf8")

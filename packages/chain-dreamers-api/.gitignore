@@ -7,5 +7,6 @@ jspm_packages
 .build
 
 valise.json
+meta.json
 
 .env.rinkeby

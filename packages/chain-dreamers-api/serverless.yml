@@ -10,6 +10,8 @@ provider:
   region: ${opt:region, 'us-west-1'}
   environment:
     API_ASSETS_BUCKET_NAME: ${self:custom.s3.apiAssetsBucketName}
+    API_DOMAIN_NAME: ${self:custom.customDomain.domainName}
+    API_DOMAIN_BASE_PATH: ${self:custom.customDomain.basePath}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -22,6 +24,16 @@ functions:
     events:
       - http:
           path: tokens/{id}/img
+          method: get
+          caching:
+            enabled: true
+            cacheKeyParameters:
+              - name: request.path.id
+  metadata:
+    handler: handler.metadata
+    events:
+      - http:
+          path: tokens/{id}/metadata
           method: get
           caching:
             enabled: true
@@ -54,6 +66,7 @@ package:
   include:
     - eth-sdk/**
     - valise.json
+    - meta.json
 
 plugins:
   - serverless-plugin-typescript
