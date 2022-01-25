@@ -1,15 +1,16 @@
 import { getS3Image } from "../../utils/getS3Image";
+import { BigNumber } from "ethers";
 
 export const img = async (event) => {
-  const id = event.pathParameters.id;
+  const id = BigNumber.from(`0x${event.pathParameters.id}`);
 
-  const s3Image = await getS3Image("candy-shop/img", id);
+  const s3Image = await getS3Image("candy-shop/img", id.toString());
 
   if (!s3Image) {
     return {
       statusCode: 404,
       body: JSON.stringify({
-        error: `Candy with id ${id} could not be found`,
+        error: `Candy with id ${id.toString()} could not be found`,
       }),
     };
   }
