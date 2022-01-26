@@ -48,22 +48,6 @@ contract CandyShop is ERC1155Pausable, Ownable, ReentrancyGuard, ICandyShop {
         chainDreamersAddress = _chainDreamersAddress;
     }
 
-    function uri(uint256 _tokenId)
-        public
-        view
-        override
-        returns (string memory)
-    {
-        return
-            string(
-                abi.encodePacked(
-                    'data:application/json,{"name": "',
-                    inventory[_tokenId].name,
-                    '"}'
-                )
-            );
-    }
-
     function mint(uint256 tokenId, uint256 amount)
         external
         payable

@@ -3,7 +3,6 @@ pragma solidity 0.8.4;
 
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "base64-sol/base64.sol";
 
 import "../tokens/ERC721Enumerable.sol";
 import "../interfaces/IDreamersRenderer.sol";
@@ -156,36 +155,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
             return "";
         }
 
-        return
-            string(
-                abi.encodePacked(
-                    "data:application/json,",
-                    renderer.tokenURI(_tokenId, dreamers[_tokenId].dna)
-                )
-            );
-    }
-
-    function tokenURI(uint256 _tokenId, uint8 dreamerDna)
-        public
-        view
-        virtual
-        returns (string memory)
-    {
-        if (renderingContractAddress == address(0)) {
-            return "";
-        }
-
-        return
-            string(
-                abi.encodePacked(
-                    "data:application/json;base64,",
-                    Base64.encode(
-                        abi.encodePacked(
-                            renderer.tokenURI(_tokenId, dreamerDna)
-                        )
-                    )
-                )
-            );
+        return renderer.tokenURI(_tokenId, dreamers[uint16(_tokenId)]);
     }
 
     receive() external payable {}

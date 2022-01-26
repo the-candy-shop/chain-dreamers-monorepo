@@ -15,6 +15,8 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 import "solidity-bytes-utils/contracts/BytesLib.sol";
 
+import "../dreamers/ChainDreamersTypes.sol";
+
 /**
  * @dev Implementation of https://eips.ethereum.org/EIPS/eip-721[ERC721] Non-Fungible Token Standard, including
  * the Metadata extension, but not including the Enumerable extension, which is available separately as
@@ -43,10 +45,7 @@ abstract contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
     mapping(address => mapping(address => bool)) private _operatorApprovals;
 
     // Mapping from tokenId to Dreamer
-    struct ChainDreamer {
-        uint8 dna;
-    }
-    mapping(uint256 => ChainDreamer) public dreamers;
+    mapping(uint256 => ChainDreamersTypes.ChainDreamer) public dreamers;
 
     /**
      * @dev Initializes the contract by setting a `name` and a `symbol` to the token collection.
@@ -329,7 +328,7 @@ abstract contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
             tokenIds.length < 512,
             "You can mint by batches up to 256 tokens at a time"
         );
-        bytes32 dnas = keccak256(
+        bytes32 candies = keccak256(
             abi.encodePacked(
                 candyIds,
                 tokenIds,
@@ -346,10 +345,10 @@ abstract contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
             uint16 tokenId = BytesLib.toUint16(tokenIds, i * 2);
             require(!_exists(tokenId), "ERC721: token already minted");
             _owners[tokenId] = to;
-            dreamers[tokenId] = ChainDreamer(
-                ((uint8(dnas[0]) >> 2) << 2) + (uint8(candyIds[i]) % 4)
+            dreamers[tokenId] = ChainDreamersTypes.ChainDreamer(
+                ((uint8(candies[0]) >> 2) << 2) + (uint8(candyIds[i]) % 4)
             );
-            dnas >>= 1;
+            candies >>= 1;
             emit Transfer(address(0), to, tokenId);
         }
         _balances[to] += uint16(tokenIds.length);
@@ -375,7 +374,7 @@ abstract contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
             tokenIds.length < 256,
             "You can mint by batches up to 256 tokens at a time"
         );
-        bytes32 dnas = keccak256(
+        bytes32 candies = keccak256(
             abi.encodePacked(
                 tokenIds,
                 ownerTokenIndexes,
@@ -392,10 +391,10 @@ abstract contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
             uint16 tokenId = BytesLib.toUint16(tokenIds, i * 2);
             require(!_exists(tokenId), "ERC721: token already minted");
             _owners[tokenId] = to;
-            dreamers[tokenId] = ChainDreamer(
-                ((uint8(dnas[0]) >> 2) << 2) + (uint8(dnas[0]) % 4)
+            dreamers[tokenId] = ChainDreamersTypes.ChainDreamer(
+                uint8(candies[0])
             );
-            dnas >>= 1;
+            candies >>= 1;
             emit Transfer(address(0), to, tokenId);
         }
         _balances[to] += uint16(tokenIds.length);
