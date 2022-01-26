@@ -24,7 +24,7 @@ import ChainDreamer111 from "./Chain_Dreamer_111.png";
 import ChainDreamer6025 from "./Chain_Dreamer_6025.png";
 import ChainDreamer6482 from "./Chain_Dreamer_6482.png";
 import ChainDreamer9027 from "./Chain_Dreamer_9027.png";
-import { DrugList, drugsColors } from "../../drugs";
+import { CandyList, candiesColors } from "../../candies";
 import TraitsChangeTable from "../TraitsChangeTable/TraitsChangeTable";
 
 const beforeAfterRunnerDreamer = [
@@ -103,7 +103,7 @@ function Story() {
             </p>
             <p>
               In reality, candy is sold to NPC Mega City citizens while Runners
-              have access to 3 special drugs:{" "}
+              have access to 3 special candies:{" "}
               <Link
                 href="https://www.chainrunners.xyz/hub/runners/5074"
                 target="_blank"
@@ -113,12 +113,12 @@ function Story() {
               , Somnus Tears and Helium Spice, which have 3 different effects.
             </p>
             <p>
-              Whatever the drug, once consumed, Runners turn into dreamers,
+              Whatever the candy, once consumed, Runners turn into dreamers,
               Chain Dreamers. Pixels give birth to vectors. Squares become
               curves. All this on the chain, by the chain, for the chain.
             </p>
             <p>
-              And the sooner you take the drug once mint is open, the stronger
+              And the sooner you take the candy once mint is open, the stronger
               the effects.
             </p>
             <p>
@@ -132,12 +132,12 @@ function Story() {
           </Content>
           <Content
             title="Chain-Meth"
-            titleColor={drugsColors[DrugList.ChainMeth]}
+            titleColor={candiesColors[CandyList.ChainMeth]}
           >
             <p>
               Chain-Meth tends to act very quickly, producing an almost instant
               escape feeling. It is the strongest way to find inspiration to
-              hack the world. This drug comes with a reality distortion field
+              hack the world. This candy comes with a reality distortion field
               for whoever takes it.
             </p>
             <p>
@@ -155,7 +155,7 @@ function Story() {
               }}
             >
               <TraitsChangeTable
-                drug={DrugList.ChainMeth}
+                candy={CandyList.ChainMeth}
                 sx={{ marginRight: isSmallWidth ? "32px" : "120px", flex: 1 }}
               />
               <img
@@ -167,7 +167,7 @@ function Story() {
           </Content>
           <Content
             title="Somnus Tears"
-            titleColor={drugsColors[DrugList.SomnusTears]}
+            titleColor={candiesColors[CandyList.SomnusTears]}
           >
             <p>
               Somnus tears sends consciousness to a dream world where your
@@ -190,7 +190,7 @@ function Story() {
               }}
             >
               <TraitsChangeTable
-                drug={DrugList.SomnusTears}
+                candy={CandyList.SomnusTears}
                 sx={{ marginRight: isSmallWidth ? "32px" : "120px", flex: 1 }}
               />
               <img
@@ -202,10 +202,10 @@ function Story() {
           </Content>
           <Content
             title="Helium Spice"
-            titleColor={drugsColors[DrugList.HeliumSpice]}
+            titleColor={candiesColors[CandyList.HeliumSpice]}
           >
             <p>
-              Helium Spice is the finest drug you can find in the Candy Shop.
+              Helium Spice is the finest candy you can find in the Candy Shop.
               The only one that can release your spirit high without wrecking
               your identity.
             </p>
@@ -226,7 +226,7 @@ function Story() {
               }}
             >
               <TraitsChangeTable
-                drug={DrugList.HeliumSpice}
+                candy={CandyList.HeliumSpice}
                 sx={{ marginRight: isSmallWidth ? "32px" : "120px", flex: 1 }}
               />
               <img

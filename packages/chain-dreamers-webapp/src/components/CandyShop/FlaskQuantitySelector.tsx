@@ -1,6 +1,6 @@
 import React from "react";
 import Box, { BoxProps } from "@mui/material/Box";
-import { DrugList, imageByDrug } from "../../drugs";
+import { CandyList, imageByCandy } from "../../candies";
 import IconButton from "@mui/material/IconButton";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
@@ -8,14 +8,14 @@ import AddIcon from "@mui/icons-material/Add";
 type FlaskQuantitySelectorProps = {
   quantity: number;
   setQuantity: (q: number) => void;
-  drug: DrugList;
+  candy: CandyList;
   sx?: BoxProps["sx"];
 };
 
 function FlaskQuantitySelector({
   quantity,
   setQuantity,
-  drug,
+  candy,
   sx,
 }: FlaskQuantitySelectorProps) {
   const add = React.useCallback(
@@ -36,9 +36,9 @@ function FlaskQuantitySelector({
       sx={sx}
     >
       <Box>
-        <img alt="flask" src={imageByDrug[drug]} style={{ width: "48px" }} />
+        <img alt="flask" src={imageByCandy[candy]} style={{ width: "48px" }} />
       </Box>
-      <Box fontSize="24px">{drug.toString()}</Box>
+      <Box fontSize="24px">{candy.toString()}</Box>
       <Box
         sx={{
           marginTop: "12px",

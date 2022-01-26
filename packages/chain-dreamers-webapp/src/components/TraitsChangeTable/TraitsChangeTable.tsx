@@ -4,12 +4,12 @@ import shuffleChainMeth from "./shuffle-chain-meth.png";
 import shuffleHeliumSpice from "./shuffle-helium-spice.png";
 import shuffleSomnusTears from "./shuffle-somnus-tears.png";
 import { useMediaQuery } from "@mui/material";
-import { DrugList, drugsColors } from "../../drugs";
+import { CandyList, candiesColors } from "../../candies";
 
 const shuffleImages = {
-  [DrugList.ChainMeth]: shuffleChainMeth,
-  [DrugList.SomnusTears]: shuffleSomnusTears,
-  [DrugList.HeliumSpice]: shuffleHeliumSpice,
+  [CandyList.ChainMeth]: shuffleChainMeth,
+  [CandyList.SomnusTears]: shuffleSomnusTears,
+  [CandyList.HeliumSpice]: shuffleHeliumSpice,
 };
 
 export enum Traits {
@@ -28,8 +28,8 @@ export enum Traits {
   MouthAccessories = "Mouth accessories",
 }
 
-export const TraitChangesForDrugs = {
-  [DrugList.ChainMeth]: {
+export const TraitChangesForCandies = {
+  [CandyList.ChainMeth]: {
     [Traits.Background]: 1,
     [Traits.Race]: 0,
     [Traits.Face]: 0,
@@ -44,7 +44,7 @@ export const TraitChangesForDrugs = {
     [Traits.HeadAbove]: 1,
     [Traits.MouthAccessories]: 1,
   },
-  [DrugList.SomnusTears]: {
+  [CandyList.SomnusTears]: {
     [Traits.Background]: 0,
     [Traits.Race]: 1,
     [Traits.Face]: 1,
@@ -59,7 +59,7 @@ export const TraitChangesForDrugs = {
     [Traits.HeadAbove]: 0,
     [Traits.MouthAccessories]: 0,
   },
-  [DrugList.HeliumSpice]: {
+  [CandyList.HeliumSpice]: {
     [Traits.Background]: 0.1,
     [Traits.Race]: 0,
     [Traits.Face]: 0,
@@ -77,14 +77,14 @@ export const TraitChangesForDrugs = {
 };
 
 type TraitsChangeTableProps = {
-  drug: DrugList;
+  candy: CandyList;
   sx?: BoxProps["sx"];
 };
 
-function TraitsChangeTable({ drug, sx }: TraitsChangeTableProps) {
+function TraitsChangeTable({ candy, sx }: TraitsChangeTableProps) {
   const isSmallWidth = useMediaQuery("(max-width:915px)");
-  const changesTraits = TraitChangesForDrugs[drug];
-  const shuffle = shuffleImages[drug];
+  const changesTraits = TraitChangesForCandies[candy];
+  const shuffle = shuffleImages[candy];
 
   return (
     <Box sx={sx}>
@@ -92,9 +92,9 @@ function TraitsChangeTable({ drug, sx }: TraitsChangeTableProps) {
         fontWeight="bold"
         fontSize={isSmallWidth ? "18px" : "24px"}
         marginBottom="48px"
-        color={drugsColors[drug]}
+        color={candiesColors[candy]}
       >
-        List of {drug.toString()} effects, by trait
+        List of {candy.toString()} effects, by trait
       </Box>
       <Box>
         {enumKeys(Traits).map((traitKey) => {
@@ -124,7 +124,7 @@ function TraitsChangeTable({ drug, sx }: TraitsChangeTableProps) {
                 {changesTraits[traitName] !== 0 &&
                   changesTraits[traitName] !== 1 && (
                     <span
-                      style={{ fontSize: "12px", color: drugsColors[drug] }}
+                      style={{ fontSize: "12px", color: candiesColors[candy] }}
                     >
                       {changesTraits[traitName] * 100}%
                     </span>

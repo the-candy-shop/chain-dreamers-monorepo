@@ -2,22 +2,22 @@ import ShopPanels from "../ShopPanels/ShopPanels";
 import Box, { BoxProps } from "@mui/material/Box";
 import React from "react";
 import Button from "@mui/lab/LoadingButton";
-import { drugPrice } from "../../config";
+import { candyPrice } from "../../config";
 import FlaskQuantitySelector from "./FlaskQuantitySelector";
-import { DrugList } from "../../drugs";
+import { CandyList } from "../../candies";
 import { Link, useNavigate } from "react-router-dom";
 import { useCandyShopContract } from "../../hooks/useCandyShopContract";
-import LoadingDrugMintDialog from "../LoadingDrugMintDialog/LoadingDrugMintDialog";
+import LoadingCandyMintDialog from "../LoadingCandyMintDialog/LoadingCandyMintDialog";
 import jaz from "./jaz.png";
 import Typist from "react-typist";
 import heliumSpice from "./helium-spice.png";
 import somnusTears from "./somnus-tears.png";
 import chainMeth from "./chain-meth.png";
 
-const defaultDrugQuantity = {
-  [DrugList.ChainMeth]: 0,
-  [DrugList.HeliumSpice]: 0,
-  [DrugList.SomnusTears]: 0,
+const defaultCandyQuantity = {
+  [CandyList.ChainMeth]: 0,
+  [CandyList.HeliumSpice]: 0,
+  [CandyList.SomnusTears]: 0,
 };
 
 type MyOrderProps = {
@@ -31,11 +31,11 @@ function MyOrder({ sx }: MyOrderProps) {
     isMinting,
     isWaitingForPayment,
     totalQuantity: totalMintedQuantity,
-    drugQuantities: mintedQuantities,
+    candyQuantities: mintedQuantities,
   } = useCandyShopContract();
 
   const [quantity, setQuantity] =
-    React.useState<Record<DrugList, number>>(defaultDrugQuantity);
+    React.useState<Record<CandyList, number>>(defaultCandyQuantity);
 
   const total = Object.values(quantity).reduce((res, q) => res + q, 0);
 
@@ -44,7 +44,7 @@ function MyOrder({ sx }: MyOrderProps) {
   );
 
   const resetQuantity = React.useCallback(
-    () => setQuantity(defaultDrugQuantity),
+    () => setQuantity(defaultCandyQuantity),
     []
   );
 
@@ -52,7 +52,7 @@ function MyOrder({ sx }: MyOrderProps) {
     (chainMethQuantity: number) =>
       setQuantity({
         ...quantity,
-        [DrugList.ChainMeth]: chainMethQuantity,
+        [CandyList.ChainMeth]: chainMethQuantity,
       }),
     [quantity]
   );
@@ -61,7 +61,7 @@ function MyOrder({ sx }: MyOrderProps) {
     (heliumSpiceQuantity: number) =>
       setQuantity({
         ...quantity,
-        [DrugList.HeliumSpice]: heliumSpiceQuantity,
+        [CandyList.HeliumSpice]: heliumSpiceQuantity,
       }),
     [quantity]
   );
@@ -70,7 +70,7 @@ function MyOrder({ sx }: MyOrderProps) {
     (somnusTearsQuantity: number) =>
       setQuantity({
         ...quantity,
-        [DrugList.SomnusTears]: somnusTearsQuantity,
+        [CandyList.SomnusTears]: somnusTearsQuantity,
       }),
     [quantity]
   );
@@ -106,21 +106,21 @@ function MyOrder({ sx }: MyOrderProps) {
               </Box>
               <Box marginTop="44px">
                 <FlaskQuantitySelector
-                  quantity={quantity[DrugList.ChainMeth]}
+                  quantity={quantity[CandyList.ChainMeth]}
                   setQuantity={setChainMethQuantity}
-                  drug={DrugList.ChainMeth}
+                  candy={CandyList.ChainMeth}
                   sx={{ marginBottom: "24px" }}
                 />
                 <FlaskQuantitySelector
-                  quantity={quantity[DrugList.SomnusTears]}
+                  quantity={quantity[CandyList.SomnusTears]}
                   setQuantity={setSomnusTearsQuantity}
-                  drug={DrugList.SomnusTears}
+                  candy={CandyList.SomnusTears}
                   sx={{ marginBottom: "24px" }}
                 />
                 <FlaskQuantitySelector
-                  quantity={quantity[DrugList.HeliumSpice]}
+                  quantity={quantity[CandyList.HeliumSpice]}
                   setQuantity={setHeliumSpiceQuantity}
-                  drug={DrugList.HeliumSpice}
+                  candy={CandyList.HeliumSpice}
                   sx={{ marginBottom: "24px" }}
                 />
               </Box>
@@ -147,10 +147,11 @@ function MyOrder({ sx }: MyOrderProps) {
                 onClick={handleBuyButtonClick}
               >
                 Buy
-                {total !== 0 && ` for ${drugPrice.times(total).toString()} ETH`}
+                {total !== 0 &&
+                  ` for ${candyPrice.times(total).toString()} ETH`}
               </Button>
               <Box sx={{ marginTop: "44px", fontSize: "15px" }}>
-                At least 1 Flask of drug is needed to mint 1 Dreamer.{" "}
+                At least 1 Flask of candy is needed to mint 1 Dreamer.{" "}
                 <Link
                   to="/faq"
                   style={{ color: "#44DFFD", textDecoration: "none" }}
@@ -175,21 +176,21 @@ function MyOrder({ sx }: MyOrderProps) {
                 </Box>
               </Box>
               <Box marginTop="24px">
-                {mintedQuantities[DrugList.ChainMeth] !== 0 && (
+                {mintedQuantities[CandyList.ChainMeth] !== 0 && (
                   <img
                     alt="Chain-Meth"
                     src={chainMeth}
                     style={{ width: "48px", margin: "0 16px" }}
                   />
                 )}
-                {mintedQuantities[DrugList.SomnusTears] !== 0 && (
+                {mintedQuantities[CandyList.SomnusTears] !== 0 && (
                   <img
                     alt="Somnus Tears"
                     src={somnusTears}
                     style={{ width: "48px", margin: "0 16px" }}
                   />
                 )}
-                {mintedQuantities[DrugList.HeliumSpice] !== 0 && (
+                {mintedQuantities[CandyList.HeliumSpice] !== 0 && (
                   <img
                     alt="Helium Spice"
                     src={heliumSpice}
@@ -249,7 +250,7 @@ function MyOrder({ sx }: MyOrderProps) {
           )}
         </Box>
       </Box>
-      <LoadingDrugMintDialog open={isMinting} />
+      <LoadingCandyMintDialog open={isMinting} />
     </ShopPanels>
   );
 }

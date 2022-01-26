@@ -17,7 +17,7 @@ const supportedChainIds = [CHAIN_ID];
 function buildButtonLabel(
   isLaunched: boolean,
   account: string | null | undefined,
-  totalDrugQuantity: number
+  totalCandyQuantity: number
 ): React.ReactNode {
   if (!isLaunched) {
     return "Opening: TBD";
@@ -27,7 +27,7 @@ function buildButtonLabel(
     return "Connect";
   }
 
-  if (totalDrugQuantity === 0) {
+  if (totalCandyQuantity === 0) {
     return account.substring(0, 8);
   }
 
@@ -43,7 +43,7 @@ function buildButtonLabel(
           fontWeight={400}
           sx={{ textTransform: "none" }}
         >
-          x{totalDrugQuantity}
+          x{totalCandyQuantity}
         </Box>
       </Box>
       <Box>{account.substring(0, 8)}</Box>

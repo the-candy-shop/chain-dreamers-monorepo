@@ -4,11 +4,11 @@ import flask from "./flask.png";
 import pill from "./pill.png";
 import Box from "@mui/material/Box";
 
-type LoadingDrugMintDialogProps = {
+type LoadingCandyMintDialogProps = {
   open: boolean;
 };
 
-function LoadingDrugMintDialog({ open }: LoadingDrugMintDialogProps) {
+function LoadingCandyMintDialog({ open }: LoadingCandyMintDialogProps) {
   const pillFallAnimation = keyframes`
     0 %  { top: -50px },
     100% { top: 120px  }
@@ -34,4 +34,4 @@ function LoadingDrugMintDialog({ open }: LoadingDrugMintDialogProps) {
   );
 }
 
-export default LoadingDrugMintDialog;
+export default LoadingCandyMintDialog;

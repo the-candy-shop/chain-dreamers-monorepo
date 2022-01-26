@@ -37,7 +37,7 @@ function Faq() {
           <Content title="What is the Candy Shop?">
             <p>
               Beyond the narrative,{" "}
-              <Link href="https://thecandyshop.wtf/" target="_blank">
+              <Link href="https://thecandieshop.wtf/" target="_blank">
                 The Candy Shop
               </Link>{" "}
               is an NFT research lab.
@@ -130,7 +130,7 @@ function Faq() {
           </Content>
           <Content title="How to mint a Chain Dreamer during Chapter 1?">
             <p>
-              First, you buy as many drug flasks as Chain Dreamers you want to
+              First, you buy as many candy flasks as Chain Dreamers you want to
               mint in the{" "}
               <CustomTooltip title="Soon">
                 <Link>Candy Shop</Link>

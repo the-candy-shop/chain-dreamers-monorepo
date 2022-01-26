@@ -429,10 +429,10 @@ function OnChainStorage() {
               Chain Dreamers is another attempt at bringing more creativity to
               the chain, we hope that you like it! We are only getting starting
               with the{" "}
-              <Link href="https://thecandyshop.wtf" target="_blank">
+              <Link href="https://thecandieshop.wtf" target="_blank">
                 Candy Shop
               </Link>
-              , our innovative lab. With each new drug we will strive to push
+              , our innovative lab. With each new candy we will strive to push
               forward the limits of the chain. <i>Break the chain</i>.
             </p>
           </Content>

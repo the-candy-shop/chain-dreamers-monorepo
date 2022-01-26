@@ -32,6 +32,5 @@ export const useDreamersIds = (): number[] => {
     }
   }, [account, sdk, dreamersCount]);
 
-  console.log("dreamersIds", dreamersIds);
   return dreamersIds;
 };

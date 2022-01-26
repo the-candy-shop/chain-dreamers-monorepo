@@ -5,25 +5,25 @@ import Footer from "./components/Footer/Footer";
 import RoutesWrapper from "./routes";
 import { useMediaQuery } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import { DrugQuantitiesContext } from "./contexts/DrugQuantitiesContext";
-import { DrugList } from "./drugs";
+import { CandyQuantitiesContext } from "./contexts/CandyQuantitiesContext";
+import { CandyList } from "./candies";
 
 function App() {
   const location = useLocation();
   const isSmallWidth = useMediaQuery("(max-width:915px)");
   const isHome = location.pathname === "/";
 
-  const [drugQuantities, setDrugQuantities] = React.useState<
-    Record<DrugList, number>
+  const [candyQuantities, setCandyQuantities] = React.useState<
+    Record<CandyList, number>
   >({
-    [DrugList.ChainMeth]: 0,
-    [DrugList.HeliumSpice]: 0,
-    [DrugList.SomnusTears]: 0,
+    [CandyList.ChainMeth]: 0,
+    [CandyList.HeliumSpice]: 0,
+    [CandyList.SomnusTears]: 0,
   });
 
   return (
-    <DrugQuantitiesContext.Provider
-      value={{ drugQuantities, setDrugQuantities }}
+    <CandyQuantitiesContext.Provider
+      value={{ candyQuantities, setCandyQuantities }}
     >
       <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <Box
@@ -37,7 +37,7 @@ function App() {
           <Footer fixed={!isSmallWidth && isHome} />
         </Box>
       </Box>
-    </DrugQuantitiesContext.Provider>
+    </CandyQuantitiesContext.Provider>
   );
 }
 
