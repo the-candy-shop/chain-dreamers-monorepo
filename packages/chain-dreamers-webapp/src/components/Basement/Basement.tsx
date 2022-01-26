@@ -3,10 +3,13 @@ import ShopPanels from "../ShopPanels/ShopPanels";
 import Box from "@mui/material/Box";
 import { useCandyShopContract } from "../../hooks/useCandyShopContract";
 import Jaz from "../CandyShop/Jaz";
-import { CandyList } from "../../candies";
+import { CandyList, imageByCandy } from "../../candies";
 import { useRunnerIds } from "../../hooks/useRunnerIds";
 import { useDreamersIds } from "../../hooks/useDreamersIds";
 import MyRunners from "./MyRunners";
+import jaz from "../CandyShop/jaz.png";
+import Typist from "react-typist";
+import Button from "@mui/lab/LoadingButton";
 
 function Basement() {
   const {
@@ -29,8 +32,25 @@ function Basement() {
     }, {})
   );
 
+  const candySpent = React.useMemo<Record<CandyList, number>>(() => {
+    const result: Record<string, number> = {};
+
+    for (const candy of Object.values(CandyList)) {
+      result[candy] = Object.values(selectedRunners).filter(
+        (selectedCandy) => selectedCandy === candy
+      ).length;
+    }
+
+    return result;
+  }, [selectedRunners]);
+
+  const selectedRunnersCount = React.useMemo<number>(
+    () => Object.values(selectedRunners).filter((v) => !!v).length,
+    [selectedRunners]
+  );
+
   return (
-    <Box display="flex" flexDirection="column" height="calc(100vh - 191px)">
+    <Box display="flex" flexDirection="column" minHeight="calc(100vh - 191px)">
       <Box marginTop="23px" marginBottom="40px" display="flex" flex={1}>
         {totalMintedCandy > 0 && (
           <>
@@ -40,7 +60,6 @@ function Basement() {
                 setSelectedRunners={setSelectedRunners}
                 mintedCandyQuantities={mintedCandyQuantities}
                 nonDreamingRunnersIds={nonDreamingRunners}
-                totalMintedCandy={totalMintedCandy}
               />
             </Box>
             <Box
@@ -50,7 +69,78 @@ function Basement() {
               }}
             >
               <ShopPanels title="My order" sx={{ height: "100%" }}>
-                toto
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  maxWidth="500px"
+                >
+                  <Box>
+                    <img alt="Jaz" src={jaz} style={{ width: "64px" }} />
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "20px",
+                      fontFamily: "Share Tech Mono",
+                      padding: "60px 35px",
+                      textAlign: "center",
+                    }}
+                  >
+                    <Typist avgTypingDelay={40}>
+                      Runners! Choose wisely which candy you will take. Once
+                      you're ready, click the button bellow, and I'll give you
+                      the dose myself.
+                    </Typist>
+                  </Box>
+                  <Box>
+                    {Object.values(CandyList).map((candy) => (
+                      <Box
+                        margin="16px"
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="space-between"
+                        fontWeight={600}
+                        fontSize="22px"
+                        textTransform="uppercase"
+                      >
+                        <img
+                          alt={candy}
+                          src={imageByCandy[candy]}
+                          style={{ width: "32px", marginRight: "16px" }}
+                        />
+                        <Box>{candy} total spent:</Box>
+                        <Box marginLeft="12px">{candySpent[candy]}</Box>
+                      </Box>
+                    ))}
+                  </Box>
+                  <Box marginTop="40px">
+                    <Button
+                      variant="contained"
+                      sx={{
+                        marginTop: "20px",
+                        fontSize: "20px",
+                        fontWeight: 600,
+                        padding: "12px 24px",
+                        color: "black",
+                        background: "#44DFFD",
+                        width: "340px",
+                        textTransform: "uppercase",
+
+                        "&.Mui-disabled": {
+                          background: "rgba(68,223,253,.2)",
+                        },
+
+                        "&:hover": {
+                          background: "#44DFFD",
+                        },
+                      }}
+                      disabled={selectedRunnersCount === 0}
+                      onClick={() => {}}
+                    >
+                      Mint my chain dreamers
+                    </Button>
+                  </Box>
+                </Box>
               </ShopPanels>
             </Box>
           </>

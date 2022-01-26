@@ -5,7 +5,6 @@ import { CandyList, imageByCandy } from "../../candies";
 import RunnerSelector from "./RunnerSelector";
 
 type MyRunnersProps = {
-  totalMintedCandy: number;
   mintedCandyQuantities: Record<CandyList, number>;
   nonDreamingRunnersIds: number[];
   selectedRunners: Record<number, CandyList | null>;
@@ -13,7 +12,6 @@ type MyRunnersProps = {
 };
 
 function MyRunners({
-  totalMintedCandy,
   mintedCandyQuantities,
   nonDreamingRunnersIds,
   selectedRunners,
@@ -68,7 +66,13 @@ function MyRunners({
 
   return (
     <ShopPanels title="My runners" sx={{ height: "100%" }}>
-      <Box display="flex" flexDirection="column" alignItems="center">
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        padding="32px"
+        maxWidth="500px"
+      >
         <Box display="flex">
           {Object.values(CandyList).map((candy) => (
             <Box key={candy} display="flex" alignItems="center" margin="0 24px">
@@ -78,7 +82,7 @@ function MyRunners({
                 style={{ width: "21px" }}
               />
               <Box fontWeight={600} fontSize="16px" marginLeft="4px">
-                x{mintedCandyQuantities[candy]}
+                x{candyLeft[candy]}
               </Box>
             </Box>
           ))}
@@ -88,9 +92,18 @@ function MyRunners({
           fontWeight={600}
           textTransform="uppercase"
           fontSize="22px"
+          textAlign="center"
+          height="60px"
         >
-          You can select up to{" "}
-          <span style={{ color: "#44DFFD" }}>{totalMintedCandy}</span> runners
+          {candyLeftTotal !== 0 && (
+            <>
+              You can select{" "}
+              <span style={{ color: "#44DFFD" }}>{candyLeftTotal}</span> runners
+            </>
+          )}
+          {candyLeftTotal === 0 && (
+            <>You have assign all your candies, go mint your dreamers!</>
+          )}
         </Box>
         <Box
           marginTop="40px"

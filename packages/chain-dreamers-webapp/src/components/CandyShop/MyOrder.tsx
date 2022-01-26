@@ -198,7 +198,12 @@ function MyOrder({ sx }: MyOrderProps) {
                   />
                 )}
               </Box>
-              <Box marginTop="24px">
+              <Box
+                marginTop="24px"
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+              >
                 <Button
                   variant="contained"
                   sx={{

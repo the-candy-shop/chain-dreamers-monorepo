@@ -9,7 +9,7 @@ function CandyShop() {
   const runnerCount = useRunnerIds();
 
   return (
-    <Box display="flex" flexDirection="column" height="calc(100vh - 191px)">
+    <Box display="flex" flexDirection="column" minHeight="calc(100vh - 191px)">
       <RemainingTimeBlock />
       <Box marginTop="23px" marginBottom="40px" display="flex" flex={1}>
         {runnerCount.length > 0 && (
