@@ -87,7 +87,7 @@ function MyOrder({ sx }: MyOrderProps) {
 
   const handleBuyMoreCandyButtonClick = React.useCallback(async () => {
     setHasMint(false);
-  }, [navigate]);
+  }, []);
 
   return (
     <ShopPanels title="My order" sx={{ flex: 1, ...sx }}>

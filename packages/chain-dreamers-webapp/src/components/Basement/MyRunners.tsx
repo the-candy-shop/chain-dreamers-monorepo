@@ -49,7 +49,7 @@ function MyRunners({
         [runnerId]: newValue,
       });
     },
-    [selectedRunners]
+    [selectedRunners, candyLeft, candyLeftTotal, setSelectedRunners]
   );
 
   const selectCandy = React.useCallback(
@@ -61,7 +61,7 @@ function MyRunners({
         [runnerId]: candy,
       });
     },
-    [selectedRunners]
+    [selectedRunners, candyLeftTotal, setSelectedRunners]
   );
 
   return (

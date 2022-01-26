@@ -32,5 +32,11 @@ export const useDreamersIds = (): number[] => {
     }
   }, [account, sdk, dreamersCount]);
 
+  const mintForRunners = React.useCallback(async () => {
+    if (sdk && account) {
+      await sdk.dreamers.mintBatchRunnersAccess();
+    }
+  }, []);
+
   return dreamersIds;
 };
