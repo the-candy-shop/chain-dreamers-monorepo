@@ -48,13 +48,10 @@ workflows:
     jobs:
       - build
       - deploy-staging
-      filters:
-        branches:
-          only: test
-  deploy-prod-workflow:
-    jobs:
-      - build
-      - deploy-staging
-      filters:
-        branches:
-          only: main
+        filters:
+          branches:
+            only: test
+      - deploy-prod
+        filters:
+          branches:
+            only: main
