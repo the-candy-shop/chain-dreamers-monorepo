@@ -67,7 +67,8 @@ export const useDreamersContract = () => {
           setIsWaitingForPayment(false);
           setIsMinting(true);
           const event = sdk.ChainDreamers.filters.Transfer(undefined, account);
-          sdk.ChainDreamers.once(event, async () => {
+
+          sdk.ChainDreamers.on(event, async () => {
             await fetchDreamersCount();
             setIsMinting(false);
             resolve();

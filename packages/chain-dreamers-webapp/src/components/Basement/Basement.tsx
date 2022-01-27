@@ -10,6 +10,7 @@ import MyRunners from "./MyRunners";
 import jaz from "../CandyShop/jaz.png";
 import Typist from "react-typist";
 import Button from "@mui/lab/LoadingButton";
+import LoadingDreamersMintDialog from "../LoadingDreamersMintDialog/LoadingCandyMintDialog";
 
 function Basement() {
   const {
@@ -23,6 +24,15 @@ function Basement() {
   const nonDreamingRunners = runnersIds.filter(
     (id) => !dreamersIds.includes(id)
   );
+
+  const [mintingDialogOpen, setMintingDialogOpen] =
+    React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    if (isMinting) {
+      setMintingDialogOpen(true);
+    }
+  }, [isMinting]);
 
   const [selectedRunners, setSelectedRunners] = React.useState<
     Record<number, CandyList | null>
@@ -162,6 +172,10 @@ function Basement() {
           </Box>
         )}
       </Box>
+      <LoadingDreamersMintDialog
+        open={mintingDialogOpen}
+        mintingRunnersIds={runnersIds.filter((id) => !!selectedRunners[id])}
+      />
     </Box>
   );
 }
