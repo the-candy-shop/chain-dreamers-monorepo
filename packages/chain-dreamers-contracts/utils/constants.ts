@@ -102,5 +102,4 @@ export const TAGS = {
   CANDY_SHOP: "CandyShop",
   CANDY_SHOP_INVENTORY: "CandyShopInventory",
   BIND_DREAMERS_AND_CANDY_SHOP: "BindDreamersAndCandyShop",
-  GAS_BENCHMARK: "GasBenchmark",
 };

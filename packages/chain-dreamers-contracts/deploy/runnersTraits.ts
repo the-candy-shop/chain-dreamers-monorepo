@@ -28,7 +28,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   });
 
   await execute(
-    "ChainRunnersBaseRenderer",
+    "ChainRunnersLayerRenderer",
     { from: deployer, log: true },
     "setLayers((string,bytes,uint8,uint8)[])",
     layers

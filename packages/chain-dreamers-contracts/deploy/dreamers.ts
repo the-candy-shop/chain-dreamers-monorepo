@@ -48,10 +48,10 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   if (network.tags.staging) {
     const ChainRunners = await deployments.get("ChainRunners");
     runnersAddress = ChainRunners.address;
-    const ChainRunnersBaseRenderer = await deployments.get(
-      "ChainRunnersBaseRenderer"
+    const ChainRunnersLayerRenderer = await deployments.get(
+      "ChainRunnersLayerRenderer"
     );
-    rendererAddress = ChainRunnersBaseRenderer.address;
+    rendererAddress = ChainRunnersLayerRenderer.address;
   }
 
   const tx = await deploy("DreamersRenderer", {
