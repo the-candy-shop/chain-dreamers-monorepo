@@ -9,10 +9,10 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-      keys:
-        - npm-deps-{{ checksum "package-lock.json" }}
-        # fallback to using the latest cache if no exact match is found
-        - npm-deps-
+          keys:
+            - npm-deps-{{ checksum "package-lock.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - npm-deps-
       - run:
           name: Install Serverless CLI and dependencies
           command: |
@@ -35,19 +35,19 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-      keys:
-        - npm-deps-{{ checksum "package-lock.json" }}
-        # fallback to using the latest cache if no exact match is found
-        - npm-deps-
-        - run:
-            name: Install Serverless CLI and dependencies
-            command: |
-              sudo npm i -g serverless
-              npm install
-        - save_cache:
-            paths:
-              - node_modules
-            key: npm-deps-{{ checksum "package-lock.json" }}
+          keys:
+            - npm-deps-{{ checksum "package-lock.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - npm-deps-
+      - run:
+          name: Install Serverless CLI and dependencies
+          command: |
+            sudo npm i -g serverless
+            npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: npm-deps-{{ checksum "package-lock.json" }}
       - run:
           name: Deploy application
           command: npm run deploy:prod
