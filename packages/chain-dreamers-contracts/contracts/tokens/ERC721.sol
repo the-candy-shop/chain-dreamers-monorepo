@@ -47,6 +47,9 @@ abstract contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
     // Mapping from tokenId to Dreamer
     mapping(uint256 => ChainDreamersTypes.ChainDreamer) public dreamers;
 
+    // Event for batch minting
+    event BatchMint(address indexed to, bytes indexed tokenIds);
+
     /**
      * @dev Initializes the contract by setting a `name` and a `symbol` to the token collection.
      */
@@ -352,6 +355,7 @@ abstract contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
             emit Transfer(address(0), to, tokenId);
         }
         _balances[to] += uint16(tokenIds.length) / 2;
+        emit BatchMint(to, tokenIds);
 
         require(
             _checkOnERC721Received(
@@ -398,6 +402,7 @@ abstract contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
             emit Transfer(address(0), to, tokenId);
         }
         _balances[to] += uint16(tokenIds.length);
+        emit BatchMint(to, tokenIds);
 
         require(
             _checkOnERC721Received(
