@@ -14,6 +14,12 @@ export const candiesColors = {
   [CandyList.HeliumSpice]: "#b101e6",
 };
 
+export const candiesIds = {
+  [CandyList.ChainMeth]: 0,
+  [CandyList.SomnusTears]: 2,
+  [CandyList.HeliumSpice]: 1,
+};
+
 export const imageByCandy = {
   [CandyList.SomnusTears]: somnusTears,
   [CandyList.ChainMeth]: chainMeth,

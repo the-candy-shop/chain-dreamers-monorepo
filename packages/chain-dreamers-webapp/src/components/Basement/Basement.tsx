@@ -3,9 +3,9 @@ import ShopPanels from "../ShopPanels/ShopPanels";
 import Box from "@mui/material/Box";
 import { useCandyShopContract } from "../../hooks/useCandyShopContract";
 import Jaz from "../CandyShop/Jaz";
-import { CandyList, imageByCandy } from "../../candies";
+import { candiesIds, CandyList, imageByCandy } from "../../candies";
 import { useRunnerIds } from "../../hooks/useRunnerIds";
-import { useDreamersIds } from "../../hooks/useDreamersIds";
+import { useDreamersContract } from "../../hooks/useDreamersContract";
 import MyRunners from "./MyRunners";
 import jaz from "../CandyShop/jaz.png";
 import Typist from "react-typist";
@@ -17,7 +17,10 @@ function Basement() {
     candyQuantities: mintedCandyQuantities,
   } = useCandyShopContract();
   const runnersIds = useRunnerIds();
-  const dreamersIds = useDreamersIds();
+  const { dreamersIds, mintAsRunners, isMinting, isWaitingForPayment } =
+    useDreamersContract();
+
+  console.log("dreamersIds", dreamersIds);
 
   const nonDreamingRunners = runnersIds.filter(
     (id) => !dreamersIds.includes(id)
@@ -48,6 +51,16 @@ function Basement() {
     () => Object.values(selectedRunners).filter((v) => !!v).length,
     [selectedRunners]
   );
+
+  const handleMintButtonClick = React.useCallback(async () => {
+    const runnersToMintIds = runnersIds.filter((id) => !!selectedRunners[id]);
+    console.log("runnersIds", runnersIds, runnersToMintIds, selectedRunners);
+    const runnersIndexed = runnersToMintIds.map((id) => runnersIds.indexOf(id));
+    const candyIds = runnersToMintIds.map(
+      (id) => candiesIds[selectedRunners[id] as CandyList]
+    );
+    await mintAsRunners(runnersToMintIds, runnersIndexed, candyIds);
+  }, []);
 
   return (
     <Box display="flex" flexDirection="column" minHeight="calc(100vh - 191px)">
@@ -95,6 +108,7 @@ function Basement() {
                   <Box>
                     {Object.values(CandyList).map((candy) => (
                       <Box
+                        key={candy}
                         margin="16px"
                         display="flex"
                         alignItems="center"
@@ -135,7 +149,8 @@ function Basement() {
                         },
                       }}
                       disabled={selectedRunnersCount === 0}
-                      onClick={() => {}}
+                      loading={isMinting || isWaitingForPayment}
+                      onClick={handleMintButtonClick}
                     >
                       Mint my chain dreamers
                     </Button>

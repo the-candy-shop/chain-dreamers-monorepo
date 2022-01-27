@@ -7,6 +7,7 @@ import { useMediaQuery } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { CandyQuantitiesContext } from "./contexts/CandyQuantitiesContext";
 import { CandyList } from "./candies";
+import { DreamersContext } from "./contexts/DreamersContext";
 
 function App() {
   const location = useLocation();
@@ -20,23 +21,29 @@ function App() {
     [CandyList.HeliumSpice]: 0,
     [CandyList.SomnusTears]: 0,
   });
+  const [dreamersCount, setDreamersCount] = React.useState<number>(0);
+  const [dreamersIds, setDreamersIds] = React.useState<number[]>([]);
 
   return (
     <CandyQuantitiesContext.Provider
       value={{ candyQuantities, setCandyQuantities }}
     >
-      <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
-        <Box
-          sx={{
-            width: isSmallWidth ? "100%" : "calc(100vw - 192px)",
-            minHeight: "100vh",
-          }}
-        >
-          <Header />
-          <RoutesWrapper />
-          <Footer fixed={!isSmallWidth && isHome} />
+      <DreamersContext.Provider
+        value={{ dreamersCount, setDreamersCount, dreamersIds, setDreamersIds }}
+      >
+        <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
+          <Box
+            sx={{
+              width: isSmallWidth ? "100%" : "calc(100vw - 192px)",
+              minHeight: "100vh",
+            }}
+          >
+            <Header />
+            <RoutesWrapper />
+            <Footer fixed={!isSmallWidth && isHome} />
+          </Box>
         </Box>
-      </Box>
+      </DreamersContext.Provider>
     </CandyQuantitiesContext.Provider>
   );
 }

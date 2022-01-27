@@ -48,8 +48,8 @@ export const useCandyShopContract = () => {
   const mint = React.useCallback(
     async (quantity: Record<CandyList, number>): Promise<void> => {
       return new Promise(async (resovle) => {
-        setIsWaitingForPayment(true);
         if (sdk && account) {
+          setIsWaitingForPayment(true);
           const price = candyPrice.times(
             Object.values(quantity).reduce((res, q) => res + q, 0)
           );
@@ -74,6 +74,8 @@ export const useCandyShopContract = () => {
             setIsMinting(false);
             resovle();
           });
+        } else {
+          resovle();
         }
       });
     },
