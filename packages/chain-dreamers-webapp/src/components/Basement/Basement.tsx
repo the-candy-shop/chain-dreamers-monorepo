@@ -54,13 +54,11 @@ function Basement() {
 
   const handleMintButtonClick = React.useCallback(async () => {
     const runnersToMintIds = runnersIds.filter((id) => !!selectedRunners[id]);
-    console.log("runnersIds", runnersIds, runnersToMintIds, selectedRunners);
-    const runnersIndexed = runnersToMintIds.map((id) => runnersIds.indexOf(id));
     const candyIds = runnersToMintIds.map(
       (id) => candiesIds[selectedRunners[id] as CandyList]
     );
-    await mintAsRunners(runnersToMintIds, runnersIndexed, candyIds);
-  }, []);
+    await mintAsRunners(runnersToMintIds, candyIds);
+  }, [runnersIds, selectedRunners, mintAsRunners]);
 
   return (
     <Box display="flex" flexDirection="column" minHeight="calc(100vh - 191px)">

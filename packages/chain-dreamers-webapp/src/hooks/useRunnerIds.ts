@@ -11,9 +11,9 @@ export const useRunnerIds = (): number[] => {
 
   React.useEffect(() => {
     if (sdk && account) {
-      sdk.runners
-        .balanceOf(account)
-        .then((balance) => setRunnerCount(balance.toNumber()));
+      sdk.ChainRunners.balanceOf(account).then((balance) =>
+        setRunnerCount(balance.toNumber())
+      );
     }
   }, [account, sdk]);
 
@@ -22,9 +22,9 @@ export const useRunnerIds = (): number[] => {
       const promises = [];
       for (let i = 0; i < runnerCount; i++) {
         promises.push(
-          sdk.runners
-            .tokenOfOwnerByIndex(account, i)
-            .then((bigId) => bigId.toNumber())
+          sdk.ChainRunners.tokenOfOwnerByIndex(account, i).then((bigId) =>
+            bigId.toNumber()
+          )
         );
       }
 

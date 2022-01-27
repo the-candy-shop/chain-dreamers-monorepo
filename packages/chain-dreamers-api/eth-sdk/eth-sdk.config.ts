@@ -1,22 +1,25 @@
 import type { EthSdkConfig } from "@dethcrypto/eth-sdk";
+import { extractContractAddresses } from "../scripts/extract-contract-addresses";
 
-const mainRpc = `https://${process.env.NETWORK}.infura.io/v3/${process.env.INFURA_ID}`;
+const NETWORK = process.env.NETWORK || "rinkeby";
+const contracts = extractContractAddresses(NETWORK);
+
+const mainRpc = `https://${NETWORK}.infura.io/v3/${process.env.INFURA_ID}`;
 const etherscanURL =
-  process.env.NETWORK === "rinkeby"
+  NETWORK === "rinkeby"
     ? "https://api-rinkeby.etherscan.io/api"
     : "https://api.etherscan.io/api";
 
 const originalRunnerRpc = `https://mainnet.infura.io/v3/${process.env.INFURA_ID}`;
 const originalRunnerEtherscanURL = "https://api.etherscan.io/api";
 
+if (process.env.RUNNERS_CONTRACT_ADDRESS) {
+  contracts.ChainRunners = process.env.RUNNERS_CONTRACT_ADDRESS;
+}
+
 const config: EthSdkConfig = {
   contracts: {
-    main: {
-      runners: process.env.RUNNERS_CONTRACT_ADDRESS as `0x${string}`,
-      dreamers: process.env.DREAMERS_CONTRACT_ADDRESS as `0x${string}`,
-      dreamersRenderer: process.env
-        .DREAMERS_RENDERER_CONTRACT_ADDRESS as `0x${string}`,
-    },
+    main: contracts as Record<string, `0x${string}`>,
     originalRunner: {
       runners: process.env.RUNNERS_ORIGINAL_CONTRACT_ADDRESS as `0x${string}`,
     },

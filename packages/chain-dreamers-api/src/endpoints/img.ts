@@ -24,10 +24,10 @@ export const img = async (event) => {
 
   const sdk = getSdk();
 
-  const dreamerDna = await sdk.dreamers.dreamers(id);
-  const runnerDna = await sdk.runners.getDna(id);
+  const dreamerDna = await sdk.ChainDreamers.dreamers(id);
+  const runnerDna = await sdk.ChainRunners.getDna(id);
 
-  if (runnerDna.isZero()) {
+  if (runnerDna.isZero() || dreamerDna === 0) {
     return {
       statusCode: 404,
       body: JSON.stringify({
@@ -36,7 +36,7 @@ export const img = async (event) => {
     };
   }
 
-  const tokenData = await sdk.dreamersRenderer.getTokenData(
+  const tokenData = await sdk.DreamersRenderer.getTokenData(
     runnerDna,
     dreamerDna
   );
