@@ -24,11 +24,21 @@ jobs:
             - node_modules
           key: api-npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
       - run:
+          name: Set up AWS credentials
+          command: |
+            echo "[dvc]" >> ~/.aws/credentials
+            echo "aws_access_key_id = ${DVC_AWS_ACCESS_KEY_ID}" >> ~/.aws/credentials
+            echo "aws_secret_access_key = ${DVC_AWS_SECRET_ACCESS_KEY}" >> ~/.aws/credentials
+            echo "" >> ~/.aws/credentials
+            echo "[api]" >> ~/.aws/credentials
+            echo "aws_access_key_id = ${API_AWS_ACCESS_KEY_ID}" >> ~/.aws/credentials
+            echo "aws_secret_access_key = ${API_AWS_SECRET_ACCESS_KEY}" >> ~/.aws/credentials
+      - run:
           name: DVC pull
-          command: AWS_ACCESS_KEY_ID=$DVC_AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$DVC_AWS_SECRET_ACCESS_KEY cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc pull
+          command: AWS_PROFILE=dvc cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc pull
       - run:
           name: Deploy application
-          command: AWS_ACCESS_KEY_ID=$API_AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$API_AWS_SECRET_ACCESS_KEY cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:test
+          command: AWS_PROFILE=api cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:test
 
   deploy-prod:
     docker:
@@ -54,11 +64,21 @@ jobs:
             - node_modules
           key: api-npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
       - run:
+          name: Set up AWS credentials
+          command: |
+            echo "[dvc]" >> ~/.aws/credentials
+            echo "aws_access_key_id = ${DVC_AWS_ACCESS_KEY_ID}" >> ~/.aws/credentials
+            echo "aws_secret_access_key = ${DVC_AWS_SECRET_ACCESS_KEY}" >> ~/.aws/credentials
+            echo "" >> ~/.aws/credentials
+            echo "[api]" >> ~/.aws/credentials
+            echo "aws_access_key_id = ${API_AWS_ACCESS_KEY_ID}" >> ~/.aws/credentials
+            echo "aws_secret_access_key = ${API_AWS_SECRET_ACCESS_KEY}" >> ~/.aws/credentials
+      - run:
           name: DVC pull
-          command: AWS_ACCESS_KEY_ID=$DVC_AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$DVC_AWS_SECRET_ACCESS_KEY cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc pull
+          command: AWS_PROFILE=dvc cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc pull
       - run:
           name: Deploy application
-          command: AWS_ACCESS_KEY_ID=$API_AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$API_AWS_SECRET_ACCESS_KEY cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:prod
+          command: AWS_PROFILE=api cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:prod
 
 workflows:
   deploy-workflow:
