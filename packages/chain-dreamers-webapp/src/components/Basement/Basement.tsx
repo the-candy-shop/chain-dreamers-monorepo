@@ -20,8 +20,6 @@ function Basement() {
   const { dreamersIds, mintAsRunners, isMinting, isWaitingForPayment } =
     useDreamersContract();
 
-  console.log("dreamersIds", dreamersIds);
-
   const nonDreamingRunners = runnersIds.filter(
     (id) => !dreamersIds.includes(id)
   );

@@ -65,7 +65,8 @@ export const useDreamersContract = () => {
           );
 
           setIsWaitingForPayment(false);
-          const event = sdk.ChainDreamers.filters.Transfer(account);
+          setIsMinting(true);
+          const event = sdk.ChainDreamers.filters.Transfer(undefined, account);
           sdk.ChainDreamers.once(event, async () => {
             await fetchDreamersCount();
             setIsMinting(false);
@@ -76,7 +77,7 @@ export const useDreamersContract = () => {
         }
       });
     },
-    [account]
+    [account, dreamersCount]
   );
 
   return {
