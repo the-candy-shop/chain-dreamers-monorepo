@@ -51,6 +51,7 @@ const runnersAccessFixture = deployments.createFixture(async ({ ethers }) => {
   await contractsAndUsers.userWithRunner.ChainRunners.mint(2);
   await contractsAndUsers.userWithRunner.ChainRunners.mint(3);
   await contractsAndUsers.userWithRunner.ChainRunners.mint(4);
+  await contractsAndUsers.userWithRunner.ChainRunners.mint(25);
   const amounts = [2, 1, 1];
   const value = ethers.utils.parseEther(
     amounts
@@ -274,14 +275,15 @@ describe("ChainDreamers", function () {
         userWithRunner.address,
         0
       );
+      const tokenId = 25;
       await userWithRunner.ChainDreamers.mintBatchRunnersAccess(
-        "0x" + [0].map(uint16ToBytes).join(""),
+        "0x" + [tokenId].map(uint16ToBytes).join(""),
         "0x" + [0].map(uint16ToBytes).join(""),
         ethers.utils.hexlify([0]),
         [0],
         [1]
       );
-      const ownerOfZero = await ChainDreamers.ownerOf(0);
+      const ownerOfZero = await ChainDreamers.ownerOf(tokenId);
       expect(ownerOfZero).to.eq(userWithRunner.address);
       const balanceAfter = await userWithRunner.CandyShop.balanceOf(
         userWithRunner.address,
@@ -462,11 +464,12 @@ describe("ChainDreamers", function () {
     it("should return the dreamer's dna with correct candy Id", async () => {
       const { userWithRunner, ChainDreamers } = await runnersAccessFixture();
       const runnerIds = [0, 2, 3, 4];
+      const candyIdsExpected = [0, 1, 2, 0];
       await userWithRunner.ChainDreamers.mintBatchRunnersAccess(
         "0x" + runnerIds.map(uint16ToBytes).join(""),
         "0x" + [0, 1, 2, 3].map(uint16ToBytes).join(""),
-        ethers.utils.hexlify([0, 1, 2, 0]),
-        [0, 1, 2, 0],
+        ethers.utils.hexlify(candyIdsExpected),
+        candyIdsExpected,
         [1, 1, 1, 1]
       );
       const candyIds = [];
@@ -475,7 +478,7 @@ describe("ChainDreamers", function () {
         dna = await ChainDreamers.dreamers(dreamerId);
         candyIds.push(dna % 4);
       }
-      expect(candyIds).to.deep.equal([0, 1, 2, 0]);
+      expect(candyIds).to.deep.equal(candyIdsExpected);
     });
   });
   describe("tokenURI", async () => {
