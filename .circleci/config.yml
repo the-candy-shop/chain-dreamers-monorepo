@@ -37,7 +37,10 @@ jobs:
             echo "aws_secret_access_key = ${API_AWS_SECRET_ACCESS_KEY}" >> ~/.aws/credentials
       - run:
           name: DVC pull
-          command: AWS_PROFILE=dvc cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc pull
+          command: |
+            dvc remote modify --local myremote access_key_id $DVC_AWS_ACCESS_KEY_ID
+            dvc remote modify --local myremote secret_access_key $DVC_AWS_SECRET_ACCESS_KEY
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc pull
       - run:
           name: Deploy application
           command: AWS_PROFILE=api cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:test
