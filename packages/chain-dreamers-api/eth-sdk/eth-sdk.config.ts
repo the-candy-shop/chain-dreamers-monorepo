@@ -34,5 +34,6 @@ const config: EthSdkConfig = {
     originalRunner: originalRunnerRpc,
   },
 };
+console.log("config", config);
 
 export default config;
