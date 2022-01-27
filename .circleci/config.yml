@@ -44,6 +44,17 @@ jobs:
           command: npm run deploy:prod
 
 workflows:
-  build-workflow:
+  deploy-staging-workflow:
     jobs:
       - build
+      - deploy-staging
+      filters:
+        branches:
+          only: test
+  deploy-prod-workflow:
+    jobs:
+      - build
+      - deploy-staging
+      filters:
+        branches:
+          only: main
