@@ -28,7 +28,7 @@ jobs:
           command: AWS_ACCESS_KEY_ID=$DVC_AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$DVC_AWS_SECRET_ACCESS_KEY cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc pull
       - run:
           name: Deploy application
-          command: cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:test
+          command: AWS_ACCESS_KEY_ID=$API_AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$API_AWS_SECRET_ACCESS_KEY cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:test
 
   deploy-prod:
     docker:
@@ -58,7 +58,7 @@ jobs:
           command: AWS_ACCESS_KEY_ID=$DVC_AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$DVC_AWS_SECRET_ACCESS_KEY cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc pull
       - run:
           name: Deploy application
-          command: cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:prod
+          command: AWS_ACCESS_KEY_ID=$API_AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$API_AWS_SECRET_ACCESS_KEY cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:prod
 
 workflows:
   deploy-workflow:
