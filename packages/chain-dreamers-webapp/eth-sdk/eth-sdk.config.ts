@@ -1,27 +1,29 @@
 import type { EthSdkConfig } from "@dethcrypto/eth-sdk";
+import { extractContractAddresses } from "../../chain-dreamers-api/scripts/extractContractAddresses";
+
+const NETWORK = process.env.REACT_APP_NETWORK || "rinkeby";
+const contracts = extractContractAddresses(NETWORK);
 
 const mainRpc =
-  process.env.REACT_APP_NETWORK === "localhost"
+  NETWORK === "localhost"
     ? "http://localhost:8545/"
-    : `https://${process.env.REACT_APP_NETWORK}.infura.io/v3/${process.env.REACT_APP_INFURA_PROJECT_ID}`;
+    : `https://${NETWORK}.infura.io/v3/${process.env.REACT_APP_INFURA_PROJECT_ID}`;
 
 const etherscanURL =
-  process.env.REACT_APP_NETWORK === "rinkeby"
+  NETWORK === "rinkeby"
     ? "https://api-rinkeby.etherscan.io/api"
     : "https://api.etherscan.io/api";
 
+if (process.env.REACT_APP_RUNNERS_CONTRACT_ADDRESS) {
+  contracts.ChainRunners = process.env.REACT_APP_RUNNERS_CONTRACT_ADDRESS;
+}
+
 const config: EthSdkConfig = {
   contracts: {
-    main: {
-      runners: process.env.REACT_APP_RUNNERS_CONTRACT_ADDRESS as `0x${string}`,
-      dreamers: process.env
-        .REACT_APP_DREAMERS_CONTRACT_ADDRESS as `0x${string}`,
-      candyShop: process.env
-        .REACT_APP_CANDY_SHOP_CONTRACT_ADDRESS as `0x${string}`,
-    },
+    main: contracts as Record<string, `0x${string}`>,
   },
   etherscanURLs:
-    process.env.REACT_APP_NETWORK !== "localhost"
+    NETWORK !== "localhost"
       ? {
           main: etherscanURL,
         }

@@ -27,7 +27,7 @@ export const useCandyShopContract = () => {
   const fetchCandyQuantities = React.useCallback(async () => {
     if (sdk && account) {
       setIsLoading(true);
-      const balance = await sdk.candyShop.balanceOfBatch(
+      const balance = await sdk.CandyShop.balanceOfBatch(
         [account, account, account],
         [0, 1, 2]
       );
@@ -54,7 +54,7 @@ export const useCandyShopContract = () => {
             Object.values(quantity).reduce((res, q) => res + q, 0)
           );
 
-          await sdk.candyShop.mintBatch(
+          await sdk.CandyShop.mintBatch(
             [0, 1, 2],
             [
               quantity[CandyList.ChainMeth],
@@ -68,8 +68,8 @@ export const useCandyShopContract = () => {
           );
           setIsWaitingForPayment(false);
           setIsMinting(true);
-          const event = sdk.candyShop.filters.TransferBatch(account);
-          sdk.candyShop.once(event, async () => {
+          const event = sdk.CandyShop.filters.TransferBatch(account);
+          sdk.CandyShop.once(event, async () => {
             await fetchCandyQuantities();
             setIsMinting(false);
             resovle();

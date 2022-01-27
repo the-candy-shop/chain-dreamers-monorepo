@@ -20,7 +20,7 @@ export const useDreamersContract = () => {
   const fetchDreamersCount = React.useCallback(async () => {
     if (sdk && account) {
       setIsLoading(true);
-      const balance = await sdk.dreamers.balanceOf(account);
+      const balance = await sdk.ChainDreamers.balanceOf(account);
 
       setDreamersCount(1);
       setIsLoading(false);
@@ -36,9 +36,9 @@ export const useDreamersContract = () => {
       const promises = [];
       for (let i = 0; i < dreamersCount; i++) {
         promises.push(
-          sdk.dreamers
-            .tokenOfOwnerByIndex(account, i)
-            .then((bigId) => bigId.toNumber())
+          sdk.ChainDreamers.tokenOfOwnerByIndex(account, i).then((bigId) =>
+            bigId.toNumber()
+          )
         );
       }
 
@@ -59,7 +59,7 @@ export const useDreamersContract = () => {
       return new Promise(async (resolve) => {
         if (sdk && account) {
           setIsWaitingForPayment(true);
-          await sdk.dreamers.mintBatchRunnersAccess(
+          await sdk.ChainDreamers.mintBatchRunnersAccess(
             "0x" + runnerIds.map(uint16ToBytes).join(""),
             "0x" + ownerRunnerIndexes.map(uint16ToBytes).join(""),
             ethers.utils.hexlify(candyIds),
@@ -68,8 +68,8 @@ export const useDreamersContract = () => {
           );
 
           setIsWaitingForPayment(false);
-          const event = sdk.dreamers.filters.Transfer(account);
-          sdk.dreamers.once(event, async () => {
+          const event = sdk.ChainDreamers.filters.Transfer(account);
+          sdk.ChainDreamers.once(event, async () => {
             await fetchDreamersCount();
             setIsMinting(false);
             resolve();

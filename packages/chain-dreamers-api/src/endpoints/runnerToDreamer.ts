@@ -25,7 +25,7 @@ export const runnerToDreamer = async (event) => {
   const originalRunnerSdk = getOriginalRunnerSdk();
   const sdk = getSdk();
 
-  const runnerDna = await originalRunnerSdk.runners.getDna(id);
+  const runnerDna = await originalRunnersdk.ChainRunners.getDna(id);
 
   if (runnerDna.isZero()) {
     return {
@@ -36,7 +36,7 @@ export const runnerToDreamer = async (event) => {
     };
   }
 
-  const tokenData = await sdk.dreamersRenderer.getTokenData(runnerDna, 3);
+  const tokenData = await sdk.DreamersRenderer.getTokenData(runnerDna, 3);
 
   const svg = renderSvg(tokenData);
   const pngBuffer = await svgToPng(svg, 500, 500);

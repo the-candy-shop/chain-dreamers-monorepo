@@ -1,0 +1,49 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: cimg/node:17.4.0
+    working_directory: ~/packages/chain-dreamers-api
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - npm-deps-{{ checksum "package-lock.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - npm-deps-
+      - run:
+          name: Install Serverless CLI and dependencies
+          command: |
+            sudo npm i -g serverless
+            npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: npm-deps-{{ checksum "package-lock.json" }}
+
+  deploy-staging:
+    docker:
+      - image: cimg/node:17.4.0
+    working_directory: ~/packages/chain-dreamers-api
+    environment:
+      NETWORK: rinkeby
+    steps:
+      - run:
+          name: Deploy application
+          command: npm run deploy:staging
+
+  deploy-prod:
+    docker:
+      - image: cimg/node:17.4.0
+    working_directory: ~/packages/chain-dreamers-api
+    environment:
+      NETWORK: mainnet
+    steps:
+      - run:
+          name: Deploy application
+          command: npm run deploy:prod
+
+workflows:
+  build-workflow:
+    jobs:
+      - build
