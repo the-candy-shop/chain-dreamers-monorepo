@@ -3,54 +3,54 @@ jobs:
   deploy-staging:
     docker:
       - image: cimg/node:17.4.0
-    working_directory: ~/chain-dreamers-monorepo/packages/chain-dreamers-api
+    working_directory: ~/chain-dreamers-monorepo
     environment:
       NETWORK: rinkeby
     steps:
       - checkout
       - restore_cache:
           keys:
-            - npm-deps-{{ checksum "package-lock.json" }}
+            - npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
             # fallback to using the latest cache if no exact match is found
             - npm-deps-
       - run:
           name: Install Serverless CLI and dependencies
           command: |
             sudo npm i -g serverless
-            npm install
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm install
       - save_cache:
           paths:
             - node_modules
-          key: npm-deps-{{ checksum "package-lock.json" }}
+          key: npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
       - run:
           name: Deploy application
-          command: npm run deploy:staging
+          command: cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:test
 
   deploy-prod:
     docker:
       - image: cimg/node:17.4.0
-    working_directory: ~/chain-dreamers-monorepo/packages/chain-dreamers-api
+    working_directory: ~/chain-dreamers-monorepo
     environment:
       NETWORK: mainnet
     steps:
       - checkout
       - restore_cache:
           keys:
-            - npm-deps-{{ checksum "package-lock.json" }}
+            - npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
             # fallback to using the latest cache if no exact match is found
             - npm-deps-
       - run:
           name: Install Serverless CLI and dependencies
           command: |
             sudo npm i -g serverless
-            npm install
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm install
       - save_cache:
           paths:
             - node_modules
-          key: npm-deps-{{ checksum "package-lock.json" }}
+          key: npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
       - run:
           name: Deploy application
-          command: npm run deploy:prod
+          command: cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:prod
 
 workflows:
   deploy-workflow:
