@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   deploy-staging:
     docker:
-      - image: cimg/node:17.4.0
+      - image: cimg/python:3.10.2-node
     working_directory: ~/chain-dreamers-monorepo
     environment:
       NETWORK: rinkeby
@@ -32,7 +32,7 @@ jobs:
 
   deploy-prod:
     docker:
-      - image: cimg/node:17.4.0
+      - image: cimg/python:3.10.2-node
     working_directory: ~/chain-dreamers-monorepo
     environment:
       NETWORK: mainnet
