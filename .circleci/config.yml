@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Install Serverless CLI and dependencies
           command: |
-            pip install dvc
+            pip install 'dvc[s3]'
             sudo npm i -g serverless
             cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm install
       - save_cache:
@@ -46,7 +46,7 @@ jobs:
       - run:
           name: Install Serverless CLI and dependencies
           command: |
-            pip install dvc
+            pip install 'dvc[s3]'
             sudo npm i -g serverless
             cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm install
       - save_cache:
