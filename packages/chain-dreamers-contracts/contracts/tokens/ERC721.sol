@@ -351,7 +351,7 @@ abstract contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
             candies >>= 1;
             emit Transfer(address(0), to, tokenId);
         }
-        _balances[to] += uint16(tokenIds.length);
+        _balances[to] += uint16(tokenIds.length) / 2;
 
         require(
             _checkOnERC721Received(
