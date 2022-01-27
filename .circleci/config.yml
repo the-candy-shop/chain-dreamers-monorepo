@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: cimg/node:17.4.0
-    working_directory: ~/packages/chain-dreamers-api
+    working_directory: ~/chain-dreamers-monorepo/packages/chain-dreamers-api
     steps:
       - checkout
       - restore_cache:
@@ -24,7 +24,7 @@ jobs:
   deploy-staging:
     docker:
       - image: cimg/node:17.4.0
-    working_directory: ~/packages/chain-dreamers-api
+    working_directory: ~/chain-dreamers-monorepo/packages/chain-dreamers-api
     environment:
       NETWORK: rinkeby
     steps:
@@ -35,7 +35,7 @@ jobs:
   deploy-prod:
     docker:
       - image: cimg/node:17.4.0
-    working_directory: ~/packages/chain-dreamers-api
+    working_directory: ~/chain-dreamers-monorepo/packages/chain-dreamers-api
     environment:
       NETWORK: mainnet
     steps:
@@ -44,14 +44,18 @@ jobs:
           command: npm run deploy:prod
 
 workflows:
-  deploy-staging-workflow:
+  deploy-workflow:
     jobs:
       - build
       - deploy-staging:
+          requires:
+            - build
           filters:
             branches:
               only: test
       - deploy-prod:
+          requires:
+            - build
           filters:
             branches:
               only: main
