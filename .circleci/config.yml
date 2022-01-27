@@ -32,8 +32,8 @@ jobs:
       - run:
           name: Deploy application
           command: |
-            serverless config credentials --provider aws --key $API_AWS_ACCESS_KEY_ID --secret $API_AWS_SECRET_ACCESS_KEY
-            AWS_PROFILE=api cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:test
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && serverless config credentials --provider aws --key $API_AWS_ACCESS_KEY_ID --secret $API_AWS_SECRET_ACCESS_KEY
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:test
 
   deploy-prod:
     docker:
@@ -67,8 +67,8 @@ jobs:
       - run:
           name: Deploy application
           command: |
-            serverless config credentials --provider aws --key $API_AWS_ACCESS_KEY_ID --secret $API_AWS_SECRET_ACCESS_KEY
-            AWS_PROFILE=api cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:prod
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && serverless config credentials --provider aws --key $API_AWS_ACCESS_KEY_ID --secret $API_AWS_SECRET_ACCESS_KEY
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:prod
 
 workflows:
   deploy-workflow:
