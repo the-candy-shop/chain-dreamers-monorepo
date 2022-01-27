@@ -10,18 +10,22 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
+            - api-npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
             # fallback to using the latest cache if no exact match is found
-            - npm-deps-
+            - api-npm-deps-
       - run:
           name: Install Serverless CLI and dependencies
           command: |
+            pip install dvc
             sudo npm i -g serverless
             cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm install
       - save_cache:
           paths:
             - node_modules
-          key: npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
+          key: api-npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
+      - run:
+          name: DVC pull
+          command: AWS_ACCESS_KEY_ID=$DVC_AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$DVC_AWS_SECRET_ACCESS_KEY cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc pull
       - run:
           name: Deploy application
           command: cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:test
@@ -36,18 +40,22 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
+            - api-npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
             # fallback to using the latest cache if no exact match is found
-            - npm-deps-
+            - api-npm-deps-
       - run:
           name: Install Serverless CLI and dependencies
           command: |
+            pip install dvc
             sudo npm i -g serverless
             cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm install
       - save_cache:
           paths:
             - node_modules
-          key: npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
+          key: api-npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
+      - run:
+          name: DVC pull
+          command: AWS_ACCESS_KEY_ID=$DVC_AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$DVC_AWS_SECRET_ACCESS_KEY cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc pull
       - run:
           name: Deploy application
           command: cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run deploy:prod
