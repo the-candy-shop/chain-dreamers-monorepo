@@ -28,12 +28,11 @@ const config: EthSdkConfig = {
     main: etherscanURL,
     originalRunner: originalRunnerEtherscanURL,
   },
-  etherscanKey: process.env.ETHERSCAN_API_KEY,
+  // etherscanKey: process.env.ETHERSCAN_API_KEY,
   rpc: {
     main: mainRpc,
     originalRunner: originalRunnerRpc,
   },
 };
-console.log("config", config);
 
 export default config;
