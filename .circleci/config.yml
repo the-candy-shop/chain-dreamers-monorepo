@@ -47,11 +47,11 @@ workflows:
   deploy-staging-workflow:
     jobs:
       - build
-      - deploy-staging
-        filters:
-          branches:
-            only: test
-      - deploy-prod
-        filters:
-          branches:
-            only: main
+      - deploy-staging:
+          filters:
+            branches:
+              only: test
+      - deploy-prod:
+          filters:
+            branches:
+              only: main
