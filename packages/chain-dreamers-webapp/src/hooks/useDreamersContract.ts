@@ -78,7 +78,7 @@ export const useDreamersContract = () => {
         }
       });
     },
-    [account, dreamersCount]
+    [account, dreamersCount, fetchDreamersCount, sdk]
   );
 
   return {
