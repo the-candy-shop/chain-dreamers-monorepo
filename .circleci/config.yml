@@ -38,8 +38,8 @@ jobs:
       - run:
           name: DVC pull
           command: |
-            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc remote modify --local myremote access_key_id $DVC_AWS_ACCESS_KEY_ID
-            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc remote modify --local myremote secret_access_key $DVC_AWS_SECRET_ACCESS_KEY
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc remote modify --local s3 access_key_id $DVC_AWS_ACCESS_KEY_ID
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc remote modify --local s3 secret_access_key $DVC_AWS_SECRET_ACCESS_KEY
             cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc pull
       - run:
           name: Deploy application
@@ -83,8 +83,8 @@ jobs:
       - run:
           name: DVC pull
           command: |
-            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc remote modify --local myremote access_key_id $DVC_AWS_ACCESS_KEY_ID
-            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc remote modify --local myremote secret_access_key $DVC_AWS_SECRET_ACCESS_KEY
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc remote modify --local s3 access_key_id $DVC_AWS_ACCESS_KEY_ID
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc remote modify --local s3 secret_access_key $DVC_AWS_SECRET_ACCESS_KEY
             cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc pull
       - run:
           name: Deploy application
