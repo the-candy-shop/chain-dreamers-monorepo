@@ -6,6 +6,7 @@ task("mint-batch-runners-access", "Mint a Chain Dreamer during chapter 1")
     const { deployer } = await getNamedAccounts();
     const { execute } = deployments;
 
+    tokenId = parseInt(tokenId);
     await execute("ChainRunners", { from: deployer }, "mint", tokenId);
     await execute(
       "CandyShop",
