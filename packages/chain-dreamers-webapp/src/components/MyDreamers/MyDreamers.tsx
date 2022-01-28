@@ -1,11 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { useDreamersContract } from "../../hooks/useDreamersContract";
 import ShopPanels from "../ShopPanels/ShopPanels";
 import config from "../../config";
 import Typist from "react-typist";
 import Button from "@mui/lab/LoadingButton";
-import { useNavigate } from "react-router-dom";
 
 const apiBaseUrl = config.app.apiBaseUrl;
 
