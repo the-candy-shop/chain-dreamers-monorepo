@@ -9,6 +9,10 @@ import "../interfaces/IDreamersRenderer.sol";
 import "../interfaces/ICandyShop.sol";
 import "../interfaces/IChainRunners.sol";
 
+contract OpenSeaProxyRegistry {
+    mapping(address => address) public proxies;
+}
+
 contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
     // Linked contracts
     address public renderingContractAddress;
@@ -17,6 +21,45 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
     IDreamersRenderer renderer;
     ICandyShop candyShop;
     IChainRunners chainRunners;
+
+    /// @dev Copied from ApeRunner's contract
+    /// @notice OpenSea proxy registry.
+    address public opensea;
+    /// @notice LooksRare marketplace transfer manager.
+    address public looksrare;
+    /// @notice Check if marketplaces pre-approve is enabled.
+    bool public marketplacesApproved = true;
+
+    /// @notice Set opensea to `opensea_`.
+    function setOpensea(address opensea_) external onlyOwner {
+        opensea = opensea_;
+    }
+
+    /// @notice Set looksrare to `looksrare_`.
+    function setLooksrare(address looksrare_) external onlyOwner {
+        looksrare = looksrare_;
+    }
+
+    /// @notice Toggle pre-approve feature state for sender.
+    function toggleMarketplacesApproved() external onlyOwner {
+        marketplacesApproved = !marketplacesApproved;
+    }
+
+    /// @dev Modified for opensea and looksrare pre-approve so users can make truly gas less sales.
+    function isApprovedForAll(address owner, address operator)
+        public
+        view
+        override
+        returns (bool)
+    {
+        if (!marketplacesApproved)
+            return super.isApprovedForAll(owner, operator);
+
+        return
+            operator == OpenSeaProxyRegistry(opensea).proxies(owner) ||
+            operator == looksrare ||
+            super.isApprovedForAll(owner, operator);
+    }
 
     // Constants
     uint256 public maxDreamersMintPublicSale;
