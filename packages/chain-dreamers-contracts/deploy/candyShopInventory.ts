@@ -6,23 +6,25 @@ import { loadSkus, TAGS } from "../utils/constants";
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployments, getNamedAccounts, ethers } = hre;
-  const { execute } = deployments;
-  const { deployer } = await getNamedAccounts();
-  await deployments.get("CandyShop");
-  const skus = loadSkus();
-  const tx = await execute(
-    "CandyShop",
-    {
-      from: deployer,
-      log: true,
-    },
-    "addSku",
-    skus.map((sku) => ({
-      ...sku,
-      price: ethers.utils.parseEther(sku.price.toString()),
-    }))
-  );
-  console.log(`Inventory gas: ${tx.gasUsed.toString()}`);
+  const { execute, read } = deployments;
+  const deployedSkus = await read("CandyShop", "inventory", 0);
+  if (!deployedSkus) {
+    const { deployer } = await getNamedAccounts();
+    const skus = loadSkus();
+    const tx = await execute(
+      "CandyShop",
+      {
+        from: deployer,
+        log: true,
+      },
+      "addSku",
+      skus.map((sku) => ({
+        ...sku,
+        price: ethers.utils.parseEther(sku.price.toString()),
+      }))
+    );
+    console.log(`Inventory gas: ${tx.gasUsed.toString()}`);
+  }
 };
 
 export default func;
