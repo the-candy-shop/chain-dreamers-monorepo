@@ -21,6 +21,7 @@ function LoadingDreamersMintDialog({
     if (open) {
       setDisplayedRunnersIds(mintingRunnersIds);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
   return (
