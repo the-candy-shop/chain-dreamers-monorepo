@@ -56,27 +56,37 @@ export const useDreamersContract = () => {
         ownerTokenIndexes.push(dreamersCount + index);
       });
 
-      return new Promise(async (resolve) => {
+      return new Promise(async (resolve, reject) => {
         if (sdk && account) {
-          setIsWaitingForPayment(true);
-          await sdk.ChainDreamers.mintBatchRunnersAccess(
-            "0x" + runnerIds.map(uint16ToBytes).join(""),
-            "0x" + ownerTokenIndexes.map(uint16ToBytes).join(""),
-            ethers.utils.hexlify(candyIds),
-            candyIds,
-            Array(candyIds.length).fill(1)
-          );
+          try {
+            setIsWaitingForPayment(true);
+            await sdk.ChainDreamers.mintBatchRunnersAccess(
+              "0x" + runnerIds.map(uint16ToBytes).join(""),
+              "0x" + ownerTokenIndexes.map(uint16ToBytes).join(""),
+              ethers.utils.hexlify(candyIds),
+              candyIds,
+              Array(candyIds.length).fill(1)
+            );
 
-          setIsWaitingForPayment(false);
-          setIsMinting(true);
-          const event = sdk.ChainDreamers.filters.Transfer(undefined, account);
+            setIsWaitingForPayment(false);
+            setIsMinting(true);
+            const event = sdk.ChainDreamers.filters.Transfer(
+              undefined,
+              account
+            );
 
-          sdk.ChainDreamers.on(event, async () => {
-            await fetchDreamersCount();
-            await fetchCandyQuantities();
+            sdk.ChainDreamers.on(event, async () => {
+              await fetchDreamersCount();
+              await fetchCandyQuantities();
+              setIsMinting(false);
+              resolve();
+            });
+          } catch (e) {
+            console.error(e);
+            setIsWaitingForPayment(false);
             setIsMinting(false);
-            resolve();
-          });
+            reject(e);
+          }
         } else {
           resolve();
         }

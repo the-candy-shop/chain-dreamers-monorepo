@@ -47,35 +47,41 @@ export const useCandyShopContract = () => {
 
   const mint = React.useCallback(
     async (quantity: Record<CandyList, number>): Promise<void> => {
-      return new Promise(async (resovle) => {
+      return new Promise(async (resolve, reject) => {
         if (sdk && account) {
-          setIsWaitingForPayment(true);
-          const price = candyPrice.times(
-            Object.values(quantity).reduce((res, q) => res + q, 0)
-          );
+          try {
+            setIsWaitingForPayment(true);
+            const price = candyPrice.times(
+              Object.values(quantity).reduce((res, q) => res + q, 0)
+            );
 
-          await sdk.CandyShop.mintBatch(
-            [0, 1, 2],
-            [
-              quantity[CandyList.ChainMeth],
-              quantity[CandyList.HeliumSpice],
-              quantity[CandyList.SomnusTears],
-            ],
-            {
-              from: account,
-              value: ethers.utils.parseEther(price.toString()),
-            }
-          );
-          setIsWaitingForPayment(false);
-          setIsMinting(true);
-          const event = sdk.CandyShop.filters.TransferBatch(account);
-          sdk.CandyShop.once(event, async () => {
-            await fetchCandyQuantities();
+            await sdk.CandyShop.mintBatch(
+              [0, 1, 2],
+              [
+                quantity[CandyList.ChainMeth],
+                quantity[CandyList.HeliumSpice],
+                quantity[CandyList.SomnusTears],
+              ],
+              {
+                from: account,
+                value: ethers.utils.parseEther(price.toString()),
+              }
+            );
+            setIsWaitingForPayment(false);
+            setIsMinting(true);
+            const event = sdk.CandyShop.filters.TransferBatch(account);
+            sdk.CandyShop.once(event, async () => {
+              await fetchCandyQuantities();
+              setIsMinting(false);
+              resolve();
+            });
+          } catch (e: unknown) {
+            setIsWaitingForPayment(false);
             setIsMinting(false);
-            resovle();
-          });
+            reject(e);
+          }
         } else {
-          resovle();
+          resolve();
         }
       });
     },
