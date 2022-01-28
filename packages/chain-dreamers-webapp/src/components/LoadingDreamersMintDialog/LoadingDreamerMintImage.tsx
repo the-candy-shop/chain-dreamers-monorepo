@@ -1,11 +1,14 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { CircularProgress, keyframes } from "@mui/material";
+import config from "../../config";
 
 type LoadingDreamerMintImageProps = {
   runnerId: number;
   isDreamer: boolean;
 };
+
+const apiBaseUrl = config.app.apiBaseUrl;
 
 function LoadingDreamerMintImage({
   runnerId,
@@ -90,7 +93,7 @@ function LoadingDreamerMintImage({
           sx={{
             width: "160px",
             height: "160px",
-            backgroundImage: `url(https://api.chaindreamers.xyz/test/tokens/${runnerId}/img)`,
+            backgroundImage: `url(${apiBaseUrl}/tokens/${runnerId}/img)`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",

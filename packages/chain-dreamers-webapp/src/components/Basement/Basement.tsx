@@ -66,6 +66,12 @@ function Basement() {
       (id) => candiesIds[selectedRunners[id] as CandyList]
     );
     await mintAsRunners(runnersToMintIds, candyIds);
+    setSelectedRunners(
+      runnersIds.reduce((r: Record<number, CandyList | null>, id) => {
+        r[id] = null;
+        return r;
+      }, {})
+    );
   }, [runnersIds, selectedRunners, mintAsRunners]);
 
   return (

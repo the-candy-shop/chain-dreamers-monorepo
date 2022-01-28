@@ -13,7 +13,15 @@ function LoadingDreamersMintDialog({
   open,
   mintingRunnersIds,
 }: LoadingDreamersMintDialogProps) {
+  const [displayedRunnersIds, setDisplayedRunnersIds] =
+    React.useState<number[]>(mintingRunnersIds);
   const { dreamersIds } = useDreamersContract();
+
+  React.useEffect(() => {
+    if (open) {
+      setDisplayedRunnersIds(mintingRunnersIds);
+    }
+  }, [open]);
 
   return (
     <Dialog
@@ -33,7 +41,7 @@ function LoadingDreamersMintDialog({
         flexWrap="wrap"
         padding="32px"
       >
-        {mintingRunnersIds.map((runnerId) => (
+        {displayedRunnersIds.map((runnerId) => (
           <Box key={runnerId} margin="16px">
             <LoadingDreamerMintImage
               runnerId={runnerId}

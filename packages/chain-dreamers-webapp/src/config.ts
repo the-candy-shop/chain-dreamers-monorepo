@@ -12,6 +12,7 @@ interface AppConfig {
   wsRpcUri: string;
   subgraphApiUri: string;
   enableHistory: boolean;
+  apiBaseUrl: string;
 }
 
 type SupportedChains = ChainId.Rinkeby | ChainId.Mainnet | ChainId.Hardhat;
@@ -40,6 +41,7 @@ const app: Record<SupportedChains, AppConfig> = {
     subgraphApiUri:
       "https://api.thegraph.com/subgraphs/name/nounsdao/nouns-subgraph-rinkeby-v4",
     enableHistory: process.env.REACT_APP_ENABLE_HISTORY === "true",
+    apiBaseUrl: "https://api.chaindreamers.xyz/test",
   },
   [ChainId.Mainnet]: {
     jsonRpcUri: createNetworkHttpUrl("mainnet"),
@@ -47,12 +49,14 @@ const app: Record<SupportedChains, AppConfig> = {
     subgraphApiUri:
       "https://api.thegraph.com/subgraphs/name/nounsdao/nouns-subgraph",
     enableHistory: process.env.REACT_APP_ENABLE_HISTORY === "true",
+    apiBaseUrl: "https://api.chaindreamers.xyz",
   },
   [ChainId.Hardhat]: {
     jsonRpcUri: "http://localhost:8545",
     wsRpcUri: "ws://localhost:8545",
     subgraphApiUri: "",
     enableHistory: false,
+    apiBaseUrl: "https://api.chaindreamers.xyz/test",
   },
 };
 
