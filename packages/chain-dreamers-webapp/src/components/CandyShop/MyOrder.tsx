@@ -169,6 +169,7 @@ function MyOrder({ sx }: MyOrderProps) {
                   marginTop="24px"
                   fontSize="20px"
                   fontFamily="Share Tech Mono"
+                  maxWidth="680px"
                 >
                   <Typist avgTypingDelay={20}>
                     Congrats, you have bought your Candy. Now go to the basement

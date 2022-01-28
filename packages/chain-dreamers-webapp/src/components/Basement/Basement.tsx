@@ -109,6 +109,7 @@ function Basement() {
                       fontFamily: "Share Tech Mono",
                       padding: "60px 35px",
                       textAlign: "center",
+                      maxWidth: "680px",
                     }}
                   >
                     <Typist avgTypingDelay={20}>

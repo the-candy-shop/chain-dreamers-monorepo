@@ -34,6 +34,7 @@ function Jaz({ message, sx }: JazProps) {
             fontFamily: "Share Tech Mono",
             padding: "60px 35px",
             textAlign: "center",
+            maxWidth: "680px",
           }}
         >
           {message === "candyShopWithRunner" && (
