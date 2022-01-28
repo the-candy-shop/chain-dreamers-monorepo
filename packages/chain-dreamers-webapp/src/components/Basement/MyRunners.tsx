@@ -3,6 +3,7 @@ import ShopPanels from "../ShopPanels/ShopPanels";
 import Box from "@mui/material/Box";
 import { CandyList, imageByCandy } from "../../candies";
 import RunnerSelector from "./RunnerSelector";
+import Typist from "react-typist";
 
 type MyRunnersProps = {
   mintedCandyQuantities: Record<CandyList, number>;
@@ -119,6 +120,21 @@ function MyRunners({
             },
           }}
         >
+          {nonDreamingRunnersIds.length === 0 && (
+            <Box
+              sx={{
+                fontSize: "20px",
+                fontFamily: "Share Tech Mono",
+                padding: "32px 32px 64px 32px",
+                textAlign: "center",
+                color: "white",
+              }}
+            >
+              <Typist avgTypingDelay={20}>
+                All your runners are already dreaming...
+              </Typist>
+            </Box>
+          )}
           {nonDreamingRunnersIds.map((runnerId) => (
             <RunnerSelector
               key={runnerId}

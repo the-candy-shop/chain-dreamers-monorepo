@@ -26,6 +26,16 @@ function LoadingDreamersMintDialog({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
+  const isDoneMinting = React.useMemo(() => {
+    for (const dreamerId of displayedRunnersIds) {
+      if (!dreamersIds.includes(dreamerId)) {
+        return false;
+      }
+    }
+
+    return true;
+  }, [displayedRunnersIds, dreamersIds]);
+
   return (
     <Dialog
       open={open}
@@ -57,7 +67,7 @@ function LoadingDreamersMintDialog({
           <Box textAlign="center">
             <img alt="Jaz" src={jaz} style={{ width: "64px" }} />
           </Box>
-          {open && <DreamerMintingMessages />}
+          {open && <DreamerMintingMessages isDoneMinting={isDoneMinting} />}
         </Box>
         <Box
           display="flex"
