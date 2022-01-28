@@ -128,7 +128,7 @@ contract DreamersRenderer is
             layerIndexes,
             (_layerIndex + 1) * 2
         );
-        if (traitIndex + _itemIndex >= nextTraitIndex) {
+        if (traitIndex + _itemIndex > nextTraitIndex - 1) {
             return type(uint16).max;
         }
 
@@ -189,7 +189,7 @@ contract DreamersRenderer is
         bytes memory _dPalette = SSTORE2.read(dPalette[storageIndex]);
         uint256 cumSumBytes = _dPalette.length;
         uint256 pos = dIndex;
-        while (dIndex >= cumSumBytes) {
+        while (dIndex > cumSumBytes - 1) {
             pos -= _dPalette.length;
             storageIndex++;
             _dPalette = SSTORE2.read(dPalette[storageIndex]);
@@ -197,7 +197,7 @@ contract DreamersRenderer is
         }
         bytes memory _d = new bytes(dIndexNext - dIndex);
         for (uint256 i = 0; i < _d.length; i++) {
-            if (pos >= _dPalette.length) {
+            if (pos > _dPalette.length - 1) {
                 storageIndex++;
                 _dPalette = SSTORE2.read(dPalette[storageIndex]);
                 pos = 0;

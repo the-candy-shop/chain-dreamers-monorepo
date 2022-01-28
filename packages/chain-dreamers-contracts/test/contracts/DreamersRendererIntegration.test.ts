@@ -130,7 +130,7 @@ describe("DreamersRendererIntegration", async function () {
       });
     });
   });
-  describe.only("imageURI", () => {
+  describe("imageURI", () => {
     [...Array(10_001).keys()].slice(1).forEach((runnerId) => {
       it(`Index ${runnerId} should match snapshot`, async function () {
         await deployments.fixture([TAGS.DREAMERS_PALETTES]);

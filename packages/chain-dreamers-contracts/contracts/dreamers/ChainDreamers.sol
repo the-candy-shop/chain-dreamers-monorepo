@@ -31,7 +31,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
 
     function isPublicSaleOpen() public view returns (bool) {
         return
-            block.timestamp >= publicSaleStartTimestamp &&
+            block.timestamp > publicSaleStartTimestamp &&
             publicSaleStartTimestamp != 0;
     }
 
@@ -148,7 +148,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
     {
         require(
             _exists(uint16(_tokenId)),
-            "ERC721Metadata: URI query for nonexistent token"
+            "ERC721: URI query for nonexistent token"
         );
 
         if (renderingContractAddress == address(0)) {

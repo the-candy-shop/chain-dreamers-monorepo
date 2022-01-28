@@ -10,11 +10,7 @@ import { solidity } from "ethereum-waffle";
 import { loadSkus, TAGS } from "../../utils/constants";
 import { uint16ToBytes } from "../../utils/dreamers";
 import { BigNumber } from "ethers";
-import fs from "fs";
-import path from "path";
-import { jestSnapshotPlugin } from "mocha-chai-jest-snapshot";
 
-chai.use(jestSnapshotPlugin());
 chai.use(solidity);
 const { expect } = chai;
 
@@ -71,8 +67,8 @@ const runnersAccessFixture = deployments.createFixture(async ({ ethers }) => {
 const publicSaleFixture = deployments.createFixture(async ({ network }) => {
   const contractsAndUsers = await setup();
   await contractsAndUsers.deployer.ChainDreamers.setPublicSaleTimestamp(1);
-  await network.provider.send("evm_setAutomine", [false]);
-  await network.provider.send("evm_setIntervalMining", [1000]);
+  await network.provider.send("evm_mine");
+  await network.provider.send("evm_mine");
   return contractsAndUsers;
 });
 
@@ -359,7 +355,7 @@ describe("ChainDreamers", function () {
         )
       ).to.be.revertedWith("Your home is to small to welcome so many dreamers");
     });
-    it("should revert when with not enough indexes", async () => {
+    it("should revert when owner indexes are too small", async () => {
       const { users } = await publicSaleFixture();
       expect(
         users[0].ChainDreamers.mintBatchPublicSale(
@@ -384,15 +380,17 @@ describe("ChainDreamers", function () {
       );
     });
     it("should revert when token indexes do not start from previous index", async function () {
-      const { users } = await runnersAccessFixture();
+      const { users } = await publicSaleFixture();
       await users[0].ChainDreamers.mintBatchPublicSale(
         "0x" + [0, 2].map(uint16ToBytes).join(""),
-        "0x" + [0, 1].map(uint16ToBytes).join("")
+        "0x" + [0, 1].map(uint16ToBytes).join(""),
+        { value: ethers.utils.parseEther("0.1") }
       );
       expect(
         users[0].ChainDreamers.mintBatchPublicSale(
           "0x" + [3, 4].map(uint16ToBytes).join(""),
-          "0x" + [3, 4].map(uint16ToBytes).join("")
+          "0x" + [3, 4].map(uint16ToBytes).join(""),
+          { value: ethers.utils.parseEther("0.1") }
         )
       ).to.be.revertedWith(
         "The given ownerTokenIndexes do not start from the current owner count"
@@ -408,7 +406,7 @@ describe("ChainDreamers", function () {
         )
       ).to.be.revertedWith("ownerTokenIndexes must be a sequence");
     });
-    it("should revert not be able to mint someone else's token", async () => {
+    it("should revert when trying to mint twice the same token", async () => {
       const { users } = await publicSaleFixture();
       await users[0].ChainDreamers.mintBatchPublicSale(
         "0x" + [0, 1].map(uint16ToBytes).join(""),
@@ -433,20 +431,19 @@ describe("ChainDreamers", function () {
       );
 
       // Assert that the tokens are owned by the user using tokenOfOwnerByIndex
-      let tokenId;
-      const tokenIds = [];
-      for (let i = 0; i < 3; i++) {
-        tokenId = await ChainDreamers.tokenOfOwnerByIndex(users[0].address, i);
-        tokenIds.push(tokenId.toNumber());
-      }
-      expect(tokenIds).to.deep.eq([0, 2, 3]);
+      const tokenIds = await Promise.all(
+        [...Array(3).keys()].map(
+          async (i) =>
+            await ChainDreamers.tokenOfOwnerByIndex(users[0].address, i)
+        )
+      );
+      expect(tokenIds.map((i) => i.toNumber())).to.deep.eq([0, 2, 3]);
 
       // Assert that the tokens are owned by the user using ownerOf
-      let owner;
-      for (tokenId of tokenIds) {
-        owner = await ChainDreamers.ownerOf(tokenId);
-        expect(owner).to.eq(users[0].address);
-      }
+      const owners = await Promise.all(
+        tokenIds.map(async (tokenId) => await ChainDreamers.ownerOf(tokenId))
+      );
+      expect(owners).to.deep.eq(Array(tokenIds.length).fill(users[0].address));
     });
   });
   describe("withdraw", async () => {
@@ -482,17 +479,38 @@ describe("ChainDreamers", function () {
     });
   });
   describe("tokenURI", async () => {
-    [...Array(10_001).keys()].slice(1).forEach((runnerId) => {
-      it(`should return base64 token data for token ${runnerId}`, async () => {
-        const { users } = await runnersAccessFixture();
-        const tokenData = await users[0].ChainDreamers.functions[
-          "tokenURI(uint256,uint8)"
-        ](runnerId, 3);
-        const outputFile = `./test/contracts/__snapshots__/DREAMERS/${runnerId}.b64`;
-        fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-        fs.writeFileSync(outputFile, tokenData[0]);
-        expect(tokenData).to.toMatchSnapshot();
+    const tokenIds = [...Array(5).keys()];
+    it(`should revert when token id does not exist`, async () => {
+      const { ChainDreamers } = await publicSaleFixture();
+      tokenIds.forEach((tokenId) => {
+        expect(ChainDreamers.tokenURI(tokenId)).to.be.revertedWith(
+          "ERC721: URI query for nonexistent token"
+        );
       });
+    });
+    it(`should return metadata url with tokenId`, async () => {
+      const { users, ChainDreamers } = await publicSaleFixture();
+      await users[0].ChainDreamers.mintBatchPublicSale(
+        "0x" + tokenIds.map(uint16ToBytes).join(""),
+        "0x" + tokenIds.map(uint16ToBytes).join(""),
+        {
+          value: ethers.utils.parseEther(
+            (0.05 * tokenIds.length).toFixed(2).toString()
+          ),
+        }
+      );
+
+      const uris = await Promise.all(
+        tokenIds.map(async (tokenId) => {
+          return await ChainDreamers.tokenURI(tokenId);
+        })
+      );
+      expect(uris).to.deep.equal(
+        tokenIds.map(
+          (tokenId) =>
+            `https://api.chaindreamers.xyz/test/tokens/${tokenId}/metadata`
+        )
+      );
     });
   });
 });

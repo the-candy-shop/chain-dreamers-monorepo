@@ -111,7 +111,7 @@ describe("DreamersRenderer", async function () {
     });
   });
 
-  describe.only("tokenURI", async () => {
+  describe("tokenURI", async () => {
     const tokenIds = [...Array(10_001).keys()].slice(1);
     tokenIds.map((tokenId) => {
       it("should return correct URI for tokenId " + tokenId, async function () {
