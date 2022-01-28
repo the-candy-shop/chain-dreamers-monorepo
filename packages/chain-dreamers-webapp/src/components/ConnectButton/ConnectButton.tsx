@@ -9,6 +9,8 @@ import config, { CHAIN_ID } from "../../config";
 import { useCandyShopContract } from "../../hooks/useCandyShopContract";
 import Box from "@mui/material/Box";
 import flasks from "./flasks.png";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
 
 type CountDownButtonProps = Pick<ButtonProps, "sx">;
 
@@ -52,7 +54,7 @@ function buildButtonLabel(
 }
 
 function ConnectButton({ sx }: CountDownButtonProps) {
-  const { activate, account } = useEthers();
+  const { activate, account, deactivate } = useEthers();
   const { totalQuantity } = useCandyShopContract();
 
   const [connectDialogOpen, setConnectDialogOpen] =
@@ -80,6 +82,16 @@ function ConnectButton({ sx }: CountDownButtonProps) {
 
   const { isLaunched } = useIsLaunched();
 
+  const [menuAnchorEl, setMenuAnchorEl] = React.useState<Element | null>(null);
+  const isMenuOpen = Boolean(menuAnchorEl);
+
+  const openMenu: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    setMenuAnchorEl(event.currentTarget);
+  };
+  const closeMenu = () => {
+    setMenuAnchorEl(null);
+  };
+
   return (
     <>
       <Button
@@ -94,7 +106,7 @@ function ConnectButton({ sx }: CountDownButtonProps) {
           textTransform: isLaunched ? "uppercase" : "none",
           ...sx,
         }}
-        onClick={isLaunched && !account ? openConnectDialog : undefined}
+        onClick={isLaunched && !account ? openConnectDialog : openMenu}
       >
         {buildButtonLabel(isLaunched, account, totalQuantity)}
       </Button>
@@ -102,6 +114,38 @@ function ConnectButton({ sx }: CountDownButtonProps) {
         open={!account && connectDialogOpen}
         handleClose={closeConnectDialog}
       />
+      <Menu
+        id="menu"
+        anchorEl={menuAnchorEl}
+        open={isMenuOpen}
+        onClose={closeMenu}
+        sx={{
+          "& .MuiPaper-root": {
+            background: "black",
+            border: "1px solid #AC0BF7",
+            marginTop: "4px",
+            fontSize: "16px",
+            lineHeight: "19px",
+            color: "white",
+          },
+        }}
+      >
+        <MenuItem
+          onClick={closeMenu}
+          sx={{ fontWeight: 600, "&:hover": { color: "#44DFFD" } }}
+        >
+          My Dreamers
+        </MenuItem>
+        <MenuItem
+          sx={{ fontWeight: 600, color: "#fd4444" }}
+          onClick={() => {
+            closeMenu();
+            deactivate();
+          }}
+        >
+          Logout
+        </MenuItem>
+      </Menu>
     </>
   );
 }
