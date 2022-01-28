@@ -37,7 +37,7 @@ function Jaz({ message, sx }: JazProps) {
           }}
         >
           {message === "candyShopWithRunner" && (
-            <Typist avgTypingDelay={40}>
+            <Typist avgTypingDelay={20}>
               Hello! My name is Jaz, I am the Candy Shop Runner. I successfully
               identified you as a verified Chain Runner. Usually I sell regular
               candies, but you seam pretty informed.
@@ -47,12 +47,12 @@ function Jaz({ message, sx }: JazProps) {
             </Typist>
           )}
           {message === "candyShopWithoutRunner" && (
-            <Typist avgTypingDelay={40}>
+            <Typist avgTypingDelay={20}>
               Sorry, my Candy Shop is opened only for Runners at the moment.
             </Typist>
           )}
           {message === "basementWithoutCandy" && (
-            <Typist avgTypingDelay={40}>
+            <Typist avgTypingDelay={20}>
               Sorry, if you want to use my basement to eat some candy, you'll
               have to buy it first. Go back to the Candy Shop and choose your
               poison.

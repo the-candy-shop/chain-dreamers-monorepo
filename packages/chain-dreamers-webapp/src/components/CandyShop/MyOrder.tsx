@@ -170,7 +170,7 @@ function MyOrder({ sx }: MyOrderProps) {
                   fontSize="20px"
                   fontFamily="Share Tech Mono"
                 >
-                  <Typist avgTypingDelay={40}>
+                  <Typist avgTypingDelay={20}>
                     Congrats, you have bought your Candy. Now go to the basement
                     to take your dose.
                   </Typist>

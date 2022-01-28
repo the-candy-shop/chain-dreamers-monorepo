@@ -111,7 +111,7 @@ function Basement() {
                       textAlign: "center",
                     }}
                   >
-                    <Typist avgTypingDelay={40}>
+                    <Typist avgTypingDelay={20}>
                       Runners! Choose wisely which candy you will take. Once
                       you're ready, click the button bellow, and I'll give you
                       the dose myself.

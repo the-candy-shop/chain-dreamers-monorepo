@@ -44,26 +44,26 @@ function CandyMintingMessages() {
       }}
     >
       {messageToShow === 1 && (
-        <Typist avgTypingDelay={40}>Let me prepare your poison...</Typist>
+        <Typist avgTypingDelay={20}>Let me prepare your poison...</Typist>
       )}
       {messageToShow === 2 && (
-        <Typist avgTypingDelay={40}>
+        <Typist avgTypingDelay={20}>
           I need to adjust the dosage, so this can take a while...
         </Typist>
       )}
       {messageToShow === 3 && (
-        <Typist avgTypingDelay={40}>
+        <Typist avgTypingDelay={20}>
           You wouldn't want to end up brain dead after your dream, would you? So
           let me take my time...
         </Typist>
       )}
       {messageToShow === 4 && (
-        <Typist avgTypingDelay={40}>
+        <Typist avgTypingDelay={20}>
           Be patient. I assure you, this will be worth the wait...
         </Typist>
       )}
       {messageToShow === 5 && (
-        <Typist avgTypingDelay={40}>
+        <Typist avgTypingDelay={20}>
           Well... this is awkward... it shouldn't take that long. Maybe try to
           reload the page...
         </Typist>
