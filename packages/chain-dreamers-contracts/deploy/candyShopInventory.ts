@@ -8,6 +8,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployments, getNamedAccounts, ethers } = hre;
   const { execute } = deployments;
   const { deployer } = await getNamedAccounts();
+  await deployments.get("CandyShop");
   const skus = loadSkus();
   const tx = await execute(
     "CandyShop",
