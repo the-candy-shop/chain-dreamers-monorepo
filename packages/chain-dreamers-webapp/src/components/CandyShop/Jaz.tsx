@@ -47,12 +47,12 @@ function Jaz({ message, sx }: JazProps) {
             </Typist>
           )}
           {message === "candyShopWithoutRunner" && (
-            <Typist>
+            <Typist avgTypingDelay={40}>
               Sorry, my Candy Shop is opened only for Runners at the moment.
             </Typist>
           )}
           {message === "basementWithoutCandy" && (
-            <Typist>
+            <Typist avgTypingDelay={40}>
               Sorry, if you want to use my basement to eat some candy, you'll
               have to buy it first. Go back to the Candy Shop and choose your
               poison.
