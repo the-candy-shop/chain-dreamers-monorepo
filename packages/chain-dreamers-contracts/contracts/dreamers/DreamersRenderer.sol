@@ -458,7 +458,7 @@ contract DreamersRenderer is
             string(
                 abi.encodePacked(
                     "https://api.chaindreamers.xyz/test/tokens/",
-                    tokenId,
+                    tokenId.toString(),
                     "/metadata"
                 )
             );
