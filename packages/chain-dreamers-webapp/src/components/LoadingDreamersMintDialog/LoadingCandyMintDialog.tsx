@@ -36,20 +36,37 @@ function LoadingDreamersMintDialog({
       }}
     >
       <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flexWrap="wrap"
-        padding="32px"
+        sx={{
+          background: "rgba(218, 74, 138, 0.1)",
+          border: "1px solid #DA4A8A",
+          padding: "0 32px",
+          overflow: "auto",
+
+          "&::-webkit-scrollbar": {
+            backgroundColor: "transparent",
+            width: "4px",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: "#b101e6",
+          },
+        }}
       >
-        {displayedRunnersIds.map((runnerId) => (
-          <Box key={runnerId} margin="16px">
-            <LoadingDreamerMintImage
-              runnerId={runnerId}
-              isDreamer={dreamersIds.includes(runnerId)}
-            />
-          </Box>
-        ))}
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          flexWrap="wrap"
+          padding="32px"
+        >
+          {displayedRunnersIds.map((runnerId) => (
+            <Box key={runnerId} margin="16px">
+              <LoadingDreamerMintImage
+                runnerId={runnerId}
+                isDreamer={dreamersIds.includes(runnerId)}
+              />
+            </Box>
+          ))}
+        </Box>
       </Box>
     </Dialog>
   );

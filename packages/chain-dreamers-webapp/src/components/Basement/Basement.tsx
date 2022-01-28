@@ -179,8 +179,8 @@ function Basement() {
         )}
       </Box>
       <LoadingDreamersMintDialog
-        open={mintingDialogOpen}
-        mintingRunnersIds={runnersIds.filter((id) => !!selectedRunners[id])}
+        open={true}
+        mintingRunnersIds={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
       />
     </Box>
   );
