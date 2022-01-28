@@ -255,7 +255,7 @@ function MyOrder({ sx }: MyOrderProps) {
           )}
         </Box>
       </Box>
-      <LoadingCandyMintDialog open={isMinting} />
+      <LoadingCandyMintDialog open={isMinting} candyQuantity={quantity} />
     </ShopPanels>
   );
 }

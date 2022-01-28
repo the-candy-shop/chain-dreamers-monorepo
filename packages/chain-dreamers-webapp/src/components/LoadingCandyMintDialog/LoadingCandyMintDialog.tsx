@@ -1,33 +1,48 @@
 import React from "react";
-import { Dialog, keyframes } from "@mui/material";
-import flask from "./flask.png";
-import pill from "./pill.png";
+import { Dialog } from "@mui/material";
 import Box from "@mui/material/Box";
+import jaz from "../CandyShop/jaz.png";
+import { CandyList } from "../../candies";
+import AnimatedFlask from "./AnimatedFlask";
+import CandyMintingMessages from "./MintingMessages";
 
 type LoadingCandyMintDialogProps = {
   open: boolean;
+  candyQuantity: Record<CandyList, number>;
 };
 
-function LoadingCandyMintDialog({ open }: LoadingCandyMintDialogProps) {
-  const pillFallAnimation = keyframes`
-    0 %  { top: -50px },
-    100% { top: 120px  }
-  `;
-
+function LoadingCandyMintDialog({
+  open,
+  candyQuantity,
+}: LoadingCandyMintDialogProps) {
   return (
-    <Dialog open={open} sx={{ "& .MuiPaper-root": { background: "black" } }}>
-      <Box padding="100px 200px" position="relative">
-        <Box position="relative" zIndex={2}>
-          <img alt="flask" src={flask} style={{ width: "150px" }} />
+    <Dialog
+      open={open}
+      sx={{ "& .MuiPaper-root": { background: "black", minWidth: "500px" } }}
+    >
+      <Box
+        sx={{
+          background: "rgba(218, 74, 138, 0.1)",
+          border: "1px solid #DA4A8A",
+          padding: "0 32px",
+        }}
+      >
+        <Box display="flex" justifyContent="center">
+          {candyQuantity[CandyList.ChainMeth] !== 0 && (
+            <AnimatedFlask candy={CandyList.ChainMeth} />
+          )}
+          {candyQuantity[CandyList.SomnusTears] !== 0 && (
+            <AnimatedFlask candy={CandyList.SomnusTears} />
+          )}
+          {candyQuantity[CandyList.HeliumSpice] !== 0 && (
+            <AnimatedFlask candy={CandyList.HeliumSpice} />
+          )}
         </Box>
-        <Box
-          position="absolute"
-          zIndex={1}
-          top="-50px"
-          left="calc(50% - 25px)"
-          sx={{ animation: `${pillFallAnimation} linear 700ms infinite` }}
-        >
-          <img alt="pill" src={pill} style={{ width: "50px" }} />
+        <Box marginTop="64px">
+          <Box textAlign="center">
+            <img alt="Jaz" src={jaz} style={{ width: "64px" }} />
+          </Box>
+          {open && <CandyMintingMessages />}
         </Box>
       </Box>
     </Dialog>
