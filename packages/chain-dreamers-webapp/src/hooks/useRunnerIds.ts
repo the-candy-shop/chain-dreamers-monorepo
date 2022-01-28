@@ -11,6 +11,13 @@ export const useRunnerIds = (): number[] => {
 
   React.useEffect(() => {
     if (sdk && account) {
+      // @ts-ignore
+      window.mintRunner = sdk.ChainRunners.mint;
+    }
+  }, [account, sdk]);
+
+  React.useEffect(() => {
+    if (sdk && account) {
       sdk.ChainRunners.balanceOf(account).then((balance) =>
         setRunnerCount(balance.toNumber())
       );
