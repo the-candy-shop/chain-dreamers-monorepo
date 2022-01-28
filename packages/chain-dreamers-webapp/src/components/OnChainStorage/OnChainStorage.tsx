@@ -38,13 +38,13 @@ function OnChainStorage() {
               </li>
               <li>We pioneered bringing more complex images on-chain</li>
               <li>
-                We applied this innovation to a community we love: Chain Runners
-              </li>
-              <li>
                 To do so, we switched from pixel-based to vector-based encoding
               </li>
               <li>
                 We developed a custom encoding to efficiently store the traits
+              </li>
+              <li>
+                We applied this innovation to a community we love: Chain Runners
               </li>
             </ul>
             <blockquote className="twitter-tweet">
@@ -390,12 +390,13 @@ function OnChainStorage() {
             <h2>Rendering the Dreamer</h2>
             <p>
               Though the rendering of a Dreamer has been implemented and tested
-              on-chain (see the <code>DreamersRenderer.getSvg</code> function),
-              we didn't manage to keep the gas required by this function below
-              the limit (depending on the nodes but around few dozen millions of
-              gas). Hence we opened an API to compute the rendering off-chain
-              and point to this API in the token metadata. This leads to few
-              comments:
+              on-chain (see the <code>DreamersRenderer.imageURI</code>{" "}
+              function), we didn't use this function in the actual token
+              following the current latest Chain Runner's implementation. Indeed
+              to be compliant we, e.g. the new twitter feature for NFTs PFP,
+              they as well as we, needed to return `.png`. Hence we opened an
+              API to compute the rendering off-chain and point to this API in
+              the token metadata. This leads to few comments:
               <ul>
                 <li>
                   though the rendering is actually off-chain, this doesn't mean
@@ -405,12 +406,6 @@ function OnChainStorage() {
                 <li>
                   it is actually possible to call the rendering function from
                   etherscan and see the corresponding SVG;
-                </li>
-                <li>
-                  on our way to the storage optimization, we didn't realize that
-                  we were transferring that much computing cost to the rendering
-                  function. Our first priority will be to optimize this
-                  rendering function;
                 </li>
                 <li>
                   we however think that this tradeoff between storage and
