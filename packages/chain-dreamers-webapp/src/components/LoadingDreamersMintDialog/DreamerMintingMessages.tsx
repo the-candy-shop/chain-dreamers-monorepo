@@ -1,6 +1,8 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Typist from "react-typist";
+import Button from "@mui/lab/LoadingButton";
+import { useNavigate } from "react-router-dom";
 
 type DreamerMintingMessagesProps = {
   isDoneMinting: boolean;
@@ -9,6 +11,8 @@ type DreamerMintingMessagesProps = {
 function DreamerMintingMessages({
   isDoneMinting,
 }: DreamerMintingMessagesProps) {
+  const navigate = useNavigate();
+
   const [messageToShow, setMessageToShow] = React.useState<number>(1);
 
   React.useEffect(() => {
@@ -38,6 +42,10 @@ function DreamerMintingMessages({
     }, 60000);
     return () => clearTimeout(timer);
   }, []);
+
+  const handleGoMyDreamersButtonClick = React.useCallback(async () => {
+    navigate("/my-dreamers");
+  }, [navigate]);
 
   return (
     <Box
@@ -75,7 +83,36 @@ function DreamerMintingMessages({
           reload the page...
         </Typist>
       )}
-      {isDoneMinting && <Typist avgTypingDelay={20}>Congratulations!</Typist>}
+      {isDoneMinting && (
+        <>
+          <Typist avgTypingDelay={20}>
+            Congratulations! Enjoy your dreams, Runners !
+          </Typist>
+          <Button
+            variant="contained"
+            sx={{
+              marginTop: "32px",
+              fontSize: "20px",
+              fontWeight: 600,
+              padding: "12px 24px",
+              color: "black",
+              background: "#44DFFD",
+              width: "370px",
+
+              "&.Mui-disabled": {
+                background: "rgba(68,223,253,.2)",
+              },
+
+              "&:hover": {
+                background: "#44DFFD",
+              },
+            }}
+            onClick={handleGoMyDreamersButtonClick}
+          >
+            Go to your dreamers page
+          </Button>
+        </>
+      )}
     </Box>
   );
 }
