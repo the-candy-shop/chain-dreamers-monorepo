@@ -393,10 +393,11 @@ function OnChainStorage() {
               on-chain (see the <code>DreamersRenderer.imageURI</code>{" "}
               function), we didn't use this function in the actual token
               following the current latest Chain Runner's implementation. Indeed
-              to be compliant we, e.g. the new twitter feature for NFTs PFP,
-              they as well as we, needed to return `.png`. Hence we opened an
-              API to compute the rendering off-chain and point to this API in
-              the token metadata. This leads to few comments:
+              to be compliant with, for instance, the new twitter feature for
+              NFTs PFP, they as well as we, needed to return <code>.png</code>{" "}
+              images. Hence we opened an API to compute the rendering off-chain
+              and point to this API in the token metadata. This leads to few
+              comments:
               <ul>
                 <li>
                   though the rendering is actually off-chain, this doesn't mean
