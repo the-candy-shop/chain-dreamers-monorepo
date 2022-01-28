@@ -89,5 +89,6 @@ export const useCandyShopContract = () => {
     isMinting,
     isLoading,
     totalQuantity,
+    fetchCandyQuantities,
   };
 };

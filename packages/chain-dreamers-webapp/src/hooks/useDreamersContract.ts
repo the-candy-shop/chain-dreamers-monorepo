@@ -3,12 +3,15 @@ import { useEthers } from "@usedapp/core";
 import { useSdk } from "./useSdk";
 import { ethers } from "ethers";
 import { DreamersContext } from "../contexts/DreamersContext";
+import { useCandyShopContract } from "./useCandyShopContract";
 
 export const useDreamersContract = () => {
   const { account } = useEthers();
 
   const { dreamersCount, setDreamersCount, dreamersIds, setDreamersIds } =
     React.useContext(DreamersContext);
+
+  const { fetchCandyQuantities } = useCandyShopContract();
 
   const [isWaitingForPayment, setIsWaitingForPayment] =
     React.useState<boolean>(false);
@@ -70,6 +73,7 @@ export const useDreamersContract = () => {
 
           sdk.ChainDreamers.on(event, async () => {
             await fetchDreamersCount();
+            await fetchCandyQuantities();
             setIsMinting(false);
             resolve();
           });
