@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.4;
+pragma solidity ^0.8.4;
 
 interface IChainRunnersBaseRenderer {
     function getRaceIndex(uint16 _dna) external view returns (uint8);

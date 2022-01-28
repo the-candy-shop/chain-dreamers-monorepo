@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.4;
+pragma solidity ^0.8.4;
 
 import "@0xsequence/sstore2/contracts/SSTORE2.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
