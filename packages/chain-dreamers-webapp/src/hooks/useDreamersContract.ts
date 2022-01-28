@@ -82,7 +82,7 @@ export const useDreamersContract = () => {
         }
       });
     },
-    [account, dreamersCount, fetchDreamersCount, sdk]
+    [account, dreamersCount, fetchDreamersCount, sdk, fetchCandyQuantities]
   );
 
   return {
