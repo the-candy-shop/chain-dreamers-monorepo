@@ -8,6 +8,7 @@ import Team from "./components/Team/Team";
 import CandyShop from "./components/CandyShop/CandyShop";
 import Basement from "./components/Basement/Basement";
 import { useIsOpen } from "./hooks/useIsOpen";
+import MyDreamers from "./components/MyDreamers/MyDreamers";
 
 function RoutesWrapper() {
   const { isCandyShopOpen } = useIsOpen();
@@ -21,6 +22,9 @@ function RoutesWrapper() {
       <Route path="/team" element={<Team />} />
       {isCandyShopOpen && <Route path="/candy-shop" element={<CandyShop />} />}
       {isCandyShopOpen && <Route path="/basement" element={<Basement />} />}
+      {isCandyShopOpen && (
+        <Route path="/my-dreamers" element={<MyDreamers />} />
+      )}
     </Routes>
   );
 }

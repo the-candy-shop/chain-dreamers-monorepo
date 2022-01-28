@@ -11,6 +11,7 @@ import Box from "@mui/material/Box";
 import flasks from "./flasks.png";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
+import { useNavigate } from "react-router-dom";
 
 type CountDownButtonProps = Pick<ButtonProps, "sx">;
 
@@ -56,6 +57,7 @@ function buildButtonLabel(
 function ConnectButton({ sx }: CountDownButtonProps) {
   const { activate, account, deactivate } = useEthers();
   const { totalQuantity } = useCandyShopContract();
+  const navigate = useNavigate();
 
   const [connectDialogOpen, setConnectDialogOpen] =
     React.useState<boolean>(false);
@@ -131,7 +133,10 @@ function ConnectButton({ sx }: CountDownButtonProps) {
         }}
       >
         <MenuItem
-          onClick={closeMenu}
+          onClick={() => {
+            closeMenu();
+            navigate("/my-dreamers");
+          }}
           sx={{ fontWeight: 600, "&:hover": { color: "#44DFFD" } }}
         >
           My Dreamers
