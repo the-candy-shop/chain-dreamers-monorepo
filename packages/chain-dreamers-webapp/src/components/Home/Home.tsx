@@ -1,24 +1,31 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import background from "./background.png";
+import backgroundOpen from "./background-open.png";
 import { useMediaQuery } from "@mui/material";
 import ConnectButton from "../ConnectButton/ConnectButton";
 import HeaderLink from "../HeaderLink/HeaderLink";
+import { useIsOpen } from "../../hooks/useIsOpen";
 
 function Home() {
   const isSmallWidth = useMediaQuery("(max-width:915px)");
+  const { isCandyShopOpen } = useIsOpen();
 
   return (
     <>
       {!isSmallWidth && (
         <Box sx={{ "& .background": { width: "100%" }, marginBottom: "84px" }}>
-          <img alt="Candy Shop" src={background} className="background" />
+          <img
+            alt="Candy Shop"
+            src={isCandyShopOpen ? backgroundOpen : background}
+            className="background"
+          />
         </Box>
       )}
       {isSmallWidth && (
         <Box
           sx={{
-            background: `url(${background})`,
+            background: `url(${isCandyShopOpen ? backgroundOpen : background})`,
             backgroundSize: "cover",
             backgroundPositionX: "center",
             backgroundPositionY: "center",
