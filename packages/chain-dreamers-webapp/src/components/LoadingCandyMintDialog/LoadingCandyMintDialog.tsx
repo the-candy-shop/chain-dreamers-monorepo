@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import jaz from "../CandyShop/jaz.png";
 import { CandyList } from "../../candies";
 import AnimatedFlask from "./AnimatedFlask";
-import CandyMintingMessages from "./MintingMessages";
+import CandyMintingMessages from "./CandyMintingMessages";
 
 type LoadingCandyMintDialogProps = {
   open: boolean;

@@ -3,6 +3,8 @@ import { Dialog } from "@mui/material";
 import Box from "@mui/material/Box";
 import LoadingDreamerMintImage from "./LoadingDreamerMintImage";
 import { useDreamersContract } from "../../hooks/useDreamersContract";
+import jaz from "../CandyShop/jaz.png";
+import DreamerMintingMessages from "./DreamerMintingMessages";
 
 type LoadingDreamersMintDialogProps = {
   open: boolean;
@@ -51,6 +53,12 @@ function LoadingDreamersMintDialog({
           },
         }}
       >
+        <Box marginTop="64px">
+          <Box textAlign="center">
+            <img alt="Jaz" src={jaz} style={{ width: "64px" }} />
+          </Box>
+          {open && <DreamerMintingMessages />}
+        </Box>
         <Box
           display="flex"
           justifyContent="center"
