@@ -3,8 +3,8 @@ import Box from "@mui/material/Box";
 import background from "./background.png";
 import backgroundOpen from "./background-open.png";
 import { useMediaQuery } from "@mui/material";
-import ConnectButton from "../ConnectButton/ConnectButton";
 import HeaderLink from "../HeaderLink/HeaderLink";
+import ConnectButton from "../ConnectButton/ConnectButton";
 import { useIsOpen } from "../../hooks/useIsOpen";
 
 function Home() {
