@@ -2,11 +2,15 @@ import React from "react";
 import Box from "@mui/material/Box";
 import { CircularProgress, keyframes } from "@mui/material";
 
-type GlitchedImageProps = {
+type LoadingDreamerMintImageProps = {
   runnerId: number;
+  isDreamer: boolean;
 };
 
-function GlitchedImage({ runnerId }: GlitchedImageProps) {
+function LoadingDreamerMintImage({
+  runnerId,
+  isDreamer,
+}: LoadingDreamerMintImageProps) {
   const randomRunner1 = React.useRef<number>(
     Math.floor(Math.random() * (10000 - 1) + 1)
   );
@@ -81,6 +85,22 @@ function GlitchedImage({ runnerId }: GlitchedImageProps) {
         },
       }}
     >
+      {isDreamer && (
+        <Box
+          sx={{
+            width: "160px",
+            height: "160px",
+            backgroundImage: `url(https://api.chaindreamers.xyz/test/tokens/${runnerId}/img)`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            zIndex: 30,
+          }}
+        />
+      )}
       <CircularProgress
         sx={{
           position: "absolute",
@@ -137,4 +157,4 @@ function GlitchedImage({ runnerId }: GlitchedImageProps) {
   );
 }
 
-export default GlitchedImage;
+export default LoadingDreamerMintImage;

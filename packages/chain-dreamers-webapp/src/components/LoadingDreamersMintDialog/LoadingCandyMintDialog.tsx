@@ -1,7 +1,7 @@
 import React from "react";
 import { Dialog } from "@mui/material";
 import Box from "@mui/material/Box";
-import GlitchedImage from "./GlitchedImage";
+import LoadingDreamerMintImage from "./LoadingDreamerMintImage";
 import { useDreamersContract } from "../../hooks/useDreamersContract";
 
 type LoadingDreamersMintDialogProps = {
@@ -35,16 +35,10 @@ function LoadingDreamersMintDialog({
       >
         {mintingRunnersIds.map((runnerId) => (
           <Box key={runnerId} margin="16px">
-            {!dreamersIds.includes(runnerId) && (
-              <GlitchedImage runnerId={runnerId} />
-            )}
-            {dreamersIds.includes(runnerId) && (
-              <img
-                alt="dreamer"
-                src={`https://api.chaindreamers.xyz/test/tokens/${runnerId}/img`}
-                style={{ width: "160px", borderRadius: "16px" }}
-              />
-            )}
+            <LoadingDreamerMintImage
+              runnerId={runnerId}
+              isDreamer={dreamersIds.includes(runnerId)}
+            />
           </Box>
         ))}
       </Box>
