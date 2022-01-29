@@ -8,17 +8,19 @@ import ConnectButton from "../ConnectButton/ConnectButton";
 import { useIsOpen } from "../../hooks/useIsOpen";
 import Button from "@mui/lab/LoadingButton";
 import { useNavigate } from "react-router-dom";
+import { useEthers } from "@usedapp/core";
 
 function Home() {
   const isSmallWidth = useMediaQuery("(max-width:915px)");
   const navigate = useNavigate();
   const { isCandyShopOpen } = useIsOpen();
+  const { account } = useEthers();
 
   return (
     <>
       {!isSmallWidth && (
         <Box sx={{ "& .background": { width: "100%" }, marginBottom: "84px" }}>
-          {isCandyShopOpen && (
+          {isCandyShopOpen && account && (
             <Button
               variant="contained"
               sx={{
@@ -76,7 +78,7 @@ function Home() {
               }}
             />
           </Box>
-          {isCandyShopOpen && (
+          {isCandyShopOpen && account && (
             <Box>
               <Button
                 variant="contained"
