@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { CandyList, candiesColors } from "../../candies";
-import { MenuItem, Select } from "@mui/material";
+import { MenuItem, Select, useMediaQuery } from "@mui/material";
 
 type RunnerSelectorProps = {
   runnerId: number;
@@ -20,6 +20,8 @@ function RunnerSelector({
   candyLeft,
   disabled = false,
 }: RunnerSelectorProps) {
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
+
   return (
     <Box
       padding="10px"
@@ -27,7 +29,8 @@ function RunnerSelector({
       display="flex"
       alignItems="center"
       justifyContent="space-between"
-      width="500px"
+      flexDirection={isSmallWidth ? "column" : "row"}
+      width={isSmallWidth ? "auto" : "500px"}
       sx={{
         opacity: disabled ? 0.3 : 1,
       }}

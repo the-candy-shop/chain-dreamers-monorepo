@@ -4,6 +4,7 @@ import { CandyList, imageByCandy } from "../../candies";
 import IconButton from "@mui/material/IconButton";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
+import { useMediaQuery } from "@mui/material";
 
 type FlaskQuantitySelectorProps = {
   quantity: number;
@@ -18,6 +19,8 @@ function FlaskQuantitySelector({
   candy,
   sx,
 }: FlaskQuantitySelectorProps) {
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
+
   const add = React.useCallback(
     () => setQuantity(quantity + 1),
     [quantity, setQuantity]
@@ -30,15 +33,20 @@ function FlaskQuantitySelector({
   return (
     <Box
       display="flex"
+      flexDirection={isSmallWidth ? "column" : "row"}
       alignItems="center"
       justifyContent="space-between"
       width="100%"
       sx={sx}
     >
       <Box>
-        <img alt="flask" src={imageByCandy[candy]} style={{ width: "48px" }} />
+        <img
+          alt="flask"
+          src={imageByCandy[candy]}
+          style={{ width: isSmallWidth ? "32px" : "48px" }}
+        />
       </Box>
-      <Box fontSize="24px">{candy.toString()}</Box>
+      <Box fontSize={isSmallWidth ? "16px" : "24px"}>{candy.toString()}</Box>
       <Box
         sx={{
           marginTop: "12px",

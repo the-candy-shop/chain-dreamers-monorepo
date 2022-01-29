@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import { CandyList, imageByCandy } from "../../candies";
 import RunnerSelector from "./RunnerSelector";
 import Typist from "react-typist";
+import { useMediaQuery } from "@mui/material";
 
 type MyRunnersProps = {
   mintedCandyQuantities: Record<CandyList, number>;
@@ -18,6 +19,8 @@ function MyRunners({
   selectedRunners,
   setSelectedRunners,
 }: MyRunnersProps) {
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
+
   const candyLeft = React.useMemo<Record<CandyList, number>>(() => {
     const result: Record<string, number> = {};
 
@@ -92,7 +95,7 @@ function MyRunners({
           marginTop="40px"
           fontWeight={600}
           textTransform="uppercase"
-          fontSize="22px"
+          fontSize={isSmallWidth ? "18px" : "22px"}
           textAlign="center"
           height="60px"
         >

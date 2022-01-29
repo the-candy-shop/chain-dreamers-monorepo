@@ -3,6 +3,7 @@ import Box, { BoxProps } from "@mui/material/Box";
 import React from "react";
 import jaz from "./jaz.png";
 import Typist from "react-typist";
+import { useMediaQuery } from "@mui/material";
 
 type JazProps = {
   message:
@@ -13,6 +14,8 @@ type JazProps = {
 };
 
 function Jaz({ message, sx }: JazProps) {
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
+
   return (
     <ShopPanels title="Jaz, the Candy Shop owner" sx={sx}>
       <Box
@@ -32,7 +35,7 @@ function Jaz({ message, sx }: JazProps) {
           sx={{
             fontSize: "20px",
             fontFamily: "Share Tech Mono",
-            padding: "60px 35px",
+            padding: isSmallWidth ? "24px 0" : "60px 35px",
             textAlign: "center",
             maxWidth: "680px",
           }}

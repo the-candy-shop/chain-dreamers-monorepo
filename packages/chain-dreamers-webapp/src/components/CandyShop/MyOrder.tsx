@@ -13,6 +13,7 @@ import Typist from "react-typist";
 import heliumSpice from "./helium-spice.png";
 import somnusTears from "./somnus-tears.png";
 import chainMeth from "./chain-meth.png";
+import { useMediaQuery } from "@mui/material";
 
 const defaultCandyQuantity = {
   [CandyList.ChainMeth]: 0,
@@ -25,6 +26,8 @@ type MyOrderProps = {
 };
 
 function MyOrder({ sx }: MyOrderProps) {
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
+
   const navigate = useNavigate();
   const {
     mint,
@@ -91,8 +94,8 @@ function MyOrder({ sx }: MyOrderProps) {
 
   return (
     <ShopPanels title="My order" sx={{ flex: 1, ...sx }}>
-      <Box sx={{ padding: "24px 110px 46px 110px", textAlign: "center" }}>
-        <Box sx={{ margin: "18px 46px 24px 46px" }}>
+      <Box sx={{ textAlign: "center" }}>
+        <Box sx={{ margin: "46px" }}>
           {!hasMint && (
             <Box sx={{ marginTop: "24px" }}>
               <Box
@@ -109,19 +112,19 @@ function MyOrder({ sx }: MyOrderProps) {
                   quantity={quantity[CandyList.ChainMeth]}
                   setQuantity={setChainMethQuantity}
                   candy={CandyList.ChainMeth}
-                  sx={{ marginBottom: "24px" }}
+                  sx={{ marginBottom: isSmallWidth ? "40px" : "24px" }}
                 />
                 <FlaskQuantitySelector
                   quantity={quantity[CandyList.SomnusTears]}
                   setQuantity={setSomnusTearsQuantity}
                   candy={CandyList.SomnusTears}
-                  sx={{ marginBottom: "24px" }}
+                  sx={{ marginBottom: isSmallWidth ? "40px" : "24px" }}
                 />
                 <FlaskQuantitySelector
                   quantity={quantity[CandyList.HeliumSpice]}
                   setQuantity={setHeliumSpiceQuantity}
                   candy={CandyList.HeliumSpice}
-                  sx={{ marginBottom: "24px" }}
+                  sx={{ marginBottom: isSmallWidth ? "40px" : "24px" }}
                 />
               </Box>
               <Button

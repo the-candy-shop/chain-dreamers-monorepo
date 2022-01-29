@@ -1,5 +1,5 @@
 import React from "react";
-import { Dialog } from "@mui/material";
+import { Dialog, useMediaQuery } from "@mui/material";
 import Box from "@mui/material/Box";
 import jaz from "../CandyShop/jaz.png";
 import { CandyList } from "../../candies";
@@ -15,10 +15,17 @@ function LoadingCandyMintDialog({
   open,
   candyQuantity,
 }: LoadingCandyMintDialogProps) {
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
+
   return (
     <Dialog
       open={open}
-      sx={{ "& .MuiPaper-root": { background: "black", minWidth: "500px" } }}
+      sx={{
+        "& .MuiPaper-root": {
+          background: "black",
+          minWidth: isSmallWidth ? "none" : "500px",
+        },
+      }}
     >
       <Box
         sx={{

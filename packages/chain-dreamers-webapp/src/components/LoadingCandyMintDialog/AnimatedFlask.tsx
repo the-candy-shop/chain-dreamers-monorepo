@@ -1,5 +1,5 @@
 import React from "react";
-import { keyframes } from "@mui/material";
+import { keyframes, useMediaQuery } from "@mui/material";
 import flaskCm from "./flask-cm.png";
 import pillCm from "./pill-cm.png";
 import flaskSt from "./flask-st.png";
@@ -29,6 +29,8 @@ const candyImages = {
 };
 
 function AnimatedFlask({ candy }: AnimatedFlaskProps) {
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
+
   const animationDuration = React.useRef<number>(
     Math.random() * (0.8 - 0.6) + 0.6
   );
@@ -39,20 +41,25 @@ function AnimatedFlask({ candy }: AnimatedFlaskProps) {
   `;
 
   return (
-    <Box position="relative" width="150px" height="337px" margin="0 16px">
+    <Box
+      position="relative"
+      minWidth={isSmallWidth ? "75px" : "150px"}
+      minHeight={isSmallWidth ? "200px" : "337px"}
+      margin={isSmallWidth ? "0 8px" : "0 16px"}
+    >
       <Box position="absolute" bottom="0" zIndex={2}>
         <img
           alt="flask"
           src={candyImages[candy].flask}
-          style={{ width: "150px" }}
+          style={{ width: isSmallWidth ? "75px" : "150px" }}
         />
       </Box>
       <Box
         position="absolute"
         zIndex={1}
-        top="-50px"
-        left="calc(50% - 25px)"
-        width="50px"
+        top={isSmallWidth ? "-25px" : "-50px"}
+        left={isSmallWidth ? "calc(50% - 12.5px)" : "calc(50% - 25px)"}
+        minWidth={isSmallWidth ? "25px" : "50px"}
         sx={{
           willChange: "top",
           animation: `${pillFallAnimation} linear ${animationDuration.current}s infinite`,
@@ -61,7 +68,7 @@ function AnimatedFlask({ candy }: AnimatedFlaskProps) {
         <img
           alt="pill"
           src={candyImages[candy].pill}
-          style={{ width: "50px" }}
+          style={{ width: isSmallWidth ? "25px" : "50px" }}
         />
       </Box>
     </Box>

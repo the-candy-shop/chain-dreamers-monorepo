@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Typist from "react-typist";
 import Button from "@mui/lab/LoadingButton";
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from "@mui/material";
 
 type DreamerMintingMessagesProps = {
   isDoneMinting: boolean;
@@ -11,6 +12,7 @@ type DreamerMintingMessagesProps = {
 function DreamerMintingMessages({
   isDoneMinting,
 }: DreamerMintingMessagesProps) {
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
   const navigate = useNavigate();
 
   const [messageToShow, setMessageToShow] = React.useState<number>(1);
@@ -92,12 +94,12 @@ function DreamerMintingMessages({
             variant="contained"
             sx={{
               marginTop: "32px",
-              fontSize: "20px",
+              fontSize: isSmallWidth ? "15px" : "20px",
               fontWeight: 600,
               padding: "12px 24px",
               color: "black",
               background: "#44DFFD",
-              width: "370px",
+              width: isSmallWidth ? "192px" : "370px",
 
               "&.Mui-disabled": {
                 background: "rgba(68,223,253,.2)",

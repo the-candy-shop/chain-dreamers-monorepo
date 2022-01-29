@@ -11,8 +11,11 @@ import jaz from "../CandyShop/jaz.png";
 import Typist from "react-typist";
 import Button from "@mui/lab/LoadingButton";
 import LoadingDreamersMintDialog from "../LoadingDreamersMintDialog/LoadingCandyMintDialog";
+import { useMediaQuery } from "@mui/material";
 
 function Basement() {
+  const isSmallWidth = useMediaQuery("(max-width:915px)");
+
   const {
     totalQuantity: totalMintedCandy,
     candyQuantities: mintedCandyQuantities,
@@ -76,10 +79,20 @@ function Basement() {
 
   return (
     <Box display="flex" flexDirection="column" minHeight="calc(100vh - 191px)">
-      <Box marginTop="23px" marginBottom="40px" display="flex" flex={1}>
+      <Box
+        marginTop="23px"
+        marginBottom="40px"
+        display="flex"
+        flex={1}
+        flexDirection={isSmallWidth ? "column" : "row"}
+      >
         {totalMintedCandy > 0 && (
           <>
-            <Box flex={1} marginRight="12px">
+            <Box
+              flex={1}
+              marginRight={isSmallWidth ? 0 : "12px"}
+              marginBottom={isSmallWidth ? "24px" : 0}
+            >
               <MyRunners
                 selectedRunners={selectedRunners}
                 setSelectedRunners={setSelectedRunners}
@@ -90,7 +103,7 @@ function Basement() {
             <Box
               sx={{
                 flex: 1,
-                marginLeft: "12px",
+                marginLeft: isSmallWidth ? 0 : "12px",
               }}
             >
               <ShopPanels title="My order" sx={{ height: "100%" }}>
@@ -99,6 +112,7 @@ function Basement() {
                   flexDirection="column"
                   alignItems="center"
                   maxWidth="500px"
+                  margin="46px"
                 >
                   <Box>
                     <img alt="Jaz" src={jaz} style={{ width: "64px" }} />
@@ -127,7 +141,7 @@ function Basement() {
                         alignItems="center"
                         justifyContent="space-between"
                         fontWeight={600}
-                        fontSize="22px"
+                        fontSize={isSmallWidth ? "18px" : "22px"}
                         textTransform="uppercase"
                       >
                         <img
@@ -135,7 +149,7 @@ function Basement() {
                           src={imageByCandy[candy]}
                           style={{ width: "32px", marginRight: "16px" }}
                         />
-                        <Box>{candy} total spent:</Box>
+                        <Box>{candy} spent:</Box>
                         <Box marginLeft="12px">{candySpent[candy]}</Box>
                       </Box>
                     ))}
