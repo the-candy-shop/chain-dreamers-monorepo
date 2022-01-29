@@ -24,9 +24,9 @@ function Basement() {
   const { dreamersIds, mintAsRunners, isMinting, isWaitingForPayment } =
     useDreamersContract();
 
-  const nonDreamingRunners = runnersIds.filter(
+  const nonDreamingRunners = [1, 2, 3, 4, 5]; /* runnersIds.filter(
     (id) => !dreamersIds.includes(id)
-  );
+  ); */
 
   const [mintingDialogOpen, setMintingDialogOpen] =
     React.useState<boolean>(false);

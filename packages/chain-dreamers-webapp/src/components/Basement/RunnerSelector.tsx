@@ -31,8 +31,13 @@ function RunnerSelector({
       justifyContent="space-between"
       flexDirection={isSmallWidth ? "column" : "row"}
       width={isSmallWidth ? "auto" : "500px"}
+      borderBottom="1px solid rgba(255,255,255,.1)"
       sx={{
         opacity: disabled ? 0.3 : 1,
+
+        "&:last-child": {
+          borderBottom: 0,
+        },
       }}
     >
       <Box display="flex" alignItems="center">
@@ -70,6 +75,7 @@ function RunnerSelector({
           <Select
             value={selectedCandy}
             onChange={(event) => selectCandy(event.target.value as CandyList)}
+            disabled={!selectedCandy}
             MenuProps={{
               sx: {
                 "& .MuiPaper-root": {
