@@ -6,15 +6,46 @@ import { useMediaQuery } from "@mui/material";
 import HeaderLink from "../HeaderLink/HeaderLink";
 import ConnectButton from "../ConnectButton/ConnectButton";
 import { useIsOpen } from "../../hooks/useIsOpen";
+import Button from "@mui/lab/LoadingButton";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const isSmallWidth = useMediaQuery("(max-width:915px)");
+  const navigate = useNavigate();
   const { isCandyShopOpen } = useIsOpen();
 
   return (
     <>
       {!isSmallWidth && (
         <Box sx={{ "& .background": { width: "100%" }, marginBottom: "84px" }}>
+          <Button
+            variant="contained"
+            sx={{
+              marginTop: "20px",
+              fontSize: "20px",
+              fontWeight: 600,
+              padding: "12px 24px",
+              color: "black",
+              background: "#44DFFD",
+              textTransform: "uppercase",
+              position: "absolute",
+              bottom: "150px",
+              right: 0,
+              left: 0,
+              margin: "auto",
+
+              "&.Mui-disabled": {
+                background: "rgba(68,223,253,.2)",
+              },
+
+              "&:hover": {
+                background: "#44DFFD",
+              },
+            }}
+            onClick={() => navigate("/candy-shop")}
+          >
+            Enter the Candy Shop
+          </Button>
           <img
             alt="Candy Shop"
             src={isCandyShopOpen ? backgroundOpen : background}
@@ -42,6 +73,31 @@ function Home() {
                 marginTop: "16px",
               }}
             />
+          </Box>
+          <Box>
+            <Button
+              variant="contained"
+              sx={{
+                marginTop: "150px",
+                fontSize: "20px",
+                fontWeight: 600,
+                padding: "12px 24px",
+                color: "black",
+                background: "#44DFFD",
+                textTransform: "uppercase",
+
+                "&.Mui-disabled": {
+                  background: "rgba(68,223,253,.2)",
+                },
+
+                "&:hover": {
+                  background: "#44DFFD",
+                },
+              }}
+              onClick={() => navigate("/candy-shop")}
+            >
+              Enter the Candy Shop
+            </Button>
           </Box>
           <Box
             sx={{
