@@ -18,34 +18,36 @@ function Home() {
     <>
       {!isSmallWidth && (
         <Box sx={{ "& .background": { width: "100%" }, marginBottom: "84px" }}>
-          <Button
-            variant="contained"
-            sx={{
-              marginTop: "20px",
-              fontSize: "20px",
-              fontWeight: 600,
-              padding: "12px 24px",
-              color: "black",
-              background: "#44DFFD",
-              textTransform: "uppercase",
-              position: "absolute",
-              bottom: "150px",
-              right: 0,
-              left: 0,
-              margin: "auto",
-
-              "&.Mui-disabled": {
-                background: "rgba(68,223,253,.2)",
-              },
-
-              "&:hover": {
+          {isCandyShopOpen && (
+            <Button
+              variant="contained"
+              sx={{
+                marginTop: "20px",
+                fontSize: "20px",
+                fontWeight: 600,
+                padding: "12px 24px",
+                color: "black",
                 background: "#44DFFD",
-              },
-            }}
-            onClick={() => navigate("/candy-shop")}
-          >
-            Enter the Candy Shop
-          </Button>
+                textTransform: "uppercase",
+                position: "absolute",
+                bottom: "150px",
+                right: 0,
+                left: 0,
+                margin: "auto",
+
+                "&.Mui-disabled": {
+                  background: "rgba(68,223,253,.2)",
+                },
+
+                "&:hover": {
+                  background: "#44DFFD",
+                },
+              }}
+              onClick={() => navigate("/candy-shop")}
+            >
+              Enter the Candy Shop
+            </Button>
+          )}
           <img
             alt="Candy Shop"
             src={isCandyShopOpen ? backgroundOpen : background}
@@ -74,31 +76,33 @@ function Home() {
               }}
             />
           </Box>
-          <Box>
-            <Button
-              variant="contained"
-              sx={{
-                marginTop: "150px",
-                fontSize: "20px",
-                fontWeight: 600,
-                padding: "12px 24px",
-                color: "black",
-                background: "#44DFFD",
-                textTransform: "uppercase",
-
-                "&.Mui-disabled": {
-                  background: "rgba(68,223,253,.2)",
-                },
-
-                "&:hover": {
+          {isCandyShopOpen && (
+            <Box>
+              <Button
+                variant="contained"
+                sx={{
+                  marginTop: "150px",
+                  fontSize: "20px",
+                  fontWeight: 600,
+                  padding: "12px 24px",
+                  color: "black",
                   background: "#44DFFD",
-                },
-              }}
-              onClick={() => navigate("/candy-shop")}
-            >
-              Enter the Candy Shop
-            </Button>
-          </Box>
+                  textTransform: "uppercase",
+
+                  "&.Mui-disabled": {
+                    background: "rgba(68,223,253,.2)",
+                  },
+
+                  "&:hover": {
+                    background: "#44DFFD",
+                  },
+                }}
+                onClick={() => navigate("/candy-shop")}
+              >
+                Enter the Candy Shop
+              </Button>
+            </Box>
+          )}
           <Box
             sx={{
               display: "flex",
