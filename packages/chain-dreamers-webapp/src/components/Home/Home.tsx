@@ -78,33 +78,6 @@ function Home() {
               }}
             />
           </Box>
-          {isCandyShopOpen && account && (
-            <Box>
-              <Button
-                variant="contained"
-                sx={{
-                  marginTop: "150px",
-                  fontSize: "20px",
-                  fontWeight: 600,
-                  padding: "12px 24px",
-                  color: "black",
-                  background: "#44DFFD",
-                  textTransform: "uppercase",
-
-                  "&.Mui-disabled": {
-                    background: "rgba(68,223,253,.2)",
-                  },
-
-                  "&:hover": {
-                    background: "#44DFFD",
-                  },
-                }}
-                onClick={() => navigate("/candy-shop")}
-              >
-                Enter the Candy Shop
-              </Button>
-            </Box>
-          )}
           <Box
             sx={{
               display: "flex",

@@ -4,18 +4,16 @@ import Button, { ButtonProps } from "@mui/material/Button";
 import WalletConnectDialog from "../WalletConnectDialog/WalletConnectDialog";
 import { useEthers } from "@usedapp/core";
 import { useIsLaunched } from "../../hooks/useIsLaunched";
-import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
-import config, { CHAIN_ID } from "../../config";
 import { useCandyShopContract } from "../../hooks/useCandyShopContract";
 import Box from "@mui/material/Box";
 import flasks from "./flasks.png";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { useNavigate } from "react-router-dom";
+import { Dialog } from "@mui/material";
+import Typist from "react-typist";
 
 type CountDownButtonProps = Pick<ButtonProps, "sx">;
-
-const supportedChainIds = [CHAIN_ID];
 
 function buildButtonLabel(
   isLaunched: boolean,
@@ -55,23 +53,23 @@ function buildButtonLabel(
 }
 
 function ConnectButton({ sx }: CountDownButtonProps) {
-  const { activate, account, deactivate } = useEthers();
+  const { account, deactivate } = useEthers();
   const { totalQuantity } = useCandyShopContract();
   const navigate = useNavigate();
 
   const [connectDialogOpen, setConnectDialogOpen] =
     React.useState<boolean>(false);
+  const [goToDesktopDialogOpen, setGoToDesktopDialogOpen] =
+    React.useState<boolean>(false);
 
-  const openConnectDialogMobile = React.useCallback(async () => {
-    const walletlink = new WalletConnectConnector({
-      supportedChainIds,
-      chainId: CHAIN_ID,
-      rpc: {
-        [CHAIN_ID]: config.app.jsonRpcUri,
-      },
-    });
-    await activate(walletlink);
-  }, [activate]);
+  const openConnectDialogMobile = React.useCallback(
+    async () => setGoToDesktopDialogOpen(true),
+    []
+  );
+  const closeConnectDialogMobile = React.useCallback(
+    async () => setGoToDesktopDialogOpen(false),
+    []
+  );
 
   const openConnectDialog = React.useCallback(
     () => (isMobile ? openConnectDialogMobile() : setConnectDialogOpen(true)),
@@ -116,6 +114,25 @@ function ConnectButton({ sx }: CountDownButtonProps) {
         open={!account && connectDialogOpen}
         handleClose={closeConnectDialog}
       />
+      <Dialog open={goToDesktopDialogOpen} onClose={closeConnectDialogMobile}>
+        <Box sx={{ background: "black" }}>
+          <Box
+            sx={{
+              background: "rgba(218, 74, 138, 0.1)",
+              border: "1px solid #DA4A8A",
+              padding: "32px",
+              color: "white",
+              textAlign: "center",
+              fontSize: "18px",
+              fontFamily: "Share Tech Mono",
+            }}
+          >
+            <Typist avgTypingDelay={20}>
+              Connect from a desktop/laptop to mint your Dreamers
+            </Typist>
+          </Box>
+        </Box>
+      </Dialog>
       <Menu
         id="menu"
         anchorEl={menuAnchorEl}

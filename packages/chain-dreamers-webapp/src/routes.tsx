@@ -9,9 +9,13 @@ import CandyShop from "./components/CandyShop/CandyShop";
 import Basement from "./components/Basement/Basement";
 import { useIsOpen } from "./hooks/useIsOpen";
 import MyDreamers from "./components/MyDreamers/MyDreamers";
+import { useIsLaunched } from "./hooks/useIsLaunched";
+import { useEthers } from "@usedapp/core";
 
 function RoutesWrapper() {
   const { isCandyShopOpen } = useIsOpen();
+  const { isLaunched } = useIsLaunched();
+  const { account } = useEthers();
 
   return (
     <Routes>
@@ -22,7 +26,7 @@ function RoutesWrapper() {
       <Route path="/team" element={<Team />} />
       {isCandyShopOpen && <Route path="/candy-shop" element={<CandyShop />} />}
       {isCandyShopOpen && <Route path="/basement" element={<Basement />} />}
-      {isCandyShopOpen && (
+      {isLaunched && account && (
         <Route path="/my-dreamers" element={<MyDreamers />} />
       )}
     </Routes>
