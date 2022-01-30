@@ -12,6 +12,7 @@ provider:
     API_ASSETS_BUCKET_NAME: ${self:custom.s3.apiAssetsBucketName}
     API_DOMAIN_NAME: ${self:custom.customDomain.domainName}
     API_DOMAIN_BASE_PATH: ${self:custom.customDomain.basePath}
+    NETWORK: ${env:NETWORK}
   iamRoleStatements:
     - Effect: Allow
       Action:
