@@ -2,3 +2,6 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[build]
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF . ../chain-dreamers-contracts"
