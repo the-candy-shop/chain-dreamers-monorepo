@@ -1,0 +1,72 @@
+version: 2.1
+
+commands:
+  install-dependencies:
+    steps:
+      - restore_cache:
+          keys:
+            - api-npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - api-npm-deps-
+      - run:
+          name: Install Serverless CLI and dependencies
+          command: |
+            pip install 'dvc[s3]'
+            sudo npm i -g serverless
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: api-npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
+      - run:
+          name: DVC pull
+          command: |
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc remote modify --local s3 access_key_id $DVC_AWS_ACCESS_KEY_ID
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc remote modify --local s3 secret_access_key $DVC_AWS_SECRET_ACCESS_KEY
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc pull
+  deploy-api:
+    parameters:
+      build_command_name:
+        type: string
+    steps:
+      - run:
+          name: Deploy application
+          command: |
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && serverless config credentials --provider aws --key $API_AWS_ACCESS_KEY_ID --secret $API_AWS_SECRET_ACCESS_KEY
+            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run << parameters.build_command_name >>
+
+jobs:
+  deploy-staging:
+    docker:
+      - image: cimg/python:3.10.2-node
+    working_directory: ~/chain-dreamers-monorepo
+    environment:
+      NETWORK: rinkeby
+    steps:
+      - checkout
+      - install-dependencies
+      - deploy-api:
+          build_command_name: "deploy:test"
+  deploy-prod:
+    docker:
+      - image: cimg/python:3.10.2-node
+    working_directory: ~/chain-dreamers-monorepo
+    environment:
+      NETWORK: mainnet
+    steps:
+      - checkout
+      - install-dependencies
+      - deploy-api:
+          build_command_name: "deploy:prod"
+
+workflows:
+  deploy-workflow:
+    jobs:
+      - deploy-staging:
+          filters:
+            branches:
+              only: test-ci
+      - deploy-prod:
+          filters:
+            branches:
+              only: main
