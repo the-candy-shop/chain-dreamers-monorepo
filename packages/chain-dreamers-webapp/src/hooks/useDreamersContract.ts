@@ -75,7 +75,7 @@ export const useDreamersContract = () => {
               account
             );
 
-            sdk.ChainDreamers.on(event, async () => {
+            sdk.ChainDreamers.once(event, async () => {
               await fetchDreamersCount();
               await fetchCandyQuantities();
               setIsMinting(false);

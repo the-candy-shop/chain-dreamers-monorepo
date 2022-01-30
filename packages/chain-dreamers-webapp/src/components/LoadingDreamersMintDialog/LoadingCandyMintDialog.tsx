@@ -26,7 +26,7 @@ function LoadingDreamersMintDialog({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
-  const isDoneMinting = true; /* React.useMemo(() => {
+  const isDoneMinting = React.useMemo(() => {
     for (const dreamerId of displayedRunnersIds) {
       if (!dreamersIds.includes(dreamerId)) {
         return false;
@@ -34,7 +34,7 @@ function LoadingDreamersMintDialog({
     }
 
     return true;
-  }, [displayedRunnersIds, dreamersIds]);*/
+  }, [displayedRunnersIds, dreamersIds]);
 
   return (
     <Dialog
