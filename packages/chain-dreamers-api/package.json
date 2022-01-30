@@ -4,15 +4,15 @@
   "description": "",
   "main": "handler.ts",
   "scripts": {
-    "deploy:test": "NODE_ENV=rinkeby serverless deploy --stage test",
-    "deploy:staging": "NODE_ENV=rinkeby serverless deploy --stage staging",
-    "deploy:prod": "NODE_ENV=mainnet serverless deploy --stage prod",
+    "deploy:test": "serverless deploy --stage test",
+    "deploy:staging": "serverless deploy --stage staging",
+    "deploy:prod": "serverless deploy --stage prod",
     "generate-types": "eth-sdk",
     "build-valise": "ts-node ./scripts/build-valise.ts",
     "build-meta": "ts-node ./scripts/build-meta.ts",
-    "predeploy:test": "dotenv -e .env.rinkeby -- npm run generate-types && npm run build-meta && npm run build-valise && rm -fr node_modules/sharp && SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install --arch=x64 --platform=linux sharp",
-    "predeploy:staging": "dotenv -e .env.rinkeby -- npm run generate-types && npm run build-meta && npm run build-valise && rm -fr node_modules/sharp && SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install --arch=x64 --platform=linux sharp",
-    "predeploy:prod": "dotenv -e .env.mainnet -- npm run generate-types && npm run build-meta && npm run build-valise && rm -fr node_modules/sharp && SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install --arch=x64 --platform=linux sharp"
+    "predeploy:test": "npm run generate-types && npm run build-meta && npm run build-valise && rm -fr node_modules/sharp && SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install --arch=x64 --platform=linux sharp",
+    "predeploy:staging": "npm run generate-types && npm run build-meta && npm run build-valise && rm -fr node_modules/sharp && SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install --arch=x64 --platform=linux sharp",
+    "predeploy:prod": "npm run generate-types && npm run build-meta && npm run build-valise && rm -fr node_modules/sharp && SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install --arch=x64 --platform=linux sharp"
   },
   "author": "",
   "license": "ISC",

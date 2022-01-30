@@ -9,4 +9,4 @@ jspm_packages
 valise.json
 meta.json
 
-.env.rinkeby
+.env
