@@ -19,9 +19,9 @@ VALISE_COMPUTED_DIR.mkdir(exist_ok=True)
 
 
 #%% Define functions
-def round_path(p):
+def round_path(p, initial_scale):
     if p.__class__.__name__ == "Arc":
-        p = p.scaled(255 / 283.5, 255 / 283.5)
+        p = p.scaled(255 / initial_scale, 255 / initial_scale)
         p.start = np.round(np.array(p.start))
         p.start = np.clip(0, 255, p.start.real) + 1j * np.clip(0, 255, p.start.imag)
         p.end = np.round(np.array(p.end))
@@ -33,7 +33,7 @@ def round_path(p):
         )
         return p
 
-    coordinates = np.round(np.array(p.bpoints()) * 255 / 283.5)
+    coordinates = np.round(np.array(p.bpoints()) * 255 / initial_scale)
     return getattr(spt, p.__class__.__name__)(
         *(np.clip(coordinates.real, 0, 255) + 1j * np.clip(coordinates.imag, 0, 255))
     )
@@ -64,9 +64,17 @@ def generate_svg(_codes):
 #%% Parse files
 traits_list = []
 for file in VALISE_DIR.glob("**/*.svg"):
-    paths, attributes, _ = svg2paths(str(file), return_svg_attributes=True)
+    paths, attributes, svg_attributes = svg2paths(str(file), return_svg_attributes=True)
+    view_box = np.array(
+        svg_attributes.get("viewBox", "0 0 283.5 283.5").split(" ")
+    ).astype(float)
     for path, attribute in zip(paths, attributes):
-        computed_path = spt.Path(*[round_path(path_element) for path_element in path])
+        computed_path = spt.Path(
+            *[
+                round_path(path_element, initial_scale=view_box[-1])
+                for path_element in path
+            ]
+        )
         if computed_path.d() == "":
             continue
         traits_list += [
@@ -130,7 +138,6 @@ for file_name, codes in traits_codes.items():
 
     with open(file_name_computed, "w") as f:
         f.write(generate_svg(codes))
-
 
 #%% Dump palettes and traits
 with open(PALETTES_FILE, "w") as f:
