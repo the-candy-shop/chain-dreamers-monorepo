@@ -30,6 +30,8 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
     /// @notice Check if marketplaces pre-approve is enabled.
     bool public marketplacesApproved = true;
 
+    mapping(address => bool) proxyToApproved;
+
     /// @notice Set opensea to `opensea_`.
     function setOpensea(address opensea_) external onlyOwner {
         opensea = opensea_;
@@ -45,6 +47,11 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
         marketplacesApproved = !marketplacesApproved;
     }
 
+    /// @notice Approve the communication and interaction with cross-collection interactions.
+    function flipProxyState(address proxyAddress) public onlyOwner {
+        proxyToApproved[proxyAddress] = !proxyToApproved[proxyAddress];
+    }
+
     /// @dev Modified for opensea and looksrare pre-approve so users can make truly gas less sales.
     function isApprovedForAll(address owner, address operator)
         public
@@ -58,6 +65,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
         return
             operator == OpenSeaProxyRegistry(opensea).proxies(owner) ||
             operator == looksrare ||
+            proxyToApproved[operator] ||
             super.isApprovedForAll(owner, operator);
     }
 
@@ -117,13 +125,11 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
         ERC721(name_, symbol_)
     {}
 
-    /*
-    @param tokenId a bytes interpreted as an array of uint16
-    @param ownerTokenIndexes a bytes interpreted as an array of uint16. Given here to avoid indexes computation and save gas
-    @param candyIdsBytes a bytes interpreted as an array of uint8
-    @param candyIds the same indexes as above but as a uint8 array
-    @param candyIdsCount should be an array of 1
-    */
+    /// @param tokenId a bytes interpreted as an array of uint16
+    /// @param ownerTokenIndexes a bytes interpreted as an array of uint16. Given here to avoid indexes computation and save gas
+    /// @param candyIdsBytes a bytes interpreted as an array of uint8
+    /// @param candyIds the same indexes as above but as a uint8 array
+    /// @param candyIdsCount should be an array of 1
     function mintBatchRunnersAccess(
         bytes calldata tokenIds,
         bytes calldata ownerTokenIndexes,
