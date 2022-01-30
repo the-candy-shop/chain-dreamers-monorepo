@@ -8,6 +8,9 @@ commands:
             - api-npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
             # fallback to using the latest cache if no exact match is found
             - api-npm-deps-
+      - restore_cache:
+          keys:
+            - api-dvc-deps
       - run:
           name: Install Serverless CLI and dependencies
           command: |
@@ -16,7 +19,7 @@ commands:
             cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm install
       - save_cache:
           paths:
-            - node_modules
+            - ~/chain-dreamers-monorepo/packages/chain-dreamers-api/node_modules
           key: api-npm-deps-{{ checksum "~/chain-dreamers-monorepo/packages/chain-dreamers-api/package-lock.json" }}
       - run:
           name: DVC pull
@@ -24,6 +27,10 @@ commands:
             cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc remote modify --local s3 access_key_id $DVC_AWS_ACCESS_KEY_ID
             cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc remote modify --local s3 secret_access_key $DVC_AWS_SECRET_ACCESS_KEY
             cd ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing && dvc pull
+      - save_cache:
+          paths:
+            - ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing/.dvc/cache
+          key: api-dvc-deps
   deploy-api:
     parameters:
       build_command_name:
