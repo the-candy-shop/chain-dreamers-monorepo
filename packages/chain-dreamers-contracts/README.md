@@ -8,6 +8,7 @@ The Run Length Encoding is a simple compression algorithm. It is used to reduce 
 For more info, see Wikipedia: [https://en.wikipedia.org/wiki/Run-length_encoding](https://en.wikipedia.org/wiki/Run-length_encoding)
 
 Achieved reduction got by running the light-runners task:
+
 ```
 Original bytes count: 136864
 Light bytes count: 54432
