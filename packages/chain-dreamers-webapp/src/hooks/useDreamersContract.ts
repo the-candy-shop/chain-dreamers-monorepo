@@ -5,6 +5,7 @@ import { ethers } from "ethers";
 import { DreamersContext } from "../contexts/DreamersContext";
 import { useCandyShopContract } from "./useCandyShopContract";
 import { SnackbarErrorContext } from "../contexts/SnackbarErrorContext";
+import { dreamerPrice } from "../config";
 
 export const useDreamersContract = () => {
   const { account } = useEthers();
@@ -62,7 +63,7 @@ export const useDreamersContract = () => {
     }
 
     return [];
-  }, [account, sdk, setError]);
+  }, [account, sdk, setError, fetchDreamersCount, setDreamersIds]);
 
   React.useEffect(() => {
     fetchDreamersIds();
@@ -94,7 +95,7 @@ export const useDreamersContract = () => {
         return Promise.resolve();
       }
     },
-    [sdk, account]
+    [sdk, account, fetchDreamersIds]
   );
 
   const mintAsRunners = React.useCallback(
@@ -135,9 +136,9 @@ export const useDreamersContract = () => {
       });
     },
     [
+      waitForDreamersMint,
       account,
       dreamersCount,
-      fetchDreamersCount,
       sdk,
       fetchCandyQuantities,
       setError,
@@ -151,13 +152,19 @@ export const useDreamersContract = () => {
         ownerTokenIndexes.push(dreamersCount + index);
       });
 
+      const price = dreamerPrice.times(runnerIds.length);
+
       return new Promise(async (resolve, reject) => {
         if (sdk && account) {
           try {
             setIsWaitingForPayment(true);
             await sdk.ChainDreamers.mintBatchPublicSale(
               "0x" + runnerIds.map(uint16ToBytes).join(""),
-              "0x" + ownerTokenIndexes.map(uint16ToBytes).join("")
+              "0x" + ownerTokenIndexes.map(uint16ToBytes).join(""),
+              {
+                from: account,
+                value: ethers.utils.parseEther(price.toString()),
+              }
             );
 
             setIsWaitingForPayment(false);
@@ -176,7 +183,7 @@ export const useDreamersContract = () => {
         }
       });
     },
-    [account, dreamersCount, fetchDreamersCount, sdk, setError]
+    [account, dreamersCount, sdk, setError, waitForDreamersMint]
   );
 
   const fetchNonMintedDreamers = React.useCallback(async (): Promise<

@@ -114,7 +114,7 @@ export const useCandyShopContract = () => {
         return Promise.resolve();
       }
     },
-    [sdk, account]
+    [sdk, account, fetchCandyQuantities]
   );
 
   const mint = React.useCallback(
@@ -156,7 +156,7 @@ export const useCandyShopContract = () => {
         }
       });
     },
-    [sdk, account, fetchCandyQuantities, setError]
+    [sdk, account, setError, candyQuantities, waitForCandyMint]
   );
 
   return {
