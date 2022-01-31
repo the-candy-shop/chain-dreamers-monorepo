@@ -36,6 +36,7 @@ functions:
       - http:
           path: tokens/{id}/img
           method: get
+          cors: true
           caching:
             enabled: true
             cacheKeyParameters:
@@ -46,6 +47,7 @@ functions:
       - http:
           path: tokens/{id}/metadata
           method: get
+          cors: true
           caching:
             enabled: true
             cacheKeyParameters:
@@ -57,6 +59,7 @@ functions:
       - http:
           path: tokens/{id}/runnerToDreamer
           method: get
+          cors: true
           caching:
             enabled: true
             cacheKeyParameters:
@@ -68,6 +71,7 @@ functions:
       - http:
           path: candy/tokens/{id}/img
           method: get
+          cors: true
           caching:
             enabled: true
             cacheKeyParameters:
@@ -79,6 +83,7 @@ functions:
       - http:
           path: candy/tokens/{id}/metadata
           method: get
+          cors: true
           caching:
             enabled: true
             cacheKeyParameters:
@@ -90,6 +95,7 @@ functions:
       - http:
           path: minted-dreamers
           method: get
+          cors: true
 
 package:
   include:

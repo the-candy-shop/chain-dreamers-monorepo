@@ -18,6 +18,8 @@ export const runnerToDreamer = async (event) => {
       isBase64Encoded: true,
       headers: {
         "Content-Type": "image/png",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
       },
     };
   }
@@ -49,6 +51,8 @@ export const runnerToDreamer = async (event) => {
     isBase64Encoded: true,
     headers: {
       "Content-Type": "image/png",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
     },
   };
 };

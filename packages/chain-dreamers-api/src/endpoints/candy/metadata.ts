@@ -20,6 +20,8 @@ export const metadata = async (event) => {
     body: s3Json,
     headers: {
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
     },
   };
 };

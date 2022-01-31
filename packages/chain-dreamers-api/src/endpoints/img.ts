@@ -19,6 +19,8 @@ export const img = async (event) => {
       isBase64Encoded: true,
       headers: {
         "Content-Type": "image/png",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
       },
     };
   }
@@ -52,10 +54,12 @@ export const img = async (event) => {
 
   return {
     statusCode: 200,
-    body: "OK", //pngBuffer.toString("base64"),
+    body: pngBuffer.toString("base64"),
     isBase64Encoded: true,
     headers: {
       "Content-Type": "image/png",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
     },
   };
 };
