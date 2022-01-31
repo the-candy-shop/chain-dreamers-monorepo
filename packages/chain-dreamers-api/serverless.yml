@@ -23,6 +23,10 @@ provider:
       Action:
         - s3:*
       Resource: "arn:aws:s3:::${self:custom.s3.apiAssetsBucketName}/*"
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource: "arn:aws:s3:::${self:custom.dynamodb.chainDreamersTableName}/*"
 
 functions:
   img:
