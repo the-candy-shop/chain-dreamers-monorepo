@@ -33,7 +33,7 @@ function RunnerSearchBar({
 
   React.useEffect(() => {
     fetchMintedDreamers().then(setAlreadyMintedDreamers);
-  }, []);
+  }, [fetchMintedDreamers]);
 
   const options = React.useMemo(
     () =>

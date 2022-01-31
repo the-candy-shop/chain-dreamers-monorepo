@@ -23,7 +23,7 @@ function RunnerSearchOption({ option, LiProps }: RunnerSearchOptionProps) {
     const isAvailable = await isDreamerAvailable(option.id);
     setRunnerAvailable(isAvailable);
     setIsLoadingAvailability(false);
-  }, [isDreamerAvailable]);
+  }, [isDreamerAvailable, option.id]);
 
   React.useEffect(() => {
     loadAvailability();
@@ -34,11 +34,14 @@ function RunnerSearchOption({ option, LiProps }: RunnerSearchOptionProps) {
     [isLoadingAvailability, isRunnerAvailable]
   );
 
+  // eslint-disable-next-line jsx-a11y/role-supports-aria-props
   return (
     <li
       {...LiProps}
       style={{ padding: 0, margin: 0, display: "block" }}
+      role="option"
       aria-disabled={disabled || LiProps["aria-disabled"]}
+      aria-selected={LiProps["aria-selected"]}
     >
       <Box
         display="flex"
