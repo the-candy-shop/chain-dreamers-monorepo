@@ -27,8 +27,7 @@ provider:
       Action:
         - dynamodb:GetItem
         - dynamodb:PutItem
-      Resource:
-        - "Fn::GetAtt": ["ChainDreamersTable", "Arn"]
+      Resource: "arn:aws:dynamodb:*:*:table/${self:custom.dynamodb.chainDreamersTableName}"
 
 functions:
   img:
