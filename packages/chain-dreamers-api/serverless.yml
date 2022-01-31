@@ -74,6 +74,11 @@ functions:
             cacheKeyParameters:
               - name: request.path.id
 
+  updateRemainingDreamers:
+    handler: handler.updateRemainingDreamers
+    events:
+      - schedule: rate(1 minute)
+
 package:
   include:
     - eth-sdk/**
