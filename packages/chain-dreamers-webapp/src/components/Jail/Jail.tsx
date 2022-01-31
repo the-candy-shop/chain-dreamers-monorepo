@@ -9,25 +9,32 @@ import Button from "@mui/lab/LoadingButton";
 import { dreamerPrice } from "../../config";
 import { useDreamersContract } from "../../hooks/useDreamersContract";
 import RunnerSearchBar from "./RunnersSearchBar";
+import ClearIcon from "@mui/icons-material/Clear";
 
 function Jail() {
   const { mint, isMinting, isWaitingForPayment } = useDreamersContract();
-  const [quantity, setQuantity] = React.useState<number>(0);
+  const [dreamersToMint, setDreamersToMint] = React.useState<number[]>([]);
 
   const add = React.useCallback(
-    () => setQuantity(quantity + 1),
-    [quantity, setQuantity]
+    (id: number) => {
+      if (!dreamersToMint.includes(id)) {
+        setDreamersToMint([...dreamersToMint, id]);
+      }
+    },
+    [dreamersToMint]
   );
+
   const remove = React.useCallback(
-    () => quantity > 0 && setQuantity(quantity - 1),
-    [quantity, setQuantity]
+    (id: number) => {
+      setDreamersToMint(dreamersToMint.filter((runnerId) => runnerId !== id));
+    },
+    [dreamersToMint]
   );
 
   const handleMintButtonClick = React.useCallback(async () => {
-    const runnersToMintIds = [1];
-    await mint(runnersToMintIds);
-    setQuantity(0);
-  }, [mint]);
+    await mint(dreamersToMint);
+    setDreamersToMint([]);
+  }, [mint, dreamersToMint]);
 
   return (
     <Box display="flex" flexDirection="column" minHeight="calc(100vh - 191px)">
@@ -76,7 +83,47 @@ function Jail() {
                   set them free?
                 </Typist>
               </Box>
-              <RunnerSearchBar />
+              <RunnerSearchBar
+                onRunnerSelect={add}
+                selectedRunners={dreamersToMint}
+              />
+              <Box
+                marginTop="32px"
+                display="flex"
+                flexWrap="wrap"
+                alignItems="center"
+                justifyContent="center"
+                maxWidth="300px"
+              >
+                {dreamersToMint.map((id) => (
+                  <Box margin="8px" position="relative">
+                    <Box
+                      borderRadius="50%"
+                      border="1px solid #DA4A8A"
+                      color="#DA4A8A"
+                      width="16px"
+                      height="16px"
+                      onClick={() => remove(id)}
+                      position="absolute"
+                      sx={{
+                        top: "-8px",
+                        right: "-8px",
+                        background: "#15090e",
+                        cursor: "pointer",
+                        "& .MuiSvgIcon-root": { width: "16px", height: "16px" },
+                      }}
+                    >
+                      <ClearIcon />
+                    </Box>
+                    <img
+                      key={id}
+                      alt={`Runner #${id}`}
+                      src={`https://api.chainrunners.xyz/tokens/${id}/img`}
+                      style={{ width: "48px", borderRadius: "8px" }}
+                    />
+                  </Box>
+                ))}
+              </Box>
               <Box>
                 <Button
                   variant="contained"
@@ -97,12 +144,13 @@ function Jail() {
                       background: "#44DFFD",
                     },
                   }}
-                  disabled={quantity === 0}
+                  disabled={dreamersToMint.length === 0}
                   loading={isMinting || isWaitingForPayment}
                   onClick={handleMintButtonClick}
                 >
-                  Mint {quantity} Dreamers for{" "}
-                  {dreamerPrice.multipliedBy(quantity).toString()} ETH
+                  Mint {dreamersToMint.length} Dreamers for{" "}
+                  {dreamerPrice.multipliedBy(dreamersToMint.length).toString()}{" "}
+                  ETH
                 </Button>
               </Box>
             </Box>
