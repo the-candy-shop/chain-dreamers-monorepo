@@ -29,7 +29,7 @@ function CandyMintingMessages() {
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setMessageToShow(5);
-    }, 60000);
+    }, 120000);
     return () => clearTimeout(timer);
   }, []);
 

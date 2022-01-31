@@ -17,36 +17,33 @@ export const useDreamersContract = () => {
   const [isWaitingForPayment, setIsWaitingForPayment] =
     React.useState<boolean>(false);
   const [isMinting, setIsMinting] = React.useState<boolean>(false);
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const { setError } = React.useContext(SnackbarErrorContext);
 
   const sdk = useSdk();
 
-  const fetchDreamersCount = React.useCallback(async () => {
+  const fetchDreamersCount = React.useCallback(async (): Promise<number> => {
     if (sdk && account) {
       try {
-        setIsLoading(true);
         const balance = await sdk.ChainDreamers.balanceOf(account);
-
         setDreamersCount(balance.toNumber());
-        setIsLoading(false);
+
+        return balance.toNumber();
       } catch (e) {
-        setIsLoading(false);
         setError((e as { error: Error }).error.message);
+        return 0;
       }
     }
+
+    return 0;
   }, [account, sdk, setDreamersCount, setError]);
 
-  React.useEffect(() => {
-    fetchDreamersCount();
-  }, [account, sdk, fetchDreamersCount]);
-
-  React.useEffect(() => {
+  const fetchDreamersIds = React.useCallback(async (): Promise<number[]> => {
     if (sdk && account) {
       try {
+        const balance = await fetchDreamersCount();
         const promises = [];
-        for (let i = 0; i < dreamersCount; i++) {
+        for (let i = 0; i < balance; i++) {
           promises.push(
             sdk.ChainDreamers.tokenOfOwnerByIndex(account, i).then((bigId) =>
               bigId.toNumber()
@@ -54,12 +51,51 @@ export const useDreamersContract = () => {
           );
         }
 
-        Promise.all(promises).then(setDreamersIds);
+        const ids = await Promise.all(promises);
+        setDreamersIds(ids);
+
+        return ids;
       } catch (e) {
         setError((e as { error: Error }).error.message);
+        return [];
       }
     }
-  }, [account, sdk, dreamersCount, setDreamersIds, setError]);
+
+    return [];
+  }, [account, sdk, setError]);
+
+  React.useEffect(() => {
+    fetchDreamersIds();
+  }, [account, sdk, fetchDreamersIds]);
+
+  const waitForDreamersMint = React.useCallback(
+    (mintedDreamersIds: number[]): Promise<void> => {
+      if (sdk && account) {
+        return new Promise((resolve) => {
+          setTimeout(async () => {
+            try {
+              const dreamersIds = await fetchDreamersIds();
+
+              if (
+                mintedDreamersIds.every((id) => dreamersIds.indexOf(id) !== -1)
+              ) {
+                resolve();
+              } else {
+                await waitForDreamersMint(mintedDreamersIds);
+                resolve();
+              }
+            } catch {
+              await waitForDreamersMint(mintedDreamersIds);
+              resolve();
+            }
+          }, 5000);
+        });
+      } else {
+        return Promise.resolve();
+      }
+    },
+    [sdk, account]
+  );
 
   const mintAsRunners = React.useCallback(
     async (runnerIds: number[], candyIds: number[]): Promise<void> => {
@@ -82,17 +118,11 @@ export const useDreamersContract = () => {
 
             setIsWaitingForPayment(false);
             setIsMinting(true);
-            const event = sdk.ChainDreamers.filters.Transfer(
-              undefined,
-              account
-            );
 
-            sdk.ChainDreamers.once(event, async () => {
-              await fetchDreamersCount();
-              await fetchCandyQuantities();
-              setIsMinting(false);
-              resolve();
-            });
+            await waitForDreamersMint(runnerIds);
+            await fetchCandyQuantities();
+            setIsMinting(false);
+            resolve();
           } catch (e) {
             setIsWaitingForPayment(false);
             setIsMinting(false);
@@ -132,16 +162,9 @@ export const useDreamersContract = () => {
 
             setIsWaitingForPayment(false);
             setIsMinting(true);
-            const event = sdk.ChainDreamers.filters.Transfer(
-              undefined,
-              account
-            );
 
-            sdk.ChainDreamers.once(event, async () => {
-              await fetchDreamersCount();
-              setIsMinting(false);
-              resolve();
-            });
+            await waitForDreamersMint(runnerIds);
+            setIsMinting(false);
           } catch (e) {
             setIsWaitingForPayment(false);
             setIsMinting(false);
@@ -202,7 +225,6 @@ export const useDreamersContract = () => {
     mintAsRunners,
     isWaitingForPayment,
     isMinting,
-    isLoading,
     fetchNonMintedDreamers,
   };
 };

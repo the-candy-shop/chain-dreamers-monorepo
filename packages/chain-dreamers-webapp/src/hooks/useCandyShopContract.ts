@@ -14,7 +14,6 @@ export const useCandyShopContract = () => {
   const [isWaitingForPayment, setIsWaitingForPayment] =
     React.useState<boolean>(false);
   const [isMinting, setIsMinting] = React.useState<boolean>(false);
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const { setError } = React.useContext(SnackbarErrorContext);
 
   const { candyQuantities, setCandyQuantities } = React.useContext(
@@ -26,31 +25,97 @@ export const useCandyShopContract = () => {
     0
   );
 
-  const fetchCandyQuantities = React.useCallback(async () => {
+  const fetchCandyQuantities = React.useCallback(async (): Promise<
+    Record<CandyList, number>
+  > => {
     if (sdk && account) {
       try {
-        setIsLoading(true);
         const balance = await sdk.CandyShop.balanceOfBatch(
           [account, account, account],
           [0, 1, 2]
         );
 
-        setCandyQuantities({
+        const quantities = {
           [CandyList.ChainMeth]: balance[0]?.toNumber(),
           [CandyList.HeliumSpice]: balance[1]?.toNumber(),
           [CandyList.SomnusTears]: balance[2]?.toNumber(),
-        });
-        setIsLoading(false);
+        };
+
+        setCandyQuantities(quantities);
+
+        return quantities;
       } catch (e) {
-        setIsLoading(false);
         setError((e as { error: Error }).error.message);
+        return {
+          [CandyList.ChainMeth]: 0,
+          [CandyList.HeliumSpice]: 0,
+          [CandyList.SomnusTears]: 0,
+        };
       }
     }
+
+    return {
+      [CandyList.ChainMeth]: 0,
+      [CandyList.HeliumSpice]: 0,
+      [CandyList.SomnusTears]: 0,
+    };
   }, [sdk, account, setCandyQuantities, setError]);
 
   React.useEffect(() => {
     fetchCandyQuantities();
   }, [account, fetchCandyQuantities]);
+
+  const waitForCandyMint = React.useCallback(
+    (
+      currentCandyQuantity: Record<CandyList, number>,
+      mintedCandyQuantity: Record<CandyList, number>
+    ): Promise<void> => {
+      if (sdk && account) {
+        const expectedCandyQuantity = {
+          [CandyList.ChainMeth]:
+            currentCandyQuantity[CandyList.ChainMeth] +
+            mintedCandyQuantity[CandyList.ChainMeth],
+          [CandyList.HeliumSpice]:
+            currentCandyQuantity[CandyList.HeliumSpice] +
+            mintedCandyQuantity[CandyList.HeliumSpice],
+          [CandyList.SomnusTears]:
+            currentCandyQuantity[CandyList.SomnusTears] +
+            mintedCandyQuantity[CandyList.SomnusTears],
+        };
+
+        return new Promise((resolve) => {
+          setTimeout(async () => {
+            try {
+              const quantity = await fetchCandyQuantities();
+
+              if (
+                quantity[CandyList.ChainMeth] ===
+                  expectedCandyQuantity[CandyList.ChainMeth] &&
+                quantity[CandyList.HeliumSpice] ===
+                  expectedCandyQuantity[CandyList.HeliumSpice] &&
+                quantity[CandyList.SomnusTears] ===
+                  expectedCandyQuantity[CandyList.SomnusTears]
+              ) {
+                resolve();
+              } else {
+                await waitForCandyMint(
+                  currentCandyQuantity,
+                  mintedCandyQuantity
+                );
+                resolve();
+              }
+            } catch {
+              await waitForCandyMint(currentCandyQuantity, mintedCandyQuantity);
+              resolve();
+            }
+          }, 5000);
+        });
+      } else {
+        return Promise.resolve();
+      }
+    },
+    [sdk, account]
+  );
 
   const mint = React.useCallback(
     async (quantity: Record<CandyList, number>): Promise<void> => {
@@ -76,12 +141,10 @@ export const useCandyShopContract = () => {
             );
             setIsWaitingForPayment(false);
             setIsMinting(true);
-            const event = sdk.CandyShop.filters.TransferBatch(account);
-            sdk.CandyShop.once(event, async () => {
-              await fetchCandyQuantities();
-              setIsMinting(false);
-              resolve();
-            });
+
+            await waitForCandyMint(candyQuantities, quantity);
+            setIsMinting(false);
+            resolve();
           } catch (e: unknown) {
             setIsWaitingForPayment(false);
             setIsMinting(false);
@@ -101,7 +164,6 @@ export const useCandyShopContract = () => {
     candyQuantities,
     isWaitingForPayment,
     isMinting,
-    isLoading,
     totalQuantity,
     fetchCandyQuantities,
   };
