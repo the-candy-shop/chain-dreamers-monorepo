@@ -5,20 +5,14 @@ import ShopPanels from "../ShopPanels/ShopPanels";
 import jaz from "../CandyShop/jaz.png";
 import jail from "./jail.png";
 import Typist from "react-typist";
-import IconButton from "@mui/material/IconButton";
-import RemoveIcon from "@mui/icons-material/Remove";
-import AddIcon from "@mui/icons-material/Add";
 import Button from "@mui/lab/LoadingButton";
 import { dreamerPrice } from "../../config";
 import { useDreamersContract } from "../../hooks/useDreamersContract";
+import RunnerSearchBar from "./RunnersSearchBar";
 
 function Jail() {
-  const { mint, isMinting, isWaitingForPayment, fetchNonMintedDreamers } =
-    useDreamersContract();
+  const { mint, isMinting, isWaitingForPayment } = useDreamersContract();
   const [quantity, setQuantity] = React.useState<number>(0);
-  const [nonMintedDreamers, setNonMintedDreamers] = React.useState<number[]>(
-    []
-  );
 
   const add = React.useCallback(
     () => setQuantity(quantity + 1),
@@ -29,17 +23,11 @@ function Jail() {
     [quantity, setQuantity]
   );
 
-  React.useEffect(() => {
-    fetchNonMintedDreamers().then(setNonMintedDreamers);
-  }, [fetchNonMintedDreamers]);
-
   const handleMintButtonClick = React.useCallback(async () => {
     const runnersToMintIds = [1];
     await mint(runnersToMintIds);
     setQuantity(0);
   }, [mint]);
-
-  console.log("nonMintedDreamers", nonMintedDreamers);
 
   return (
     <Box display="flex" flexDirection="column" minHeight="calc(100vh - 191px)">
@@ -88,46 +76,7 @@ function Jail() {
                   set them free?
                 </Typist>
               </Box>
-              <Box
-                sx={{
-                  marginTop: "12px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <IconButton
-                  aria-label="Remove"
-                  onClick={remove}
-                  sx={{
-                    border: "1px solid #AC0BF7",
-                    borderRadius: 0,
-                    color: "#44DFFD",
-                  }}
-                >
-                  <RemoveIcon />
-                </IconButton>
-                <Box
-                  sx={{
-                    fontSize: "24px",
-                    marginRight: "35px",
-                    marginLeft: "35px",
-                  }}
-                >
-                  {quantity}
-                </Box>
-                <IconButton
-                  aria-label="Add"
-                  onClick={add}
-                  sx={{
-                    border: "1px solid #AC0BF7",
-                    borderRadius: 0,
-                    color: "#44DFFD",
-                  }}
-                >
-                  <AddIcon />
-                </IconButton>
-              </Box>
+              <RunnerSearchBar />
               <Box>
                 <Button
                   variant="contained"

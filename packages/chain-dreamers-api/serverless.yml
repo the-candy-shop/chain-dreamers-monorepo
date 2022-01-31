@@ -119,6 +119,18 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: ${self:custom.s3.apiAssetsBucketName}
+    ChainDreamersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ChainDreamersTable-${self:provider.stage}
+        AttributeDefinitions:
+          - AttributeName: key
+            AttributeType: S
+        KeySchema:
+          - AttributeName: key
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+
   Outputs:
     ApiAssetsBucketNameOutputKey:
       Value: !Ref ApiAssetsBucket

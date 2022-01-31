@@ -186,45 +186,18 @@ export const useDreamersContract = () => {
     [account, dreamersCount, sdk, setError, waitForDreamersMint]
   );
 
-  const fetchNonMintedDreamers = React.useCallback(async (): Promise<
-    number[]
-  > => {
-    if (sdk && account) {
-      try {
-        const totalSupply = await sdk.ChainDreamers.totalSupply();
+  const isDreamerAvailable = React.useCallback(
+    async (runnerId: number): Promise<boolean> => {
+      if (sdk && account) {
+        const dreamerDna = await sdk.ChainDreamers.dreamers(runnerId);
 
-        const promises = [];
-        for (let i = 0; i < totalSupply.toNumber(); i++) {
-          promises.push(
-            sdk.ChainDreamers.tokenByIndex(i).then((bigId) => bigId.toNumber())
-          );
-        }
-
-        const mintedDreamersIds: number[] = await Promise.all(promises);
-        const mintedDreamersIdsMap = mintedDreamersIds.reduce(
-          (result: Record<number, boolean>, id) => {
-            result[id] = true;
-            return result;
-          },
-          {}
-        );
-
-        const result: number[] = [];
-        for (let i = 1; i <= 10000; i++) {
-          if (!mintedDreamersIdsMap[i]) {
-            result.push(i);
-          }
-        }
-
-        return result;
-      } catch (e) {
-        setError((e as { error: Error }).error.message);
-        return [];
+        return dreamerDna === 0;
       }
-    }
 
-    return [];
-  }, [sdk, account, setError]);
+      return false;
+    },
+    [sdk, account]
+  );
 
   return {
     dreamersIds,
@@ -232,7 +205,7 @@ export const useDreamersContract = () => {
     mintAsRunners,
     isWaitingForPayment,
     isMinting,
-    fetchNonMintedDreamers,
+    isDreamerAvailable,
   };
 };
 
