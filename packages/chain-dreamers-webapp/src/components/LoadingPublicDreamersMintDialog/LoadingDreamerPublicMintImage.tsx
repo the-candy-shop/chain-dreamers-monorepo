@@ -93,21 +93,23 @@ function LoadingDreamerPublicMintImage({
           zIndex: 10,
         }}
       />
-      <Box
-        sx={{
-          width: "160px",
-          height: "160px",
-          backgroundImage: `url(${cell})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          position: "absolute",
-          top: 0,
-          left: 0,
-          zIndex: 15,
-          willChange: "clip-path",
-        }}
-      />
+      {!isDreamer && (
+        <Box
+          sx={{
+            width: "160px",
+            height: "160px",
+            backgroundImage: `url(${cell})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            zIndex: 15,
+            willChange: "clip-path",
+          }}
+        />
+      )}
       <Box
         sx={{
           width: "160px",
