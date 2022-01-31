@@ -134,7 +134,7 @@ export const useDreamersContract = () => {
         }
       });
     },
-    [account, dreamersCount, fetchDreamersCount, sdk, fetchCandyQuantities]
+    [account, dreamersCount, fetchDreamersCount, sdk]
   );
 
   return {
