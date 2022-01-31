@@ -48,13 +48,16 @@ export const useDreamersContract = () => {
         const promises = [];
         for (let i = 0; i < balance; i++) {
           promises.push(
-            sdk.ChainDreamers.tokenOfOwnerByIndex(account, i).then((bigId) =>
-              bigId.toNumber()
-            )
+            sdk.ChainDreamers.tokenOfOwnerByIndex(account, i)
+              .then((bigId) => bigId.toNumber())
+              .catch(() => null)
           );
         }
 
-        const ids = await Promise.all(promises);
+        const ids = (await Promise.all(promises)).filter(
+          (id) => !!id
+        ) as number[];
+
         setDreamersIds(ids);
 
         return ids;
