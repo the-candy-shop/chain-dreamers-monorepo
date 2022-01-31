@@ -106,7 +106,12 @@ function Jail() {
                 maxWidth="300px"
               >
                 {dreamersToMint.map((id) => (
-                  <Box margin="8px" position="relative" key={id}>
+                  <Box
+                    margin="8px"
+                    position="relative"
+                    textAlign="center"
+                    key={id}
+                  >
                     <Box
                       borderRadius="50%"
                       border="1px solid #DA4A8A"
@@ -131,6 +136,7 @@ function Jail() {
                       src={`https://api.chainrunners.xyz/tokens/${id}/img`}
                       style={{ width: "48px", borderRadius: "8px" }}
                     />
+                    <Box fontWeight={600}>#{id}</Box>
                   </Box>
                 ))}
               </Box>
