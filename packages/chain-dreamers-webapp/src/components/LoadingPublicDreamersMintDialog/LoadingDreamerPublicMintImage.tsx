@@ -15,15 +15,6 @@ function LoadingDreamerPublicMintImage({
   runnerId,
   isDreamer,
 }: LoadingDreamerMintImageProps) {
-  const randomRunner1 = React.useRef<number>(
-    Math.floor(Math.random() * (10000 - 1) + 1)
-  );
-  const randomRunner2 = React.useRef<number>(
-    Math.floor(Math.random() * (10000 - 1) + 1)
-  );
-
-  const randomDuration1 = React.useRef<number>(Math.random() * (1.5 - 1) + 1);
-  const randomDuration2 = React.useRef<number>(Math.random() * (1.5 - 1) + 1);
   const randomDuration3 = React.useRef<number>(Math.random() * (2 - 1.5) + 1.5);
   const randomDuration4 = React.useRef<number>(Math.random() * (3 - 2.5) + 2.5);
 
