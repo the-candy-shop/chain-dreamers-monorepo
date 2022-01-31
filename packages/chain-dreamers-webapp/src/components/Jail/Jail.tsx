@@ -89,8 +89,8 @@ function Jail() {
                 }}
               >
                 <Typist avgTypingDelay={20}>
-                  For how many Chain Dreamers would you like to pay the bail to
-                  set them free?
+                  For which Chain Dreamers would you like to pay the bail to set
+                  them free?
                 </Typist>
               </Box>
               <RunnerSearchBar
