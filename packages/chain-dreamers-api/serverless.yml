@@ -89,6 +89,7 @@ functions:
     events:
       - http:
           path: minted-dreamers
+          method: get
 
 package:
   include:
