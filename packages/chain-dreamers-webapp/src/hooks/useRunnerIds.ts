@@ -28,7 +28,7 @@ export const useRunnerIds = (): number[] => {
         setError((e as { error: Error }).error.message);
       }
     }
-  }, [account, sdk]);
+  }, [account, sdk, setError]);
 
   React.useEffect(() => {
     if (sdk && account) {
@@ -47,7 +47,7 @@ export const useRunnerIds = (): number[] => {
         setError((e as { error: Error }).error.message);
       }
     }
-  }, [account, sdk, runnerCount]);
+  }, [account, sdk, runnerCount, setError]);
 
   return runnerIds;
 };

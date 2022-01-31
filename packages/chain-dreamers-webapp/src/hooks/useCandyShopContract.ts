@@ -46,7 +46,7 @@ export const useCandyShopContract = () => {
         setError((e as { error: Error }).error.message);
       }
     }
-  }, [sdk, account, setCandyQuantities]);
+  }, [sdk, account, setCandyQuantities, setError]);
 
   React.useEffect(() => {
     fetchCandyQuantities();
@@ -93,7 +93,7 @@ export const useCandyShopContract = () => {
         }
       });
     },
-    [sdk, account, fetchCandyQuantities]
+    [sdk, account, fetchCandyQuantities, setError]
   );
 
   return {

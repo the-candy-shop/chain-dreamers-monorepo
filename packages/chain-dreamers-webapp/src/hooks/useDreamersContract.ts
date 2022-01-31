@@ -36,7 +36,7 @@ export const useDreamersContract = () => {
         setError((e as { error: Error }).error.message);
       }
     }
-  }, [account, sdk, setDreamersCount]);
+  }, [account, sdk, setDreamersCount, setError]);
 
   React.useEffect(() => {
     fetchDreamersCount();
@@ -59,7 +59,7 @@ export const useDreamersContract = () => {
         setError((e as { error: Error }).error.message);
       }
     }
-  }, [account, sdk, dreamersCount, setDreamersIds]);
+  }, [account, sdk, dreamersCount, setDreamersIds, setError]);
 
   const mintAsRunners = React.useCallback(
     async (runnerIds: number[], candyIds: number[]): Promise<void> => {
@@ -104,7 +104,14 @@ export const useDreamersContract = () => {
         }
       });
     },
-    [account, dreamersCount, fetchDreamersCount, sdk, fetchCandyQuantities]
+    [
+      account,
+      dreamersCount,
+      fetchDreamersCount,
+      sdk,
+      fetchCandyQuantities,
+      setError,
+    ]
   );
 
   const mint = React.useCallback(
@@ -146,7 +153,7 @@ export const useDreamersContract = () => {
         }
       });
     },
-    [account, dreamersCount, fetchDreamersCount, sdk]
+    [account, dreamersCount, fetchDreamersCount, sdk, setError]
   );
 
   const fetchNonMintedDreamers = React.useCallback(async (): Promise<
@@ -187,7 +194,7 @@ export const useDreamersContract = () => {
     }
 
     return [];
-  }, [sdk, account]);
+  }, [sdk, account, setError]);
 
   return {
     dreamersIds,
