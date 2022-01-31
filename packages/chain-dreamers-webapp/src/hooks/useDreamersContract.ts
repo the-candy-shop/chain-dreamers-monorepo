@@ -95,8 +95,51 @@ export const useDreamersContract = () => {
     [account, dreamersCount, fetchDreamersCount, sdk, fetchCandyQuantities]
   );
 
+  const mint = React.useCallback(
+    async (runnerIds: number[]): Promise<void> => {
+      const ownerTokenIndexes: number[] = [];
+      runnerIds.forEach((_, index) => {
+        ownerTokenIndexes.push(dreamersCount + index);
+      });
+
+      return new Promise(async (resolve, reject) => {
+        if (sdk && account) {
+          try {
+            setIsWaitingForPayment(true);
+            await sdk.ChainDreamers.mintBatchPublicSale(
+              "0x" + runnerIds.map(uint16ToBytes).join(""),
+              "0x" + ownerTokenIndexes.map(uint16ToBytes).join("")
+            );
+
+            setIsWaitingForPayment(false);
+            setIsMinting(true);
+            const event = sdk.ChainDreamers.filters.Transfer(
+              undefined,
+              account
+            );
+
+            sdk.ChainDreamers.once(event, async () => {
+              await fetchDreamersCount();
+              setIsMinting(false);
+              resolve();
+            });
+          } catch (e) {
+            console.error(e);
+            setIsWaitingForPayment(false);
+            setIsMinting(false);
+            reject(e);
+          }
+        } else {
+          resolve();
+        }
+      });
+    },
+    [account, dreamersCount, fetchDreamersCount, sdk, fetchCandyQuantities]
+  );
+
   return {
     dreamersIds,
+    mint,
     mintAsRunners,
     isWaitingForPayment,
     isMinting,

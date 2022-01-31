@@ -9,7 +9,8 @@ type JazProps = {
   message:
     | "candyShopWithRunner"
     | "candyShopWithoutRunner"
-    | "basementWithoutCandy";
+    | "basementWithoutCandy"
+    | "jail";
   sx?: BoxProps["sx"];
 };
 
@@ -60,6 +61,22 @@ function Jaz({ message, sx }: JazProps) {
               Sorry, if you want to use my basement to eat some candy, you'll
               have to buy it first. Go back to the Candy Shop and choose your
               poison.
+            </Typist>
+          )}
+          {message === "jail" && (
+            <Typist avgTypingDelay={20}>
+              In the night of the 7th opening day, a horde of 50 angry Chain
+              Runners have invaded the shop, and stolen all Helium Spice. They
+              sold the Spice all around Mega City and have drawn the place into
+              chaos. All Runners who couldn’t consume the Spice in proper
+              conditions in my Basement have fallen into endless dreams.
+              <br />
+              <br />
+              They're all locked up in Jail now.
+              <br />
+              <br />
+              The 50 thieves have taken the shop, I speak now under their
+              control.
             </Typist>
           )}
         </Box>

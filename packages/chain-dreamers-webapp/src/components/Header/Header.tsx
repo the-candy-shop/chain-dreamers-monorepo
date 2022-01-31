@@ -12,7 +12,7 @@ import { useIsOpen } from "../../hooks/useIsOpen";
 function Header() {
   const isSmallWidth = useMediaQuery("(max-width:915px)");
   const { account } = useEthers();
-  const { isCandyShopOpen } = useIsOpen();
+  const { isCandyShopOpen, isJailOpen } = useIsOpen();
 
   return (
     <Box
@@ -48,6 +48,7 @@ function Header() {
         {account && isCandyShopOpen && (
           <HeaderLink label="Basement" to="/basement" />
         )}
+        {account && isJailOpen && <HeaderLink label="Jail" to="/jail" />}
         <HeaderMenu label="Learn more" />
         <HeaderLink label="FAQ" to="/faq" />
         <ConnectButton

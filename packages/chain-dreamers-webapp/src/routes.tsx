@@ -11,9 +11,10 @@ import { useIsOpen } from "./hooks/useIsOpen";
 import MyDreamers from "./components/MyDreamers/MyDreamers";
 import { useIsLaunched } from "./hooks/useIsLaunched";
 import { useEthers } from "@usedapp/core";
+import Jail from "./components/Jail/Jail";
 
 function RoutesWrapper() {
-  const { isCandyShopOpen } = useIsOpen();
+  const { isCandyShopOpen, isJailOpen } = useIsOpen();
   const { isLaunched } = useIsLaunched();
   const { account } = useEthers();
 
@@ -26,6 +27,7 @@ function RoutesWrapper() {
       <Route path="/team" element={<Team />} />
       {isCandyShopOpen && <Route path="/candy-shop" element={<CandyShop />} />}
       {isCandyShopOpen && <Route path="/basement" element={<Basement />} />}
+      {isJailOpen && <Route path="/jail" element={<Jail />} />}
       {isLaunched && account && (
         <Route path="/my-dreamers" element={<MyDreamers />} />
       )}

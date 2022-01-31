@@ -79,5 +79,6 @@ export const openingDurationInDays = 7;
 export const launchDate = dayjs(launchDateString).tz("America/Los_Angeles");
 export const closeDate = launchDate.add(openingDurationInDays, "day");
 export const candyPrice = new BigNumber(0.05);
+export const dreamerPrice = new BigNumber(0.05);
 
 export default config;
