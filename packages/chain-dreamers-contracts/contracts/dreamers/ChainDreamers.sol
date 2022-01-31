@@ -71,7 +71,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
 
     // Constants
     uint256 public maxDreamersMintPublicSale;
-    uint256 public constant MINT_PUBLIC_PRICE = 0.03 ether;
+    uint256 public constant MINT_PUBLIC_PRICE = 0.05 ether;
 
     // State variables
     uint256 public publicSaleStartTimestamp;
