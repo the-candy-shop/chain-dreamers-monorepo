@@ -71,7 +71,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
 
     // Constants
     uint256 public maxDreamersMintPublicSale;
-    uint256 public constant MINT_PUBLIC_PRICE = 0.05 ether;
+    uint256 public constant MINT_PUBLIC_PRICE = 0.03 ether;
 
     // State variables
     uint256 public publicSaleStartTimestamp;
@@ -129,7 +129,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
     function airDropBatch(
         address to,
         uint16[] memory tokenIds,
-        uint8[] memory candyIds,
+        uint256[] memory candyIds,
         uint256[] memory candyAmounts
     ) external nonReentrant onlyOwner {
         bytes32 candies = keccak256(

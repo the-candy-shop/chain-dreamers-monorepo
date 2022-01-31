@@ -5,8 +5,8 @@ import { DeployFunction } from "hardhat-deploy/types";
 import { TAGS } from "../utils/constants";
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
-  const { deployments, getNamedAccounts } = hre;
-  const { deploy } = deployments;
+  const { deployments, getNamedAccounts, network } = hre;
+  const { deploy, execute } = deployments;
 
   const { deployer } = await getNamedAccounts();
   await deploy("CandyShop", {
@@ -14,6 +14,17 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     log: true,
     args: ["https://api.chaindreamers.xyz/test/candy/tokens/{id}/metadata"],
   });
+
+  if (network.tags.mainnet) {
+    await execute(
+      "CandyShop",
+      {
+        from: deployer,
+        log: true,
+      },
+      "pause"
+    );
+  }
 };
 
 export default func;
