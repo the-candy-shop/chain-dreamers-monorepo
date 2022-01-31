@@ -13,14 +13,14 @@ import { useEthers } from "@usedapp/core";
 function Home() {
   const isSmallWidth = useMediaQuery("(max-width:915px)");
   const navigate = useNavigate();
-  const { isCandyShopOpen } = useIsOpen();
+  const { isCandyShopOpen, isJailOpen } = useIsOpen();
   const { account } = useEthers();
 
   return (
     <>
       {!isSmallWidth && (
         <Box sx={{ "& .background": { width: "100%" }, marginBottom: "84px" }}>
-          {isCandyShopOpen && account && (
+          {(isCandyShopOpen || isJailOpen) && account && (
             <Button
               variant="contained"
               sx={{
@@ -45,9 +45,11 @@ function Home() {
                   background: "#44DFFD",
                 },
               }}
-              onClick={() => navigate("/candy-shop")}
+              onClick={() =>
+                navigate(isCandyShopOpen ? "/candy-shop" : "/jail")
+              }
             >
-              Enter the Candy Shop
+              {isCandyShopOpen ? "Enter the Candy Shop" : "Enter the Jail"}
             </Button>
           )}
           <img
