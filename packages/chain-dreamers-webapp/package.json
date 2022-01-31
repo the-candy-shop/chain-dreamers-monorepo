@@ -38,8 +38,8 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "dotenv -e .env.staging react-app-rewired build",
-    "prebuild": "dotenv -e .env.staging npm run generate-types",
+    "build": "react-app-rewired build",
+    "prebuild": "npm run generate-types",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "generate-types": "eth-sdk"
