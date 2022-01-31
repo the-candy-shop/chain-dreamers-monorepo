@@ -13,6 +13,10 @@ provider:
     API_CHAIN_DREAMERS_TABLE_NAME: ${self:custom.dynamodb.chainDreamersTableName}
     API_DOMAIN_NAME: ${self:custom.customDomain.domainName}
     API_DOMAIN_BASE_PATH: ${self:custom.customDomain.basePath}
+    ETHERSCAN_API_KEY: ${env:ETHERSCAN_API_KEY}
+    INFURA_ID: ${env:INFURA_ID}
+    ALCHEMY_API_KEY: ${env:ALCHEMY_API_KEY}
+    POCKET_APPLICATION_KEY: ${env:POCKET_APPLICATION_KEY}
     NETWORK: ${env:NETWORK}
   iamRoleStatements:
     - Effect: Allow

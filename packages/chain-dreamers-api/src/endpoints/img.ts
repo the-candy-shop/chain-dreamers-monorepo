@@ -27,6 +27,7 @@ export const img = async (event) => {
 
   const dreamerDna = await sdk.ChainDreamers.dreamers(id);
   const runnerDna = await sdk.ChainRunners.getDna(id);
+  console.log("dreamerDna", dreamerDna);
 
   if (runnerDna.isZero() || dreamerDna === 0) {
     return {
@@ -46,7 +47,7 @@ export const img = async (event) => {
   const pngBuffer = await svgToPng(svg, 500, 500);
 
   storeS3Image("img", id, pngBuffer);
-  updateMintedDreamersList(parseInt(id));
+  await updateMintedDreamersList(parseInt(id)); // TODO delete await
 
   return {
     statusCode: 200,
