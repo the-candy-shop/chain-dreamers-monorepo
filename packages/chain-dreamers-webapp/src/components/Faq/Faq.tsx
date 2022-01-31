@@ -100,7 +100,7 @@ function Faq() {
             </p>
           </Content>
           <Content title="When does the Candy Shop open for minting?">
-            <p>TBD</p>
+            <p>Wednesday, February 2nd, 2022 12pm EST / 9am PST</p>
           </Content>
           <Content title="Who can mint a Chain Dreamer during Chapter 1?">
             <p>
@@ -126,7 +126,8 @@ function Faq() {
             </p>
           </Content>
           <Content title="What is the mint price?">
-            <p>TBD</p>
+            <p>0.03 ETH during Chapter 1</p>
+            <p>0.05 ETH during Chapter 2</p>
           </Content>
           <Content title="How to mint a Chain Dreamer during Chapter 1?">
             <p>

@@ -21,7 +21,7 @@ function buildButtonLabel(
   totalCandyQuantity: number
 ): React.ReactNode {
   if (!isLaunched) {
-    return "Opening: TBD";
+    return "Opening: 2022/02/02 9am PST";
   }
 
   if (!account) {
