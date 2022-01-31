@@ -2,6 +2,7 @@ import { getSdk } from "../utils/getSdk";
 import { getS3Json } from "../utils/getS3Json";
 import { renderMetaData } from "../utils/renderMetaData";
 import { storeS3Json } from "../utils/storeS3Json";
+import { doesDreamerExist } from "./img";
 
 export const metadata = async (event) => {
   const id = event.pathParameters.id;
@@ -22,10 +23,9 @@ export const metadata = async (event) => {
 
   const sdk = getSdk();
 
-  const dreamerDna = await sdk.ChainDreamers.dreamers(id);
-  const runnerDna = await sdk.ChainRunners.getDna(id);
+  const dreamerExists = await doesDreamerExist(sdk, id);
 
-  if (runnerDna.isZero() || dreamerDna === 0) {
+  if (!dreamerExists) {
     return {
       statusCode: 404,
       body: JSON.stringify({
@@ -33,6 +33,9 @@ export const metadata = async (event) => {
       }),
     };
   }
+
+  const dreamerDna = await sdk.ChainDreamers.dreamers(id);
+  const runnerDna = await sdk.ChainRunners.getDna(id);
 
   const tokenData = await sdk.DreamersRenderer.getTokenData(
     runnerDna,

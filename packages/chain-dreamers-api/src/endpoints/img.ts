@@ -25,10 +25,9 @@ export const img = async (event) => {
 
   const sdk = getSdk();
 
-  const dreamerDna = await sdk.ChainDreamers.dreamers(id);
-  const runnerDna = await sdk.ChainRunners.getDna(id);
+  const dreamerExists = await doesDreamerExist(sdk, id);
 
-  if (runnerDna.isZero() || dreamerDna === 0) {
+  if (!dreamerExists) {
     return {
       statusCode: 404,
       body: JSON.stringify({
@@ -36,6 +35,9 @@ export const img = async (event) => {
       }),
     };
   }
+
+  const runnerDna = await sdk.ChainRunners.getDna(id);
+  const dreamerDna = await sdk.ChainDreamers.dreamers(id);
 
   const tokenData = await sdk.DreamersRenderer.getTokenData(
     runnerDna,
@@ -50,10 +52,20 @@ export const img = async (event) => {
 
   return {
     statusCode: 200,
-    body: pngBuffer.toString("base64"),
+    body: "OK", //pngBuffer.toString("base64"),
     isBase64Encoded: true,
     headers: {
       "Content-Type": "image/png",
     },
   };
 };
+
+export async function doesDreamerExist(sdk, id: string): Promise<boolean> {
+  try {
+    const tokenURI = await sdk.ChainDreamers.tokenURI(id);
+
+    return !!tokenURI;
+  } catch {
+    return false;
+  }
+}
