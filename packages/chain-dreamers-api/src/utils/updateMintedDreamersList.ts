@@ -10,7 +10,7 @@ export const updateMintedDreamersList = async (id: number): Promise<void> => {
   await setCurrentMintedDreamersList(mintedDreamers);
 };
 
-async function getCurrentMintedDreamersList(): Promise<number[]> {
+export async function getCurrentMintedDreamersList(): Promise<number[]> {
   const params = {
     TableName: TABLE_NAME,
     Key: {

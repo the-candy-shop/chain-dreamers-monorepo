@@ -84,6 +84,12 @@ functions:
             cacheKeyParameters:
               - name: request.path.id
 
+  mintedDreamers:
+    handler: handler.mintedDreamers
+    events:
+      - http:
+          path: minted-dreamers
+
 package:
   include:
     - eth-sdk/**
