@@ -64,7 +64,7 @@ function Jaz({ message, sx }: JazProps) {
             </Typist>
           )}
           {message === "jail" && (
-            <Typist avgTypingDelay={20}>
+            <Typist avgTypingDelay={0}>
               In the night of the 7th opening day, a horde of 50 angry Chain
               Runners have invaded the shop, and stolen all Helium Spice. They
               sold the Spice all around Mega City and have drawn the place into

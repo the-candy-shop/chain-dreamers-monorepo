@@ -10,10 +10,14 @@ import { dreamerPrice } from "../../config";
 import { useDreamersContract } from "../../hooks/useDreamersContract";
 import RunnerSearchBar from "./RunnersSearchBar";
 import ClearIcon from "@mui/icons-material/Clear";
+import LoadingDreamersPublicMintDialog from "../LoadingPublicDreamersMintDialog/LoadingDreamersPublicMintDialog";
 
 function Jail() {
   const { mint, isMinting, isWaitingForPayment } = useDreamersContract();
   const [dreamersToMint, setDreamersToMint] = React.useState<number[]>([]);
+
+  const [mintingDialogOpen, setMintingDialogOpen] =
+    React.useState<boolean>(false);
 
   const add = React.useCallback(
     (id: number) => {
@@ -35,6 +39,12 @@ function Jail() {
     await mint(dreamersToMint);
     setDreamersToMint([]);
   }, [mint, dreamersToMint]);
+
+  React.useEffect(() => {
+    if (isMinting) {
+      setMintingDialogOpen(true);
+    }
+  }, [isMinting]);
 
   return (
     <Box display="flex" flexDirection="column" minHeight="calc(100vh - 191px)">
@@ -96,7 +106,7 @@ function Jail() {
                 maxWidth="300px"
               >
                 {dreamersToMint.map((id) => (
-                  <Box margin="8px" position="relative">
+                  <Box margin="8px" position="relative" key={id}>
                     <Box
                       borderRadius="50%"
                       border="1px solid #DA4A8A"
@@ -157,6 +167,10 @@ function Jail() {
           </ShopPanels>
         </Box>
       </Box>
+      <LoadingDreamersPublicMintDialog
+        open={mintingDialogOpen}
+        mintingRunnersIds={dreamersToMint}
+      />
     </Box>
   );
 }

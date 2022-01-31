@@ -10,7 +10,7 @@ import MyRunners from "./MyRunners";
 import jaz from "../CandyShop/jaz.png";
 import Typist from "react-typist";
 import Button from "@mui/lab/LoadingButton";
-import LoadingDreamersMintDialog from "../LoadingDreamersMintDialog/LoadingCandyMintDialog";
+import LoadingDreamersMintDialog from "../LoadingDreamersMintDialog/LoadingDreamersMintDialog";
 import { useMediaQuery } from "@mui/material";
 
 function Basement() {
