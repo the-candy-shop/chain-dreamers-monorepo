@@ -3,9 +3,10 @@ import { getSdk } from "../utils/getSdk";
 import { renderSvg } from "../utils/renderSvg";
 import { svgToPng } from "../utils/svgToPng";
 import { storeS3Image } from "../utils/storeS3Image";
+import { updateMintedDreamersList } from "../utils/updateMintedDreamersList";
 
 export const img = async (event) => {
-  const id = event.pathParameters.id;
+  const id = event.pathParameters.id as string;
   const noCache =
     event.queryStringParameters && event.queryStringParameters["no-cache"];
 
@@ -45,6 +46,7 @@ export const img = async (event) => {
   const pngBuffer = await svgToPng(svg, 500, 500);
 
   storeS3Image("img", id, pngBuffer);
+  updateMintedDreamersList(parseInt(id));
 
   return {
     statusCode: 200,

@@ -10,6 +10,7 @@ provider:
   region: ${opt:region, 'us-west-1'}
   environment:
     API_ASSETS_BUCKET_NAME: ${self:custom.s3.apiAssetsBucketName}
+    API_CHAIN_DREAMERS_TABLE_NAME: ${self:custom.dynamodb.chainDreamersTableName}
     API_DOMAIN_NAME: ${self:custom.customDomain.domainName}
     API_DOMAIN_BASE_PATH: ${self:custom.customDomain.basePath}
     NETWORK: ${env:NETWORK}
@@ -92,6 +93,8 @@ custom:
     enableCaching: true
   s3:
     apiAssetsBucketName: chain-dreamers-api-assets-${self:provider.stage}
+  dynamodb:
+    chainDreamersTableName: ChainDreamersTable-${self:provider.stage}
   domainPath:
     test: 'test'
     staging: 'staging'
@@ -122,7 +125,7 @@ resources:
     ChainDreamersTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ChainDreamersTable-${self:provider.stage}
+        TableName: ${self:custom.dynamodb.chainDreamersTableName}
         AttributeDefinitions:
           - AttributeName: key
             AttributeType: S
