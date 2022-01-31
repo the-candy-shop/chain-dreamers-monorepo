@@ -88,7 +88,7 @@ function DreamerMintingMessages({
       {isDoneMinting && (
         <>
           <Typist avgTypingDelay={20}>
-            Congratulations! Enjoy your dreams, Runners !
+            Congratulations! Enjoy your Dreamers!
           </Typist>
           <Button
             variant="contained"

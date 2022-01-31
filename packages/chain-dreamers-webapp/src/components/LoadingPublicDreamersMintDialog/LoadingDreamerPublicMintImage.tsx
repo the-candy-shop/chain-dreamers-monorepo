@@ -10,7 +10,7 @@ type LoadingDreamerMintImageProps = {
 
 const apiBaseUrl = config.app.apiBaseUrl;
 
-function LoadingDreamerMintImage({
+function LoadingDreamerPublicMintImage({
   runnerId,
   isDreamer,
 }: LoadingDreamerMintImageProps) {
@@ -160,4 +160,4 @@ function LoadingDreamerMintImage({
   );
 }
 
-export default LoadingDreamerMintImage;
+export default LoadingDreamerPublicMintImage;

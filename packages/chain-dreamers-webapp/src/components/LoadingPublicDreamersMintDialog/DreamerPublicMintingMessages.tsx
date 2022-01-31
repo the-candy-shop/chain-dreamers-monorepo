@@ -9,7 +9,7 @@ type DreamerMintingMessagesProps = {
   isDoneMinting: boolean;
 };
 
-function DreamerMintingMessages({
+function DreamerPublicMintingMessages({
   isDoneMinting,
 }: DreamerMintingMessagesProps) {
   const isSmallWidth = useMediaQuery("(max-width:915px)");
@@ -60,23 +60,27 @@ function DreamerMintingMessages({
       }}
     >
       {!isDoneMinting && messageToShow === 1 && (
-        <Typist avgTypingDelay={20}>Let's start! Here, take your candy!</Typist>
+        <Typist avgTypingDelay={20}>
+          I've given the bail money to the prison. Your dreamers will soon be
+          free...
+        </Typist>
       )}
       {!isDoneMinting && messageToShow === 2 && (
         <Typist avgTypingDelay={20}>
-          Can you feel it? It takes a moment to kick in, but soon you'll be
-          dreaming like never before...
+          After all the... candy they took, who knows in what shape they are
+          now. I guess we'll find out in a moment...
         </Typist>
       )}
       {!isDoneMinting && messageToShow === 3 && (
         <Typist avgTypingDelay={20}>
-          That's it! You should feel the transformation happening. Your body and
-          mind will elevate in a moment!
+          Somnus minions are very efficient when they chase runners, but when
+          they have to let them go... I guess we'll have to be a little more
+          patient...
         </Typist>
       )}
       {!isDoneMinting && messageToShow === 4 && (
         <Typist avgTypingDelay={20}>
-          Almost there! You're almost a dreamer...
+          Almost there! I can here them coming...
         </Typist>
       )}
       {!isDoneMinting && messageToShow === 5 && (
@@ -88,7 +92,7 @@ function DreamerMintingMessages({
       {isDoneMinting && (
         <>
           <Typist avgTypingDelay={20}>
-            Congratulations! Enjoy your dreams, Runners !
+            Congratulations! Enjoy your dreams, Runners!
           </Typist>
           <Button
             variant="contained"
@@ -119,4 +123,4 @@ function DreamerMintingMessages({
   );
 }
 
-export default DreamerMintingMessages;
+export default DreamerPublicMintingMessages;

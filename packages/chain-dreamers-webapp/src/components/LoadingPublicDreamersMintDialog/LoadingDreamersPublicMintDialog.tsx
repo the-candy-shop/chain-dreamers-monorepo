@@ -1,10 +1,10 @@
 import React from "react";
 import { Dialog } from "@mui/material";
 import Box from "@mui/material/Box";
-import LoadingDreamerMintImage from "./LoadingDreamerMintImage";
+import LoadingDreamerPublicMintImage from "./LoadingDreamerPublicMintImage";
 import { useDreamersContract } from "../../hooks/useDreamersContract";
 import jaz from "../CandyShop/jaz.png";
-import DreamerMintingMessages from "./DreamerMintingMessages";
+import DreamerPublicMintingMessages from "./DreamerPublicMintingMessages";
 
 type LoadingDreamersPublicMintDialogProps = {
   open: boolean;
@@ -67,7 +67,9 @@ function LoadingDreamersPublicMintDialog({
           <Box textAlign="center">
             <img alt="Jaz" src={jaz} style={{ width: "64px" }} />
           </Box>
-          {open && <DreamerMintingMessages isDoneMinting={isDoneMinting} />}
+          {open && (
+            <DreamerPublicMintingMessages isDoneMinting={isDoneMinting} />
+          )}
         </Box>
         <Box
           display="flex"
@@ -78,7 +80,7 @@ function LoadingDreamersPublicMintDialog({
         >
           {displayedRunnersIds.map((runnerId) => (
             <Box key={runnerId} margin="16px">
-              <LoadingDreamerMintImage
+              <LoadingDreamerPublicMintImage
                 runnerId={runnerId}
                 isDreamer={dreamersIds.includes(runnerId)}
               />
