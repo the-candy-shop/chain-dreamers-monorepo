@@ -26,7 +26,7 @@ provider:
     - Effect: Allow
       Action:
         - dynamodb:*
-      Resource: "arn:aws:s3:::${self:custom.dynamodb.chainDreamersTableName}/*"
+      Resource: "arn:aws:dynamodb:::${self:custom.dynamodb.chainDreamersTableName}/*"
 
 functions:
   img:
