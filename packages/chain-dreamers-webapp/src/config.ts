@@ -75,7 +75,7 @@ const launchDateString =
   localStorageLaunchDate ||
   "2022-02-02T09:00:00-08:00";
 
-export const openingDurationInDays = 7;
+export const openingDurationInDays = 2;
 export const launchDate = dayjs(launchDateString).tz("America/Los_Angeles");
 export const closeDate = launchDate.add(openingDurationInDays, "day");
 export const candyPrice = new BigNumber(0.03);
