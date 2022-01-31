@@ -5,7 +5,9 @@ import { ethers } from "ethers";
 import { DreamersContext } from "../contexts/DreamersContext";
 import { useCandyShopContract } from "./useCandyShopContract";
 import { SnackbarErrorContext } from "../contexts/SnackbarErrorContext";
-import { dreamerPrice } from "../config";
+import config, { dreamerPrice } from "../config";
+
+const apiBaseUrl = config.app.apiBaseUrl;
 
 export const useDreamersContract = () => {
   const { account } = useEthers();
@@ -199,6 +201,13 @@ export const useDreamersContract = () => {
     [sdk, account]
   );
 
+  const fetchMintedDreamers = React.useCallback(async (): Promise<number[]> => {
+    const response = await fetch(`${apiBaseUrl}/minted-dreamers`);
+    const body = await response.json();
+
+    return body?.mintedDreamersIds ?? [];
+  }, []);
+
   return {
     dreamersIds,
     mint,
@@ -206,6 +215,7 @@ export const useDreamersContract = () => {
     isWaitingForPayment,
     isMinting,
     isDreamerAvailable,
+    fetchMintedDreamers,
   };
 };
 

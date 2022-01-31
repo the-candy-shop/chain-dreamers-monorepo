@@ -6,8 +6,11 @@ const DynamoDBClient = new AWS.DynamoDB.DocumentClient();
 
 export const updateMintedDreamersList = async (id: number): Promise<void> => {
   const mintedDreamers = await getCurrentMintedDreamersList();
-  mintedDreamers.push(id);
-  await setCurrentMintedDreamersList(mintedDreamers);
+
+  if (!mintedDreamers.includes(id)) {
+    mintedDreamers.push(id);
+    await setCurrentMintedDreamersList(mintedDreamers);
+  }
 };
 
 export async function getCurrentMintedDreamersList(): Promise<number[]> {

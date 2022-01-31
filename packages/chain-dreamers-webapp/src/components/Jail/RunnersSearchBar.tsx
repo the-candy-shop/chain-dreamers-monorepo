@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import RunnerSearchOption from "./RunnerSearchOption";
+import { useDreamersContract } from "../../hooks/useDreamersContract";
 
 const runnerIds: { label: string; id: number }[] = [];
 
@@ -14,12 +15,24 @@ for (let i = 1; i <= 10000; i++) {
 }
 
 function RunnerSearchBar() {
+  const { fetchMintedDreamers } = useDreamersContract();
   const [searchedValue, setSearchedValue] = React.useState<string>("");
+  const [alreadyMintedDreamers, setAlreadyMintedDreamers] = React.useState<
+    number[]
+  >([]);
+
+  React.useEffect(() => {
+    fetchMintedDreamers().then(setAlreadyMintedDreamers);
+  }, []);
 
   const options = React.useMemo(
     () =>
       runnerIds
-        .filter((option) => option.label.includes(searchedValue))
+        .filter(
+          (option) =>
+            !alreadyMintedDreamers.includes(option.id) &&
+            option.label.includes(searchedValue)
+        )
         .slice(0, 5),
     [searchedValue]
   );
@@ -33,7 +46,7 @@ function RunnerSearchBar() {
           setSearchedValue(newInputValue);
         }}
         options={options}
-        sx={{ width: 300, "& :MuiPaper-root": { background: "black" } }}
+        sx={{ width: 300 }}
         renderInput={(params) => (
           <TextField {...params} label="Search runners to set free" />
         )}
