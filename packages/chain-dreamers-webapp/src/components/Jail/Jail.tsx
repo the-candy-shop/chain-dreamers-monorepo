@@ -174,7 +174,7 @@ function Jail() {
         </Box>
       </Box>
       <LoadingDreamersPublicMintDialog
-        open={mintingDialogOpen}
+        open={true}
         mintingRunnersIds={dreamersToMint}
       />
     </Box>
