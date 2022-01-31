@@ -74,6 +74,9 @@ const config: HardhatUserConfig = {
       },
       blockGasLimit: 10 * 50_000_000, // Geth new default is 50M, increased here for tests
     },
+    localhost: {
+      timeout: 1_000_000,
+    },
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY,

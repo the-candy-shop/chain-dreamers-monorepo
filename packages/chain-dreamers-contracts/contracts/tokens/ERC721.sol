@@ -33,16 +33,16 @@ abstract contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
     string private _symbol;
 
     // Mapping from token ID to owner address
-    mapping(uint16 => address) private _owners;
+    mapping(uint16 => address) internal _owners;
 
     // Mapping owner address to token count
-    mapping(address => uint16) private _balances;
+    mapping(address => uint16) internal _balances;
 
     // Mapping from token ID to approved address
-    mapping(uint16 => address) private _tokenApprovals;
+    mapping(uint16 => address) internal _tokenApprovals;
 
     // Mapping from owner to operator approvals
-    mapping(address => mapping(address => bool)) private _operatorApprovals;
+    mapping(address => mapping(address => bool)) internal _operatorApprovals;
 
     // Mapping from tokenId to Dreamer
     mapping(uint256 => ChainDreamersTypes.ChainDreamer) public dreamers;

@@ -125,11 +125,41 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
         ERC721(name_, symbol_)
     {}
 
-    /// @param tokenId a bytes interpreted as an array of uint16
+    /// @notice Use this to AirDrop the tokens to the owner instead of minting them for lower gas costs.
+    function airDropBatch(
+        address to,
+        uint16[] memory tokenIds,
+        uint8[] memory candyIds,
+        uint256[] memory candyAmounts
+    ) external nonReentrant onlyOwner {
+        bytes32 candies = keccak256(
+            abi.encodePacked(
+                candyIds,
+                tokenIds,
+                msg.sender,
+                block.timestamp,
+                block.difficulty,
+                to
+            )
+        );
+
+        for (uint256 i = 0; i < tokenIds.length; i++) {
+            require(_owners[tokenIds[i]] == address(0), "Token already exists");
+            _owners[tokenIds[i]] = to;
+            dreamers[tokenIds[i]] = ChainDreamersTypes.ChainDreamer(
+                ((uint8(candies[0]) >> 2) << 2) + (uint8(candyIds[i]) % 4)
+            );
+            candies >>= 1;
+        }
+        _balances[to] += uint16(tokenIds.length);
+        candyShop.burnBatch(to, candyIds, candyAmounts);
+    }
+
+    /// @param tokenIds a bytes interpreted as an array of uint16
     /// @param ownerTokenIndexes a bytes interpreted as an array of uint16. Given here to avoid indexes computation and save gas
     /// @param candyIdsBytes a bytes interpreted as an array of uint8
     /// @param candyIds the same indexes as above but as a uint8 array
-    /// @param candyIdsCount should be an array of 1
+    /// @param candyAmounts should be an array of 1
     function mintBatchRunnersAccess(
         bytes calldata tokenIds,
         bytes calldata ownerTokenIndexes,
