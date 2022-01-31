@@ -59,7 +59,6 @@ function LoadingDreamerPublicMintImage({
       sx={{
         width: "160px",
         height: "160px",
-        borderRadius: "16px",
         position: "relative",
         overflow: "hidden",
       }}
@@ -74,6 +73,7 @@ function LoadingDreamerPublicMintImage({
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             position: "absolute",
+            borderRadius: "16px",
             top: 0,
             left: 0,
             zIndex: 30,
