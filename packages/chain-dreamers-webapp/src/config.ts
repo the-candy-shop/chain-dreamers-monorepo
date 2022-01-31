@@ -73,12 +73,12 @@ const envVariableLaunchDate = process.env.REACT_APP_LAUNCH_DATE;
 const launchDateString =
   envVariableLaunchDate ||
   localStorageLaunchDate ||
-  "2022-12-30T09:00:00-08:00";
+  "2022-02-02T09:00:00-08:00";
 
 export const openingDurationInDays = 7;
 export const launchDate = dayjs(launchDateString).tz("America/Los_Angeles");
 export const closeDate = launchDate.add(openingDurationInDays, "day");
-export const candyPrice = new BigNumber(0.05);
-export const dreamerPrice = new BigNumber(0.05);
+export const candyPrice = new BigNumber(0.03);
+export const dreamerPrice = new BigNumber(0.04);
 
 export default config;
