@@ -3,11 +3,12 @@ import Header from "./components/Header/Header";
 import Box from "@mui/material/Box";
 import Footer from "./components/Footer/Footer";
 import RoutesWrapper from "./routes";
-import { useMediaQuery } from "@mui/material";
+import { Alert, Snackbar, useMediaQuery } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { CandyQuantitiesContext } from "./contexts/CandyQuantitiesContext";
 import { CandyList } from "./candies";
 import { DreamersContext } from "./contexts/DreamersContext";
+import { SnackbarErrorContext } from "./contexts/SnackbarErrorContext";
 
 function App() {
   const location = useLocation();
@@ -23,6 +24,7 @@ function App() {
   });
   const [dreamersCount, setDreamersCount] = React.useState<number>(0);
   const [dreamersIds, setDreamersIds] = React.useState<number[]>([]);
+  const [snackbarError, setSnackbarError] = React.useState<string | null>(null);
 
   return (
     <CandyQuantitiesContext.Provider
@@ -31,18 +33,41 @@ function App() {
       <DreamersContext.Provider
         value={{ dreamersCount, setDreamersCount, dreamersIds, setDreamersIds }}
       >
-        <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
+        <SnackbarErrorContext.Provider
+          value={{ error: snackbarError, setError: setSnackbarError }}
+        >
           <Box
-            sx={{
-              width: isSmallWidth ? "100%" : "calc(100vw - 192px)",
-              minHeight: "100vh",
+            sx={{ width: "100%", display: "flex", justifyContent: "center" }}
+          >
+            <Box
+              sx={{
+                width: isSmallWidth ? "100%" : "calc(100vw - 192px)",
+                minHeight: "100vh",
+              }}
+            >
+              <Header />
+              <RoutesWrapper />
+              <Footer fixed={!isSmallWidth && isHome} />
+            </Box>
+          </Box>
+          <Snackbar
+            open={!!snackbarError}
+            autoHideDuration={6000}
+            onClose={() => setSnackbarError(null)}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
             }}
           >
-            <Header />
-            <RoutesWrapper />
-            <Footer fixed={!isSmallWidth && isHome} />
-          </Box>
-        </Box>
+            <Alert
+              onClose={() => setSnackbarError(null)}
+              severity="error"
+              sx={{ width: "100%" }}
+            >
+              {snackbarError}
+            </Alert>
+          </Snackbar>
+        </SnackbarErrorContext.Provider>
       </DreamersContext.Provider>
     </CandyQuantitiesContext.Provider>
   );

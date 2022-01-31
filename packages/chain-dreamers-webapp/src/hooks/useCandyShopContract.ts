@@ -5,6 +5,7 @@ import { ethers } from "ethers";
 import { CandyList } from "../candies";
 import { candyPrice } from "../config";
 import { CandyQuantitiesContext } from "../contexts/CandyQuantitiesContext";
+import { SnackbarErrorContext } from "../contexts/SnackbarErrorContext";
 
 export const useCandyShopContract = () => {
   const { account } = useEthers();
@@ -14,6 +15,7 @@ export const useCandyShopContract = () => {
     React.useState<boolean>(false);
   const [isMinting, setIsMinting] = React.useState<boolean>(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const { setError } = React.useContext(SnackbarErrorContext);
 
   const { candyQuantities, setCandyQuantities } = React.useContext(
     CandyQuantitiesContext
@@ -26,18 +28,23 @@ export const useCandyShopContract = () => {
 
   const fetchCandyQuantities = React.useCallback(async () => {
     if (sdk && account) {
-      setIsLoading(true);
-      const balance = await sdk.CandyShop.balanceOfBatch(
-        [account, account, account],
-        [0, 1, 2]
-      );
+      try {
+        setIsLoading(true);
+        const balance = await sdk.CandyShop.balanceOfBatch(
+          [account, account, account],
+          [0, 1, 2]
+        );
 
-      setCandyQuantities({
-        [CandyList.ChainMeth]: balance[0]?.toNumber(),
-        [CandyList.HeliumSpice]: balance[1]?.toNumber(),
-        [CandyList.SomnusTears]: balance[2]?.toNumber(),
-      });
-      setIsLoading(false);
+        setCandyQuantities({
+          [CandyList.ChainMeth]: balance[0]?.toNumber(),
+          [CandyList.HeliumSpice]: balance[1]?.toNumber(),
+          [CandyList.SomnusTears]: balance[2]?.toNumber(),
+        });
+        setIsLoading(false);
+      } catch (e) {
+        setIsLoading(false);
+        setError((e as { error: Error }).error.message);
+      }
     }
   }, [sdk, account, setCandyQuantities]);
 
@@ -78,6 +85,7 @@ export const useCandyShopContract = () => {
           } catch (e: unknown) {
             setIsWaitingForPayment(false);
             setIsMinting(false);
+            setError((e as { error: Error }).error.message);
             reject(e);
           }
         } else {

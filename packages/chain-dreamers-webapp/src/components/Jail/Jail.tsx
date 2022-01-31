@@ -13,8 +13,12 @@ import { dreamerPrice } from "../../config";
 import { useDreamersContract } from "../../hooks/useDreamersContract";
 
 function Jail() {
-  const { mint, isMinting, isWaitingForPayment } = useDreamersContract();
+  const { mint, isMinting, isWaitingForPayment, fetchNonMintedDreamers } =
+    useDreamersContract();
   const [quantity, setQuantity] = React.useState<number>(0);
+  const [nonMintedDreamers, setNonMintedDreamers] = React.useState<number[]>(
+    []
+  );
 
   const add = React.useCallback(
     () => setQuantity(quantity + 1),
@@ -25,11 +29,17 @@ function Jail() {
     [quantity, setQuantity]
   );
 
+  React.useEffect(() => {
+    fetchNonMintedDreamers().then(setNonMintedDreamers);
+  }, [fetchNonMintedDreamers]);
+
   const handleMintButtonClick = React.useCallback(async () => {
     const runnersToMintIds = [1];
     await mint(runnersToMintIds);
     setQuantity(0);
   }, [mint]);
+
+  console.log("nonMintedDreamers", nonMintedDreamers);
 
   return (
     <Box display="flex" flexDirection="column" minHeight="calc(100vh - 191px)">
