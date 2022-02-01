@@ -5,8 +5,7 @@ import Footer from "./components/Footer/Footer";
 import RoutesWrapper from "./routes";
 import { Alert, Snackbar, useMediaQuery } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import { CandyQuantitiesContext } from "./contexts/CandyQuantitiesContext";
-import { CandyList } from "./candies";
+import { CandyQuantitiesContextProvider } from "./contexts/CandyQuantitiesContext";
 import { DreamersContextProvider } from "./contexts/DreamersContext";
 import { SnackbarErrorContext } from "./contexts/SnackbarErrorContext";
 import { RunnersContextProvider } from "./contexts/RunnersContext";
@@ -15,21 +14,11 @@ function App() {
   const location = useLocation();
   const isSmallWidth = useMediaQuery("(max-width:915px)");
   const isHome = location.pathname === "/";
-
-  const [candyQuantities, setCandyQuantities] = React.useState<
-    Record<CandyList, number>
-  >({
-    [CandyList.ChainMeth]: 0,
-    [CandyList.HeliumSpice]: 0,
-    [CandyList.SomnusTears]: 0,
-  });
   const [snackbarError, setSnackbarError] = React.useState<string | null>(null);
 
   return (
     <RunnersContextProvider>
-      <CandyQuantitiesContext.Provider
-        value={{ candyQuantities, setCandyQuantities }}
-      >
+      <CandyQuantitiesContextProvider>
         <DreamersContextProvider>
           <SnackbarErrorContext.Provider
             value={{ error: snackbarError, setError: setSnackbarError }}
@@ -67,7 +56,7 @@ function App() {
             </Snackbar>
           </SnackbarErrorContext.Provider>
         </DreamersContextProvider>
-      </CandyQuantitiesContext.Provider>
+      </CandyQuantitiesContextProvider>
     </RunnersContextProvider>
   );
 }

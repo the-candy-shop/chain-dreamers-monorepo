@@ -16,9 +16,14 @@ export const useCandyShopContract = () => {
   const [isMinting, setIsMinting] = React.useState<boolean>(false);
   const { setError } = React.useContext(SnackbarErrorContext);
 
-  const { candyQuantities, setCandyQuantities } = React.useContext(
-    CandyQuantitiesContext
-  );
+  const {
+    candyQuantities,
+    setCandyQuantities,
+    isFetching,
+    setIsFetching,
+    setHasFetch,
+    hasFetch,
+  } = React.useContext(CandyQuantitiesContext);
 
   const totalQuantity = Object.values(candyQuantities).reduce(
     (res: number, q) => res + q,
@@ -29,6 +34,7 @@ export const useCandyShopContract = () => {
     Record<CandyList, number>
   > => {
     if (sdk && account) {
+      setIsFetching(true);
       try {
         const balance = await sdk.CandyShop.balanceOfBatch(
           [account, account, account],
@@ -42,6 +48,7 @@ export const useCandyShopContract = () => {
         };
 
         setCandyQuantities(quantities);
+        setHasFetch(true);
 
         return quantities;
       } catch (e) {
@@ -51,6 +58,8 @@ export const useCandyShopContract = () => {
           [CandyList.HeliumSpice]: 0,
           [CandyList.SomnusTears]: 0,
         };
+      } finally {
+        setIsFetching(false);
       }
     }
 
@@ -59,11 +68,13 @@ export const useCandyShopContract = () => {
       [CandyList.HeliumSpice]: 0,
       [CandyList.SomnusTears]: 0,
     };
-  }, [sdk, account, setCandyQuantities, setError]);
+  }, [sdk, account, setCandyQuantities, setError, setIsFetching, setHasFetch]);
 
   React.useEffect(() => {
-    fetchCandyQuantities();
-  }, [account, fetchCandyQuantities]);
+    if (sdk && account && !isFetching && !hasFetch) {
+      fetchCandyQuantities();
+    }
+  }, [sdk, account, isFetching, hasFetch, fetchCandyQuantities]);
 
   const waitForCandyMint = React.useCallback(
     (
