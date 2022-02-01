@@ -45,8 +45,8 @@ export const useRunnersContract = () => {
 
   const fetchRunnersIds = React.useCallback(async (): Promise<number[]> => {
     if (sdk && account) {
+      setIsFetching(true);
       try {
-        setIsFetching(true);
         const balance = await fetchRunnersCount();
         const promises = [];
         for (let i = 0; i < balance; i++) {
@@ -63,12 +63,13 @@ export const useRunnersContract = () => {
 
         setRunnersIds(ids);
         setHasFetch(true);
-        setIsFetching(false);
 
         return ids;
       } catch (e) {
         setError((e as { error: Error }).error.message);
         return [];
+      } finally {
+        setIsFetching(false);
       }
     }
 
@@ -80,6 +81,10 @@ export const useRunnersContract = () => {
       fetchRunnersIds();
     }
   }, [sdk, account, isFetching, hasFetch, fetchRunnersIds]);
+
+  React.useEffect(() => {
+    setHasFetch(false);
+  }, [account]);
 
   return { runnersIds, runnersCount };
 };

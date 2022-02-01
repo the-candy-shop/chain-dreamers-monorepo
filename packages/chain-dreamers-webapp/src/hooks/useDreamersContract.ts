@@ -12,8 +12,16 @@ const apiBaseUrl = config.app.apiBaseUrl;
 export const useDreamersContract = () => {
   const { account } = useEthers();
 
-  const { dreamersCount, setDreamersCount, dreamersIds, setDreamersIds } =
-    React.useContext(DreamersContext);
+  const {
+    dreamersCount,
+    setDreamersCount,
+    dreamersIds,
+    setDreamersIds,
+    isFetching,
+    hasFetch,
+    setIsFetching,
+    setHasFetch,
+  } = React.useContext(DreamersContext);
 
   const { fetchCandyQuantities } = useCandyShopContract();
 
@@ -43,6 +51,7 @@ export const useDreamersContract = () => {
 
   const fetchDreamersIds = React.useCallback(async (): Promise<number[]> => {
     if (sdk && account) {
+      setIsFetching(true);
       try {
         const balance = await fetchDreamersCount();
         const promises = [];
@@ -59,11 +68,14 @@ export const useDreamersContract = () => {
         ) as number[];
 
         setDreamersIds(ids);
+        setHasFetch(true);
 
         return ids;
       } catch (e) {
         setError((e as { error: Error }).error.message);
         return [];
+      } finally {
+        setIsFetching(false);
       }
     }
 
@@ -71,8 +83,14 @@ export const useDreamersContract = () => {
   }, [account, sdk, setError, fetchDreamersCount, setDreamersIds]);
 
   React.useEffect(() => {
-    fetchDreamersIds();
-  }, [account, sdk, fetchDreamersIds]);
+    if (sdk && account && !isFetching && !hasFetch) {
+      fetchDreamersIds();
+    }
+  }, [sdk, account, isFetching, hasFetch, fetchDreamersIds]);
+
+  React.useEffect(() => {
+    setHasFetch(false);
+  }, [account]);
 
   const waitForDreamersMint = React.useCallback(
     (mintedDreamersIds: number[]): Promise<void> => {

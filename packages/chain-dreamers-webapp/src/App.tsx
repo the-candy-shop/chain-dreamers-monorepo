@@ -7,7 +7,7 @@ import { Alert, Snackbar, useMediaQuery } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { CandyQuantitiesContext } from "./contexts/CandyQuantitiesContext";
 import { CandyList } from "./candies";
-import { DreamersContext } from "./contexts/DreamersContext";
+import { DreamersContextProvider } from "./contexts/DreamersContext";
 import { SnackbarErrorContext } from "./contexts/SnackbarErrorContext";
 import { RunnersContextProvider } from "./contexts/RunnersContext";
 
@@ -23,8 +23,6 @@ function App() {
     [CandyList.HeliumSpice]: 0,
     [CandyList.SomnusTears]: 0,
   });
-  const [dreamersCount, setDreamersCount] = React.useState<number>(0);
-  const [dreamersIds, setDreamersIds] = React.useState<number[]>([]);
   const [snackbarError, setSnackbarError] = React.useState<string | null>(null);
 
   return (
@@ -32,14 +30,7 @@ function App() {
       <CandyQuantitiesContext.Provider
         value={{ candyQuantities, setCandyQuantities }}
       >
-        <DreamersContext.Provider
-          value={{
-            dreamersCount,
-            setDreamersCount,
-            dreamersIds,
-            setDreamersIds,
-          }}
-        >
+        <DreamersContextProvider>
           <SnackbarErrorContext.Provider
             value={{ error: snackbarError, setError: setSnackbarError }}
           >
@@ -75,7 +66,7 @@ function App() {
               </Alert>
             </Snackbar>
           </SnackbarErrorContext.Provider>
-        </DreamersContext.Provider>
+        </DreamersContextProvider>
       </CandyQuantitiesContext.Provider>
     </RunnersContextProvider>
   );
