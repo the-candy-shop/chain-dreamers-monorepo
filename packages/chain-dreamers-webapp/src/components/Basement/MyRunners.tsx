@@ -126,7 +126,7 @@ function MyRunners({
           {nonDreamingRunnersIds.length === 0 && (
             <Box
               sx={{
-                fontSize: "20px",
+                fontSize: "18px",
                 fontFamily: "Share Tech Mono",
                 padding: "32px 32px 64px 32px",
                 textAlign: "center",

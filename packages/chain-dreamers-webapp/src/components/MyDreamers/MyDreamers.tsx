@@ -6,15 +6,21 @@ import ShopPanels from "../ShopPanels/ShopPanels";
 import config from "../../config";
 import Typist from "react-typist";
 import Button from "@mui/lab/LoadingButton";
+import { useIsOpen } from "../../hooks/useIsOpen";
 
 const apiBaseUrl = config.app.apiBaseUrl;
 
 function MyDreamers() {
   const navigate = useNavigate();
+  const { isCandyShopOpen } = useIsOpen();
   const { dreamersIds } = useDreamersContract();
 
   const goToTheCandyShop = React.useCallback(() => {
     navigate("/candy-shop");
+  }, [navigate]);
+
+  const goToTheJail = React.useCallback(() => {
+    navigate("/jail");
   }, [navigate]);
 
   return (
@@ -45,7 +51,7 @@ function MyDreamers() {
                 <Box display="flex" flexDirection="column" alignItems="center">
                   <Box
                     sx={{
-                      fontSize: "20px",
+                      fontSize: "18px",
                       fontFamily: "Share Tech Mono",
                       padding: "32px 32px 64px 32px",
                       textAlign: "center",
@@ -76,9 +82,9 @@ function MyDreamers() {
                         background: "#44DFFD",
                       },
                     }}
-                    onClick={goToTheCandyShop}
+                    onClick={isCandyShopOpen ? goToTheCandyShop : goToTheJail}
                   >
-                    Go to the Candy Shop
+                    Go to the {isCandyShopOpen ? "Candy Shop" : "Jail"}
                   </Button>
                 </Box>
               )}

@@ -119,7 +119,7 @@ function Basement() {
                   </Box>
                   <Box
                     sx={{
-                      fontSize: "20px",
+                      fontSize: "18px",
                       fontFamily: "Share Tech Mono",
                       padding: "60px 35px",
                       textAlign: "center",

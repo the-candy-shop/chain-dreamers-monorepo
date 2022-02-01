@@ -170,7 +170,7 @@ function MyOrder({ sx }: MyOrderProps) {
                 <img alt="Jaz" src={jaz} style={{ width: "64px" }} />
                 <Box
                   marginTop="24px"
-                  fontSize="20px"
+                  fontSize="18px"
                   fontFamily="Share Tech Mono"
                   maxWidth="680px"
                 >

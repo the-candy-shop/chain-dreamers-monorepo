@@ -7,9 +7,13 @@ import Link from "@mui/material/Link";
 import { Link as InnerLink } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import CustomTooltip from "../CustomTooltip/CustomTooltip";
+import { useIsOpen } from "../../hooks/useIsOpen";
+import { useIsLaunched } from "../../hooks/useIsLaunched";
 
 function Faq() {
   const isSmallWidth = useMediaQuery("(max-width:915px)");
+  const { isCandyShopOpen, isJailOpen } = useIsOpen();
+  const { isLaunched } = useIsLaunched();
 
   return (
     <Box>
@@ -113,7 +117,18 @@ function Faq() {
           </Content>
           <Content title="Who can mint a Chain Dreamer during Chapter 2?">
             <p>
-              Chapter 2 will open a few days after the beginning of Chapter 1.
+              Chapter 2 will open 48 hours after the beginning of Chapter 1 on
+              Friday, February 4nd, 2022 12pm EST / 9am PST
+            </p>
+            <p>
+              Dreamers will be mintable in the{" "}
+              {isJailOpen && <InnerLink to="/jail">Jail</InnerLink>}
+              {!isJailOpen && (
+                <CustomTooltip title={"Soon"}>
+                  <Link>Jail</Link>
+                </CustomTooltip>
+              )}
+              .
             </p>
             <p>
               If all Chain Dreamers have been minteted during Chapter 1, there
@@ -133,16 +148,26 @@ function Faq() {
             <p>
               First, you buy as many candy flasks as Chain Dreamers you want to
               mint in the{" "}
-              <CustomTooltip title="Soon">
-                <Link>Candy Shop</Link>
-              </CustomTooltip>
+              {isCandyShopOpen && (
+                <InnerLink to="/candy-shop">Candy Shop</InnerLink>
+              )}
+              {!isCandyShopOpen && (
+                <CustomTooltip title={isLaunched ? "Closed" : "Soon"}>
+                  <Link>Candy Shop</Link>
+                </CustomTooltip>
+              )}
               .
             </p>
             <p>
               Then you go down to the{" "}
-              <CustomTooltip title="Soon">
-                <Link>Basement</Link>
-              </CustomTooltip>{" "}
+              {isCandyShopOpen && (
+                <InnerLink to="/basement">Basement</InnerLink>
+              )}
+              {!isCandyShopOpen && (
+                <CustomTooltip title={isLaunched ? "Closed" : "Soon"}>
+                  <Link>Basement</Link>
+                </CustomTooltip>
+              )}{" "}
               and give it to your Runner(s).
             </p>
             <p>Eventually, your dreamer is minted.</p>

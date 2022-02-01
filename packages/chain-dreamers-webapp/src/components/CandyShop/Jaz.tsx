@@ -34,9 +34,9 @@ function Jaz({ message, sx }: JazProps) {
         </Box>
         <Box
           sx={{
-            fontSize: "20px",
+            fontSize: "18px",
             fontFamily: "Share Tech Mono",
-            padding: isSmallWidth ? "24px 0" : "60px 35px",
+            padding: isSmallWidth ? "24px 0" : "35px",
             textAlign: "center",
             maxWidth: "680px",
           }}
@@ -66,17 +66,13 @@ function Jaz({ message, sx }: JazProps) {
           {message === "jail" && (
             <Typist avgTypingDelay={0}>
               In the night of the 7th opening day, a horde of 50 angry Chain
-              Runners have invaded the shop, and stolen all Helium Spice. They
-              sold the Spice all around Mega City and have drawn the place into
-              chaos. All Runners who couldn’t consume the Spice in proper
-              conditions in my Basement have fallen into endless dreams.
+              Runners have invaded the shop, and stolen all drugs. They sold it
+              all around Mega City and have drawn the place into chaos. All
+              Runners who couldn’t consume the Spice in proper conditions in my
+              Basement have fallen into endless dreams.
               <br />
               <br />
-              They're all locked up in Jail now.
-              <br />
-              <br />
-              The 50 thieves have taken the shop, I speak now under their
-              control.
+              They're all locked up in Mega City Jail now, arrested by Somnus.
             </Typist>
           )}
         </Box>
