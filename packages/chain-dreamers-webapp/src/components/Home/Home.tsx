@@ -50,7 +50,7 @@ function Home() {
               }
             >
               {isCandyShopOpen
-                ? "Enter the Candy Shop"
+                ? "Take me to the Candy Shop"
                 : "Start minting Dreamers by entering the Jail"}
             </Button>
           )}
