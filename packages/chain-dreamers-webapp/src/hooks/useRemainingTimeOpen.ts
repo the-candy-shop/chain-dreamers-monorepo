@@ -1,6 +1,6 @@
 import React from "react";
 import dayjs, { Dayjs } from "dayjs";
-import { closeDate } from "../config";
+import { candyShopClosingDate } from "../config";
 import { useIsOpen } from "./useIsOpen";
 
 export const useRemainingTimeOpen = (): {
@@ -9,7 +9,7 @@ export const useRemainingTimeOpen = (): {
   const now = React.useRef<Dayjs>(dayjs());
   const { isCandyShopOpen } = useIsOpen();
   const [remainingTimeOpenInSeconds, setRemainingTimeOpenInSeconds] =
-    React.useState<number>(closeDate.diff(now.current, "second"));
+    React.useState<number>(candyShopClosingDate.diff(now.current, "second"));
 
   React.useEffect(() => {
     let interval: NodeJS.Timeout | undefined = undefined;
@@ -18,7 +18,7 @@ export const useRemainingTimeOpen = (): {
       interval = setInterval(() => {
         now.current = dayjs();
 
-        const newRemainingTimeOpenInSeconds = closeDate.diff(
+        const newRemainingTimeOpenInSeconds = candyShopClosingDate.diff(
           now.current,
           "second"
         );

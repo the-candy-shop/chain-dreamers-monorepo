@@ -1,6 +1,6 @@
 import React from "react";
 import dayjs, { Dayjs } from "dayjs";
-import { launchDate } from "../config";
+import { candyShopOpeningDate } from "../config";
 
 export const useIsLaunched = (): {
   isLaunched: boolean;
@@ -8,10 +8,10 @@ export const useIsLaunched = (): {
 } => {
   const now = React.useRef<Dayjs>(dayjs());
   const [isLaunched, setIsLaunched] = React.useState<boolean>(
-    now.current.isAfter(launchDate)
+    now.current.isAfter(candyShopOpeningDate)
   );
   const [hoursFromLaunch, setHoursFromLaunch] = React.useState<number>(
-    launchDate.diff(now.current, "hour")
+    candyShopOpeningDate.diff(now.current, "hour")
   );
 
   React.useEffect(() => {
@@ -21,8 +21,11 @@ export const useIsLaunched = (): {
       interval = setInterval(() => {
         now.current = dayjs();
 
-        const newIsLaunched = now.current.isAfter(launchDate);
-        const newHoursFromLaunch = launchDate.diff(now.current, "hour");
+        const newIsLaunched = now.current.isAfter(candyShopOpeningDate);
+        const newHoursFromLaunch = candyShopOpeningDate.diff(
+          now.current,
+          "hour"
+        );
 
         if (newIsLaunched !== isLaunched) {
           setIsLaunched(newIsLaunched);
