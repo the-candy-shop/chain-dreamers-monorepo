@@ -128,7 +128,6 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: ${self:custom.s3.apiAssetsBucketName}
-
   Outputs:
     ApiAssetsBucketNameOutputKey:
       Value: !Ref ApiAssetsBucket
