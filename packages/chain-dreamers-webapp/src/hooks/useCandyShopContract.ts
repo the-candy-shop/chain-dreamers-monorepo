@@ -76,6 +76,10 @@ export const useCandyShopContract = () => {
     }
   }, [sdk, account, isFetching, hasFetch, fetchCandyQuantities]);
 
+  React.useEffect(() => {
+    setHasFetch(false);
+  }, [account, setHasFetch]);
+
   const waitForCandyMint = React.useCallback(
     (
       currentCandyQuantity: Record<CandyList, number>,

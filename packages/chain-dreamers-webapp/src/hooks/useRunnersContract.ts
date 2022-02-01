@@ -92,7 +92,7 @@ export const useRunnersContract = () => {
 
   React.useEffect(() => {
     setHasFetch(false);
-  }, [account]);
+  }, [account, setHasFetch]);
 
   return { runnersIds, runnersCount };
 };

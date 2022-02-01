@@ -98,7 +98,7 @@ export const useDreamersContract = () => {
 
   React.useEffect(() => {
     setHasFetch(false);
-  }, [account]);
+  }, [account, setHasFetch]);
 
   const waitForDreamersMint = React.useCallback(
     (mintedDreamersIds: number[]): Promise<void> => {
