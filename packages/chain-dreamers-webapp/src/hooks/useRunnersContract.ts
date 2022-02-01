@@ -74,7 +74,15 @@ export const useRunnersContract = () => {
     }
 
     return [];
-  }, [account, sdk, setError, fetchRunnersCount, setRunnersIds]);
+  }, [
+    account,
+    sdk,
+    setError,
+    fetchRunnersCount,
+    setRunnersIds,
+    setIsFetching,
+    setHasFetch,
+  ]);
 
   React.useEffect(() => {
     if (sdk && account && !isFetching && !hasFetch) {

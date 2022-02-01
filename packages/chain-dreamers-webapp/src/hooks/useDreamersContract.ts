@@ -80,7 +80,15 @@ export const useDreamersContract = () => {
     }
 
     return [];
-  }, [account, sdk, setError, fetchDreamersCount, setDreamersIds]);
+  }, [
+    account,
+    sdk,
+    setError,
+    fetchDreamersCount,
+    setDreamersIds,
+    setIsFetching,
+    setHasFetch,
+  ]);
 
   React.useEffect(() => {
     if (sdk && account && !isFetching && !hasFetch) {
