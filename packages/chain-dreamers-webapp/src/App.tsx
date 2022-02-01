@@ -9,6 +9,7 @@ import { CandyQuantitiesContext } from "./contexts/CandyQuantitiesContext";
 import { CandyList } from "./candies";
 import { DreamersContext } from "./contexts/DreamersContext";
 import { SnackbarErrorContext } from "./contexts/SnackbarErrorContext";
+import { RunnersContextProvider } from "./contexts/RunnersContext";
 
 function App() {
   const location = useLocation();
@@ -27,49 +28,56 @@ function App() {
   const [snackbarError, setSnackbarError] = React.useState<string | null>(null);
 
   return (
-    <CandyQuantitiesContext.Provider
-      value={{ candyQuantities, setCandyQuantities }}
-    >
-      <DreamersContext.Provider
-        value={{ dreamersCount, setDreamersCount, dreamersIds, setDreamersIds }}
+    <RunnersContextProvider>
+      <CandyQuantitiesContext.Provider
+        value={{ candyQuantities, setCandyQuantities }}
       >
-        <SnackbarErrorContext.Provider
-          value={{ error: snackbarError, setError: setSnackbarError }}
+        <DreamersContext.Provider
+          value={{
+            dreamersCount,
+            setDreamersCount,
+            dreamersIds,
+            setDreamersIds,
+          }}
         >
-          <Box
-            sx={{ width: "100%", display: "flex", justifyContent: "center" }}
+          <SnackbarErrorContext.Provider
+            value={{ error: snackbarError, setError: setSnackbarError }}
           >
             <Box
-              sx={{
-                width: isSmallWidth ? "100%" : "calc(100vw - 192px)",
-                minHeight: "100vh",
+              sx={{ width: "100%", display: "flex", justifyContent: "center" }}
+            >
+              <Box
+                sx={{
+                  width: isSmallWidth ? "100%" : "calc(100vw - 192px)",
+                  minHeight: "100vh",
+                }}
+              >
+                <Header />
+                <RoutesWrapper />
+                <Footer fixed={!isSmallWidth && isHome} />
+              </Box>
+            </Box>
+            <Snackbar
+              open={!!snackbarError}
+              autoHideDuration={6000}
+              onClose={() => setSnackbarError(null)}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
               }}
             >
-              <Header />
-              <RoutesWrapper />
-              <Footer fixed={!isSmallWidth && isHome} />
-            </Box>
-          </Box>
-          <Snackbar
-            open={!!snackbarError}
-            autoHideDuration={6000}
-            onClose={() => setSnackbarError(null)}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "right",
-            }}
-          >
-            <Alert
-              onClose={() => setSnackbarError(null)}
-              severity="error"
-              sx={{ width: "100%" }}
-            >
-              {snackbarError}
-            </Alert>
-          </Snackbar>
-        </SnackbarErrorContext.Provider>
-      </DreamersContext.Provider>
-    </CandyQuantitiesContext.Provider>
+              <Alert
+                onClose={() => setSnackbarError(null)}
+                severity="error"
+                sx={{ width: "100%" }}
+              >
+                {snackbarError}
+              </Alert>
+            </Snackbar>
+          </SnackbarErrorContext.Provider>
+        </DreamersContext.Provider>
+      </CandyQuantitiesContext.Provider>
+    </RunnersContextProvider>
   );
 }
 

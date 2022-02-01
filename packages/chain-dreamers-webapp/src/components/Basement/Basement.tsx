@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import { useCandyShopContract } from "../../hooks/useCandyShopContract";
 import Jaz from "../CandyShop/Jaz";
 import { candiesIds, CandyList, imageByCandy } from "../../candies";
-import { useRunnerIds } from "../../hooks/useRunnerIds";
+import { useRunnersContract } from "../../hooks/useRunnersContract";
 import { useDreamersContract } from "../../hooks/useDreamersContract";
 import MyRunners from "./MyRunners";
 import jaz from "../CandyShop/jaz.png";
@@ -20,7 +20,7 @@ function Basement() {
     totalQuantity: totalMintedCandy,
     candyQuantities: mintedCandyQuantities,
   } = useCandyShopContract();
-  const runnersIds = useRunnerIds();
+  const { runnersIds } = useRunnersContract();
   const { dreamersIds, mintAsRunners, isMinting, isWaitingForPayment } =
     useDreamersContract();
 
