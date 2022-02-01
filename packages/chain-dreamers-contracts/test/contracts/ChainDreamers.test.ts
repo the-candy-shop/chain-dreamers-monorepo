@@ -74,37 +74,21 @@ const publicSaleFixture = deployments.createFixture(async ({ network }) => {
 
 describe("ChainDreamers", function () {
   describe("mintBatchRunnersAccess", async function () {
-    it("should revert when candy Ids lengths do not match", async () => {
-      const { users } = await runnersAccessFixture();
-      expect(
-        users[0].ChainDreamers.mintBatchRunnersAccess(
-          "0x" + [0].map(uint16ToBytes).join(""),
-          "0x" + [0].map(uint16ToBytes).join(""),
-          ethers.utils.hexlify([0]),
-          [0, 0],
-          [1]
-        )
-      ).to.be.revertedWith("Candy ids should have the same length");
-    });
     it("should revert when candy Ids and token ids length do not match", async () => {
       const { users } = await runnersAccessFixture();
       expect(
         users[0].ChainDreamers.mintBatchRunnersAccess(
           "0x" + [0].map(uint16ToBytes).join(""),
-          "0x" + [0].map(uint16ToBytes).join(""),
-          ethers.utils.hexlify([0, 1]),
           [0, 1],
           [1, 1]
         )
-      ).to.be.revertedWith("Each runner needs its own candy");
+      ).to.be.revertedWith("Each runner needs one and only one candy");
     });
     it("should revert when user tries to mint a runner he doesn't own", async function () {
       const { userWithoutRunner } = await runnersAccessFixture();
       expect(
         userWithoutRunner.ChainDreamers.mintBatchRunnersAccess(
           "0x" + [1].map(uint16ToBytes).join(""),
-          "0x" + [0].map(uint16ToBytes).join(""),
-          ethers.utils.hexlify([1]),
           [1],
           [1]
         )
@@ -112,25 +96,11 @@ describe("ChainDreamers", function () {
         "You cannot give candies to a runner that you do not own"
       );
     });
-    it("should revert when candies ids do not match", async () => {
-      const { userWithRunner } = await runnersAccessFixture();
-      expect(
-        userWithRunner.ChainDreamers.mintBatchRunnersAccess(
-          "0x" + [0].map(uint16ToBytes).join(""),
-          "0x" + [0].map(uint16ToBytes).join(""),
-          ethers.utils.hexlify([0]),
-          [1],
-          [1]
-        )
-      ).to.be.revertedWith("Candy ids should be the same");
-    });
     it("should revert when candy amount does not equal 1", async () => {
       const { userWithRunner } = await runnersAccessFixture();
       expect(
         userWithRunner.ChainDreamers.mintBatchRunnersAccess(
           "0x" + [0].map(uint16ToBytes).join(""),
-          "0x" + [0].map(uint16ToBytes).join(""),
-          ethers.utils.hexlify([0]),
           [0],
           [2]
         )
@@ -138,93 +108,26 @@ describe("ChainDreamers", function () {
         "Your runner needs one and only one candy, who knows what could happen otherwise"
       );
     });
-    it("should revert when ownerTokenIndexes and token Ids length do not match", async () => {
-      const { userWithRunner } = await runnersAccessFixture();
-      expect(
-        userWithRunner.ChainDreamers.mintBatchRunnersAccess(
-          "0x" + [0].map(uint16ToBytes).join(""),
-          "0x" + [0, 1].map(uint16ToBytes).join(""),
-          ethers.utils.hexlify([0]),
-          [0],
-          [1]
-        )
-      ).to.be.revertedWith(
-        "ownerIndexes must have the same length as tokenIds"
-      );
-    });
-    it("should revert when token indexes do not start from 0 for the first mint", async function () {
-      const { userWithRunner } = await runnersAccessFixture();
-      expect(
-        userWithRunner.ChainDreamers.mintBatchRunnersAccess(
-          "0x" + [0, 2, 3, 4].map(uint16ToBytes).join(""),
-          "0x" + [1, 2, 3, 4].map(uint16ToBytes).join(""),
-          ethers.utils.hexlify([0, 1, 2, 0]),
-          [0, 1, 2, 0],
-          [1, 1, 1, 1]
-        )
-      ).to.be.revertedWith(
-        "The given ownerTokenIndexes do not start from the current owner count"
-      );
-    });
-    it("should revert when token indexes do not start from previous index", async function () {
-      const { userWithRunner } = await runnersAccessFixture();
-      await userWithRunner.ChainDreamers.mintBatchRunnersAccess(
-        "0x" + [0, 2].map(uint16ToBytes).join(""),
-        "0x" + [0, 1].map(uint16ToBytes).join(""),
-        ethers.utils.hexlify([0, 1]),
-        [0, 1],
-        [1, 1]
-      );
-      expect(
-        userWithRunner.ChainDreamers.mintBatchRunnersAccess(
-          "0x" + [3, 4].map(uint16ToBytes).join(""),
-          "0x" + [3, 4].map(uint16ToBytes).join(""),
-          ethers.utils.hexlify([0, 2]),
-          [0, 2],
-          [1, 1]
-        )
-      ).to.be.revertedWith(
-        "The given ownerTokenIndexes do not start from the current owner count"
-      );
-    });
-    it("should revert when token indexes are not a sequence", async function () {
-      const { userWithRunner } = await runnersAccessFixture();
-      expect(
-        userWithRunner.ChainDreamers.mintBatchRunnersAccess(
-          "0x" + [0, 2, 3, 4].map(uint16ToBytes).join(""),
-          "0x" + [0, 2, 3, 4].map(uint16ToBytes).join(""),
-          ethers.utils.hexlify([0, 1, 2, 0]),
-          [0, 1, 2, 0],
-          [1, 1, 1, 1]
-        )
-      ).to.be.revertedWith("ownerTokenIndexes must be a sequence");
-    });
     it("should revert when trying to mint twice the same token", async function () {
       const { userWithRunner } = await runnersAccessFixture();
       await userWithRunner.ChainDreamers.mintBatchRunnersAccess(
         "0x" + [0].map(uint16ToBytes).join(""),
-        "0x" + [0].map(uint16ToBytes).join(""),
-        ethers.utils.hexlify([0]),
         [0],
         [1]
       );
       expect(
         userWithRunner.ChainDreamers.mintBatchRunnersAccess(
           "0x" + [0, 2].map(uint16ToBytes).join(""),
-          "0x" + [1, 2].map(uint16ToBytes).join(""),
-          ethers.utils.hexlify([0, 2]),
           [0, 2],
           [1, 1]
         )
-      ).to.be.revertedWith("ERC721: token already minted");
+      ).to.be.revertedWith("ERC721: token already exists");
     });
     it("should revert when minting without burning candies", async function () {
       const { userWithRunner } = await runnersAccessFixture();
       expect(
         userWithRunner.ChainDreamers.mintBatchRunnersAccess(
           "0x" + [0].map(uint16ToBytes).join(""),
-          "0x" + [0].map(uint16ToBytes).join(""),
-          ethers.utils.hexlify([0]),
           [0],
           [0]
         )
@@ -237,8 +140,6 @@ describe("ChainDreamers", function () {
       expect(
         userWithRunnerNoCandy.ChainDreamers.mintBatchRunnersAccess(
           "0x" + [1].map(uint16ToBytes).join(""),
-          "0x" + [0].map(uint16ToBytes).join(""),
-          ethers.utils.hexlify([1]),
           [1],
           [1]
         )
@@ -250,16 +151,12 @@ describe("ChainDreamers", function () {
       const { userWithRunner } = await runnersAccessFixture();
       await userWithRunner.ChainDreamers.mintBatchRunnersAccess(
         "0x" + [0].map(uint16ToBytes).join(""),
-        "0x" + [0].map(uint16ToBytes).join(""),
-        ethers.utils.hexlify([1]),
         [1],
         [1]
       );
       expect(
         userWithRunner.ChainDreamers.mintBatchRunnersAccess(
           "0x" + [2].map(uint16ToBytes).join(""),
-          "0x" + [1].map(uint16ToBytes).join(""),
-          ethers.utils.hexlify([1]),
           [1],
           [1]
         )
@@ -274,8 +171,6 @@ describe("ChainDreamers", function () {
       const tokenId = 25;
       await userWithRunner.ChainDreamers.mintBatchRunnersAccess(
         "0x" + [tokenId].map(uint16ToBytes).join(""),
-        "0x" + [0].map(uint16ToBytes).join(""),
-        ethers.utils.hexlify([0]),
         [0],
         [1]
       );
@@ -291,8 +186,6 @@ describe("ChainDreamers", function () {
       const { userWithRunner, ChainDreamers } = await runnersAccessFixture();
       await userWithRunner.ChainDreamers.mintBatchRunnersAccess(
         "0x" + [0, 2, 3, 4].map(uint16ToBytes).join(""),
-        "0x" + [0, 1, 2, 3].map(uint16ToBytes).join(""),
-        ethers.utils.hexlify([0, 1, 2, 0]),
         [0, 1, 2, 0],
         [1, 1, 1, 1]
       );
@@ -331,7 +224,6 @@ describe("ChainDreamers", function () {
       const { users } = await setup();
       expect(
         users[0].ChainDreamers.mintBatchPublicSale(
-          "0x" + [0, 1, 2, 3].map(uint16ToBytes).join(""),
           "0x" + [0, 1, 2, 3].map(uint16ToBytes).join("")
         )
       ).to.be.revertedWith("Public sale not open");
@@ -340,7 +232,6 @@ describe("ChainDreamers", function () {
       const { users } = await publicSaleFixture();
       expect(
         users[0].ChainDreamers.mintBatchPublicSale(
-          "0x" + [0, 1, 2, 3].map(uint16ToBytes).join(""),
           "0x" + [0, 1, 2, 3].map(uint16ToBytes).join("")
         )
       ).to.be.revertedWith("You have to pay the bail bond");
@@ -350,66 +241,13 @@ describe("ChainDreamers", function () {
       expect(
         users[0].ChainDreamers.mintBatchPublicSale(
           "0x" + [0, 1, 2, 3, 5, 6].map(uint16ToBytes).join(""),
-          "0x" + [0, 1, 2, 3, 5, 6].map(uint16ToBytes).join(""),
           { value: ethers.utils.parseEther("0.3") }
         )
       ).to.be.revertedWith("Your home is to small to welcome so many dreamers");
     });
-    it("should revert when owner indexes are too small", async () => {
-      const { users } = await publicSaleFixture();
-      expect(
-        users[0].ChainDreamers.mintBatchPublicSale(
-          "0x" + [0, 1].map(uint16ToBytes).join(""),
-          "0x" + [1].map(uint16ToBytes).join(""),
-          { value: ethers.utils.parseEther("0.1") }
-        )
-      ).to.be.revertedWith(
-        "ownerIndexes must have the same length as tokenIds"
-      );
-    });
-    it("should revert when token indexes do not start from 0 for the first mint", async () => {
-      const { users } = await publicSaleFixture();
-      expect(
-        users[0].ChainDreamers.mintBatchPublicSale(
-          "0x" + [0, 1].map(uint16ToBytes).join(""),
-          "0x" + [1, 2].map(uint16ToBytes).join(""),
-          { value: ethers.utils.parseEther("0.1") }
-        )
-      ).to.be.revertedWith(
-        "The given ownerTokenIndexes do not start from the current owner count"
-      );
-    });
-    it("should revert when token indexes do not start from previous index", async function () {
-      const { users } = await publicSaleFixture();
-      await users[0].ChainDreamers.mintBatchPublicSale(
-        "0x" + [0, 2].map(uint16ToBytes).join(""),
-        "0x" + [0, 1].map(uint16ToBytes).join(""),
-        { value: ethers.utils.parseEther("0.1") }
-      );
-      expect(
-        users[0].ChainDreamers.mintBatchPublicSale(
-          "0x" + [3, 4].map(uint16ToBytes).join(""),
-          "0x" + [3, 4].map(uint16ToBytes).join(""),
-          { value: ethers.utils.parseEther("0.1") }
-        )
-      ).to.be.revertedWith(
-        "The given ownerTokenIndexes do not start from the current owner count"
-      );
-    });
-    it("should revert when token indexes are not a sequence", async () => {
-      const { users } = await publicSaleFixture();
-      expect(
-        users[0].ChainDreamers.mintBatchPublicSale(
-          "0x" + [0, 1].map(uint16ToBytes).join(""),
-          "0x" + [0, 0].map(uint16ToBytes).join(""),
-          { value: ethers.utils.parseEther("0.1") }
-        )
-      ).to.be.revertedWith("ownerTokenIndexes must be a sequence");
-    });
     it("should revert when trying to mint twice the same token", async () => {
       const { users } = await publicSaleFixture();
       await users[0].ChainDreamers.mintBatchPublicSale(
-        "0x" + [0, 1].map(uint16ToBytes).join(""),
         "0x" + [0, 1].map(uint16ToBytes).join(""),
         { value: ethers.utils.parseEther("0.1") }
       );
@@ -417,16 +255,14 @@ describe("ChainDreamers", function () {
       expect(
         users[1].ChainDreamers.mintBatchPublicSale(
           "0x" + [0, 1].map(uint16ToBytes).join(""),
-          "0x" + [0, 1].map(uint16ToBytes).join(""),
           { value: ethers.utils.parseEther("0.1") }
         )
-      ).to.be.revertedWith("ERC721: token already minted");
+      ).to.be.revertedWith("ERC721: token already exists");
     });
     it("should be able to mint tokens", async () => {
       const { users, ChainDreamers } = await publicSaleFixture();
       await users[0].ChainDreamers.mintBatchPublicSale(
         "0x" + [0, 2, 3].map(uint16ToBytes).join(""),
-        "0x" + [0, 1, 2].map(uint16ToBytes).join(""),
         { value: ethers.utils.parseEther("0.15") }
       );
 
@@ -451,7 +287,6 @@ describe("ChainDreamers", function () {
       const { users } = await publicSaleFixture();
       await users[0].ChainDreamers.mintBatchPublicSale(
         "0x" + [0, 1].map(uint16ToBytes).join(""),
-        "0x" + [0, 1].map(uint16ToBytes).join(""),
         { value: ethers.utils.parseEther("0.1") }
       );
       expect(users[0].ChainDreamers.withdraw()).to.be.reverted;
@@ -464,15 +299,13 @@ describe("ChainDreamers", function () {
       const candyIdsExpected = [0, 1, 2, 0];
       await userWithRunner.ChainDreamers.mintBatchRunnersAccess(
         "0x" + runnerIds.map(uint16ToBytes).join(""),
-        "0x" + [0, 1, 2, 3].map(uint16ToBytes).join(""),
-        ethers.utils.hexlify(candyIdsExpected),
         candyIdsExpected,
         [1, 1, 1, 1]
       );
       const candyIds = [];
       let dna;
       for (const dreamerId of runnerIds) {
-        dna = await ChainDreamers.dreamers(dreamerId);
+        dna = await ChainDreamers.dreamersCandies(dreamerId);
         candyIds.push(dna % 4);
       }
       expect(candyIds).to.deep.equal(candyIdsExpected);
@@ -492,7 +325,6 @@ describe("ChainDreamers", function () {
       const { users, ChainDreamers } = await publicSaleFixture();
       await users[0].ChainDreamers.mintBatchPublicSale(
         "0x" + tokenIds.map(uint16ToBytes).join(""),
-        "0x" + tokenIds.map(uint16ToBytes).join(""),
         {
           value: ethers.utils.parseEther(
             (0.05 * tokenIds.length).toFixed(2).toString()
@@ -511,6 +343,21 @@ describe("ChainDreamers", function () {
             `https://api.chaindreamers.xyz/test/tokens/${tokenId}/metadata`
         )
       );
+    });
+  });
+  describe("getTokenExists", async () => {
+    it("should return an array with true at index of given minted token", async () => {
+      const { users, ChainDreamers } = await publicSaleFixture();
+      await users[0].ChainDreamers.mintBatchPublicSale("0x000a00ff0000", {
+        value: ethers.utils.parseEther((0.15).toString()),
+      });
+      const tokenExists = await ChainDreamers.getTokenExists();
+      expect(
+        tokenExists.reduce((acc: number, exists: number) => acc + exists)
+      ).to.equal(3);
+      expect(tokenExists[0]).to.be.true;
+      expect(tokenExists[10]).to.be.true;
+      expect(tokenExists[255]).to.be.true;
     });
   });
 });

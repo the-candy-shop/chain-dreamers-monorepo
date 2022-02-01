@@ -3,8 +3,8 @@ pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-
-import "../tokens/ERC721Enumerable.sol";
+import {BytesLib} from "solidity-bytes-utils/contracts/BytesLib.sol";
+import {ERC721Enumerable, ERC721} from "../tokens/ERC721Enumerable.sol";
 import "../interfaces/IDreamersRenderer.sol";
 import "../interfaces/ICandyShop.sol";
 import "../interfaces/IChainRunners.sol";
@@ -22,7 +22,9 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
     ICandyShop candyShop;
     IChainRunners chainRunners;
 
-    /// @dev Copied from ApeRunner's contract
+    uint8[MAX_NUMBER_OF_TOKENS] public dreamersCandies;
+    uint8 private constant candyMask = 252; // "11111100" binary string, last 2 bits kept for candyId
+    /// @dev Copied from \@naomsa's contract
     /// @notice OpenSea proxy registry.
     address public opensea;
     /// @notice LooksRare marketplace transfer manager.
@@ -125,86 +127,62 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
         ERC721(name_, symbol_)
     {}
 
-    /// @notice Use this to AirDrop the tokens to the owner instead of minting them for lower gas costs.
-    function airDropBatch(
-        address to,
-        uint16[] memory tokenIds,
-        uint256[] memory candyIds,
-        uint256[] memory candyAmounts
-    ) external nonReentrant onlyOwner {
-        bytes32 candies = keccak256(
-            abi.encodePacked(
-                candyIds,
-                tokenIds,
-                msg.sender,
-                block.timestamp,
-                block.difficulty,
-                to
-            )
-        );
-
-        for (uint256 i = 0; i < tokenIds.length; i++) {
-            require(_owners[tokenIds[i]] == address(0), "Token already exists");
-            _owners[tokenIds[i]] = to;
-            dreamers[tokenIds[i]] = ChainDreamersTypes.ChainDreamer(
-                ((uint8(candies[0]) >> 2) << 2) + (uint8(candyIds[i]) % 4)
-            );
-            candies >>= 1;
-        }
-        _balances[to] += uint16(tokenIds.length);
-        candyShop.burnBatch(to, candyIds, candyAmounts);
-    }
-
+    /// @dev This mint function wraps the safeMintBatch to:
+    ///      1) check that the minter owns the runner 2) use the candies 3) burn the candies
     /// @param tokenIds a bytes interpreted as an array of uint16
-    /// @param ownerTokenIndexes a bytes interpreted as an array of uint16. Given here to avoid indexes computation and save gas
-    /// @param candyIdsBytes a bytes interpreted as an array of uint8
     /// @param candyIds the same indexes as above but as a uint8 array
     /// @param candyAmounts should be an array of 1
     function mintBatchRunnersAccess(
         bytes calldata tokenIds,
-        bytes calldata ownerTokenIndexes,
-        bytes calldata candyIdsBytes,
         uint256[] calldata candyIds,
         uint256[] calldata candyAmounts
     ) public nonReentrant returns (bool) {
         require(
-            candyIdsBytes.length == candyIds.length,
-            "Candy ids should have the same length"
-        );
-        require(
-            tokenIds.length == candyIdsBytes.length * 2,
-            "Each runner needs its own candy"
+            tokenIds.length == candyIds.length * 2,
+            "Each runner needs one and only one candy"
         );
 
-        for (uint256 i = 0; i < tokenIds.length; i += 2) {
+        safeMintBatch(_msgSender(), tokenIds);
+
+        bytes32 candies = keccak256(
+            abi.encodePacked(
+                tokenIds,
+                msg.sender,
+                candyIds,
+                block.timestamp,
+                block.difficulty
+            )
+        );
+        for (uint256 i = 0; i < candyIds.length; i++) {
+            uint16 tokenId = BytesLib.toUint16(tokenIds, i * 2);
+            // ownerOf uses a simple mapping in OZ's ERC721 so should be cheap
             require(
-                chainRunners.ownerOf(BytesLib.toUint16(tokenIds, i)) ==
-                    _msgSender(),
+                chainRunners.ownerOf(tokenId) == _msgSender(),
                 "You cannot give candies to a runner that you do not own"
             );
             require(
-                uint8(candyIds[i / 2]) == uint8(candyIdsBytes[i / 2]),
-                "Candy ids should be the same"
-            );
-            require(
-                candyAmounts[i / 2] == 1,
+                candyAmounts[i] == 1,
                 "Your runner needs one and only one candy, who knows what could happen otherwise"
             );
+            dreamersCandies[tokenId] =
+                (uint8(candies[i]) & candyMask) +
+                (uint8(candyIds[i]) % 4);
+            if (i % 32 == 31) {
+                candies = keccak256(abi.encodePacked(candies));
+            }
         }
-        _safeMintBatchWithCandies(
-            _msgSender(),
-            tokenIds,
-            ownerTokenIndexes,
-            candyIdsBytes
-        );
+
         candyShop.burnBatch(_msgSender(), candyIds, candyAmounts);
         return true;
     }
 
-    function mintBatchPublicSale(
-        bytes calldata tokenIds,
-        bytes calldata ownerTokenIndexes
-    ) public payable nonReentrant whenPublicSaleActive returns (bool) {
+    function mintBatchPublicSale(bytes calldata tokenIds)
+        public
+        payable
+        nonReentrant
+        whenPublicSaleActive
+        returns (bool)
+    {
         require(
             (tokenIds.length / 2) * MINT_PUBLIC_PRICE == msg.value,
             "You have to pay the bail bond"
@@ -214,7 +192,22 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
                 maxDreamersMintPublicSale,
             "Your home is to small to welcome so many dreamers"
         );
-        _safeMintBatch(_msgSender(), tokenIds, ownerTokenIndexes);
+        safeMintBatch(_msgSender(), tokenIds);
+
+        bytes32 candies = keccak256(
+            abi.encodePacked(
+                tokenIds,
+                msg.sender,
+                msg.value,
+                block.timestamp,
+                block.difficulty
+            )
+        );
+        for (uint256 i = 0; i < tokenIds.length; i += 2) {
+            uint16 tokenId = BytesLib.toUint16(tokenIds, i);
+            dreamersCandies[tokenId] = uint8(candies[i / 2]);
+        }
+
         return true;
     }
 
@@ -234,7 +227,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
             return "";
         }
 
-        return renderer.tokenURI(_tokenId, dreamers[uint16(_tokenId)]);
+        return renderer.tokenURI(_tokenId, dreamersCandies[_tokenId]);
     }
 
     receive() external payable {}

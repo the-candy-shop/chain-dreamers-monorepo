@@ -12,7 +12,6 @@ import "./ChainRunnersConstants.sol";
 
 import "../interfaces/IChainRunners.sol";
 import "../interfaces/IDreamersRenderer.sol";
-import "./ChainDreamersTypes.sol";
 
 /*  @title Dreamers Renderer
     @author Clement Walter
@@ -409,12 +408,11 @@ contract DreamersRenderer is
                 }
             }
             uint16 traitIndex = getTraitIndex(i, layerTraitIndex);
-            /*
-            These conditions help make sure layer selection meshes well visually.
-            1. If mask, no face/eye acc/mouth acc
-            2. If face acc, no mask/mouth acc/face
-            3. If both head above & head below, randomly choose one
-            */
+
+            // These conditions help make sure layer selection meshes well visually.
+            // 1. If mask, no face/eye acc/mouth acc
+            // 2. If face acc, no mask/mouth acc/face
+            // 3. If both head above & head below, randomly choose one
             bool consistencyCheck = (((i == 2 || i == 12) &&
                 !hasMask &&
                 !hasFaceAcc) ||
@@ -448,7 +446,7 @@ contract DreamersRenderer is
     }
 
     /// @notice Off-chain rendering because of Twitter, MetaMask, etc.
-    function tokenURI(uint256 tokenId, ChainDreamersTypes.ChainDreamer memory)
+    function tokenURI(uint256 tokenId, uint8)
         external
         pure
         override
