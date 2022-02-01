@@ -377,12 +377,12 @@ abstract contract ERC721 is IERC721, IERC721Metadata, Context, ERC165 {
      *
      * Emits a {Transfer} event.
      */
-    function safeTransferFrom(
+    function _safeTransferFrom(
         address from,
         address to,
         uint256 tokenId,
         bytes memory data
-    ) public override {
+    ) internal {
         require(from != address(0), "ERC721: from cannot be the zero address");
         require(to != address(0), "ERC721: to cannot be the zero address");
         require(
@@ -421,8 +421,17 @@ abstract contract ERC721 is IERC721, IERC721Metadata, Context, ERC165 {
         address from,
         address to,
         uint256 tokenId
-    ) public override {
-        safeTransferFrom(from, to, tokenId, bytes(""));
+    ) external override {
+        _safeTransferFrom(from, to, tokenId, bytes(""));
+    }
+
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 tokenId,
+        bytes memory data
+    ) external override {
+        _safeTransferFrom(from, to, tokenId, data);
     }
 
     /**
