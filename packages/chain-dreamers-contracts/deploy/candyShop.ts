@@ -15,7 +15,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     args: ["https://api.chaindreamers.xyz/test/candy/tokens/{id}/metadata"],
   });
 
-  if (network.tags.mainnet) {
+  if (!network.tags.local) {
     await execute(
       "CandyShop",
       {
