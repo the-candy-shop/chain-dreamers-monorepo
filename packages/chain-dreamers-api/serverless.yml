@@ -6,7 +6,7 @@ provider:
   runtime: nodejs14.x
   memorySize: 2048
   lambdaHashingVersion: 20201221
-  stage: ${opt:stage, 'test'}
+  stage: ${opt:stage, 'staging'}
   region: ${opt:region, 'us-west-1'}
   environment:
     API_ASSETS_BUCKET_NAME: ${self:custom.s3.apiAssetsBucketName}

@@ -9,7 +9,23 @@ export const metadata = async (event) => {
   const noCache =
     event.queryStringParameters && event.queryStringParameters["no-cache"];
 
-  const s3Json = await getS3Json("metadata", id);
+  const sdk = getSdk();
+
+  const [s3Json, dreamerExists, runnerDna, dreamerDna] = await Promise.all([
+    getS3Json("metadata", id),
+    doesDreamerExist(sdk, id),
+    sdk.ChainRunners.getDna(id),
+    sdk.ChainDreamers.dreamers(id),
+  ]);
+
+  if (!dreamerExists) {
+    return {
+      statusCode: 404,
+      body: JSON.stringify({
+        error: `Dreamer with id ${id} could not be found`,
+      }),
+    };
+  }
 
   if (s3Json && !noCache) {
     return {
@@ -22,22 +38,6 @@ export const metadata = async (event) => {
       },
     };
   }
-
-  const sdk = getSdk();
-
-  const dreamerExists = await doesDreamerExist(sdk, id);
-
-  if (!dreamerExists) {
-    return {
-      statusCode: 404,
-      body: JSON.stringify({
-        error: `Dreamer with id ${id} could not be found`,
-      }),
-    };
-  }
-
-  const dreamerDna = await sdk.ChainDreamers.dreamers(id);
-  const runnerDna = await sdk.ChainRunners.getDna(id);
 
   const tokenData = await sdk.DreamersRenderer.getTokenData(
     runnerDna,

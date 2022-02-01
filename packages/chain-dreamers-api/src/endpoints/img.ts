@@ -10,7 +10,23 @@ export const img = async (event) => {
   const noCache =
     event.queryStringParameters && event.queryStringParameters["no-cache"];
 
-  const s3Image = await getS3Image("img", id);
+  const sdk = getSdk();
+
+  const [s3Image, dreamerExists, runnerDna, dreamerDna] = await Promise.all([
+    getS3Image("img", id),
+    doesDreamerExist(sdk, id),
+    sdk.ChainRunners.getDna(id),
+    sdk.ChainDreamers.dreamers(id),
+  ]);
+
+  if (!dreamerExists) {
+    return {
+      statusCode: 404,
+      body: JSON.stringify({
+        error: `Dreamer with id ${id} could not be found`,
+      }),
+    };
+  }
 
   if (s3Image && !noCache) {
     return {
@@ -25,21 +41,7 @@ export const img = async (event) => {
     };
   }
 
-  const sdk = getSdk();
-
-  const dreamerExists = await doesDreamerExist(sdk, id);
-
-  if (!dreamerExists) {
-    return {
-      statusCode: 404,
-      body: JSON.stringify({
-        error: `Dreamer with id ${id} could not be found`,
-      }),
-    };
-  }
-
-  const runnerDna = await sdk.ChainRunners.getDna(id);
-  const dreamerDna = await sdk.ChainDreamers.dreamers(id);
+  updateMintedDreamersList(parseInt(id));
 
   const tokenData = await sdk.DreamersRenderer.getTokenData(
     runnerDna,
@@ -50,7 +52,6 @@ export const img = async (event) => {
   const pngBuffer = await svgToPng(svg, 500, 500);
 
   storeS3Image("img", id, pngBuffer);
-  updateMintedDreamersList(parseInt(id));
 
   return {
     statusCode: 200,
