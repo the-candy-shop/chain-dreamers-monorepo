@@ -262,7 +262,7 @@ contract DreamersRenderer is
             for (uint8 i = 1; i < dAttributeParameterCount; i++) {
                 d = bytes.concat(
                     d,
-                    SPACE, // comma
+                    SPACE,
                     bytes(uint8(bytesBuffer[i]).toString())
                 );
             }

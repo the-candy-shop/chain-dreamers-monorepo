@@ -1,6 +1,7 @@
 import { task } from "hardhat/config";
 import { uint16ToBytes } from "../../utils/dreamers";
 import fs from "fs";
+import { SingleBar } from "cli-progress";
 
 task("get-mint-gas", "Estimate the gas used to mint Dreamers").setAction(
   async ({}, { ethers, getNamedAccounts, network, deployments }) => {
@@ -20,13 +21,19 @@ task("get-mint-gas", "Estimate the gas used to mint Dreamers").setAction(
       } catch (e) {}
     }
     console.log("Runners minted");
+    const paused = await CandyShop.paused();
+    if (paused) {
+      await CandyShop.unpause();
+    }
     await CandyShop.mintBatch([0], [maxRunnersPerWallet], {
       value: ethers.utils.parseEther(
-        (maxRunnersPerWallet * 0.05).toFixed(2).toString()
+        (maxRunnersPerWallet * 0.03).toFixed(2).toString()
       ),
     });
     console.log("Candies bought");
 
+    const bar = new SingleBar({});
+    bar.start(maxRunnersPerWallet, 0);
     gas = await Promise.all(
       [...Array(maxRunnersPerWallet).keys()].map(async (lastTokenId) => {
         const numberOfTokens = lastTokenId + 1;
@@ -35,33 +42,24 @@ task("get-mint-gas", "Estimate the gas used to mint Dreamers").setAction(
           [numberOfTokens],
           {
             value: ethers.utils.parseEther(
-              (numberOfTokens * 0.05).toFixed(2).toString()
+              (numberOfTokens * 0.03).toFixed(2).toString()
             ),
           }
         );
         const tokenIds =
           "0x" + [...Array(numberOfTokens).keys()].map(uint16ToBytes).join("");
-        const ownerTokenIndexes = tokenIds;
         const candyIds = Array(numberOfTokens).fill(0);
-        const candyIdsBytes = ethers.utils.hexlify(candyIds);
         const candyAmounts = Array(numberOfTokens).fill(1);
         const dreamersGas =
           await ChainDreamers.estimateGas.mintBatchRunnersAccess(
             tokenIds,
-            ownerTokenIndexes,
-            candyIdsBytes,
             candyIds,
             candyAmounts
           );
-        const airDropGas = await ChainDreamers.estimateGas.airDropBatch(
-          deployer,
-          [...Array(numberOfTokens).keys()],
-          [...Array(numberOfTokens).fill(0)]
-        );
+        bar.increment(1);
         return {
           candyGas: candyGas.toNumber(),
           dreamersGas: dreamersGas.toNumber(),
-          airDropGas: airDropGas.toNumber(),
         };
       })
     );
@@ -69,6 +67,8 @@ task("get-mint-gas", "Estimate the gas used to mint Dreamers").setAction(
       "assets/mint-gas-chapter-1.json",
       JSON.stringify(gas, null, 2)
     );
+
+    console.log("Chapter 1 gas estimated");
 
     // Chapter 2
     await execute(
@@ -95,7 +95,6 @@ task("get-mint-gas", "Estimate the gas used to mint Dreamers").setAction(
         const numberOfTokens = lastTokenId + 1;
 
         const tx = await ChainDreamers.estimateGas.mintBatchPublicSale(
-          "0x" + [...Array(numberOfTokens).keys()].map(uint16ToBytes).join(""),
           "0x" + [...Array(numberOfTokens).keys()].map(uint16ToBytes).join(""),
           {
             value: ethers.utils.parseEther(

@@ -16,8 +16,10 @@ export const getSvg = (trait: Trait): string => {
 
 export const normalizeD = (d: string): string => {
   return d
+    .replace(/%20/g, " ")
     .replace(D_REGEX, (path) => {
-      const [command, ...args] = path.split(/[ ,]/g);
+      const command = path[0];
+      const args = path.slice(1).split(/[ ,]/g);
       return `${command} ${args
         .filter(Boolean)
         .map((n) => parseInt(n))

@@ -117,7 +117,7 @@ describe("DreamersRenderer", async function () {
       it("should return correct URI for tokenId " + tokenId, async function () {
         await deployments.fixture(TAGS.DREAMERS_PALETTES);
         const DreamersRenderer = await ethers.getContract("DreamersRenderer");
-        const res = await DreamersRenderer.tokenURI(tokenId, { candy: 0 });
+        const res = await DreamersRenderer.tokenURI(tokenId, 0);
         expect(res).to.equal(
           `https://api.chaindreamers.xyz/test/tokens/${tokenId}/metadata`
         );

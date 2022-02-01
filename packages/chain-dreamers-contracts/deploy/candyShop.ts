@@ -6,7 +6,7 @@ import { TAGS } from "../utils/constants";
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployments, getNamedAccounts, network } = hre;
-  const { deploy, execute } = deployments;
+  const { deploy, execute, read } = deployments;
 
   const { deployer } = await getNamedAccounts();
   await deploy("CandyShop", {
@@ -16,14 +16,17 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   });
 
   if (!network.tags.local) {
-    await execute(
-      "CandyShop",
-      {
-        from: deployer,
-        log: true,
-      },
-      "pause"
-    );
+    const paused = await read("CandyShop", "paused");
+    if (!paused) {
+      await execute(
+        "CandyShop",
+        {
+          from: deployer,
+          log: true,
+        },
+        "pause"
+      );
+    }
   }
 };
 

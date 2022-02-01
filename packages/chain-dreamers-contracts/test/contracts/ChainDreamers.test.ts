@@ -5,6 +5,7 @@ import {
   ethers,
   getNamedAccounts,
   getUnnamedAccounts,
+  network,
 } from "hardhat";
 import { solidity } from "ethereum-waffle";
 import { loadSkus, TAGS } from "../../utils/constants";
@@ -218,6 +219,26 @@ describe("ChainDreamers", function () {
         0, 0, 0,
       ]);
     });
+    it("should be able to batch mint 100 tokens", async () => {
+      const { users, ChainDreamers } = await setup();
+      const tokenIds = [...Array(100).keys()];
+      const tokenIdsBytes = "0x" + tokenIds.map(uint16ToBytes).join("");
+      const candyIds = [...Array(100).fill(0)];
+      const candyAmounts = [...Array(100).fill(1)];
+      await Promise.all(
+        tokenIds.map((tokenId) => users[0].ChainRunners.mint(tokenId))
+      );
+      await users[0].CandyShop.mintBatch(candyIds, candyAmounts, {
+        value: ethers.utils.parseEther("3"),
+      });
+      await users[0].ChainDreamers.mintBatchRunnersAccess(
+        tokenIdsBytes,
+        candyIds,
+        candyAmounts
+      );
+      const balance = await ChainDreamers.balanceOf(users[0].address);
+      expect(balance.toNumber()).to.equal(100);
+    });
   });
   describe("mintBatchPublicSale", async function () {
     it("should revert when minting is not open", async () => {
@@ -280,6 +301,55 @@ describe("ChainDreamers", function () {
         tokenIds.map(async (tokenId) => await ChainDreamers.ownerOf(tokenId))
       );
       expect(owners).to.deep.eq(Array(tokenIds.length).fill(users[0].address));
+    });
+  });
+  describe("mintBatchFounders", async function () {
+    it("should revert when minting is not open", async () => {
+      const { deployer } = await setup();
+      expect(
+        deployer.ChainDreamers.mintBatchFounders(
+          "0x" + [0, 1, 2, 3].map(uint16ToBytes).join("")
+        )
+      ).to.be.revertedWith("Public sale not open");
+    });
+    it("should revert when minter is not owner", async () => {
+      const { users } = await publicSaleFixture();
+      expect(
+        users[0].ChainDreamers.mintBatchFounders(
+          "0x" + [0, 1, 2, 3].map(uint16ToBytes).join("")
+        )
+      ).to.be.revertedWith("Ownable: caller is not the owner");
+    });
+    it("should revert when trying to mint to many tokens", async () => {
+      const { deployer } = await publicSaleFixture();
+      expect(
+        deployer.ChainDreamers.mintBatchFounders(
+          "0x" + [...Array(51).keys()].map(uint16ToBytes).join("")
+        )
+      ).to.be.revertedWith(
+        "Even if you are a founder, you don't deserve that many Dreamers"
+      );
+    });
+    it("should be able to mint", async () => {
+      const { deployer } = await setup();
+      await deployer.ChainDreamers.setPublicSaleTimestamp(1);
+      await network.provider.send("evm_mine");
+      await network.provider.send("evm_mine");
+      await deployer.ChainDreamers.mintBatchFounders(
+        "0x" + [...Array(50).keys()].map(uint16ToBytes).join("")
+      );
+      const balance = await deployer.ChainDreamers.balanceOf(deployer.address);
+      expect(balance.toNumber()).to.equal(50);
+    });
+    it("should not be able to mint twice", async () => {
+      const { deployer } = await setup();
+      await deployer.ChainDreamers.setPublicSaleTimestamp(1);
+      await network.provider.send("evm_mine");
+      await network.provider.send("evm_mine");
+      await deployer.ChainDreamers.mintBatchFounders("0x0000");
+      expect(
+        deployer.ChainDreamers.mintBatchFounders("0x0001")
+      ).to.be.revertedWith("Don't be too greedy");
     });
   });
   describe("withdraw", async () => {

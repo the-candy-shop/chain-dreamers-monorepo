@@ -74,6 +74,8 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
     // Constants
     uint256 public maxDreamersMintPublicSale;
     uint256 public constant MINT_PUBLIC_PRICE = 0.05 ether;
+    uint256 public constant MAX_MINT_FOUNDERS = 50;
+    bool public foundersMinted = false;
 
     // State variables
     uint256 public publicSaleStartTimestamp;
@@ -165,7 +167,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
                 "Your runner needs one and only one candy, who knows what could happen otherwise"
             );
             dreamersCandies[tokenId] =
-                (uint8(candies[i]) & candyMask) +
+                (uint8(candies[i % 32]) & candyMask) +
                 (uint8(candyIds[i]) % 4);
             if (i % 32 == 31) {
                 candies = keccak256(abi.encodePacked(candies));
@@ -208,6 +210,39 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
             dreamersCandies[tokenId] = uint8(candies[i / 2]);
         }
 
+        return true;
+    }
+
+    function mintBatchFounders(bytes calldata tokenIds)
+        public
+        nonReentrant
+        onlyOwner
+        whenPublicSaleActive
+        returns (bool)
+    {
+        require(!foundersMinted, "Don't be too greedy");
+        require(
+            tokenIds.length <= MAX_MINT_FOUNDERS * 2,
+            "Even if you are a founder, you don't deserve that many Dreamers"
+        );
+        safeMintBatch(_msgSender(), tokenIds);
+
+        bytes32 candies = keccak256(
+            abi.encodePacked(
+                tokenIds,
+                msg.sender,
+                block.timestamp,
+                block.difficulty
+            )
+        );
+        for (uint256 i = 0; i < tokenIds.length / 2; i++) {
+            uint16 tokenId = BytesLib.toUint16(tokenIds, i * 2);
+            dreamersCandies[tokenId] = uint8(candies[i % 32]);
+            if (i % 32 == 31) {
+                candies = keccak256(abi.encodePacked(candies));
+            }
+        }
+        foundersMinted = true;
         return true;
     }
 
