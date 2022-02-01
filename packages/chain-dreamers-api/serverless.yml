@@ -10,7 +10,6 @@ provider:
   region: ${opt:region, 'us-west-1'}
   environment:
     API_ASSETS_BUCKET_NAME: ${self:custom.s3.apiAssetsBucketName}
-    API_CHAIN_DREAMERS_TABLE_NAME: ${self:custom.dynamodb.chainDreamersTableName}
     API_DOMAIN_NAME: ${self:custom.customDomain.domainName}
     API_DOMAIN_BASE_PATH: ${self:custom.customDomain.basePath}
     ETHERSCAN_API_KEY: ${env:ETHERSCAN_API_KEY}
@@ -23,10 +22,6 @@ provider:
       Action:
         - s3:*
       Resource: "arn:aws:s3:::${self:custom.s3.apiAssetsBucketName}/*"
-    - Effect: Allow
-      Action:
-        - dynamodb:*
-      Resource: "arn:aws:dynamodb:*:*:table/${self:custom.dynamodb.chainDreamersTableName}"
 
 functions:
   img:
@@ -88,14 +83,6 @@ functions:
             cacheKeyParameters:
               - name: request.path.id
 
-  mintedDreamers:
-    handler: handler.mintedDreamers
-    events:
-      - http:
-          path: minted-dreamers
-          method: get
-          cors: true
-
 package:
   include:
     - eth-sdk/**
@@ -114,8 +101,6 @@ custom:
     enableCaching: true
   s3:
     apiAssetsBucketName: chain-dreamers-api-assets-${self:provider.stage}
-  dynamodb:
-    chainDreamersTableName: ChainDreamersTable-${self:provider.stage}
   domainPath:
     test: 'test'
     staging: 'staging'
@@ -143,21 +128,7 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: ${self:custom.s3.apiAssetsBucketName}
-    ChainDreamersTable:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: ${self:custom.dynamodb.chainDreamersTableName}
-        AttributeDefinitions:
-          - AttributeName: key
-            AttributeType: S
-        KeySchema:
-          - AttributeName: key
-            KeyType: HASH
-        BillingMode: PAY_PER_REQUEST
 
   Outputs:
     ApiAssetsBucketNameOutputKey:
       Value: !Ref ApiAssetsBucket
-    ChainDreamersTableName:
-      Value: !Ref ChainDreamersTable
-

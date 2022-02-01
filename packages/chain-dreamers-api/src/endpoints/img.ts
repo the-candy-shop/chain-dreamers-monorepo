@@ -3,7 +3,6 @@ import { getSdk } from "../utils/getSdk";
 import { renderSvg } from "../utils/renderSvg";
 import { svgToPng } from "../utils/svgToPng";
 import { storeS3Image } from "../utils/storeS3Image";
-import { updateMintedDreamersList } from "../utils/updateMintedDreamersList";
 
 export const img = async (event) => {
   const id = event.pathParameters.id as string;
@@ -16,7 +15,7 @@ export const img = async (event) => {
     getS3Image("img", id),
     doesDreamerExist(sdk, id),
     sdk.ChainRunners.getDna(id),
-    sdk.ChainDreamers.dreamers(id),
+    sdk.ChainDreamers.dreamersCandies(id),
   ]);
 
   if (!dreamerExists) {
@@ -40,8 +39,6 @@ export const img = async (event) => {
       },
     };
   }
-
-  updateMintedDreamersList(parseInt(id));
 
   const tokenData = await sdk.DreamersRenderer.getTokenData(
     runnerDna,

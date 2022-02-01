@@ -5,9 +5,7 @@ import { ethers } from "ethers";
 import { DreamersContext } from "../contexts/DreamersContext";
 import { useCandyShopContract } from "./useCandyShopContract";
 import { SnackbarErrorContext } from "../contexts/SnackbarErrorContext";
-import config, { dreamerPrice } from "../config";
-
-const apiBaseUrl = config.app.apiBaseUrl;
+import { dreamerPrice } from "../config";
 
 export const useDreamersContract = () => {
   const { account } = useEthers();
@@ -131,19 +129,12 @@ export const useDreamersContract = () => {
 
   const mintAsRunners = React.useCallback(
     async (runnerIds: number[], candyIds: number[]): Promise<void> => {
-      const ownerTokenIndexes: number[] = [];
-      runnerIds.forEach((_, index) => {
-        ownerTokenIndexes.push(dreamersCount + index);
-      });
-
       return new Promise(async (resolve, reject) => {
         if (sdk && account) {
           try {
             setIsWaitingForPayment(true);
             await sdk.ChainDreamers.mintBatchRunnersAccess(
               "0x" + runnerIds.map(uint16ToBytes).join(""),
-              "0x" + ownerTokenIndexes.map(uint16ToBytes).join(""),
-              ethers.utils.hexlify(candyIds),
               candyIds,
               Array(candyIds.length).fill(1)
             );
@@ -178,11 +169,6 @@ export const useDreamersContract = () => {
 
   const mint = React.useCallback(
     async (runnerIds: number[]): Promise<void> => {
-      const ownerTokenIndexes: number[] = [];
-      runnerIds.forEach((_, index) => {
-        ownerTokenIndexes.push(dreamersCount + index);
-      });
-
       const price = dreamerPrice.times(runnerIds.length);
 
       return new Promise(async (resolve, reject) => {
@@ -191,7 +177,6 @@ export const useDreamersContract = () => {
             setIsWaitingForPayment(true);
             await sdk.ChainDreamers.mintBatchPublicSale(
               "0x" + runnerIds.map(uint16ToBytes).join(""),
-              "0x" + ownerTokenIndexes.map(uint16ToBytes).join(""),
               {
                 from: account,
                 value: ethers.utils.parseEther(price.toString()),
@@ -217,24 +202,14 @@ export const useDreamersContract = () => {
     [account, dreamersCount, sdk, setError, waitForDreamersMint]
   );
 
-  const isDreamerAvailable = React.useCallback(
-    async (runnerId: number): Promise<boolean> => {
-      if (sdk && account) {
-        const dreamerDna = await sdk.ChainDreamers.dreamers(runnerId);
+  const fetchMintedDreamers = React.useCallback(async (): Promise<
+    boolean[]
+  > => {
+    if (sdk) {
+      return sdk.ChainDreamers.getTokenExists();
+    }
 
-        return dreamerDna === 0;
-      }
-
-      return false;
-    },
-    [sdk, account]
-  );
-
-  const fetchMintedDreamers = React.useCallback(async (): Promise<number[]> => {
-    const response = await fetch(`${apiBaseUrl}/minted-dreamers`);
-    const body = await response.json();
-
-    return body?.mintedDreamersIds ?? [];
+    return [];
   }, []);
 
   return {
@@ -243,7 +218,6 @@ export const useDreamersContract = () => {
     mintAsRunners,
     isWaitingForPayment,
     isMinting,
-    isDreamerAvailable,
     fetchMintedDreamers,
   };
 };

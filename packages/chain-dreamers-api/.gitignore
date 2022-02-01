@@ -10,3 +10,5 @@ valise.json
 meta.json
 
 .env
+
+eth-sdk/abis/

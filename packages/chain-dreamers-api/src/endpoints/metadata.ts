@@ -15,7 +15,7 @@ export const metadata = async (event) => {
     getS3Json("metadata", id),
     doesDreamerExist(sdk, id),
     sdk.ChainRunners.getDna(id),
-    sdk.ChainDreamers.dreamers(id),
+    sdk.ChainDreamers.dreamersCandies(id),
   ]);
 
   if (!dreamerExists) {

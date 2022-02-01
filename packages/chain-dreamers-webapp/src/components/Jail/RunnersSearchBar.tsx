@@ -26,7 +26,7 @@ function RunnerSearchBar({
   const { fetchMintedDreamers } = useDreamersContract();
   const [searchedValue, setSearchedValue] = React.useState<string>("");
   const [alreadyMintedDreamers, setAlreadyMintedDreamers] = React.useState<
-    number[]
+    boolean[]
   >([]);
   const [currentSearchKey, setCurrentSearchKey] =
     React.useState<string>("initial");
@@ -40,7 +40,7 @@ function RunnerSearchBar({
       runnerIds
         .filter(
           (option) =>
-            !alreadyMintedDreamers.includes(option.id) &&
+            !alreadyMintedDreamers[option.id] &&
             option.label.includes(searchedValue)
         )
         .slice(0, 5),
@@ -100,7 +100,12 @@ function RunnerSearchBar({
         }
         noOptionsText="No Runners found"
         renderOption={(props, option) => (
-          <RunnerSearchOption key={option.id} option={option} LiProps={props} />
+          <RunnerSearchOption
+            key={option.id}
+            option={option}
+            LiProps={props}
+            available={!alreadyMintedDreamers[option.id]}
+          />
         )}
       />
     </Box>
