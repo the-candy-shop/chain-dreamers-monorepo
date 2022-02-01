@@ -14,8 +14,8 @@ export const renderMetaData = (id: string, tokenData: number[]): MetaData => {
     attributes: [],
     image:
       process.env.API_DOMAIN_BASE_PATH === ""
-        ? `https://${process.env.API_DOMAIN_NAME}/tokens/1/img`
-        : `https://${process.env.API_DOMAIN_NAME}/${process.env.API_DOMAIN_BASE_PATH}/tokens/1/img`,
+        ? `https://${process.env.API_DOMAIN_NAME}/tokens/${id}/img`
+        : `https://${process.env.API_DOMAIN_NAME}/${process.env.API_DOMAIN_BASE_PATH}/tokens/${id}/img`,
   };
 
   for (const index of tokenData) {
