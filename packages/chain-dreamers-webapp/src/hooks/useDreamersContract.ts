@@ -11,7 +11,6 @@ export const useDreamersContract = () => {
   const { account } = useEthers();
 
   const {
-    dreamersCount,
     setDreamersCount,
     dreamersIds,
     setDreamersIds,
@@ -157,14 +156,7 @@ export const useDreamersContract = () => {
         }
       });
     },
-    [
-      waitForDreamersMint,
-      account,
-      dreamersCount,
-      sdk,
-      fetchCandyQuantities,
-      setError,
-    ]
+    [waitForDreamersMint, account, sdk, fetchCandyQuantities, setError]
   );
 
   const mint = React.useCallback(
@@ -199,7 +191,7 @@ export const useDreamersContract = () => {
         }
       });
     },
-    [account, dreamersCount, sdk, setError, waitForDreamersMint]
+    [account, sdk, setError, waitForDreamersMint]
   );
 
   const fetchMintedDreamers = React.useCallback(async (): Promise<
@@ -210,7 +202,7 @@ export const useDreamersContract = () => {
     }
 
     return [];
-  }, []);
+  }, [sdk]);
 
   return {
     dreamersIds,
