@@ -55,6 +55,10 @@ function RunnerSearchBar({
           border: "1px solid #DA4A8A",
           marginTop: "4px",
         },
+
+        "& .MuiAutocomplete-noOptions": {
+          color: "white",
+        },
       }}
     >
       <Autocomplete
@@ -94,7 +98,7 @@ function RunnerSearchBar({
         getOptionDisabled={(option) =>
           selectedRunners.some((id) => id === option.id)
         }
-        noOptionsText="No runners found"
+        noOptionsText="No Runners found"
         renderOption={(props, option) => (
           <RunnerSearchOption key={option.id} option={option} LiProps={props} />
         )}
