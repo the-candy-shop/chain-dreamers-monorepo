@@ -227,7 +227,6 @@ abstract contract ERC721 is IERC721, IERC721Metadata, Context, ERC165 {
         );
         _transfer(from, fromIndex, to, tokenIndex);
         _checkOnERC721Received(from, to, tokenId, "");
-        emit Transfer(from, to, tokenId);
     }
 
     /**
@@ -414,7 +413,6 @@ abstract contract ERC721 is IERC721, IERC721Metadata, Context, ERC165 {
         );
         _transfer(from, fromIndex, to, tokenIndex);
         _checkOnERC721Received(from, to, tokenId, data);
-        emit Transfer(from, to, tokenId);
     }
 
     function safeTransferFrom(
