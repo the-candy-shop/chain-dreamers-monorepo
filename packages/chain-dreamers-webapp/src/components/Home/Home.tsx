@@ -49,7 +49,9 @@ function Home() {
                 navigate(isCandyShopOpen ? "/candy-shop" : "/jail")
               }
             >
-              {isCandyShopOpen ? "Enter the Candy Shop" : "Enter the Jail"}
+              {isCandyShopOpen
+                ? "Enter the Candy Shop"
+                : "Start minting Dreamers by entering the Jail"}
             </Button>
           )}
           <img

@@ -23,10 +23,16 @@ const defaultCandyQuantity = {
 
 type MyOrderProps = {
   sx?: BoxProps["sx"];
+  runnersIds: number[];
+  dreamersIds: number[];
 };
 
-function MyOrder({ sx }: MyOrderProps) {
+function MyOrder({ sx, runnersIds, dreamersIds }: MyOrderProps) {
   const isSmallWidth = useMediaQuery("(max-width:915px)");
+  const runnerLeftToMint = React.useMemo(
+    () => runnersIds.filter((id) => !dreamersIds.includes(id)),
+    [runnersIds, dreamersIds]
+  );
 
   const navigate = useNavigate();
   const {
@@ -153,6 +159,22 @@ function MyOrder({ sx }: MyOrderProps) {
                 {total !== 0 &&
                   ` for ${candyPrice.times(total).toString()} ETH`}
               </Button>
+              {total > runnerLeftToMint.length && (
+                <Box display="flex" justifyContent="center">
+                  <Box
+                    sx={{
+                      marginTop: "16px",
+                      fontSize: "15px",
+                      color: "#b60e0e",
+                      width: "450px",
+                    }}
+                  >
+                    Be careful! You have only {runnerLeftToMint.length} Runners
+                    not dreaming yet. Those {total - runnerLeftToMint.length}{" "}
+                    extra flasks will be useless!
+                  </Box>
+                </Box>
+              )}
               <Box sx={{ marginTop: "44px", fontSize: "15px" }}>
                 At least 1 Flask of candy is needed to mint 1 Dreamer.{" "}
                 <Link

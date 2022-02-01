@@ -5,10 +5,12 @@ import Jaz from "./Jaz";
 import MyOrder from "./MyOrder";
 import { useRunnerIds } from "../../hooks/useRunnerIds";
 import { useMediaQuery } from "@mui/material";
+import { useDreamersContract } from "../../hooks/useDreamersContract";
 
 function CandyShop() {
   const isSmallWidth = useMediaQuery("(max-width:915px)");
-  const runnerCount = useRunnerIds();
+  const runnerIds = useRunnerIds();
+  const { dreamersIds } = useDreamersContract();
 
   return (
     <Box display="flex" flexDirection="column" minHeight="calc(100vh - 191px)">
@@ -20,7 +22,7 @@ function CandyShop() {
         flex={1}
         flexDirection={isSmallWidth ? "column" : "row"}
       >
-        {runnerCount.length > 0 && (
+        {runnerIds.length > 0 && (
           <>
             <Box
               flex={1}
@@ -35,11 +37,15 @@ function CandyShop() {
                 marginLeft: isSmallWidth ? 0 : "12px",
               }}
             >
-              <MyOrder sx={{ height: "100%" }} />
+              <MyOrder
+                sx={{ height: "100%" }}
+                dreamersIds={dreamersIds}
+                runnersIds={runnerIds}
+              />
             </Box>
           </>
         )}
-        {runnerCount.length <= 0 && (
+        {runnerIds.length <= 0 && (
           <Box flex={1} display="flex" flexDirection="column">
             <Jaz
               message="candyShopWithoutRunner"
