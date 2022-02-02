@@ -43,7 +43,7 @@ function Jaz({ message, sx }: JazProps) {
         >
           {message === "candyShopWithRunner" && (
             <Typist avgTypingDelay={20}>
-              Hello! My name is Jaz, I am the Candy Shop Runner. I successfully
+              Hello! My name is Jaz, I am the Candy Shop Owner. I successfully
               identified you as a verified Chain Runner. Usually I sell regular
               candies, but you seem pretty informed.
               <br />
