@@ -205,6 +205,7 @@ export const useDreamersContract = () => {
   }, [sdk]);
 
   return {
+    address: sdk?.ChainDreamers.address,
     dreamersIds,
     mint,
     mintAsRunners,

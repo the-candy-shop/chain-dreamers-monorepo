@@ -9,11 +9,12 @@ import Button from "@mui/lab/LoadingButton";
 import { useIsOpen } from "../../hooks/useIsOpen";
 
 const apiBaseUrl = config.app.apiBaseUrl;
+const openSeaBaseUrl = config.app.openSeaBaseUrl;
 
 function MyDreamers() {
   const navigate = useNavigate();
   const { isCandyShopOpen } = useIsOpen();
-  const { dreamersIds } = useDreamersContract();
+  const { dreamersIds, address } = useDreamersContract();
 
   const goToTheCandyShop = React.useCallback(() => {
     navigate("/candy-shop");
@@ -37,11 +38,16 @@ function MyDreamers() {
             >
               {dreamersIds.map((id) => (
                 <Box key={id} margin="16px">
-                  <img
-                    alt={`Dreamer ${id}`}
-                    src={`${apiBaseUrl}/tokens/${id}/img`}
-                    style={{ width: "256px", borderRadius: "16px" }}
-                  />
+                  <a
+                    href={`${openSeaBaseUrl}/assets/${address}/${id}`}
+                    target="_blank"
+                  >
+                    <img
+                      alt={`Dreamer ${id}`}
+                      src={`${apiBaseUrl}/tokens/${id}/img`}
+                      style={{ width: "256px", borderRadius: "16px" }}
+                    />
+                  </a>
                   <Box fontWeight={600} fontSize="22px" marginTop="8px">
                     Dreamer #{id}
                   </Box>
