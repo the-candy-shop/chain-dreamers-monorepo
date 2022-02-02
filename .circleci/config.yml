@@ -54,6 +54,8 @@ jobs:
       - install-dependencies
       - deploy-api:
           build_command_name: "deploy:staging"
+      - deploy-api-test:
+          build_command_name: "deploy:test"
   deploy-prod:
     docker:
       - image: cimg/python:3.10.2-node
