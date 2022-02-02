@@ -41,6 +41,7 @@ function MyDreamers() {
                   <a
                     href={`${openSeaBaseUrl}/assets/${address}/${id}`}
                     target="_blank"
+                    rel="noreferrer"
                   >
                     <img
                       alt={`Dreamer ${id}`}
