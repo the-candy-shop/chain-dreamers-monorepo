@@ -41,7 +41,7 @@ function Faq() {
           <Content title="What is the Candy Shop?">
             <p>
               Beyond the narrative,{" "}
-              <Link href="https://thecandieshop.wtf/" target="_blank">
+              <Link href="https://thecandyshop.wtf/" target="_blank">
                 The Candy Shop
               </Link>{" "}
               is an NFT research lab.
