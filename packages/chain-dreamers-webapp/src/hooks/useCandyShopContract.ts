@@ -2,7 +2,7 @@ import React from "react";
 import { useEthers } from "@usedapp/core";
 import { useSdk } from "./useSdk";
 import { ethers } from "ethers";
-import { CandyList } from "../candies";
+import { candiesIds, CandyList } from "../candies";
 import { candyPrice } from "../config";
 import { CandyQuantitiesContext } from "../contexts/CandyQuantitiesContext";
 import { SnackbarErrorContext } from "../contexts/SnackbarErrorContext";
@@ -41,10 +41,15 @@ export const useCandyShopContract = () => {
           [0, 1, 2]
         );
 
+        console.log("balance", balance);
+
         const quantities = {
-          [CandyList.ChainMeth]: balance[0]?.toNumber(),
-          [CandyList.HeliumSpice]: balance[1]?.toNumber(),
-          [CandyList.SomnusTears]: balance[2]?.toNumber(),
+          [CandyList.ChainMeth]:
+            balance[candiesIds[CandyList.ChainMeth]]?.toNumber(),
+          [CandyList.HeliumSpice]:
+            balance[candiesIds[CandyList.HeliumSpice]]?.toNumber(),
+          [CandyList.SomnusTears]:
+            balance[candiesIds[CandyList.SomnusTears]]?.toNumber(),
         };
 
         setCandyQuantities(quantities);
