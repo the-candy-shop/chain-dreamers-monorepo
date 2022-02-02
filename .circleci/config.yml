@@ -31,6 +31,10 @@ commands:
           paths:
             - ~/chain-dreamers-monorepo/packages/chain-dreamers-image-processing/.dvc/cache
           key: api-dvc-deps
+      - run:
+          name: Set up aws crentials
+          command: |
+            serverless config credentials --provider aws --key $API_AWS_ACCESS_KEY_ID --secret $API_AWS_SECRET_ACCESS_KEY
   deploy-api:
     parameters:
       build_command_name:
@@ -39,7 +43,6 @@ commands:
       - run:
           name: Deploy application
           command: |
-            cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && serverless config credentials --provider aws --key $API_AWS_ACCESS_KEY_ID --secret $API_AWS_SECRET_ACCESS_KEY
             cd ~/chain-dreamers-monorepo/packages/chain-dreamers-api && npm run << parameters.build_command_name >>
 
 jobs:
