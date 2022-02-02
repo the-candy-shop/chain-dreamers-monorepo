@@ -54,7 +54,7 @@ jobs:
       - install-dependencies
       - deploy-api:
           build_command_name: "deploy:staging"
-      - deploy-api-test:
+      - deploy-api:
           build_command_name: "deploy:test"
   deploy-prod:
     docker:
