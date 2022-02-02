@@ -55,6 +55,8 @@ contract DreamersRenderer is
     bytes public constant SVG_TAG_END =
         bytes("%3cstyle%3epath{stroke-width:0.71}%3c/style%3e%3c/svg%3e");
 
+    string public _baseURI = "";
+
     struct Trait {
         uint16 dIndex;
         uint16 fillIndex;
@@ -345,10 +347,13 @@ contract DreamersRenderer is
         return string(bytes.concat(svg, SVG_TAG_END));
     }
 
-    constructor(address _rendererAddress, address _runnersTokenAddress)
-        ChainRunnersConstants(_rendererAddress)
-    {
+    constructor(
+        address _rendererAddress,
+        address _runnersTokenAddress,
+        string memory baseURI
+    ) ChainRunnersConstants(_rendererAddress) {
         runnersToken = IChainRunners(_runnersTokenAddress);
+        _baseURI = baseURI;
     }
 
     /// @notice The Dreamer's full DNA is an alteration of its corresponding Runner's DNA with it's consumed candy.
@@ -448,14 +453,14 @@ contract DreamersRenderer is
     /// @notice Off-chain rendering because of Twitter, MetaMask, etc.
     function tokenURI(uint256 tokenId, uint8)
         external
-        pure
+        view
         override
         returns (string memory)
     {
         return
             string(
                 abi.encodePacked(
-                    "https://api.chaindreamers.xyz/test/tokens/",
+                    bytes(_baseURI),
                     tokenId.toString(),
                     "/metadata"
                 )

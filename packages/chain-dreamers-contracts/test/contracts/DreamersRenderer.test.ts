@@ -119,7 +119,7 @@ describe("DreamersRenderer", async function () {
         const DreamersRenderer = await ethers.getContract("DreamersRenderer");
         const res = await DreamersRenderer.tokenURI(tokenId, 0);
         expect(res).to.equal(
-          `https://api.chaindreamers.xyz/test/tokens/${tokenId}/metadata`
+          `https://api.chaindreamers.xyz/tokens/${tokenId}/metadata`
         );
       });
     });

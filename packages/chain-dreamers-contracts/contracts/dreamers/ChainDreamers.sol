@@ -9,8 +9,10 @@ import "../interfaces/IDreamersRenderer.sol";
 import "../interfaces/ICandyShop.sol";
 import "../interfaces/IChainRunners.sol";
 
-contract OpenSeaProxyRegistry {
-    mapping(address => address) public proxies;
+contract OwnableDelegateProxy {}
+
+contract ProxyRegistry {
+    mapping(address => OwnableDelegateProxy) public proxies;
 }
 
 contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
@@ -65,7 +67,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
             return super.isApprovedForAll(owner, operator);
 
         return
-            operator == OpenSeaProxyRegistry(opensea).proxies(owner) ||
+            operator == address(ProxyRegistry(opensea).proxies(owner)) ||
             operator == looksrare ||
             proxyToApproved[operator] ||
             super.isApprovedForAll(owner, operator);

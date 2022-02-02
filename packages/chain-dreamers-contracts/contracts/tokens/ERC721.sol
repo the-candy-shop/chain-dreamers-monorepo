@@ -222,8 +222,8 @@ abstract contract ERC721 is IERC721, IERC721Metadata, Context, ERC165 {
             tokenIndex * 2
         );
         require(
-            _tokenApprovals[tokenId] == msg.sender || from == msg.sender,
-            "ERC721: caller is neither approved nor owner"
+            _isApprovedOrOwner(_msgSender(), tokenId),
+            "ERC721: transfer caller is not owner nor approved"
         );
         _transfer(from, fromIndex, to, tokenIndex);
         _checkOnERC721Received(from, to, tokenId, "");
@@ -279,18 +279,20 @@ abstract contract ERC721 is IERC721, IERC721Metadata, Context, ERC165 {
         uint256 tokenId,
         uint256 tokenIndex
     ) external {
-        if (_tokenApprovals[uint16(tokenId)] != msg.sender) {
+        if (_tokenApprovals[uint16(tokenId)] != _msgSender()) {
             // if sender is not approved, they need to be the owner
             require(
-                tokenIndex * 2 < _tokensByOwner[msg.sender].length,
+                tokenIndex * 2 < _tokensByOwner[_msgSender()].length,
                 "ERC721: token index out of range"
             );
             require(
-                BytesLib.toUint16(_tokensByOwner[msg.sender], tokenIndex * 2) ==
-                    tokenId,
+                BytesLib.toUint16(
+                    _tokensByOwner[_msgSender()],
+                    tokenIndex * 2
+                ) == tokenId,
                 "ERC721: caller is neither approved nor owner"
             );
-            emit Approval(msg.sender, to, tokenId);
+            emit Approval(_msgSender(), to, tokenId);
         }
         _tokenApprovals[uint16(tokenId)] = to;
     }
@@ -303,7 +305,7 @@ abstract contract ERC721 is IERC721, IERC721Metadata, Context, ERC165 {
      * - `tokenId` must exist.
      */
     function getApproved(uint256 tokenId)
-        external
+        public
         view
         override
         returns (address)
@@ -323,17 +325,17 @@ abstract contract ERC721 is IERC721, IERC721Metadata, Context, ERC165 {
         override
     {
         require(
-            operator != msg.sender,
+            operator != _msgSender(),
             "ERC721: cannot approve caller as operator"
         );
-        bytes memory tokens = _tokensByOwner[msg.sender];
+        bytes memory tokens = _tokensByOwner[_msgSender()];
         for (uint256 i = 0; i < tokens.length; i += 2) {
             _tokenApprovals[BytesLib.toUint16(tokens, i)] = _approved
                 ? operator
                 : address(0);
         }
 
-        emit ApprovalForAll(msg.sender, operator, _approved);
+        emit ApprovalForAll(_msgSender(), operator, _approved);
     }
 
     /**
@@ -355,6 +357,23 @@ abstract contract ERC721 is IERC721, IERC721Metadata, Context, ERC165 {
             }
         }
         return true;
+    }
+
+    /// @dev Copied from OpenZeppelin ERC721.sol
+    function _isApprovedOrOwner(address spender, uint256 tokenId)
+        internal
+        view
+        virtual
+        returns (bool)
+    {
+        require(
+            _exists(tokenId),
+            "ERC721: operator query for nonexistent token"
+        );
+        address owner = ERC721.ownerOf(tokenId);
+        return (spender == owner ||
+            getApproved(tokenId) == spender ||
+            isApprovedForAll(owner, spender));
     }
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -385,9 +404,8 @@ abstract contract ERC721 is IERC721, IERC721Metadata, Context, ERC165 {
         require(from != address(0), "ERC721: from cannot be the zero address");
         require(to != address(0), "ERC721: to cannot be the zero address");
         require(
-            _tokenApprovals[uint16(tokenId)] == msg.sender ||
-                from == msg.sender,
-            "ERC721: caller is not approved for all tokens"
+            _isApprovedOrOwner(_msgSender(), tokenId),
+            "ERC721: transfer caller is not owner nor approved"
         );
         uint256 tokenIndex = 0;
         while (
@@ -420,7 +438,7 @@ abstract contract ERC721 is IERC721, IERC721Metadata, Context, ERC165 {
         address to,
         uint256 tokenId
     ) external override {
-        _safeTransferFrom(from, to, tokenId, bytes(""));
+        _safeTransferFrom(from, to, tokenId, "");
     }
 
     function safeTransferFrom(
@@ -454,9 +472,8 @@ abstract contract ERC721 is IERC721, IERC721Metadata, Context, ERC165 {
         require(from != address(0), "ERC721: from cannot be the zero address");
         require(to != address(0), "ERC721: to cannot be the zero address");
         require(
-            _tokenApprovals[uint16(tokenId)] == msg.sender ||
-                from == msg.sender,
-            "ERC721: caller is not approved for all tokens"
+            _isApprovedOrOwner(_msgSender(), tokenId),
+            "ERC721: transfer caller is not owner nor approved"
         );
         uint256 tokenIndex = 0;
         while (
@@ -481,7 +498,6 @@ abstract contract ERC721 is IERC721, IERC721Metadata, Context, ERC165 {
             "ERC721: from is not in owners list"
         );
         _transfer(from, fromIndex, to, tokenIndex);
-        emit Transfer(from, to, tokenId);
     }
 
     /**
@@ -520,7 +536,7 @@ abstract contract ERC721 is IERC721, IERC721Metadata, Context, ERC165 {
      * @param tokenId uint265 A given token id
      * @return address The owner of the token.
      */
-    function ownerOf(uint256 tokenId) external view override returns (address) {
+    function ownerOf(uint256 tokenId) public view override returns (address) {
         require(_exists(tokenId), "ERC721: owner query for nonexistent token");
         return _ownerOf(tokenId);
     }
@@ -545,8 +561,8 @@ abstract contract ERC721 is IERC721, IERC721Metadata, Context, ERC165 {
             "ERC721: approve query for nonexistent token"
         );
         require(
-            _tokenApprovals[uint16(tokenId)] == msg.sender ||
-                owner == msg.sender,
+            _tokenApprovals[uint16(tokenId)] == _msgSender() ||
+                owner == _msgSender(),
             "ERC721: caller is not the owner nor an approved operator for the token"
         );
         _tokenApprovals[uint16(tokenId)] = to;

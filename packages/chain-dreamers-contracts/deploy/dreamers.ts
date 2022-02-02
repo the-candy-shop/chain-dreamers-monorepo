@@ -75,6 +75,8 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const Integers = await deployments.get("Integers");
   let runnersAddress = chainRunnersAddress();
   let rendererAddress = chainRunnersBaseRendererAddress();
+  let baseURI = "https://api.chaindreamers.xyz/tokens/";
+
   if (network.tags.staging) {
     const ChainRunners = await deployments.get("ChainRunners");
     runnersAddress = ChainRunners.address;
@@ -82,12 +84,13 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       "ChainRunnersLayerRenderer"
     );
     rendererAddress = ChainRunnersLayerRenderer.address;
+    baseURI = "https://api.chaindreamers.xyz/staging/tokens/";
   }
 
   const tx = await deploy("DreamersRenderer", {
     from: deployer,
     log: true,
-    args: [rendererAddress, runnersAddress],
+    args: [rendererAddress, runnersAddress, baseURI],
     libraries: { Integers: Integers.address },
   });
   await execute(
