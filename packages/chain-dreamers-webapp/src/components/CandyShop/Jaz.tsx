@@ -4,6 +4,7 @@ import React from "react";
 import jaz from "./jaz.png";
 import Typist from "react-typist";
 import { useMediaQuery } from "@mui/material";
+import { Link } from "react-router-dom";
 
 type JazProps = {
   message:
@@ -39,6 +40,10 @@ function Jaz({ message, sx }: JazProps) {
             padding: isSmallWidth ? "24px 0" : "35px",
             textAlign: "center",
             maxWidth: "680px",
+
+            "& a": {
+              color: "#44DFFD",
+            },
           }}
         >
           {message === "candyShopWithRunner" && (
@@ -47,8 +52,11 @@ function Jaz({ message, sx }: JazProps) {
               identified you as a verified Chain Runner. Usually I sell regular
               candies, but you seem pretty informed.
               <br />
-              Indeed, I have a few things that you might be interested in. But
-              be careful, never speak about it to Somnus.
+              Indeed, I have a few things that you might be interested in. Each
+              drug has specific effects and will alter your Runner accordingly,
+              please check the <Link to="/story">story page</Link> to understand
+              effects before buying. But be careful, never speak about it to
+              Somnus.
             </Typist>
           )}
           {message === "candyShopWithoutRunner" && (
