@@ -46,7 +46,11 @@ function Footer({ fixed = false }: FooterProps) {
           url="https://etherscan.io/address/0xd73c9F0cF3aB63ab27ae5Eb1C768430C9094391c"
           tooltip="View Contract"
         />
-        <FooterLink src={openSea} tooltip="View Collection" />
+        <FooterLink
+          src={openSea}
+          url="https://opensea.io/collection/chain-dreamers"
+          tooltip="View Collection"
+        />
       </Box>
     </Box>
   );
