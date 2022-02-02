@@ -50,26 +50,6 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       "0xf42aa99f011a1fa7cda90e5e98b277e306bca83e"
     );
   }
-  // Set the ChainRunners address
-  const ChainRunners = await deployments.get("ChainRunners");
-  await execute(
-    "ChainDreamers",
-    {
-      from: deployer,
-      log: true,
-    },
-    "setChainRunnersContractAddress",
-    ChainRunners.address
-  );
-  await execute(
-    "ChainDreamers",
-    {
-      from: deployer,
-      log: true,
-    },
-    "setMaxDreamersMintPublicSale",
-    5
-  );
 
   // Deploy renderer
   const Integers = await deployments.get("Integers");
@@ -87,6 +67,25 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     baseURI = "https://api.chaindreamers.xyz/staging/tokens/";
   }
 
+  // Set the ChainRunners address
+  await execute(
+    "ChainDreamers",
+    {
+      from: deployer,
+      log: true,
+    },
+    "setChainRunnersContractAddress",
+    runnersAddress
+  );
+  await execute(
+    "ChainDreamers",
+    {
+      from: deployer,
+      log: true,
+    },
+    "setMaxDreamersMintPublicSale",
+    5
+  );
   const tx = await deploy("DreamersRenderer", {
     from: deployer,
     log: true,
