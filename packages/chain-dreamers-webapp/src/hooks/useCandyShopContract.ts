@@ -41,8 +41,6 @@ export const useCandyShopContract = () => {
           [0, 1, 2]
         );
 
-        console.log("balance", balance);
-
         const quantities = {
           [CandyList.ChainMeth]:
             balance[candiesIds[CandyList.ChainMeth]]?.toNumber(),
@@ -151,8 +149,8 @@ export const useCandyShopContract = () => {
               [0, 1, 2],
               [
                 quantity[CandyList.ChainMeth],
-                quantity[CandyList.HeliumSpice],
                 quantity[CandyList.SomnusTears],
+                quantity[CandyList.HeliumSpice],
               ],
               {
                 from: account,
