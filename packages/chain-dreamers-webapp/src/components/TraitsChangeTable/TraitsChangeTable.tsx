@@ -60,7 +60,7 @@ export const TraitChangesForCandies = {
     [Traits.MouthAccessories]: 0,
   },
   [CandyList.HeliumSpice]: {
-    [Traits.Background]: 0.1,
+    [Traits.Background]: 0.05,
     [Traits.Race]: 0,
     [Traits.Face]: 0,
     [Traits.Mouth]: 0,
