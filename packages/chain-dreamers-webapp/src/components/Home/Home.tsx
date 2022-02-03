@@ -21,38 +21,45 @@ function Home() {
       {!isSmallWidth && (
         <Box sx={{ "& .background": { width: "100%" }, marginBottom: "84px" }}>
           {(isCandyShopOpen || isJailOpen) && account && (
-            <Button
-              variant="contained"
+            <Box
               sx={{
-                marginTop: "20px",
-                fontSize: "20px",
-                fontWeight: 600,
-                padding: "12px 24px",
-                color: "black",
-                background: "#44DFFD",
-                textTransform: "uppercase",
                 position: "absolute",
                 bottom: "150px",
                 right: 0,
                 left: 0,
                 margin: "auto",
-
-                "&.Mui-disabled": {
-                  background: "rgba(68,223,253,.2)",
-                },
-
-                "&:hover": {
-                  background: "#44DFFD",
-                },
+                display: "flex",
+                justifyContent: "center",
               }}
-              onClick={() =>
-                navigate(isCandyShopOpen ? "/candy-shop" : "/jail")
-              }
             >
-              {isCandyShopOpen
-                ? "Take me to the Candy Shop"
-                : "Start minting Dreamers by entering the Jail"}
-            </Button>
+              <Button
+                variant="contained"
+                sx={{
+                  marginTop: "20px",
+                  fontSize: "20px",
+                  fontWeight: 600,
+                  padding: "12px 24px",
+                  color: "black",
+                  background: "#44DFFD",
+                  textTransform: "uppercase",
+
+                  "&.Mui-disabled": {
+                    background: "rgba(68,223,253,.2)",
+                  },
+
+                  "&:hover": {
+                    background: "#44DFFD",
+                  },
+                }}
+                onClick={() =>
+                  navigate(isCandyShopOpen ? "/candy-shop" : "/jail")
+                }
+              >
+                {isCandyShopOpen
+                  ? "Take me to the Candy Shop"
+                  : "Start minting Dreamers by entering the Jail"}
+              </Button>
+            </Box>
           )}
           <img
             alt="Candy Shop"
