@@ -4,6 +4,7 @@ import WalletButton, { WALLET_TYPE } from "../WalletButton/WalletButton";
 import { useEthers } from "@usedapp/core";
 import { InjectedConnector } from "@web3-react/injected-connector";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
+import { WalletLinkConnector } from "@web3-react/walletlink-connector";
 import config, { CHAIN_ID } from "../../config";
 
 const WalletConnectDialog: React.FC<{
@@ -48,6 +49,19 @@ const WalletConnectDialog: React.FC<{
               supportedChainIds,
             });
             await activate(injected);
+            handleClose();
+          }}
+          sx={{ marginBottom: "32px", width: "100%" }}
+        />
+        <WalletButton
+          walletType={WALLET_TYPE.coinbasewallet}
+          onClick={async () => {
+            const walletlink = new WalletLinkConnector({
+              appName: "ChainDreamers",
+              url: config.app.jsonRpcUri,
+              supportedChainIds,
+            });
+            await activate(walletlink);
             handleClose();
           }}
           sx={{ marginBottom: "32px", width: "100%" }}

@@ -1,10 +1,12 @@
 import metamaskLogo from "./metamask-fox.svg";
 import walletconnectLogo from "./walletconnect-logo.svg";
+import coinbasewalletLogo from "./coinbase-wallet.svg";
 import Button, { ButtonProps } from "@mui/material/Button";
 
 export enum WALLET_TYPE {
   metamask = "Metamask",
   walletconnect = "WalletConnect",
+  coinbasewallet = "CoinBaseWallet",
 }
 
 const logo = (walletType: WALLET_TYPE) => {
@@ -13,6 +15,8 @@ const logo = (walletType: WALLET_TYPE) => {
       return metamaskLogo;
     case WALLET_TYPE.walletconnect:
       return walletconnectLogo;
+    case WALLET_TYPE.coinbasewallet:
+      return coinbasewalletLogo;
     default:
       return "";
   }

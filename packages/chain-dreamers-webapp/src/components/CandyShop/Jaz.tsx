@@ -73,7 +73,7 @@ function Jaz({ message, sx }: JazProps) {
           )}
           {message === "jail" && (
             <Typist avgTypingDelay={0}>
-              In the night of the 7th opening day, a horde of 50 angry Chain
+              In the night of the 2nd opening day, a horde of 50 angry Chain
               Runners have invaded the shop, and stolen all drugs. They sold it
               all around Mega City and have drawn the place into chaos. All
               Runners who couldn’t consume the Spice in proper conditions in my
