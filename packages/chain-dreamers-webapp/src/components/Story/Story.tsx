@@ -211,8 +211,8 @@ function Story() {
             </p>
             <p>
               That’s why no trait is changed. With Helium Spice, you stay
-              yourself and get a 5% chance of reaching superconsciousness with a
-              whole new light background, the ultimate dreaming state where
+              yourself and get a 10% chance of reaching superconsciousness with
+              a whole new light background, the ultimate dreaming state where
               nothing matters anymore.
             </p>
             <Box
