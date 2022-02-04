@@ -11,10 +11,19 @@ import { useDreamersContract } from "../../hooks/useDreamersContract";
 import RunnerSearchBar from "./RunnersSearchBar";
 import ClearIcon from "@mui/icons-material/Clear";
 import LoadingDreamersPublicMintDialog from "../LoadingPublicDreamersMintDialog/LoadingDreamersPublicMintDialog";
+import Link from "@mui/material/Link";
 
 function Jail() {
-  const { mint, isMinting, isWaitingForPayment } = useDreamersContract();
+  const { mint, isMinting, isWaitingForPayment, fetchMintedDreamers } =
+    useDreamersContract();
   const [dreamersToMint, setDreamersToMint] = React.useState<number[]>([]);
+  const [alreadyMintedDreamers, setAlreadyMintedDreamers] = React.useState<
+    boolean[]
+  >([]);
+
+  React.useEffect(() => {
+    fetchMintedDreamers().then(setAlreadyMintedDreamers);
+  }, [fetchMintedDreamers]);
 
   const [mintingDialogOpen, setMintingDialogOpen] =
     React.useState<boolean>(false);
@@ -45,6 +54,24 @@ function Jail() {
       setMintingDialogOpen(true);
     }
   }, [isMinting]);
+
+  const availableRunnersIds = React.useMemo(() => {
+    const result: number[] = [];
+    alreadyMintedDreamers.forEach((value, i) => {
+      if (!value) {
+        result.push(i);
+      }
+    });
+
+    return result.filter((id) => !dreamersToMint.includes(id));
+  }, [alreadyMintedDreamers]);
+
+  const addARandomAvailableRunner = React.useCallback(() => {
+    if (availableRunnersIds.length === 0) return;
+
+    const index = Math.floor(Math.random() * availableRunnersIds.length);
+    add(availableRunnersIds[index]);
+  }, [availableRunnersIds, add]);
 
   return (
     <Box display="flex" flexDirection="column" minHeight="calc(100vh - 191px)">
@@ -93,10 +120,40 @@ function Jail() {
                   them free?
                 </Typist>
               </Box>
-              <RunnerSearchBar
-                onRunnerSelect={add}
-                selectedRunners={dreamersToMint}
-              />
+              <Box display="flex" flexDirection="column" alignItems="center">
+                <RunnerSearchBar
+                  onRunnerSelect={add}
+                  selectedRunners={dreamersToMint}
+                  alreadyMintedDreamers={alreadyMintedDreamers}
+                />
+                <Box marginTop="8px">or</Box>
+                <Button
+                  variant="contained"
+                  sx={{
+                    marginTop: "8px",
+                    fontSize: "16px",
+                    padding: "4px 8px",
+                    background: "transparent",
+                    border: "1px solid #DA4A8A",
+                    color: "#DA4A8A",
+                    textTransform: "none",
+
+                    "&.Mui-disabled": {
+                      color: "#DA4A8A",
+                      opacity: 0.5,
+                      background: "rgba(0,0,0,0.1)",
+                    },
+
+                    "&:hover": {
+                      background: "rgba(255,255,255,0.1)",
+                    },
+                  }}
+                  disabled={availableRunnersIds.length === 0}
+                  onClick={addARandomAvailableRunner}
+                >
+                  Select a random Runner
+                </Button>
+              </Box>
               <Box
                 marginTop="32px"
                 display="flex"
@@ -168,6 +225,18 @@ function Jail() {
                   {dreamerPrice.multipliedBy(dreamersToMint.length).toString()}{" "}
                   ETH
                 </Button>
+              </Box>
+              <Box sx={{ marginTop: "22px", fontSize: "15px" }}>
+                If you have trouble finding a Runner that suits you, go check
+                the{" "}
+                <Link
+                  href="https://www.chainrunners.xyz/hub/runners"
+                  target="_blank"
+                  style={{ color: "#44DFFD", textDecoration: "none" }}
+                >
+                  Runner Hub
+                </Link>
+                .
               </Box>
             </Box>
           </ShopPanels>

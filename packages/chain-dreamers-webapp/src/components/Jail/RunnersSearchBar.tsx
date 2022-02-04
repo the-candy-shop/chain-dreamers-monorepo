@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import RunnerSearchOption from "./RunnerSearchOption";
-import { useDreamersContract } from "../../hooks/useDreamersContract";
 
 const runnerIds: { label: string; id: number }[] = [];
 
@@ -17,23 +16,17 @@ for (let i = 1; i <= 10000; i++) {
 type RunnerSearchBarProps = {
   onRunnerSelect: (id: number) => void;
   selectedRunners: number[];
+  alreadyMintedDreamers: boolean[];
 };
 
 function RunnerSearchBar({
   onRunnerSelect,
   selectedRunners,
+  alreadyMintedDreamers,
 }: RunnerSearchBarProps) {
-  const { fetchMintedDreamers } = useDreamersContract();
   const [searchedValue, setSearchedValue] = React.useState<string>("");
-  const [alreadyMintedDreamers, setAlreadyMintedDreamers] = React.useState<
-    boolean[]
-  >([]);
   const [currentSearchKey, setCurrentSearchKey] =
     React.useState<string>("initial");
-
-  React.useEffect(() => {
-    fetchMintedDreamers().then(setAlreadyMintedDreamers);
-  }, [fetchMintedDreamers]);
 
   const options = React.useMemo(
     () =>
