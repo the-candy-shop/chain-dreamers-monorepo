@@ -64,7 +64,7 @@ function Jail() {
     });
 
     return result.filter((id) => !dreamersToMint.includes(id));
-  }, [alreadyMintedDreamers]);
+  }, [alreadyMintedDreamers, dreamersToMint]);
 
   const addARandomAvailableRunner = React.useCallback(() => {
     if (availableRunnersIds.length === 0) return;
