@@ -9,12 +9,25 @@ import { CandyQuantitiesContextProvider } from "./contexts/CandyQuantitiesContex
 import { DreamersContextProvider } from "./contexts/DreamersContext";
 import { SnackbarErrorContext } from "./contexts/SnackbarErrorContext";
 import { RunnersContextProvider } from "./contexts/RunnersContext";
+import ReactGA from "react-ga";
 
 function App() {
   const location = useLocation();
   const isSmallWidth = useMediaQuery("(max-width:915px)");
   const isHome = location.pathname === "/";
   const [snackbarError, setSnackbarError] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    if (process.env.REACT_APP_GA_ID) {
+      ReactGA.initialize(process.env.REACT_APP_GA_ID);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (process.env.REACT_APP_GA_ID) {
+      ReactGA.pageview(location.pathname + location.search);
+    }
+  }, [location]);
 
   return (
     <RunnersContextProvider>
