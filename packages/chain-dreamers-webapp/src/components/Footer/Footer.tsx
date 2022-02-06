@@ -43,7 +43,7 @@ function Footer({ fixed = false }: FooterProps) {
         />
         <FooterLink
           src={etherScan}
-          url="https://etherscan.io/address/0xd73c9F0cF3aB63ab27ae5Eb1C768430C9094391c"
+          url="https://etherscan.io/address/0xDC6bf3CF9869Caa39d669205432753CB65890a03"
           tooltip="View Contract"
         />
         <FooterLink
