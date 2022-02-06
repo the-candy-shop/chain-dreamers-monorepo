@@ -21,9 +21,7 @@ const config: EthSdkConfig = {
   contracts: {
     main: contracts as Record<string, `0x${string}`>,
     originalRunner: {
-      runners:
-        (contracts.ChainRunners as `0x${string}`) ||
-        (process.env.RUNNERS_ORIGINAL_CONTRACT_ADDRESS as `0x${string}`),
+      runners: process.env.RUNNERS_ORIGINAL_CONTRACT_ADDRESS as `0x${string}`,
     },
   },
   etherscanURLs: {
@@ -36,5 +34,7 @@ const config: EthSdkConfig = {
     originalRunner: originalRunnerRpc,
   },
 };
+
+console.log("config", config);
 
 export default config;
