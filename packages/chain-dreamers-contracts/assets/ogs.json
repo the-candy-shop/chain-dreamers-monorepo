@@ -1,0 +1,3026 @@
+[
+  {
+    "tokenId": 1,
+    "exist": true,
+    "owner": "0xb7794f83B2b891EBb92D6036Cf85fBdd38B23018",
+    "candy": 231
+  },
+  {
+    "tokenId": 2,
+    "exist": true,
+    "owner": "0xe95EBafBB0eB32da6e07c4869D08e989d161fDEE",
+    "candy": 134
+  },
+  {
+    "tokenId": 3,
+    "exist": true,
+    "owner": "0x09a0dA7289a60809992D819530833f4053124090",
+    "candy": 132
+  },
+  {
+    "tokenId": 4,
+    "exist": true,
+    "owner": "0xb7794f83B2b891EBb92D6036Cf85fBdd38B23018",
+    "candy": 95
+  },
+  {
+    "tokenId": 5,
+    "exist": true,
+    "owner": "0xe95EBafBB0eB32da6e07c4869D08e989d161fDEE",
+    "candy": 139
+  },
+  {
+    "tokenId": 6,
+    "exist": true,
+    "owner": "0x09a0dA7289a60809992D819530833f4053124090",
+    "candy": 198
+  },
+  {
+    "tokenId": 7,
+    "exist": true,
+    "owner": "0x09a0dA7289a60809992D819530833f4053124090",
+    "candy": 190
+  },
+  {
+    "tokenId": 8,
+    "exist": true,
+    "owner": "0xb7794f83B2b891EBb92D6036Cf85fBdd38B23018",
+    "candy": 211
+  },
+  {
+    "tokenId": 9,
+    "exist": true,
+    "owner": "0x09a0dA7289a60809992D819530833f4053124090",
+    "candy": 235
+  },
+  {
+    "tokenId": 10,
+    "exist": true,
+    "owner": "0x09a0dA7289a60809992D819530833f4053124090",
+    "candy": 255
+  },
+  {
+    "tokenId": 11,
+    "exist": true,
+    "owner": "0xFC18E4E5fa6A137F85F70D2F8F2Eb18Bf5Ec3Fe2",
+    "candy": 124
+  },
+  {
+    "tokenId": 12,
+    "exist": true,
+    "owner": "0xFCcb964C514C12794509ed62fa274f0E284ceE82",
+    "candy": 200
+  },
+  {
+    "tokenId": 13,
+    "exist": true,
+    "owner": "0xB9DD3D3b16B8F54bE172e3d1dB8C2674A6b0Ade5",
+    "candy": 31
+  },
+  {
+    "tokenId": 14,
+    "exist": true,
+    "owner": "0xDD45f2722c8E812A07051A20b7e9c931ebE37863",
+    "candy": 76
+  },
+  {
+    "tokenId": 15,
+    "exist": true,
+    "owner": "0xFCcb964C514C12794509ed62fa274f0E284ceE82",
+    "candy": 222
+  },
+  {
+    "tokenId": 16,
+    "exist": true,
+    "owner": "0x0295cB6Cd98AA3f2A8ae832a1B9C6f2B8A7160Df",
+    "candy": 236
+  },
+  {
+    "tokenId": 17,
+    "exist": true,
+    "owner": "0xFC18E4E5fa6A137F85F70D2F8F2Eb18Bf5Ec3Fe2",
+    "candy": 95
+  },
+  {
+    "tokenId": 18,
+    "exist": true,
+    "owner": "0x0295cB6Cd98AA3f2A8ae832a1B9C6f2B8A7160Df",
+    "candy": 107
+  },
+  {
+    "tokenId": 19,
+    "exist": true,
+    "owner": "0xFC18E4E5fa6A137F85F70D2F8F2Eb18Bf5Ec3Fe2",
+    "candy": 143
+  },
+  {
+    "tokenId": 20,
+    "exist": true,
+    "owner": "0xFCcb964C514C12794509ed62fa274f0E284ceE82",
+    "candy": 248
+  },
+  {
+    "tokenId": 21,
+    "exist": true,
+    "owner": "0xFCcb964C514C12794509ed62fa274f0E284ceE82",
+    "candy": 130
+  },
+  {
+    "tokenId": 22,
+    "exist": true,
+    "owner": "0xFCcb964C514C12794509ed62fa274f0E284ceE82",
+    "candy": 10
+  },
+  {
+    "tokenId": 23,
+    "exist": true,
+    "owner": "0xA5E32695c720eAC93dB822BC5B391FD93Bc8DFF7",
+    "candy": 159
+  },
+  {
+    "tokenId": 24,
+    "exist": true,
+    "owner": "0xceE2c34a76714b98D54e65307521A43A0084ca61",
+    "candy": 25
+  },
+  {
+    "tokenId": 25,
+    "exist": true,
+    "owner": "0x45F8aef4DfaBfbF943416Db1e43f088e543bFDB6",
+    "candy": 48
+  },
+  {
+    "tokenId": 26,
+    "exist": true,
+    "owner": "0x4cc0290121760fBcB4a669cC8Ab8FB0314C82fC1",
+    "candy": 169
+  },
+  {
+    "tokenId": 27,
+    "exist": true,
+    "owner": "0x60aA9aA8feEE8178D8b14af2Af1fA27629753727",
+    "candy": 102
+  },
+  {
+    "tokenId": 28,
+    "exist": true,
+    "owner": "0x9a88e2361DB0DB4b2D81fb3b8da3F9E383Fb8a5C",
+    "candy": 205
+  },
+  {
+    "tokenId": 29,
+    "exist": true,
+    "owner": "0x60aA9aA8feEE8178D8b14af2Af1fA27629753727",
+    "candy": 16
+  },
+  {
+    "tokenId": 30,
+    "exist": true,
+    "owner": "0x648fA93EA7f1820EF9291c3879B2E3C503e1AA61",
+    "candy": 23
+  },
+  {
+    "tokenId": 31,
+    "exist": true,
+    "owner": "0x747d8AdcC33e9Cb552e18429e637924bC2390244",
+    "candy": 17
+  },
+  {
+    "tokenId": 32,
+    "exist": true,
+    "owner": "0xceE2c34a76714b98D54e65307521A43A0084ca61",
+    "candy": 133
+  },
+  {
+    "tokenId": 33,
+    "exist": true,
+    "owner": "0x0295cB6Cd98AA3f2A8ae832a1B9C6f2B8A7160Df",
+    "candy": 70
+  },
+  {
+    "tokenId": 34,
+    "exist": true,
+    "owner": "0xceE2c34a76714b98D54e65307521A43A0084ca61",
+    "candy": 33
+  },
+  {
+    "tokenId": 35,
+    "exist": true,
+    "owner": "0x856B4179FFEa90E681474f8922D1FDFFA1f45e38",
+    "candy": 195
+  },
+  {
+    "tokenId": 36,
+    "exist": true,
+    "owner": "0xe2508444DcE150757c890146f51cadD8dCC6a505",
+    "candy": 161
+  },
+  {
+    "tokenId": 37,
+    "exist": true,
+    "owner": "0x9a88e2361DB0DB4b2D81fb3b8da3F9E383Fb8a5C",
+    "candy": 178
+  },
+  {
+    "tokenId": 38,
+    "exist": true,
+    "owner": "0x9a88e2361DB0DB4b2D81fb3b8da3F9E383Fb8a5C",
+    "candy": 125
+  },
+  {
+    "tokenId": 39,
+    "exist": true,
+    "owner": "0x9a88e2361DB0DB4b2D81fb3b8da3F9E383Fb8a5C",
+    "candy": 202
+  },
+  {
+    "tokenId": 40,
+    "exist": true,
+    "owner": "0xceE2c34a76714b98D54e65307521A43A0084ca61",
+    "candy": 59
+  },
+  {
+    "tokenId": 41,
+    "exist": true,
+    "owner": "0xceE2c34a76714b98D54e65307521A43A0084ca61",
+    "candy": 102
+  },
+  {
+    "tokenId": 42,
+    "exist": true,
+    "owner": "0x450638DaF0CAeDBdd9F8cb4A41Fa1b24788b123e",
+    "candy": 142
+  },
+  {
+    "tokenId": 43,
+    "exist": true,
+    "owner": "0x448a6e3e4C02Df62fc8D9817F9817AdD26d706d0",
+    "candy": 153
+  },
+  {
+    "tokenId": 45,
+    "exist": true,
+    "owner": "0x0F158f1D76541f364184304C411c069120bDa5B5",
+    "candy": 117
+  },
+  {
+    "tokenId": 46,
+    "exist": true,
+    "owner": "0x0F158f1D76541f364184304C411c069120bDa5B5",
+    "candy": 139
+  },
+  {
+    "tokenId": 47,
+    "exist": true,
+    "owner": "0x448a6e3e4C02Df62fc8D9817F9817AdD26d706d0",
+    "candy": 169
+  },
+  {
+    "tokenId": 48,
+    "exist": true,
+    "owner": "0x448a6e3e4C02Df62fc8D9817F9817AdD26d706d0",
+    "candy": 201
+  },
+  {
+    "tokenId": 49,
+    "exist": true,
+    "owner": "0xC74b209fe38EcED29105C802FfB4BA280895546A",
+    "candy": 62
+  },
+  {
+    "tokenId": 50,
+    "exist": true,
+    "owner": "0x0F158f1D76541f364184304C411c069120bDa5B5",
+    "candy": 167
+  },
+  {
+    "tokenId": 51,
+    "exist": true,
+    "owner": "0x1D40FC9456A1E6F13f69615FEe1cbcBe604B9167",
+    "candy": 64
+  },
+  {
+    "tokenId": 52,
+    "exist": true,
+    "owner": "0x448a6e3e4C02Df62fc8D9817F9817AdD26d706d0",
+    "candy": 127
+  },
+  {
+    "tokenId": 53,
+    "exist": true,
+    "owner": "0x448a6e3e4C02Df62fc8D9817F9817AdD26d706d0",
+    "candy": 90
+  },
+  {
+    "tokenId": 54,
+    "exist": true,
+    "owner": "0xC74b209fe38EcED29105C802FfB4BA280895546A",
+    "candy": 98
+  },
+  {
+    "tokenId": 55,
+    "exist": true,
+    "owner": "0x0F158f1D76541f364184304C411c069120bDa5B5",
+    "candy": 35
+  },
+  {
+    "tokenId": 56,
+    "exist": true,
+    "owner": "0xbefD50e65548E23Be08270541b9FeEf94B7cb07b",
+    "candy": 131
+  },
+  {
+    "tokenId": 57,
+    "exist": true,
+    "owner": "0x0F158f1D76541f364184304C411c069120bDa5B5",
+    "candy": 183
+  },
+  {
+    "tokenId": 58,
+    "exist": true,
+    "owner": "0x6908Cc437c8BEA5c19A81e487A1528635EC2b197",
+    "candy": 237
+  },
+  {
+    "tokenId": 59,
+    "exist": true,
+    "owner": "0x0F158f1D76541f364184304C411c069120bDa5B5",
+    "candy": 45
+  },
+  {
+    "tokenId": 60,
+    "exist": true,
+    "owner": "0x0F158f1D76541f364184304C411c069120bDa5B5",
+    "candy": 60
+  },
+  {
+    "tokenId": 61,
+    "exist": true,
+    "owner": "0x0F158f1D76541f364184304C411c069120bDa5B5",
+    "candy": 149
+  },
+  {
+    "tokenId": 62,
+    "exist": true,
+    "owner": "0x6908Cc437c8BEA5c19A81e487A1528635EC2b197",
+    "candy": 37
+  },
+  {
+    "tokenId": 63,
+    "exist": true,
+    "owner": "0x6908Cc437c8BEA5c19A81e487A1528635EC2b197",
+    "candy": 27
+  },
+  {
+    "tokenId": 64,
+    "exist": true,
+    "owner": "0x6908Cc437c8BEA5c19A81e487A1528635EC2b197",
+    "candy": 147
+  },
+  {
+    "tokenId": 65,
+    "exist": true,
+    "owner": "0x0F158f1D76541f364184304C411c069120bDa5B5",
+    "candy": 41
+  },
+  {
+    "tokenId": 67,
+    "exist": true,
+    "owner": "0x0F158f1D76541f364184304C411c069120bDa5B5",
+    "candy": 158
+  },
+  {
+    "tokenId": 68,
+    "exist": true,
+    "owner": "0xf4dD75dB973D4d5Da44A83349F842327c3D1f067",
+    "candy": 254
+  },
+  {
+    "tokenId": 69,
+    "exist": true,
+    "owner": "0x0E0f542667f086F776025Ba7F76fBd8F4e413Fb4",
+    "candy": 98
+  },
+  {
+    "tokenId": 70,
+    "exist": true,
+    "owner": "0xe6309a762D72E66d16e6f1CfaEEe9F5Cab6F9C52",
+    "candy": 66
+  },
+  {
+    "tokenId": 71,
+    "exist": true,
+    "owner": "0xC74b209fe38EcED29105C802FfB4BA280895546A",
+    "candy": 62
+  },
+  {
+    "tokenId": 72,
+    "exist": true,
+    "owner": "0x0F158f1D76541f364184304C411c069120bDa5B5",
+    "candy": 197
+  },
+  {
+    "tokenId": 73,
+    "exist": true,
+    "owner": "0x0F158f1D76541f364184304C411c069120bDa5B5",
+    "candy": 19
+  },
+  {
+    "tokenId": 74,
+    "exist": true,
+    "owner": "0xbefD50e65548E23Be08270541b9FeEf94B7cb07b",
+    "candy": 219
+  },
+  {
+    "tokenId": 75,
+    "exist": true,
+    "owner": "0xC74b209fe38EcED29105C802FfB4BA280895546A",
+    "candy": 210
+  },
+  {
+    "tokenId": 76,
+    "exist": true,
+    "owner": "0xbefD50e65548E23Be08270541b9FeEf94B7cb07b",
+    "candy": 16
+  },
+  {
+    "tokenId": 77,
+    "exist": true,
+    "owner": "0x39Dc63381e9310d02a9cE491C5B256849F555579",
+    "candy": 13
+  },
+  {
+    "tokenId": 78,
+    "exist": true,
+    "owner": "0x0E0f542667f086F776025Ba7F76fBd8F4e413Fb4",
+    "candy": 56
+  },
+  {
+    "tokenId": 83,
+    "exist": true,
+    "owner": "0x0E0f542667f086F776025Ba7F76fBd8F4e413Fb4",
+    "candy": 103
+  },
+  {
+    "tokenId": 94,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 7
+  },
+  {
+    "tokenId": 100,
+    "exist": true,
+    "owner": "0xe95EBafBB0eB32da6e07c4869D08e989d161fDEE",
+    "candy": 51
+  },
+  {
+    "tokenId": 111,
+    "exist": true,
+    "owner": "0x450638DaF0CAeDBdd9F8cb4A41Fa1b24788b123e",
+    "candy": 245
+  },
+  {
+    "tokenId": 113,
+    "exist": true,
+    "owner": "0x0E0f542667f086F776025Ba7F76fBd8F4e413Fb4",
+    "candy": 155
+  },
+  {
+    "tokenId": 154,
+    "exist": true,
+    "owner": "0x648fA93EA7f1820EF9291c3879B2E3C503e1AA61",
+    "candy": 212
+  },
+  {
+    "tokenId": 176,
+    "exist": true,
+    "owner": "0xe6309a762D72E66d16e6f1CfaEEe9F5Cab6F9C52",
+    "candy": 48
+  },
+  {
+    "tokenId": 213,
+    "exist": true,
+    "owner": "0x02736d5c8dcea65539993d143A3DE90ceBcA9c3c",
+    "candy": 60
+  },
+  {
+    "tokenId": 219,
+    "exist": true,
+    "owner": "0x7CaB3a58Cff35eB87F541144e866E6fdde21EE97",
+    "candy": 164
+  },
+  {
+    "tokenId": 220,
+    "exist": true,
+    "owner": "0x7CaB3a58Cff35eB87F541144e866E6fdde21EE97",
+    "candy": 198
+  },
+  {
+    "tokenId": 243,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 219
+  },
+  {
+    "tokenId": 253,
+    "exist": true,
+    "owner": "0xab2056903a7b62BAc46F45A3D7a70AC799CA88CB",
+    "candy": 69
+  },
+  {
+    "tokenId": 266,
+    "exist": true,
+    "owner": "0x4Abc6252aC885B12aC870918B40FbedCF2F4dB68",
+    "candy": 5
+  },
+  {
+    "tokenId": 273,
+    "exist": true,
+    "owner": "0x4cc0290121760fBcB4a669cC8Ab8FB0314C82fC1",
+    "candy": 24
+  },
+  {
+    "tokenId": 279,
+    "exist": true,
+    "owner": "0xC74b209fe38EcED29105C802FfB4BA280895546A",
+    "candy": 64
+  },
+  {
+    "tokenId": 327,
+    "exist": true,
+    "owner": "0x3b18693B368baf87bD21553633A05e303cD75745",
+    "candy": 217
+  },
+  {
+    "tokenId": 363,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 84
+  },
+  {
+    "tokenId": 364,
+    "exist": true,
+    "owner": "0xAf681629f3C577aFA464daA566D9D1D9a7cDAFe3",
+    "candy": 205
+  },
+  {
+    "tokenId": 431,
+    "exist": true,
+    "owner": "0x4cc0290121760fBcB4a669cC8Ab8FB0314C82fC1",
+    "candy": 139
+  },
+  {
+    "tokenId": 476,
+    "exist": true,
+    "owner": "0x6590526E9dA72104a85Aa517B0f09f3EfEa6d06b",
+    "candy": 162
+  },
+  {
+    "tokenId": 499,
+    "exist": true,
+    "owner": "0x081B7bAbE5e6878C6b6edc6C9769612ec75Ae2B8",
+    "candy": 226
+  },
+  {
+    "tokenId": 507,
+    "exist": true,
+    "owner": "0xc16F4E6429690DE48Df9c8Bfd565fDcFC6FE97eA",
+    "candy": 178
+  },
+  {
+    "tokenId": 510,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 10
+  },
+  {
+    "tokenId": 514,
+    "exist": true,
+    "owner": "0x7a29aE65Bf25Dfb6e554BF0468a6c23ed99a8DC2",
+    "candy": 218
+  },
+  {
+    "tokenId": 568,
+    "exist": true,
+    "owner": "0x2E0D63fFCB08eA20fF3AcDbB72dfEc97343885d2",
+    "candy": 72
+  },
+  {
+    "tokenId": 569,
+    "exist": true,
+    "owner": "0x2E0D63fFCB08eA20fF3AcDbB72dfEc97343885d2",
+    "candy": 18
+  },
+  {
+    "tokenId": 582,
+    "exist": true,
+    "owner": "0xab2056903a7b62BAc46F45A3D7a70AC799CA88CB",
+    "candy": 145
+  },
+  {
+    "tokenId": 591,
+    "exist": true,
+    "owner": "0x84B5FFcB1D9abd86f4Fd26a2C9e5a9b54c35C9BE",
+    "candy": 172
+  },
+  {
+    "tokenId": 593,
+    "exist": true,
+    "owner": "0xaFbc3F98EEDB5f9A25a4AB2232d1346612efE77C",
+    "candy": 52
+  },
+  {
+    "tokenId": 609,
+    "exist": true,
+    "owner": "0xab2056903a7b62BAc46F45A3D7a70AC799CA88CB",
+    "candy": 61
+  },
+  {
+    "tokenId": 610,
+    "exist": true,
+    "owner": "0x595EcfA6198bD03Ba852D2474AC963f223AC3A0B",
+    "candy": 40
+  },
+  {
+    "tokenId": 646,
+    "exist": true,
+    "owner": "0x5c49Cb91D810eFd95b527B9F483a661E6553138c",
+    "candy": 81
+  },
+  {
+    "tokenId": 657,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 158
+  },
+  {
+    "tokenId": 704,
+    "exist": true,
+    "owner": "0xC40cB966a08638d71ed4537bc2f5267558061137",
+    "candy": 237
+  },
+  {
+    "tokenId": 705,
+    "exist": true,
+    "owner": "0x4cc0290121760fBcB4a669cC8Ab8FB0314C82fC1",
+    "candy": 230
+  },
+  {
+    "tokenId": 780,
+    "exist": true,
+    "owner": "0x8Bf70caB299E353E3c69eb53F943AC62a60b91B8",
+    "candy": 22
+  },
+  {
+    "tokenId": 842,
+    "exist": true,
+    "owner": "0x217Fce6F7AC07c91aBedd675D6F25b11e6d545FD",
+    "candy": 72
+  },
+  {
+    "tokenId": 843,
+    "exist": true,
+    "owner": "0x1D40FC9456A1E6F13f69615FEe1cbcBe604B9167",
+    "candy": 165
+  },
+  {
+    "tokenId": 846,
+    "exist": true,
+    "owner": "0xb751AcfD7dEceD9A86A57275707143c32748A74e",
+    "candy": 2
+  },
+  {
+    "tokenId": 899,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 55
+  },
+  {
+    "tokenId": 914,
+    "exist": true,
+    "owner": "0x1D40FC9456A1E6F13f69615FEe1cbcBe604B9167",
+    "candy": 228
+  },
+  {
+    "tokenId": 974,
+    "exist": true,
+    "owner": "0x0e38Bf551c79747ee1404BD15B57ff9FEC46E499",
+    "candy": 248
+  },
+  {
+    "tokenId": 978,
+    "exist": true,
+    "owner": "0x5f0AD0C43b990D21C3dBd8FefCE386D70eaA729a",
+    "candy": 202
+  },
+  {
+    "tokenId": 979,
+    "exist": true,
+    "owner": "0x48D0fBfd66340898255056F19E8120826dFef3D7",
+    "candy": 105
+  },
+  {
+    "tokenId": 991,
+    "exist": true,
+    "owner": "0x413A1f8A031C5CeBB50aF7aAFd1C6C07444F1677",
+    "candy": 216
+  },
+  {
+    "tokenId": 1001,
+    "exist": true,
+    "owner": "0xe95EBafBB0eB32da6e07c4869D08e989d161fDEE",
+    "candy": 167
+  },
+  {
+    "tokenId": 1022,
+    "exist": true,
+    "owner": "0x1173AdF6150f171126A6F1e3e03A2D0ab4031790",
+    "candy": 49
+  },
+  {
+    "tokenId": 1035,
+    "exist": true,
+    "owner": "0x648fA93EA7f1820EF9291c3879B2E3C503e1AA61",
+    "candy": 67
+  },
+  {
+    "tokenId": 1061,
+    "exist": true,
+    "owner": "0x217Fce6F7AC07c91aBedd675D6F25b11e6d545FD",
+    "candy": 43
+  },
+  {
+    "tokenId": 1063,
+    "exist": true,
+    "owner": "0xab2056903a7b62BAc46F45A3D7a70AC799CA88CB",
+    "candy": 110
+  },
+  {
+    "tokenId": 1071,
+    "exist": true,
+    "owner": "0x2d45db9D296dB068C60d09a2A2898c8d152d7da8",
+    "candy": 133
+  },
+  {
+    "tokenId": 1098,
+    "exist": true,
+    "owner": "0xab2056903a7b62BAc46F45A3D7a70AC799CA88CB",
+    "candy": 2
+  },
+  {
+    "tokenId": 1149,
+    "exist": true,
+    "owner": "0x6Cad6ED91680Ccb4E85b5Ec35dc7d4B0b4853Ba2",
+    "candy": 137
+  },
+  {
+    "tokenId": 1160,
+    "exist": true,
+    "owner": "0x4cc0290121760fBcB4a669cC8Ab8FB0314C82fC1",
+    "candy": 69
+  },
+  {
+    "tokenId": 1171,
+    "exist": true,
+    "owner": "0xA2A13330A450c376f229bc8c96bcC840608761Db",
+    "candy": 225
+  },
+  {
+    "tokenId": 1194,
+    "exist": true,
+    "owner": "0x5f0AD0C43b990D21C3dBd8FefCE386D70eaA729a",
+    "candy": 1
+  },
+  {
+    "tokenId": 1215,
+    "exist": true,
+    "owner": "0x2d45db9D296dB068C60d09a2A2898c8d152d7da8",
+    "candy": 214
+  },
+  {
+    "tokenId": 1223,
+    "exist": true,
+    "owner": "0x6908Cc437c8BEA5c19A81e487A1528635EC2b197",
+    "candy": 79
+  },
+  {
+    "tokenId": 1237,
+    "exist": true,
+    "owner": "0x838Ed32F2F1bb4d50ff19A8B1391Bc31478CaF5d",
+    "candy": 142
+  },
+  {
+    "tokenId": 1240,
+    "exist": true,
+    "owner": "0xab2056903a7b62BAc46F45A3D7a70AC799CA88CB",
+    "candy": 190
+  },
+  {
+    "tokenId": 1261,
+    "exist": true,
+    "owner": "0xC74b209fe38EcED29105C802FfB4BA280895546A",
+    "candy": 226
+  },
+  {
+    "tokenId": 1262,
+    "exist": true,
+    "owner": "0x5f0AD0C43b990D21C3dBd8FefCE386D70eaA729a",
+    "candy": 230
+  },
+  {
+    "tokenId": 1270,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 177
+  },
+  {
+    "tokenId": 1274,
+    "exist": true,
+    "owner": "0x50fcf51Fbd94D547e26332a1F20707411dfFb41C",
+    "candy": 109
+  },
+  {
+    "tokenId": 1330,
+    "exist": true,
+    "owner": "0x2d45db9D296dB068C60d09a2A2898c8d152d7da8",
+    "candy": 52
+  },
+  {
+    "tokenId": 1354,
+    "exist": true,
+    "owner": "0x3DE025CF38E843490388a761540bD3F155249873",
+    "candy": 10
+  },
+  {
+    "tokenId": 1385,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 197
+  },
+  {
+    "tokenId": 1474,
+    "exist": true,
+    "owner": "0x39Dc63381e9310d02a9cE491C5B256849F555579",
+    "candy": 1
+  },
+  {
+    "tokenId": 1487,
+    "exist": true,
+    "owner": "0x0ef6E547DD86de09F0E8eCE1E5A9f5cCB335aDE1",
+    "candy": 228
+  },
+  {
+    "tokenId": 1494,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 150
+  },
+  {
+    "tokenId": 1515,
+    "exist": true,
+    "owner": "0x98F8193394791fA8A34237f8216D236405acbF4c",
+    "candy": 49
+  },
+  {
+    "tokenId": 1519,
+    "exist": true,
+    "owner": "0xcE61cA41e238E0AA4c88D3c385dEE9a91c8E83d5",
+    "candy": 180
+  },
+  {
+    "tokenId": 1546,
+    "exist": true,
+    "owner": "0x5f0AD0C43b990D21C3dBd8FefCE386D70eaA729a",
+    "candy": 162
+  },
+  {
+    "tokenId": 1561,
+    "exist": true,
+    "owner": "0x6908Cc437c8BEA5c19A81e487A1528635EC2b197",
+    "candy": 243
+  },
+  {
+    "tokenId": 1586,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 197
+  },
+  {
+    "tokenId": 1600,
+    "exist": true,
+    "owner": "0xc94e2FbCa5512C9754ADe08c3472847fC3E23E74",
+    "candy": 185
+  },
+  {
+    "tokenId": 1605,
+    "exist": true,
+    "owner": "0x2cc96F1a3e55882DE61B965b668AE3A5326f4CE0",
+    "candy": 84
+  },
+  {
+    "tokenId": 1610,
+    "exist": true,
+    "owner": "0x52A01098Dfe38DbD4921a48a17Fe06C54DF0C357",
+    "candy": 12
+  },
+  {
+    "tokenId": 1632,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 124
+  },
+  {
+    "tokenId": 1697,
+    "exist": true,
+    "owner": "0xD1FD469842607D784da436Ed110d383F4727e462",
+    "candy": 30
+  },
+  {
+    "tokenId": 1734,
+    "exist": true,
+    "owner": "0x3065c93bC0B645D4bd06FEe143E9202905f6FECf",
+    "candy": 25
+  },
+  {
+    "tokenId": 1780,
+    "exist": true,
+    "owner": "0x950615b7fDFfb113BA53801EA6129AE7E372558e",
+    "candy": 22
+  },
+  {
+    "tokenId": 1794,
+    "exist": true,
+    "owner": "0x4cc0290121760fBcB4a669cC8Ab8FB0314C82fC1",
+    "candy": 0
+  },
+  {
+    "tokenId": 1797,
+    "exist": true,
+    "owner": "0x8dAaEC53dc93379e7BeE39B404aAf09F803a96E9",
+    "candy": 162
+  },
+  {
+    "tokenId": 1837,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 115
+  },
+  {
+    "tokenId": 1860,
+    "exist": true,
+    "owner": "0x450638DaF0CAeDBdd9F8cb4A41Fa1b24788b123e",
+    "candy": 9
+  },
+  {
+    "tokenId": 1863,
+    "exist": true,
+    "owner": "0x505205d921853C72AAAF07ADe150354D4EE483A1",
+    "candy": 99
+  },
+  {
+    "tokenId": 1880,
+    "exist": true,
+    "owner": "0x5F58288e6DBF1D280fb4380f0a8ad7918566e513",
+    "candy": 189
+  },
+  {
+    "tokenId": 1906,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 229
+  },
+  {
+    "tokenId": 1927,
+    "exist": true,
+    "owner": "0x6a7E3d75d573C4512Dd06c37595B57217A232717",
+    "candy": 62
+  },
+  {
+    "tokenId": 1980,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 252
+  },
+  {
+    "tokenId": 1999,
+    "exist": true,
+    "owner": "0x1D40FC9456A1E6F13f69615FEe1cbcBe604B9167",
+    "candy": 28
+  },
+  {
+    "tokenId": 2013,
+    "exist": true,
+    "owner": "0xdE93e7aDa2F37833ac0807EEa45A5BEc032b578D",
+    "candy": 254
+  },
+  {
+    "tokenId": 2069,
+    "exist": true,
+    "owner": "0x648fA93EA7f1820EF9291c3879B2E3C503e1AA61",
+    "candy": 87
+  },
+  {
+    "tokenId": 2075,
+    "exist": true,
+    "owner": "0xe67671f2F3799B8395a1a2195ec6f1402278c757",
+    "candy": 58
+  },
+  {
+    "tokenId": 2232,
+    "exist": true,
+    "owner": "0x36eD861a319278e5B6C39028884b0ca93df105D0",
+    "candy": 154
+  },
+  {
+    "tokenId": 2248,
+    "exist": true,
+    "owner": "0xe4F84621A2a2fdB20db4C6815EDd80A524830413",
+    "candy": 42
+  },
+  {
+    "tokenId": 2257,
+    "exist": true,
+    "owner": "0xDEbEF01cE5399021172563e20c0feB5a27f3832c",
+    "candy": 210
+  },
+  {
+    "tokenId": 2277,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 193
+  },
+  {
+    "tokenId": 2290,
+    "exist": true,
+    "owner": "0x648fA93EA7f1820EF9291c3879B2E3C503e1AA61",
+    "candy": 250
+  },
+  {
+    "tokenId": 2303,
+    "exist": true,
+    "owner": "0x481C0121bE626ed5544249C9fE88Fef7C78e53dD",
+    "candy": 141
+  },
+  {
+    "tokenId": 2309,
+    "exist": true,
+    "owner": "0x52A01098Dfe38DbD4921a48a17Fe06C54DF0C357",
+    "candy": 170
+  },
+  {
+    "tokenId": 2331,
+    "exist": true,
+    "owner": "0xC23f3dc81928ee9ac77945862F04d213E82AB4db",
+    "candy": 254
+  },
+  {
+    "tokenId": 2351,
+    "exist": true,
+    "owner": "0xfc38A1FB7E571C8B53dbD4267BFfd2Ac22ADecf5",
+    "candy": 210
+  },
+  {
+    "tokenId": 2372,
+    "exist": true,
+    "owner": "0x4cc0290121760fBcB4a669cC8Ab8FB0314C82fC1",
+    "candy": 176
+  },
+  {
+    "tokenId": 2384,
+    "exist": true,
+    "owner": "0xaF8738a35eB57A2C69EeFD4ED48947aB45FcF765",
+    "candy": 181
+  },
+  {
+    "tokenId": 2399,
+    "exist": true,
+    "owner": "0x242c34A1ba807d7f889fDC65532837aB7B3eD584",
+    "candy": 182
+  },
+  {
+    "tokenId": 2435,
+    "exist": true,
+    "owner": "0x450638DaF0CAeDBdd9F8cb4A41Fa1b24788b123e",
+    "candy": 77
+  },
+  {
+    "tokenId": 2457,
+    "exist": true,
+    "owner": "0x450638DaF0CAeDBdd9F8cb4A41Fa1b24788b123e",
+    "candy": 203
+  },
+  {
+    "tokenId": 2475,
+    "exist": true,
+    "owner": "0x52A01098Dfe38DbD4921a48a17Fe06C54DF0C357",
+    "candy": 172
+  },
+  {
+    "tokenId": 2487,
+    "exist": true,
+    "owner": "0x2F0efCbaDAB136Af14C39760f5B8A128B601dD46",
+    "candy": 86
+  },
+  {
+    "tokenId": 2495,
+    "exist": true,
+    "owner": "0x1D40FC9456A1E6F13f69615FEe1cbcBe604B9167",
+    "candy": 6
+  },
+  {
+    "tokenId": 2557,
+    "exist": true,
+    "owner": "0x6E7437B20630EB3D90EeF0F9f7d311b8E9C77978",
+    "candy": 237
+  },
+  {
+    "tokenId": 2574,
+    "exist": true,
+    "owner": "0x450638DaF0CAeDBdd9F8cb4A41Fa1b24788b123e",
+    "candy": 122
+  },
+  {
+    "tokenId": 2593,
+    "exist": true,
+    "owner": "0x4cc0290121760fBcB4a669cC8Ab8FB0314C82fC1",
+    "candy": 19
+  },
+  {
+    "tokenId": 2638,
+    "exist": true,
+    "owner": "0x32b21910f7BDE24eE9dd345e17b679F433773FD4",
+    "candy": 6
+  },
+  {
+    "tokenId": 2658,
+    "exist": true,
+    "owner": "0x1850D33E7960836e13B53af7c4373cC0F1503422",
+    "candy": 141
+  },
+  {
+    "tokenId": 2679,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 245
+  },
+  {
+    "tokenId": 2706,
+    "exist": true,
+    "owner": "0xfe19Ecf16E76Ff537c9b8C910Dfaa08F700A48A6",
+    "candy": 222
+  },
+  {
+    "tokenId": 2708,
+    "exist": true,
+    "owner": "0xD675610c6F9E789a7459c7C4Fdb5ACe696006Aae",
+    "candy": 109
+  },
+  {
+    "tokenId": 2750,
+    "exist": true,
+    "owner": "0x2F9EFbE3BfdFd0dC274311a4B2A29c421b0F4ae5",
+    "candy": 178
+  },
+  {
+    "tokenId": 2786,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 105
+  },
+  {
+    "tokenId": 2821,
+    "exist": true,
+    "owner": "0x4cc0290121760fBcB4a669cC8Ab8FB0314C82fC1",
+    "candy": 46
+  },
+  {
+    "tokenId": 2888,
+    "exist": true,
+    "owner": "0x5f0AD0C43b990D21C3dBd8FefCE386D70eaA729a",
+    "candy": 178
+  },
+  {
+    "tokenId": 2899,
+    "exist": true,
+    "owner": "0xDEbEF01cE5399021172563e20c0feB5a27f3832c",
+    "candy": 184
+  },
+  {
+    "tokenId": 2906,
+    "exist": true,
+    "owner": "0x1C470Cb4E0F2295170046e2628fd563b4279C50f",
+    "candy": 25
+  },
+  {
+    "tokenId": 2907,
+    "exist": true,
+    "owner": "0x1C470Cb4E0F2295170046e2628fd563b4279C50f",
+    "candy": 24
+  },
+  {
+    "tokenId": 2908,
+    "exist": true,
+    "owner": "0xaebe6Ff87768317fd094aCC22D7Efac699E02BcD",
+    "candy": 9
+  },
+  {
+    "tokenId": 2937,
+    "exist": true,
+    "owner": "0x9827Bdb42Aa896A0fBa67397423Db66bb78d535F",
+    "candy": 96
+  },
+  {
+    "tokenId": 2958,
+    "exist": true,
+    "owner": "0x1D40FC9456A1E6F13f69615FEe1cbcBe604B9167",
+    "candy": 200
+  },
+  {
+    "tokenId": 2989,
+    "exist": true,
+    "owner": "0x1D40FC9456A1E6F13f69615FEe1cbcBe604B9167",
+    "candy": 168
+  },
+  {
+    "tokenId": 3047,
+    "exist": true,
+    "owner": "0x505205d921853C72AAAF07ADe150354D4EE483A1",
+    "candy": 138
+  },
+  {
+    "tokenId": 3061,
+    "exist": true,
+    "owner": "0x9D9Fa64Bd35F06c9F0e9598a7dF93c31d72D14Ce",
+    "candy": 16
+  },
+  {
+    "tokenId": 3063,
+    "exist": true,
+    "owner": "0x9D9Fa64Bd35F06c9F0e9598a7dF93c31d72D14Ce",
+    "candy": 229
+  },
+  {
+    "tokenId": 3074,
+    "exist": true,
+    "owner": "0x8408E71B35B3A9c9f2855FC1566b03485478912B",
+    "candy": 226
+  },
+  {
+    "tokenId": 3091,
+    "exist": true,
+    "owner": "0xc3b74AE2f69CA6983fba446d7da5a2f2C95d7EC3",
+    "candy": 230
+  },
+  {
+    "tokenId": 3119,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 65
+  },
+  {
+    "tokenId": 3130,
+    "exist": true,
+    "owner": "0xA5E32695c720eAC93dB822BC5B391FD93Bc8DFF7",
+    "candy": 231
+  },
+  {
+    "tokenId": 3141,
+    "exist": true,
+    "owner": "0x39Dc63381e9310d02a9cE491C5B256849F555579",
+    "candy": 73
+  },
+  {
+    "tokenId": 3187,
+    "exist": true,
+    "owner": "0x84B5FFcB1D9abd86f4Fd26a2C9e5a9b54c35C9BE",
+    "candy": 141
+  },
+  {
+    "tokenId": 3216,
+    "exist": true,
+    "owner": "0x2df1228Ba73d53DD73ceaf53B0229e9F73378f1F",
+    "candy": 9
+  },
+  {
+    "tokenId": 3254,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 8
+  },
+  {
+    "tokenId": 3263,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 193
+  },
+  {
+    "tokenId": 3302,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 118
+  },
+  {
+    "tokenId": 3427,
+    "exist": true,
+    "owner": "0xAFB1026a04A0988F76145776141e67F205adf689",
+    "candy": 186
+  },
+  {
+    "tokenId": 3454,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 191
+  },
+  {
+    "tokenId": 3492,
+    "exist": true,
+    "owner": "0xC74b209fe38EcED29105C802FfB4BA280895546A",
+    "candy": 190
+  },
+  {
+    "tokenId": 3516,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 226
+  },
+  {
+    "tokenId": 3537,
+    "exist": true,
+    "owner": "0x217Fce6F7AC07c91aBedd675D6F25b11e6d545FD",
+    "candy": 6
+  },
+  {
+    "tokenId": 3543,
+    "exist": true,
+    "owner": "0xcE61cA41e238E0AA4c88D3c385dEE9a91c8E83d5",
+    "candy": 209
+  },
+  {
+    "tokenId": 3546,
+    "exist": true,
+    "owner": "0xcE61cA41e238E0AA4c88D3c385dEE9a91c8E83d5",
+    "candy": 126
+  },
+  {
+    "tokenId": 3554,
+    "exist": true,
+    "owner": "0x648fA93EA7f1820EF9291c3879B2E3C503e1AA61",
+    "candy": 163
+  },
+  {
+    "tokenId": 3556,
+    "exist": true,
+    "owner": "0x4cc0290121760fBcB4a669cC8Ab8FB0314C82fC1",
+    "candy": 85
+  },
+  {
+    "tokenId": 3566,
+    "exist": true,
+    "owner": "0xcE61cA41e238E0AA4c88D3c385dEE9a91c8E83d5",
+    "candy": 225
+  },
+  {
+    "tokenId": 3572,
+    "exist": true,
+    "owner": "0xcE61cA41e238E0AA4c88D3c385dEE9a91c8E83d5",
+    "candy": 74
+  },
+  {
+    "tokenId": 3599,
+    "exist": true,
+    "owner": "0x648fA93EA7f1820EF9291c3879B2E3C503e1AA61",
+    "candy": 10
+  },
+  {
+    "tokenId": 3618,
+    "exist": true,
+    "owner": "0xaC47d041C15e3b72a2DF728CA69A528D57Bb3e87",
+    "candy": 184
+  },
+  {
+    "tokenId": 3619,
+    "exist": true,
+    "owner": "0xaC47d041C15e3b72a2DF728CA69A528D57Bb3e87",
+    "candy": 77
+  },
+  {
+    "tokenId": 3621,
+    "exist": true,
+    "owner": "0xaC47d041C15e3b72a2DF728CA69A528D57Bb3e87",
+    "candy": 78
+  },
+  {
+    "tokenId": 3622,
+    "exist": true,
+    "owner": "0xaC47d041C15e3b72a2DF728CA69A528D57Bb3e87",
+    "candy": 88
+  },
+  {
+    "tokenId": 3625,
+    "exist": true,
+    "owner": "0x9e85282dcdD8961336Ef0D96C49b6099F64dD74c",
+    "candy": 34
+  },
+  {
+    "tokenId": 3634,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 49
+  },
+  {
+    "tokenId": 3666,
+    "exist": true,
+    "owner": "0x1D40FC9456A1E6F13f69615FEe1cbcBe604B9167",
+    "candy": 9
+  },
+  {
+    "tokenId": 3759,
+    "exist": true,
+    "owner": "0x32b21910f7BDE24eE9dd345e17b679F433773FD4",
+    "candy": 80
+  },
+  {
+    "tokenId": 3786,
+    "exist": true,
+    "owner": "0x73baFd0b00ED096AbE14F7d752a7f3259Ac3E9E3",
+    "candy": 54
+  },
+  {
+    "tokenId": 3787,
+    "exist": true,
+    "owner": "0x2d45db9D296dB068C60d09a2A2898c8d152d7da8",
+    "candy": 108
+  },
+  {
+    "tokenId": 3795,
+    "exist": true,
+    "owner": "0xFfB568F7F22e5D232EB228f5aA944024a72AefFA",
+    "candy": 221
+  },
+  {
+    "tokenId": 3812,
+    "exist": true,
+    "owner": "0x6590526E9dA72104a85Aa517B0f09f3EfEa6d06b",
+    "candy": 17
+  },
+  {
+    "tokenId": 3834,
+    "exist": true,
+    "owner": "0x450638DaF0CAeDBdd9F8cb4A41Fa1b24788b123e",
+    "candy": 242
+  },
+  {
+    "tokenId": 3836,
+    "exist": true,
+    "owner": "0x0c7940B3C5b58C801De112665C0026B810815b4F",
+    "candy": 190
+  },
+  {
+    "tokenId": 3872,
+    "exist": true,
+    "owner": "0x39Dc63381e9310d02a9cE491C5B256849F555579",
+    "candy": 229
+  },
+  {
+    "tokenId": 3950,
+    "exist": true,
+    "owner": "0x648fA93EA7f1820EF9291c3879B2E3C503e1AA61",
+    "candy": 180
+  },
+  {
+    "tokenId": 3967,
+    "exist": true,
+    "owner": "0x05C5273AAA5E0648D90F25C014EDb8b186a7dCFe",
+    "candy": 169
+  },
+  {
+    "tokenId": 4003,
+    "exist": true,
+    "owner": "0x246E419300519BCb15a95baB09d3FC405b579214",
+    "candy": 104
+  },
+  {
+    "tokenId": 4004,
+    "exist": true,
+    "owner": "0x246E419300519BCb15a95baB09d3FC405b579214",
+    "candy": 105
+  },
+  {
+    "tokenId": 4005,
+    "exist": true,
+    "owner": "0x246E419300519BCb15a95baB09d3FC405b579214",
+    "candy": 174
+  },
+  {
+    "tokenId": 4006,
+    "exist": true,
+    "owner": "0x246E419300519BCb15a95baB09d3FC405b579214",
+    "candy": 212
+  },
+  {
+    "tokenId": 4048,
+    "exist": true,
+    "owner": "0x17DC95f9052F86ED576AF55B018360f853e19ac2",
+    "candy": 108
+  },
+  {
+    "tokenId": 4052,
+    "exist": true,
+    "owner": "0x17DC95f9052F86ED576AF55B018360f853e19ac2",
+    "candy": 113
+  },
+  {
+    "tokenId": 4055,
+    "exist": true,
+    "owner": "0x2d45db9D296dB068C60d09a2A2898c8d152d7da8",
+    "candy": 122
+  },
+  {
+    "tokenId": 4081,
+    "exist": true,
+    "owner": "0x2F0efCbaDAB136Af14C39760f5B8A128B601dD46",
+    "candy": 78
+  },
+  {
+    "tokenId": 4087,
+    "exist": true,
+    "owner": "0x1D40FC9456A1E6F13f69615FEe1cbcBe604B9167",
+    "candy": 251
+  },
+  {
+    "tokenId": 4113,
+    "exist": true,
+    "owner": "0x98F8193394791fA8A34237f8216D236405acbF4c",
+    "candy": 106
+  },
+  {
+    "tokenId": 4117,
+    "exist": true,
+    "owner": "0xE6b9fd3F3ee0Ff1beaBA13e3f6E3F1f0eBd0f2C1",
+    "candy": 154
+  },
+  {
+    "tokenId": 4122,
+    "exist": true,
+    "owner": "0x50E3cD51Ad3e055c89F0deF6d0AadC652D84C355",
+    "candy": 160
+  },
+  {
+    "tokenId": 4146,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 39
+  },
+  {
+    "tokenId": 4292,
+    "exist": true,
+    "owner": "0x450638DaF0CAeDBdd9F8cb4A41Fa1b24788b123e",
+    "candy": 77
+  },
+  {
+    "tokenId": 4309,
+    "exist": true,
+    "owner": "0x9C073eE3701A5cc639B4F12a3a6DB50C2AC36aA0",
+    "candy": 110
+  },
+  {
+    "tokenId": 4324,
+    "exist": true,
+    "owner": "0x1639497e38Fe108cE54745FEdb11e14e8a3A9Fd5",
+    "candy": 205
+  },
+  {
+    "tokenId": 4327,
+    "exist": true,
+    "owner": "0x1639497e38Fe108cE54745FEdb11e14e8a3A9Fd5",
+    "candy": 77
+  },
+  {
+    "tokenId": 4335,
+    "exist": true,
+    "owner": "0x838Ed32F2F1bb4d50ff19A8B1391Bc31478CaF5d",
+    "candy": 38
+  },
+  {
+    "tokenId": 4337,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 149
+  },
+  {
+    "tokenId": 4340,
+    "exist": true,
+    "owner": "0x2F0efCbaDAB136Af14C39760f5B8A128B601dD46",
+    "candy": 61
+  },
+  {
+    "tokenId": 4359,
+    "exist": true,
+    "owner": "0x4Abc6252aC885B12aC870918B40FbedCF2F4dB68",
+    "candy": 74
+  },
+  {
+    "tokenId": 4366,
+    "exist": true,
+    "owner": "0x648fA93EA7f1820EF9291c3879B2E3C503e1AA61",
+    "candy": 143
+  },
+  {
+    "tokenId": 4381,
+    "exist": true,
+    "owner": "0xA5E32695c720eAC93dB822BC5B391FD93Bc8DFF7",
+    "candy": 158
+  },
+  {
+    "tokenId": 4382,
+    "exist": true,
+    "owner": "0x648fA93EA7f1820EF9291c3879B2E3C503e1AA61",
+    "candy": 127
+  },
+  {
+    "tokenId": 4389,
+    "exist": true,
+    "owner": "0xA5E32695c720eAC93dB822BC5B391FD93Bc8DFF7",
+    "candy": 30
+  },
+  {
+    "tokenId": 4408,
+    "exist": true,
+    "owner": "0xE5AE1736F638b0345020280641e65621217d0A11",
+    "candy": 49
+  },
+  {
+    "tokenId": 4423,
+    "exist": true,
+    "owner": "0xe7a8A504a82f0A829656261A54d0443F85e19604",
+    "candy": 82
+  },
+  {
+    "tokenId": 4427,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 111
+  },
+  {
+    "tokenId": 4437,
+    "exist": true,
+    "owner": "0xDD45f2722c8E812A07051A20b7e9c931ebE37863",
+    "candy": 209
+  },
+  {
+    "tokenId": 4466,
+    "exist": true,
+    "owner": "0x579D5f73015014284245F0D6057F6C9b1596904b",
+    "candy": 26
+  },
+  {
+    "tokenId": 4506,
+    "exist": true,
+    "owner": "0x0B096d1f0ba7Ef2b3C7ecB8d4a5848043CdeBD50",
+    "candy": 213
+  },
+  {
+    "tokenId": 4587,
+    "exist": true,
+    "owner": "0x01c77F80c7D2765FBF94DADF5AF4C95eD95586c8",
+    "candy": 85
+  },
+  {
+    "tokenId": 4594,
+    "exist": true,
+    "owner": "0x73baFd0b00ED096AbE14F7d752a7f3259Ac3E9E3",
+    "candy": 70
+  },
+  {
+    "tokenId": 4639,
+    "exist": true,
+    "owner": "0xAD94998F731636eD34376abf25B779e1283434d7",
+    "candy": 244
+  },
+  {
+    "tokenId": 4668,
+    "exist": true,
+    "owner": "0x1639497e38Fe108cE54745FEdb11e14e8a3A9Fd5",
+    "candy": 182
+  },
+  {
+    "tokenId": 4715,
+    "exist": true,
+    "owner": "0x3b18693B368baf87bD21553633A05e303cD75745",
+    "candy": 126
+  },
+  {
+    "tokenId": 4744,
+    "exist": true,
+    "owner": "0x648fA93EA7f1820EF9291c3879B2E3C503e1AA61",
+    "candy": 106
+  },
+  {
+    "tokenId": 4746,
+    "exist": true,
+    "owner": "0x242c34A1ba807d7f889fDC65532837aB7B3eD584",
+    "candy": 161
+  },
+  {
+    "tokenId": 4747,
+    "exist": true,
+    "owner": "0x2F0efCbaDAB136Af14C39760f5B8A128B601dD46",
+    "candy": 249
+  },
+  {
+    "tokenId": 4761,
+    "exist": true,
+    "owner": "0x292cC7593f3D73B884BBF2Af179C30c0Dc202c38",
+    "candy": 94
+  },
+  {
+    "tokenId": 4762,
+    "exist": true,
+    "owner": "0x292cC7593f3D73B884BBF2Af179C30c0Dc202c38",
+    "candy": 241
+  },
+  {
+    "tokenId": 4775,
+    "exist": true,
+    "owner": "0x1077bBbe00174DFd6eEf588875B44Ca66138F2a5",
+    "candy": 69
+  },
+  {
+    "tokenId": 4793,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 4
+  },
+  {
+    "tokenId": 4804,
+    "exist": true,
+    "owner": "0xe95EBafBB0eB32da6e07c4869D08e989d161fDEE",
+    "candy": 64
+  },
+  {
+    "tokenId": 4810,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 99
+  },
+  {
+    "tokenId": 4836,
+    "exist": true,
+    "owner": "0xab2056903a7b62BAc46F45A3D7a70AC799CA88CB",
+    "candy": 17
+  },
+  {
+    "tokenId": 4845,
+    "exist": true,
+    "owner": "0xe95EBafBB0eB32da6e07c4869D08e989d161fDEE",
+    "candy": 234
+  },
+  {
+    "tokenId": 4847,
+    "exist": true,
+    "owner": "0xE5AE1736F638b0345020280641e65621217d0A11",
+    "candy": 52
+  },
+  {
+    "tokenId": 4865,
+    "exist": true,
+    "owner": "0xDD45f2722c8E812A07051A20b7e9c931ebE37863",
+    "candy": 254
+  },
+  {
+    "tokenId": 4887,
+    "exist": true,
+    "owner": "0x450638DaF0CAeDBdd9F8cb4A41Fa1b24788b123e",
+    "candy": 117
+  },
+  {
+    "tokenId": 4893,
+    "exist": true,
+    "owner": "0x0B096d1f0ba7Ef2b3C7ecB8d4a5848043CdeBD50",
+    "candy": 197
+  },
+  {
+    "tokenId": 4927,
+    "exist": true,
+    "owner": "0x5dCB5A4876c2cb23eaFE3b7eDBD3DD66eC699Ec0",
+    "candy": 156
+  },
+  {
+    "tokenId": 4980,
+    "exist": true,
+    "owner": "0x52A01098Dfe38DbD4921a48a17Fe06C54DF0C357",
+    "candy": 130
+  },
+  {
+    "tokenId": 5015,
+    "exist": true,
+    "owner": "0x52A01098Dfe38DbD4921a48a17Fe06C54DF0C357",
+    "candy": 130
+  },
+  {
+    "tokenId": 5032,
+    "exist": true,
+    "owner": "0xcd68184dE38BdAF1b6fCb584AD01Eed4D0B4a4ED",
+    "candy": 218
+  },
+  {
+    "tokenId": 5044,
+    "exist": true,
+    "owner": "0xD1FD469842607D784da436Ed110d383F4727e462",
+    "candy": 52
+  },
+  {
+    "tokenId": 5063,
+    "exist": true,
+    "owner": "0x056B6632a833262AA90E022AB93539E4b8d49896",
+    "candy": 242
+  },
+  {
+    "tokenId": 5082,
+    "exist": true,
+    "owner": "0xB62E9f2e6babC43F2e0E38FcF951Dc546706B191",
+    "candy": 22
+  },
+  {
+    "tokenId": 5103,
+    "exist": true,
+    "owner": "0x4cc0290121760fBcB4a669cC8Ab8FB0314C82fC1",
+    "candy": 41
+  },
+  {
+    "tokenId": 5182,
+    "exist": true,
+    "owner": "0xE6b9fd3F3ee0Ff1beaBA13e3f6E3F1f0eBd0f2C1",
+    "candy": 189
+  },
+  {
+    "tokenId": 5190,
+    "exist": true,
+    "owner": "0xdAF8Ffc46AcC14f9bA210739a63E6874509B2261",
+    "candy": 160
+  },
+  {
+    "tokenId": 5192,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 224
+  },
+  {
+    "tokenId": 5321,
+    "exist": true,
+    "owner": "0x32790deE22beD1916303e2c3F4253fC2cFc0c417",
+    "candy": 70
+  },
+  {
+    "tokenId": 5352,
+    "exist": true,
+    "owner": "0xA3c731882BBb5C2f19abcbbab06c22F20745Ef2b",
+    "candy": 92
+  },
+  {
+    "tokenId": 5388,
+    "exist": true,
+    "owner": "0xaFbc3F98EEDB5f9A25a4AB2232d1346612efE77C",
+    "candy": 238
+  },
+  {
+    "tokenId": 5390,
+    "exist": true,
+    "owner": "0x505205d921853C72AAAF07ADe150354D4EE483A1",
+    "candy": 85
+  },
+  {
+    "tokenId": 5410,
+    "exist": true,
+    "owner": "0xf8e2E2b5144fc5760B1Cf5500A731f672DAE675d",
+    "candy": 96
+  },
+  {
+    "tokenId": 5432,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 104
+  },
+  {
+    "tokenId": 5447,
+    "exist": true,
+    "owner": "0x6769C0Cecf54C84BA04b14076FC3b3deD8190bBE",
+    "candy": 209
+  },
+  {
+    "tokenId": 5456,
+    "exist": true,
+    "owner": "0x292cC7593f3D73B884BBF2Af179C30c0Dc202c38",
+    "candy": 53
+  },
+  {
+    "tokenId": 5460,
+    "exist": true,
+    "owner": "0xD9A93a78DF096a34B08268C44D3f0f48F51aac85",
+    "candy": 230
+  },
+  {
+    "tokenId": 5556,
+    "exist": true,
+    "owner": "0xaFbc3F98EEDB5f9A25a4AB2232d1346612efE77C",
+    "candy": 21
+  },
+  {
+    "tokenId": 5560,
+    "exist": true,
+    "owner": "0x2E0D63fFCB08eA20fF3AcDbB72dfEc97343885d2",
+    "candy": 29
+  },
+  {
+    "tokenId": 5585,
+    "exist": true,
+    "owner": "0xCE266203cc90f26B346a9f359fEA7Ced2f4E62dD",
+    "candy": 188
+  },
+  {
+    "tokenId": 5591,
+    "exist": true,
+    "owner": "0x2d45db9D296dB068C60d09a2A2898c8d152d7da8",
+    "candy": 189
+  },
+  {
+    "tokenId": 5607,
+    "exist": true,
+    "owner": "0x097CD838e7c0cba71840805E1A306a804c376eA8",
+    "candy": 158
+  },
+  {
+    "tokenId": 5613,
+    "exist": true,
+    "owner": "0xe261B9eb7592D5b5381B415da2CE0fE4289431C3",
+    "candy": 94
+  },
+  {
+    "tokenId": 5662,
+    "exist": true,
+    "owner": "0x90beaeF6319973e6138C79012620f9B8A77F87De",
+    "candy": 112
+  },
+  {
+    "tokenId": 5681,
+    "exist": true,
+    "owner": "0x74BD9fe33990d1b49B196C416493186F5BB68c53",
+    "candy": 68
+  },
+  {
+    "tokenId": 5692,
+    "exist": true,
+    "owner": "0xA2A13330A450c376f229bc8c96bcC840608761Db",
+    "candy": 2
+  },
+  {
+    "tokenId": 5721,
+    "exist": true,
+    "owner": "0xDdAb03B705b5eb69Ba5496bff26F717898D373d2",
+    "candy": 132
+  },
+  {
+    "tokenId": 5725,
+    "exist": true,
+    "owner": "0x39Dc63381e9310d02a9cE491C5B256849F555579",
+    "candy": 226
+  },
+  {
+    "tokenId": 5767,
+    "exist": true,
+    "owner": "0x450638DaF0CAeDBdd9F8cb4A41Fa1b24788b123e",
+    "candy": 212
+  },
+  {
+    "tokenId": 5843,
+    "exist": true,
+    "owner": "0x8Bf70caB299E353E3c69eb53F943AC62a60b91B8",
+    "candy": 78
+  },
+  {
+    "tokenId": 5982,
+    "exist": true,
+    "owner": "0x97B05Bf5a601AE79618463Ffb5435495C810c851",
+    "candy": 126
+  },
+  {
+    "tokenId": 6045,
+    "exist": true,
+    "owner": "0x2d45db9D296dB068C60d09a2A2898c8d152d7da8",
+    "candy": 233
+  },
+  {
+    "tokenId": 6077,
+    "exist": true,
+    "owner": "0x77eff2452355AbC93429dd38DD0fc3798839C8A7",
+    "candy": 84
+  },
+  {
+    "tokenId": 6111,
+    "exist": true,
+    "owner": "0x391c8f2D68c38D1fc60869800E65E8bcDf21Cfc8",
+    "candy": 136
+  },
+  {
+    "tokenId": 6125,
+    "exist": true,
+    "owner": "0x648fA93EA7f1820EF9291c3879B2E3C503e1AA61",
+    "candy": 192
+  },
+  {
+    "tokenId": 6156,
+    "exist": true,
+    "owner": "0x505205d921853C72AAAF07ADe150354D4EE483A1",
+    "candy": 125
+  },
+  {
+    "tokenId": 6163,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 212
+  },
+  {
+    "tokenId": 6179,
+    "exist": true,
+    "owner": "0xC74b209fe38EcED29105C802FfB4BA280895546A",
+    "candy": 156
+  },
+  {
+    "tokenId": 6190,
+    "exist": true,
+    "owner": "0x39Dc63381e9310d02a9cE491C5B256849F555579",
+    "candy": 62
+  },
+  {
+    "tokenId": 6236,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 140
+  },
+  {
+    "tokenId": 6277,
+    "exist": true,
+    "owner": "0x2cc5a580f9fb17B87b6aE3e26674dc352C6A1cC4",
+    "candy": 209
+  },
+  {
+    "tokenId": 6307,
+    "exist": true,
+    "owner": "0xE997a526C63C5d0ED771Faa354dAe296BdD1c519",
+    "candy": 194
+  },
+  {
+    "tokenId": 6326,
+    "exist": true,
+    "owner": "0x36eD861a319278e5B6C39028884b0ca93df105D0",
+    "candy": 92
+  },
+  {
+    "tokenId": 6339,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 94
+  },
+  {
+    "tokenId": 6344,
+    "exist": true,
+    "owner": "0x2d45db9D296dB068C60d09a2A2898c8d152d7da8",
+    "candy": 21
+  },
+  {
+    "tokenId": 6361,
+    "exist": true,
+    "owner": "0xb4947391965fa0629eB4C07CAc80f507978d7d50",
+    "candy": 156
+  },
+  {
+    "tokenId": 6362,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 194
+  },
+  {
+    "tokenId": 6365,
+    "exist": true,
+    "owner": "0x36eD861a319278e5B6C39028884b0ca93df105D0",
+    "candy": 173
+  },
+  {
+    "tokenId": 6411,
+    "exist": true,
+    "owner": "0x1639497e38Fe108cE54745FEdb11e14e8a3A9Fd5",
+    "candy": 232
+  },
+  {
+    "tokenId": 6412,
+    "exist": true,
+    "owner": "0xDD45f2722c8E812A07051A20b7e9c931ebE37863",
+    "candy": 182
+  },
+  {
+    "tokenId": 6419,
+    "exist": true,
+    "owner": "0xA2A13330A450c376f229bc8c96bcC840608761Db",
+    "candy": 36
+  },
+  {
+    "tokenId": 6451,
+    "exist": true,
+    "owner": "0xCCa11A8EdB05D64a654092e9551F9122D70EA80e",
+    "candy": 65
+  },
+  {
+    "tokenId": 6482,
+    "exist": true,
+    "owner": "0x7cC840B21eF6Eb03a1E72D3620cbD5f2209299d6",
+    "candy": 58
+  },
+  {
+    "tokenId": 6503,
+    "exist": true,
+    "owner": "0x586DcC88a7DAA6655001f8e0A30FA4c4EA06abc5",
+    "candy": 162
+  },
+  {
+    "tokenId": 6522,
+    "exist": true,
+    "owner": "0x1D40FC9456A1E6F13f69615FEe1cbcBe604B9167",
+    "candy": 12
+  },
+  {
+    "tokenId": 6578,
+    "exist": true,
+    "owner": "0x7f9f5dA57372cee09D49850552638D008C1ebEe4",
+    "candy": 118
+  },
+  {
+    "tokenId": 6590,
+    "exist": true,
+    "owner": "0xe67671f2F3799B8395a1a2195ec6f1402278c757",
+    "candy": 249
+  },
+  {
+    "tokenId": 6594,
+    "exist": true,
+    "owner": "0xD1FD469842607D784da436Ed110d383F4727e462",
+    "candy": 77
+  },
+  {
+    "tokenId": 6601,
+    "exist": true,
+    "owner": "0x52A01098Dfe38DbD4921a48a17Fe06C54DF0C357",
+    "candy": 62
+  },
+  {
+    "tokenId": 6630,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 214
+  },
+  {
+    "tokenId": 6631,
+    "exist": true,
+    "owner": "0xfF51cc1519c7a61144d3FF6F883122f150752445",
+    "candy": 54
+  },
+  {
+    "tokenId": 6656,
+    "exist": true,
+    "owner": "0xfc00577Ca87810B88e68C726C6D3B35c8F49b31b",
+    "candy": 74
+  },
+  {
+    "tokenId": 6662,
+    "exist": true,
+    "owner": "0x391c8f2D68c38D1fc60869800E65E8bcDf21Cfc8",
+    "candy": 125
+  },
+  {
+    "tokenId": 6701,
+    "exist": true,
+    "owner": "0xb4A8FBf42fC60bAE9742da0786Fd1f8A958d48A2",
+    "candy": 198
+  },
+  {
+    "tokenId": 6820,
+    "exist": true,
+    "owner": "0x2d45db9D296dB068C60d09a2A2898c8d152d7da8",
+    "candy": 28
+  },
+  {
+    "tokenId": 6847,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 210
+  },
+  {
+    "tokenId": 6860,
+    "exist": true,
+    "owner": "0xba0995C52474dFB7C48181F71454a63a2847982C",
+    "candy": 198
+  },
+  {
+    "tokenId": 6870,
+    "exist": true,
+    "owner": "0x98F8193394791fA8A34237f8216D236405acbF4c",
+    "candy": 252
+  },
+  {
+    "tokenId": 6876,
+    "exist": true,
+    "owner": "0x295182ba59184AC9a1830a10Dc879f1BD2a63A53",
+    "candy": 134
+  },
+  {
+    "tokenId": 6943,
+    "exist": true,
+    "owner": "0x2d45db9D296dB068C60d09a2A2898c8d152d7da8",
+    "candy": 204
+  },
+  {
+    "tokenId": 6964,
+    "exist": true,
+    "owner": "0x514c9C0F1BC120f57183BFE4ae092fF0Be13A31f",
+    "candy": 122
+  },
+  {
+    "tokenId": 7031,
+    "exist": true,
+    "owner": "0x52A01098Dfe38DbD4921a48a17Fe06C54DF0C357",
+    "candy": 249
+  },
+  {
+    "tokenId": 7046,
+    "exist": true,
+    "owner": "0xd1eC58495dFdC714297918418E903A08106E246E",
+    "candy": 34
+  },
+  {
+    "tokenId": 7073,
+    "exist": true,
+    "owner": "0x2F0efCbaDAB136Af14C39760f5B8A128B601dD46",
+    "candy": 208
+  },
+  {
+    "tokenId": 7081,
+    "exist": true,
+    "owner": "0x586DcC88a7DAA6655001f8e0A30FA4c4EA06abc5",
+    "candy": 217
+  },
+  {
+    "tokenId": 7136,
+    "exist": true,
+    "owner": "0x81e9Ce2ffb104b2B379Ad3532306F32A73Ac20D0",
+    "candy": 73
+  },
+  {
+    "tokenId": 7158,
+    "exist": true,
+    "owner": "0xC3Df7D3Ea6BC94CF674E22052A5d374fF08901BD",
+    "candy": 18
+  },
+  {
+    "tokenId": 7176,
+    "exist": true,
+    "owner": "0x4cc0290121760fBcB4a669cC8Ab8FB0314C82fC1",
+    "candy": 240
+  },
+  {
+    "tokenId": 7195,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 99
+  },
+  {
+    "tokenId": 7202,
+    "exist": true,
+    "owner": "0x5f0AD0C43b990D21C3dBd8FefCE386D70eaA729a",
+    "candy": 114
+  },
+  {
+    "tokenId": 7223,
+    "exist": true,
+    "owner": "0xD72f12269341e3A60E10a5A3b9205e7CBe1e4EaC",
+    "candy": 245
+  },
+  {
+    "tokenId": 7243,
+    "exist": true,
+    "owner": "0x2cc96F1a3e55882DE61B965b668AE3A5326f4CE0",
+    "candy": 97
+  },
+  {
+    "tokenId": 7244,
+    "exist": true,
+    "owner": "0x2d45db9D296dB068C60d09a2A2898c8d152d7da8",
+    "candy": 101
+  },
+  {
+    "tokenId": 7263,
+    "exist": true,
+    "owner": "0xcd68184dE38BdAF1b6fCb584AD01Eed4D0B4a4ED",
+    "candy": 12
+  },
+  {
+    "tokenId": 7278,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 252
+  },
+  {
+    "tokenId": 7300,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 48
+  },
+  {
+    "tokenId": 7408,
+    "exist": true,
+    "owner": "0x838Ed32F2F1bb4d50ff19A8B1391Bc31478CaF5d",
+    "candy": 121
+  },
+  {
+    "tokenId": 7474,
+    "exist": true,
+    "owner": "0xe7a8A504a82f0A829656261A54d0443F85e19604",
+    "candy": 225
+  },
+  {
+    "tokenId": 7492,
+    "exist": true,
+    "owner": "0xdE93e7aDa2F37833ac0807EEa45A5BEc032b578D",
+    "candy": 142
+  },
+  {
+    "tokenId": 7510,
+    "exist": true,
+    "owner": "0x6a7E3d75d573C4512Dd06c37595B57217A232717",
+    "candy": 29
+  },
+  {
+    "tokenId": 7527,
+    "exist": true,
+    "owner": "0xC74b209fe38EcED29105C802FfB4BA280895546A",
+    "candy": 225
+  },
+  {
+    "tokenId": 7529,
+    "exist": true,
+    "owner": "0xb4A8FBf42fC60bAE9742da0786Fd1f8A958d48A2",
+    "candy": 137
+  },
+  {
+    "tokenId": 7599,
+    "exist": true,
+    "owner": "0x838Ed32F2F1bb4d50ff19A8B1391Bc31478CaF5d",
+    "candy": 248
+  },
+  {
+    "tokenId": 7626,
+    "exist": true,
+    "owner": "0xE5AE1736F638b0345020280641e65621217d0A11",
+    "candy": 122
+  },
+  {
+    "tokenId": 7639,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 34
+  },
+  {
+    "tokenId": 7662,
+    "exist": true,
+    "owner": "0xdE93e7aDa2F37833ac0807EEa45A5BEc032b578D",
+    "candy": 236
+  },
+  {
+    "tokenId": 7691,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 248
+  },
+  {
+    "tokenId": 7734,
+    "exist": true,
+    "owner": "0xCCa11A8EdB05D64a654092e9551F9122D70EA80e",
+    "candy": 178
+  },
+  {
+    "tokenId": 7782,
+    "exist": true,
+    "owner": "0x39E6324ECc61e71349d16038217b5258915B96fd",
+    "candy": 43
+  },
+  {
+    "tokenId": 7788,
+    "exist": true,
+    "owner": "0xdE93e7aDa2F37833ac0807EEa45A5BEc032b578D",
+    "candy": 117
+  },
+  {
+    "tokenId": 7818,
+    "exist": true,
+    "owner": "0x39Dc63381e9310d02a9cE491C5B256849F555579",
+    "candy": 221
+  },
+  {
+    "tokenId": 7833,
+    "exist": true,
+    "owner": "0x2d45db9D296dB068C60d09a2A2898c8d152d7da8",
+    "candy": 28
+  },
+  {
+    "tokenId": 7834,
+    "exist": true,
+    "owner": "0x017dcfF522033C5cB842d2901621fC9d8ED006d1",
+    "candy": 92
+  },
+  {
+    "tokenId": 7835,
+    "exist": true,
+    "owner": "0xA963D0869966D022084B7F70228CeCDF9b5E5a87",
+    "candy": 21
+  },
+  {
+    "tokenId": 7841,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 124
+  },
+  {
+    "tokenId": 7862,
+    "exist": true,
+    "owner": "0x45F8aef4DfaBfbF943416Db1e43f088e543bFDB6",
+    "candy": 236
+  },
+  {
+    "tokenId": 7898,
+    "exist": true,
+    "owner": "0x5bAd4dA29256DeC1551b197332d8C24E2750E3B8",
+    "candy": 141
+  },
+  {
+    "tokenId": 7905,
+    "exist": true,
+    "owner": "0xab2056903a7b62BAc46F45A3D7a70AC799CA88CB",
+    "candy": 218
+  },
+  {
+    "tokenId": 7938,
+    "exist": true,
+    "owner": "0x77eff2452355AbC93429dd38DD0fc3798839C8A7",
+    "candy": 246
+  },
+  {
+    "tokenId": 7941,
+    "exist": true,
+    "owner": "0xD675610c6F9E789a7459c7C4Fdb5ACe696006Aae",
+    "candy": 120
+  },
+  {
+    "tokenId": 8015,
+    "exist": true,
+    "owner": "0x2d45db9D296dB068C60d09a2A2898c8d152d7da8",
+    "candy": 90
+  },
+  {
+    "tokenId": 8060,
+    "exist": true,
+    "owner": "0x7cC840B21eF6Eb03a1E72D3620cbD5f2209299d6",
+    "candy": 85
+  },
+  {
+    "tokenId": 8090,
+    "exist": true,
+    "owner": "0xA449c3a5b6692ea16320439dA79c17A719dB8708",
+    "candy": 70
+  },
+  {
+    "tokenId": 8102,
+    "exist": true,
+    "owner": "0x91045DbF0D1316639eE261cd9426c7499a69724c",
+    "candy": 69
+  },
+  {
+    "tokenId": 8128,
+    "exist": true,
+    "owner": "0x2849bbc7d528DE29c41145146f1a5161cB3749db",
+    "candy": 205
+  },
+  {
+    "tokenId": 8148,
+    "exist": true,
+    "owner": "0x1173AdF6150f171126A6F1e3e03A2D0ab4031790",
+    "candy": 150
+  },
+  {
+    "tokenId": 8165,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 67
+  },
+  {
+    "tokenId": 8206,
+    "exist": true,
+    "owner": "0x074edF78D4925EE3c0F9AD61d231f3aFCb85DE5C",
+    "candy": 184
+  },
+  {
+    "tokenId": 8220,
+    "exist": true,
+    "owner": "0x0683B43A526aF50e442571A96001005b84Ad56dC",
+    "candy": 29
+  },
+  {
+    "tokenId": 8290,
+    "exist": true,
+    "owner": "0x450638DaF0CAeDBdd9F8cb4A41Fa1b24788b123e",
+    "candy": 227
+  },
+  {
+    "tokenId": 8305,
+    "exist": true,
+    "owner": "0x450638DaF0CAeDBdd9F8cb4A41Fa1b24788b123e",
+    "candy": 151
+  },
+  {
+    "tokenId": 8306,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 161
+  },
+  {
+    "tokenId": 8318,
+    "exist": true,
+    "owner": "0xE6b9fd3F3ee0Ff1beaBA13e3f6E3F1f0eBd0f2C1",
+    "candy": 184
+  },
+  {
+    "tokenId": 8326,
+    "exist": true,
+    "owner": "0xB8B31cBCeE619583045c0b80f76f9610D7D67F6B",
+    "candy": 202
+  },
+  {
+    "tokenId": 8341,
+    "exist": true,
+    "owner": "0xe7a8A504a82f0A829656261A54d0443F85e19604",
+    "candy": 216
+  },
+  {
+    "tokenId": 8356,
+    "exist": true,
+    "owner": "0xcFb098c1d44EB12F93F9aAECe5D6054E2a2240aB",
+    "candy": 170
+  },
+  {
+    "tokenId": 8361,
+    "exist": true,
+    "owner": "0x8Bf70caB299E353E3c69eb53F943AC62a60b91B8",
+    "candy": 150
+  },
+  {
+    "tokenId": 8392,
+    "exist": true,
+    "owner": "0xFC6Df67f603Bb429decb5ded326c6eCD4311c6A2",
+    "candy": 206
+  },
+  {
+    "tokenId": 8407,
+    "exist": true,
+    "owner": "0xab2056903a7b62BAc46F45A3D7a70AC799CA88CB",
+    "candy": 157
+  },
+  {
+    "tokenId": 8411,
+    "exist": true,
+    "owner": "0xab2056903a7b62BAc46F45A3D7a70AC799CA88CB",
+    "candy": 34
+  },
+  {
+    "tokenId": 8428,
+    "exist": true,
+    "owner": "0xCCa11A8EdB05D64a654092e9551F9122D70EA80e",
+    "candy": 72
+  },
+  {
+    "tokenId": 8431,
+    "exist": true,
+    "owner": "0x50cF58cd46Fc8238c0d5632Ba5f8f21247656665",
+    "candy": 53
+  },
+  {
+    "tokenId": 8501,
+    "exist": true,
+    "owner": "0x648fA93EA7f1820EF9291c3879B2E3C503e1AA61",
+    "candy": 98
+  },
+  {
+    "tokenId": 8506,
+    "exist": true,
+    "owner": "0xFe2aA7B0aF149Df874A8923Cd09a694044E120ed",
+    "candy": 142
+  },
+  {
+    "tokenId": 8534,
+    "exist": true,
+    "owner": "0x2cc96F1a3e55882DE61B965b668AE3A5326f4CE0",
+    "candy": 101
+  },
+  {
+    "tokenId": 8544,
+    "exist": true,
+    "owner": "0x2E0D63fFCB08eA20fF3AcDbB72dfEc97343885d2",
+    "candy": 40
+  },
+  {
+    "tokenId": 8558,
+    "exist": true,
+    "owner": "0x3b18693B368baf87bD21553633A05e303cD75745",
+    "candy": 16
+  },
+  {
+    "tokenId": 8567,
+    "exist": true,
+    "owner": "0x648fA93EA7f1820EF9291c3879B2E3C503e1AA61",
+    "candy": 2
+  },
+  {
+    "tokenId": 8619,
+    "exist": true,
+    "owner": "0x52A01098Dfe38DbD4921a48a17Fe06C54DF0C357",
+    "candy": 25
+  },
+  {
+    "tokenId": 8624,
+    "exist": true,
+    "owner": "0xc04c754EB32b8D348028e0e4A945d51451655C60",
+    "candy": 25
+  },
+  {
+    "tokenId": 8667,
+    "exist": true,
+    "owner": "0x5F4BdF967CC78FE234379a003871f615197233f0",
+    "candy": 198
+  },
+  {
+    "tokenId": 8686,
+    "exist": true,
+    "owner": "0x70a7bf5CA6829c31A7dD8131fB5aB4c54be82569",
+    "candy": 198
+  },
+  {
+    "tokenId": 8687,
+    "exist": true,
+    "owner": "0x4cc0290121760fBcB4a669cC8Ab8FB0314C82fC1",
+    "candy": 226
+  },
+  {
+    "tokenId": 8719,
+    "exist": true,
+    "owner": "0x4cc0290121760fBcB4a669cC8Ab8FB0314C82fC1",
+    "candy": 14
+  },
+  {
+    "tokenId": 8746,
+    "exist": true,
+    "owner": "0xCcAF8b4F1975d67eA40A9Af9C87426b769695F84",
+    "candy": 132
+  },
+  {
+    "tokenId": 8763,
+    "exist": true,
+    "owner": "0x45F8aef4DfaBfbF943416Db1e43f088e543bFDB6",
+    "candy": 60
+  },
+  {
+    "tokenId": 8830,
+    "exist": true,
+    "owner": "0xAD94998F731636eD34376abf25B779e1283434d7",
+    "candy": 94
+  },
+  {
+    "tokenId": 8832,
+    "exist": true,
+    "owner": "0x2F0efCbaDAB136Af14C39760f5B8A128B601dD46",
+    "candy": 34
+  },
+  {
+    "tokenId": 8864,
+    "exist": true,
+    "owner": "0x7D80754D0C3B70348A0f93F91ff53D0b062E0324",
+    "candy": 238
+  },
+  {
+    "tokenId": 8875,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 70
+  },
+  {
+    "tokenId": 8899,
+    "exist": true,
+    "owner": "0x2d45db9D296dB068C60d09a2A2898c8d152d7da8",
+    "candy": 125
+  },
+  {
+    "tokenId": 8934,
+    "exist": true,
+    "owner": "0xb9D83D298D46C4dd73618F19a2A40084Ce36476a",
+    "candy": 186
+  },
+  {
+    "tokenId": 8936,
+    "exist": true,
+    "owner": "0x50cF58cd46Fc8238c0d5632Ba5f8f21247656665",
+    "candy": 42
+  },
+  {
+    "tokenId": 8943,
+    "exist": true,
+    "owner": "0x521Bc0813d9af47Fa378035E222f96E205Ff8829",
+    "candy": 32
+  },
+  {
+    "tokenId": 8969,
+    "exist": true,
+    "owner": "0x4cc0290121760fBcB4a669cC8Ab8FB0314C82fC1",
+    "candy": 61
+  },
+  {
+    "tokenId": 9016,
+    "exist": true,
+    "owner": "0xE59C9Ca7FFA00471AA2ADA42C0a65C6CaabD06B8",
+    "candy": 141
+  },
+  {
+    "tokenId": 9017,
+    "exist": true,
+    "owner": "0x2052051A0474fB0B98283b3F38C13b0B0B6a3677",
+    "candy": 194
+  },
+  {
+    "tokenId": 9036,
+    "exist": true,
+    "owner": "0xd36A3b6AEd47DE69D285daD51D6409bf932b24F3",
+    "candy": 42
+  },
+  {
+    "tokenId": 9046,
+    "exist": true,
+    "owner": "0x52A01098Dfe38DbD4921a48a17Fe06C54DF0C357",
+    "candy": 66
+  },
+  {
+    "tokenId": 9051,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 231
+  },
+  {
+    "tokenId": 9120,
+    "exist": true,
+    "owner": "0xAf681629f3C577aFA464daA566D9D1D9a7cDAFe3",
+    "candy": 174
+  },
+  {
+    "tokenId": 9157,
+    "exist": true,
+    "owner": "0x52A01098Dfe38DbD4921a48a17Fe06C54DF0C357",
+    "candy": 222
+  },
+  {
+    "tokenId": 9165,
+    "exist": true,
+    "owner": "0xcFb098c1d44EB12F93F9aAECe5D6054E2a2240aB",
+    "candy": 242
+  },
+  {
+    "tokenId": 9186,
+    "exist": true,
+    "owner": "0x5Fb0b562A6c45b88b9f1d6f0cA146A5E88b54743",
+    "candy": 90
+  },
+  {
+    "tokenId": 9189,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 98
+  },
+  {
+    "tokenId": 9195,
+    "exist": true,
+    "owner": "0x2E0D63fFCB08eA20fF3AcDbB72dfEc97343885d2",
+    "candy": 66
+  },
+  {
+    "tokenId": 9219,
+    "exist": true,
+    "owner": "0xCCa11A8EdB05D64a654092e9551F9122D70EA80e",
+    "candy": 8
+  },
+  {
+    "tokenId": 9253,
+    "exist": true,
+    "owner": "0x7cefB9F7F24Cd77FDf67cA4CF1Fee21eAdF196B2",
+    "candy": 34
+  },
+  {
+    "tokenId": 9291,
+    "exist": true,
+    "owner": "0x52A01098Dfe38DbD4921a48a17Fe06C54DF0C357",
+    "candy": 95
+  },
+  {
+    "tokenId": 9331,
+    "exist": true,
+    "owner": "0x0dB1e9E97ba5B2a153CeD003DdccF3E8581Bdb85",
+    "candy": 133
+  },
+  {
+    "tokenId": 9346,
+    "exist": true,
+    "owner": "0x8ff067E2dBeD297B0B09071C5Bf54C3f131909E6",
+    "candy": 173
+  },
+  {
+    "tokenId": 9357,
+    "exist": true,
+    "owner": "0x2E0D63fFCB08eA20fF3AcDbB72dfEc97343885d2",
+    "candy": 1
+  },
+  {
+    "tokenId": 9385,
+    "exist": true,
+    "owner": "0x2F0efCbaDAB136Af14C39760f5B8A128B601dD46",
+    "candy": 124
+  },
+  {
+    "tokenId": 9447,
+    "exist": true,
+    "owner": "0xCCa11A8EdB05D64a654092e9551F9122D70EA80e",
+    "candy": 129
+  },
+  {
+    "tokenId": 9448,
+    "exist": true,
+    "owner": "0xCCa11A8EdB05D64a654092e9551F9122D70EA80e",
+    "candy": 46
+  },
+  {
+    "tokenId": 9484,
+    "exist": true,
+    "owner": "0x4cc0290121760fBcB4a669cC8Ab8FB0314C82fC1",
+    "candy": 67
+  },
+  {
+    "tokenId": 9511,
+    "exist": true,
+    "owner": "0x1D40FC9456A1E6F13f69615FEe1cbcBe604B9167",
+    "candy": 217
+  },
+  {
+    "tokenId": 9517,
+    "exist": true,
+    "owner": "0x52A01098Dfe38DbD4921a48a17Fe06C54DF0C357",
+    "candy": 106
+  },
+  {
+    "tokenId": 9527,
+    "exist": true,
+    "owner": "0x0B096d1f0ba7Ef2b3C7ecB8d4a5848043CdeBD50",
+    "candy": 85
+  },
+  {
+    "tokenId": 9585,
+    "exist": true,
+    "owner": "0x648fA93EA7f1820EF9291c3879B2E3C503e1AA61",
+    "candy": 128
+  },
+  {
+    "tokenId": 9593,
+    "exist": true,
+    "owner": "0x8A3b8DfE66bC420c1da15af38bF1Ad3640594538",
+    "candy": 166
+  },
+  {
+    "tokenId": 9611,
+    "exist": true,
+    "owner": "0x539E49b060865Ea34B33904b7D3a72C0F7Ba9baf",
+    "candy": 232
+  },
+  {
+    "tokenId": 9635,
+    "exist": true,
+    "owner": "0x4Abc6252aC885B12aC870918B40FbedCF2F4dB68",
+    "candy": 204
+  },
+  {
+    "tokenId": 9637,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 79
+  },
+  {
+    "tokenId": 9684,
+    "exist": true,
+    "owner": "0x7376b927836243f21b327164055891Eb4290f213",
+    "candy": 200
+  },
+  {
+    "tokenId": 9689,
+    "exist": true,
+    "owner": "0x3559Dc9851d564b02f46801D04Ac42812b540de5",
+    "candy": 110
+  },
+  {
+    "tokenId": 9692,
+    "exist": true,
+    "owner": "0x450638DaF0CAeDBdd9F8cb4A41Fa1b24788b123e",
+    "candy": 35
+  },
+  {
+    "tokenId": 9707,
+    "exist": true,
+    "owner": "0x2d45db9D296dB068C60d09a2A2898c8d152d7da8",
+    "candy": 128
+  },
+  {
+    "tokenId": 9729,
+    "exist": true,
+    "owner": "0x190C442947588aC6E35758Ad27988fEbf007Ad9f",
+    "candy": 182
+  },
+  {
+    "tokenId": 9777,
+    "exist": true,
+    "owner": "0x648fA93EA7f1820EF9291c3879B2E3C503e1AA61",
+    "candy": 192
+  },
+  {
+    "tokenId": 9797,
+    "exist": true,
+    "owner": "0x8513FAfE1813B6ec3BBD9fc4BAF5340bda8D670B",
+    "candy": 234
+  },
+  {
+    "tokenId": 9806,
+    "exist": true,
+    "owner": "0x217Fce6F7AC07c91aBedd675D6F25b11e6d545FD",
+    "candy": 79
+  },
+  {
+    "tokenId": 9835,
+    "exist": true,
+    "owner": "0xf8e2E2b5144fc5760B1Cf5500A731f672DAE675d",
+    "candy": 41
+  },
+  {
+    "tokenId": 9837,
+    "exist": true,
+    "owner": "0xab2056903a7b62BAc46F45A3D7a70AC799CA88CB",
+    "candy": 66
+  },
+  {
+    "tokenId": 9842,
+    "exist": true,
+    "owner": "0x145247853C6eeA1263757d22C5e8C3A4dBbF48b6",
+    "candy": 221
+  },
+  {
+    "tokenId": 9882,
+    "exist": true,
+    "owner": "0x90beaeF6319973e6138C79012620f9B8A77F87De",
+    "candy": 28
+  },
+  {
+    "tokenId": 9886,
+    "exist": true,
+    "owner": "0xc3b74AE2f69CA6983fba446d7da5a2f2C95d7EC3",
+    "candy": 190
+  },
+  {
+    "tokenId": 9893,
+    "exist": true,
+    "owner": "0x3de34f9E45393649a6FDaa43d54026dc9480C968",
+    "candy": 249
+  },
+  {
+    "tokenId": 9907,
+    "exist": true,
+    "owner": "0xaebe6Ff87768317fd094aCC22D7Efac699E02BcD",
+    "candy": 104
+  },
+  {
+    "tokenId": 9981,
+    "exist": true,
+    "owner": "0xE1127dd3BFC88Ae61211c99e36655D92D6AeE28D",
+    "candy": 90
+  },
+  {
+    "tokenId": 9999,
+    "exist": true,
+    "owner": "0xe95EBafBB0eB32da6e07c4869D08e989d161fDEE",
+    "candy": 241
+  }
+]
