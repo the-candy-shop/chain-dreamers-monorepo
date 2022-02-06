@@ -47,7 +47,6 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     from: deployer,
     log: true,
     args: [baseURIOG],
-    libraries: { Integers: Integers.address },
   });
 
   // Deploy token
