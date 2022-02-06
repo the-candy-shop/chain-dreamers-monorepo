@@ -83,6 +83,30 @@ functions:
             cacheKeyParameters:
               - name: request.path.id
 
+  ogImg:
+    handler: handler.ogImg
+    events:
+      - http:
+          path: og/tokens/{id}/img
+          method: get
+          cors: true
+          caching:
+            enabled: true
+            cacheKeyParameters:
+              - name: request.path.id
+
+  ogMetadata:
+    handler: handler.ogMetadata
+    events:
+      - http:
+          path: og/tokens/{id}/metadata
+          method: get
+          cors: true
+          caching:
+            enabled: true
+            cacheKeyParameters:
+              - name: request.path.id
+
 package:
   include:
     - eth-sdk/**
