@@ -65,7 +65,7 @@ jobs:
     working_directory: ~/chain-dreamers-monorepo
     environment:
       NETWORK: mainnet
-      RUNNERS_ORIGINAL_CONTRACT_ADDRESS: $RUNNERS_ORIGINAL_CONTRACT_ADDRESS
+      RUNNERS_ORIGINAL_CONTRACT_ADDRESS: $RUNNERS_ORIGINAL_CONTRACT_ADDRESS_PROD
     steps:
       - checkout
       - install-dependencies
