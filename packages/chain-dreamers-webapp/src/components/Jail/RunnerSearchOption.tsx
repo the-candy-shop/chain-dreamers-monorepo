@@ -1,5 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
+import { useDreamersContract } from "../../hooks/useDreamersContract";
+import { CircularProgress } from "@mui/material";
 
 type RunnerSearchOptionProps = {
   option: {
@@ -15,13 +17,37 @@ function RunnerSearchOption({
   LiProps,
   available,
 }: RunnerSearchOptionProps) {
+  const { isDreamerAvailable } = useDreamersContract();
+  const [isRunnerAvailable, setRunnerAvailable] =
+    React.useState<boolean>(available);
+  const [isLoadingAvailability, setIsLoadingAvailability] =
+    React.useState<boolean>(false);
+
+  const loadAvailability = React.useCallback(async () => {
+    setIsLoadingAvailability(true);
+    const isAvailable = await isDreamerAvailable(option.id);
+    setRunnerAvailable(isAvailable);
+    setIsLoadingAvailability(false);
+  }, [isDreamerAvailable, option.id]);
+
+  React.useEffect(() => {
+    if (available) {
+      loadAvailability();
+    }
+  }, [loadAvailability, available]);
+
+  const disabled = React.useMemo(
+    () => isLoadingAvailability || !isRunnerAvailable,
+    [isLoadingAvailability, isRunnerAvailable]
+  );
+
   // eslint-disable-next-line jsx-a11y/role-supports-aria-props
   return (
     <li
       {...LiProps}
       style={{ padding: 0, margin: 0, display: "block" }}
       role="option"
-      aria-disabled={!available || LiProps["aria-disabled"]}
+      aria-disabled={disabled || LiProps["aria-disabled"]}
       aria-selected={LiProps["aria-selected"]}
     >
       <Box
@@ -52,12 +78,25 @@ function RunnerSearchOption({
           </Box>
         </Box>
         <Box
-          color={available ? "#1ab60e" : "#b60e0e"}
+          color={isRunnerAvailable ? "#1ab60e" : "#b60e0e"}
           fontSize="12px"
           display="flex"
           alignItems="center"
         >
-          {available ? "Available" : "Already minted"}
+          {!isLoadingAvailability
+            ? isRunnerAvailable
+              ? "Available"
+              : "Already minted"
+            : ""}
+          {isLoadingAvailability && (
+            <CircularProgress
+              sx={{
+                color: "#DA4A8A",
+                width: "20px !important",
+                height: "20px !important",
+              }}
+            />
+          )}
         </Box>
       </Box>
     </li>

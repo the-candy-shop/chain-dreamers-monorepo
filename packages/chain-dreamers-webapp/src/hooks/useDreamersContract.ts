@@ -194,11 +194,26 @@ export const useDreamersContract = () => {
     [account, sdk, setError, waitForDreamersMint]
   );
 
+  const isDreamerAvailable = React.useCallback(
+    async (runnerId: number): Promise<boolean> => {
+      if (sdk && account) {
+        const exists = await sdk.ChainDreamers.exists(runnerId);
+
+        return !exists;
+      }
+
+      return false;
+    },
+    [sdk, account]
+  );
+
   const fetchMintedDreamers = React.useCallback(async (): Promise<
     boolean[]
   > => {
     if (sdk) {
-      return sdk.ChainDreamers.getTokenExists();
+      const candies = await sdk.ChainDreamers.getDreamersCandies();
+
+      return candies.map((candy) => candy !== 0);
     }
 
     return [];
@@ -212,6 +227,7 @@ export const useDreamersContract = () => {
     isWaitingForPayment,
     isMinting,
     fetchMintedDreamers,
+    isDreamerAvailable,
   };
 };
 

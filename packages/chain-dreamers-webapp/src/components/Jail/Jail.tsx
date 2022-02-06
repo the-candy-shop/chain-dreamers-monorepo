@@ -55,24 +55,6 @@ function Jail() {
     }
   }, [isMinting]);
 
-  const availableRunnersIds = React.useMemo(() => {
-    const result: number[] = [];
-    alreadyMintedDreamers.forEach((value, i) => {
-      if (!value) {
-        result.push(i);
-      }
-    });
-
-    return result.filter((id) => !dreamersToMint.includes(id));
-  }, [alreadyMintedDreamers, dreamersToMint]);
-
-  const addARandomAvailableRunner = React.useCallback(() => {
-    if (availableRunnersIds.length === 0) return;
-
-    const index = Math.floor(Math.random() * availableRunnersIds.length);
-    add(availableRunnersIds[index]);
-  }, [availableRunnersIds, add]);
-
   return (
     <Box display="flex" flexDirection="column" minHeight="calc(100vh - 191px)">
       <Box marginTop="23px" marginBottom="40px" display="flex" flex={1}>
@@ -126,33 +108,6 @@ function Jail() {
                   selectedRunners={dreamersToMint}
                   alreadyMintedDreamers={alreadyMintedDreamers}
                 />
-                <Box marginTop="8px">or</Box>
-                <Button
-                  variant="contained"
-                  sx={{
-                    marginTop: "8px",
-                    fontSize: "16px",
-                    padding: "4px 8px",
-                    background: "transparent",
-                    border: "1px solid #DA4A8A",
-                    color: "#DA4A8A",
-                    textTransform: "none",
-
-                    "&.Mui-disabled": {
-                      color: "#DA4A8A",
-                      opacity: 0.5,
-                      background: "rgba(0,0,0,0.1)",
-                    },
-
-                    "&:hover": {
-                      background: "rgba(255,255,255,0.1)",
-                    },
-                  }}
-                  disabled={availableRunnersIds.length === 0}
-                  onClick={addARandomAvailableRunner}
-                >
-                  Select a random Runner
-                </Button>
               </Box>
               <Box
                 marginTop="32px"
