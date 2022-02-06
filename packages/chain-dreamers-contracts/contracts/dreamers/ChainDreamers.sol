@@ -278,16 +278,21 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
         override
         returns (string memory)
     {
-        require(
-            _exists(uint16(_tokenId)),
-            "ERC721: URI query for nonexistent token"
-        );
+        require(_exists(_tokenId), "ERC721: URI query for nonexistent token");
 
         if (renderingContractAddress == address(0)) {
             return "";
         }
 
         return renderer.tokenURI(_tokenId, dreamersCandies[_tokenId]);
+    }
+
+    function getDreamersCandies() public view returns (uint8[10_000] memory) {
+        return dreamersCandies;
+    }
+
+    function exists(uint256 _tokenId) external view returns (bool) {
+        return _exists(_tokenId);
     }
 
     receive() external payable {}
