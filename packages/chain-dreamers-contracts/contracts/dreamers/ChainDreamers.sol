@@ -3,8 +3,8 @@ pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import {BytesLib} from "solidity-bytes-utils/contracts/BytesLib.sol";
-import {ERC721Enumerable, ERC721} from "../tokens/ERC721Enumerable.sol";
 import "../interfaces/IDreamersRenderer.sol";
 import "../interfaces/ICandyShop.sol";
 import "../interfaces/IChainRunners.sol";
@@ -24,7 +24,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
     ICandyShop candyShop;
     IChainRunners chainRunners;
 
-    uint8[MAX_NUMBER_OF_TOKENS] public dreamersCandies;
+    uint8[10_000] public dreamersCandies;
     uint8 private constant candyMask = 252; // "11111100" binary string, last 2 bits kept for candyId
     /// @dev Copied from \@naomsa's contract
     /// @notice OpenSea proxy registry.
@@ -77,7 +77,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
     uint256 public maxDreamersMintPublicSale;
     uint256 public constant MINT_PUBLIC_PRICE = 0.05 ether;
     uint256 public constant MAX_MINT_FOUNDERS = 50;
-    bool public foundersMinted = false;
+    bool public foundersMinted = true;
 
     // State variables
     uint256 public publicSaleStartTimestamp;
@@ -127,9 +127,32 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
         chainRunners = IChainRunners(_chainRunnersContractAddress);
     }
 
-    constructor(string memory name_, string memory symbol_)
-        ERC721(name_, symbol_)
-    {}
+    constructor(
+        string memory name_,
+        string memory symbol_,
+        address _rendererAddress,
+        address _chainRunnersAddress,
+        address _opensea,
+        address _looksrare,
+        uint256 _maxDreamersMintPublicSale
+    ) ERC721(name_, symbol_) {
+        setRenderingContractAddress(_rendererAddress);
+        setChainRunnersContractAddress(_chainRunnersAddress);
+        opensea = _opensea;
+        looksrare = _looksrare;
+        setMaxDreamersMintPublicSale(_maxDreamersMintPublicSale);
+    }
+
+    function setOgs(
+        address[] memory _ogs,
+        uint256[] memory _tokenIds,
+        uint8[] memory _candies
+    ) external onlyOwner {
+        for (uint256 i = 0; i < _ogs.length; i++) {
+            _safeMint(_ogs[i], _tokenIds[i]);
+            dreamersCandies[_tokenIds[i]] = _candies[i];
+        }
+    }
 
     /// @dev This mint function wraps the safeMintBatch to:
     ///      1) check that the minter owns the runner 2) use the candies 3) burn the candies
@@ -145,8 +168,6 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
             tokenIds.length == candyIds.length * 2,
             "Each runner needs one and only one candy"
         );
-
-        safeMintBatch(_msgSender(), tokenIds);
 
         bytes32 candies = keccak256(
             abi.encodePacked(
@@ -171,6 +192,8 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
             dreamersCandies[tokenId] =
                 (uint8(candies[i % 32]) & candyMask) +
                 (uint8(candyIds[i]) % 4);
+
+            _safeMint(_msgSender(), tokenId);
             if (i % 32 == 31) {
                 candies = keccak256(abi.encodePacked(candies));
             }
@@ -196,7 +219,6 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
                 maxDreamersMintPublicSale,
             "Your home is to small to welcome so many dreamers"
         );
-        safeMintBatch(_msgSender(), tokenIds);
 
         bytes32 candies = keccak256(
             abi.encodePacked(
@@ -210,6 +232,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
         for (uint256 i = 0; i < tokenIds.length; i += 2) {
             uint16 tokenId = BytesLib.toUint16(tokenIds, i);
             dreamersCandies[tokenId] = uint8(candies[i / 2]);
+            _safeMint(_msgSender(), tokenId);
         }
 
         return true;
@@ -227,7 +250,6 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
             tokenIds.length <= MAX_MINT_FOUNDERS * 2,
             "Even if you are a founder, you don't deserve that many Dreamers"
         );
-        safeMintBatch(_msgSender(), tokenIds);
 
         bytes32 candies = keccak256(
             abi.encodePacked(
@@ -240,6 +262,7 @@ contract ChainDreamers is ERC721Enumerable, Ownable, ReentrancyGuard {
         for (uint256 i = 0; i < tokenIds.length / 2; i++) {
             uint16 tokenId = BytesLib.toUint16(tokenIds, i * 2);
             dreamersCandies[tokenId] = uint8(candies[i % 32]);
+            _safeMint(_msgSender(), tokenId);
             if (i % 32 == 31) {
                 candies = keccak256(abi.encodePacked(candies));
             }

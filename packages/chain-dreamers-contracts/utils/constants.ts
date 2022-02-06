@@ -96,6 +96,7 @@ export const chainRunnersAddress = (): string => {
 export const TAGS = {
   INTEGERS: "Integers",
   CHAIN_DREAMERS: "ChainDreamers",
+  CHAIN_DREAMERS_OGS: "ChainDreamersOgs",
   DREAMERS_PALETTES: "ChainDreamersPalettes",
   CHAIN_RUNNERS: "ChainRunners",
   CHAIN_RUNNERS_TRAITS: "ChainRunnersTraits",

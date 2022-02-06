@@ -122,7 +122,7 @@ describe("ChainDreamers", function () {
           [0, 2],
           [1, 1]
         )
-      ).to.be.revertedWith("ERC721: token already exists");
+      ).to.be.revertedWith("ERC721: token already minted");
     });
     it("should revert when minting without burning candies", async function () {
       const { userWithRunner } = await runnersAccessFixture();
@@ -278,7 +278,7 @@ describe("ChainDreamers", function () {
           "0x" + [0, 1].map(uint16ToBytes).join(""),
           { value: ethers.utils.parseEther("0.1") }
         )
-      ).to.be.revertedWith("ERC721: token already exists");
+      ).to.be.revertedWith("ERC721: token already minted");
     });
     it("should be able to mint tokens", async () => {
       const { users, ChainDreamers } = await publicSaleFixture();
@@ -410,24 +410,9 @@ describe("ChainDreamers", function () {
       expect(uris).to.deep.equal(
         tokenIds.map(
           (tokenId) =>
-            `https://api.chaindreamers.xyz/test/tokens/${tokenId}/metadata`
+            `https://api.chaindreamers.xyz/staging/tokens/${tokenId}/metadata`
         )
       );
-    });
-  });
-  describe("getTokenExists", async () => {
-    it("should return an array with true at index of given minted token", async () => {
-      const { users, ChainDreamers } = await publicSaleFixture();
-      await users[0].ChainDreamers.mintBatchPublicSale("0x000a00ff0000", {
-        value: ethers.utils.parseEther((0.15).toString()),
-      });
-      const tokenExists = await ChainDreamers.getTokenExists();
-      expect(
-        tokenExists.reduce((acc: number, exists: number) => acc + exists)
-      ).to.equal(3);
-      expect(tokenExists[0]).to.be.true;
-      expect(tokenExists[10]).to.be.true;
-      expect(tokenExists[255]).to.be.true;
     });
   });
 });

@@ -50,3 +50,9 @@ export type SKU = {
   supply: number;
   name: string;
 };
+
+export type OG = {
+  tokenId: number;
+  owner: string;
+  candy: number;
+};
