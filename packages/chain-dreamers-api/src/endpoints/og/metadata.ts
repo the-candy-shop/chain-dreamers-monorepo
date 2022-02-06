@@ -6,7 +6,7 @@ export const metadata = async (event) => {
   const noCache =
     event.queryStringParameters && event.queryStringParameters["no-cache"];
 
-  const s3Json = await getS3Json("metadata", id);
+  const s3Json = await getS3Json("og/metadata", id);
 
   if (s3Json && !noCache) {
     return {
