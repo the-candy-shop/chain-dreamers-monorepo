@@ -35,6 +35,4 @@ const config: EthSdkConfig = {
   },
 };
 
-console.log("config", config);
-
 export default config;
