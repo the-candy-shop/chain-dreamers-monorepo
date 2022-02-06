@@ -30,7 +30,7 @@ export const metadata = async (event) => {
         : `https://${process.env.API_DOMAIN_NAME}/${process.env.API_DOMAIN_BASE_PATH}/og/tokens/${id}/img`,
   };
 
-  storeS3Json("metadata", id, metadata);
+  storeS3Json("og/metadata", id, metadata);
 
   return {
     statusCode: 200,

@@ -68,9 +68,6 @@ jobs:
     steps:
       - checkout
       - install-dependencies
-      - run:
-          name: Set custom environment variable
-          command: echo RUNNERS_CONTRACT_ADDRESS="$RUNNERS_CONTRACT_ADDRESS_PROD" >> "${BASH_ENV}"
       - deploy-api:
           build_command_name: "deploy:prod"
 
