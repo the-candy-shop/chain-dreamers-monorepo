@@ -28,8 +28,12 @@ function RemainingTimeBlock() {
         textAlign: "center",
       }}
     >
-      The Jail closes in {remainingDays} days, {remainingHours} hours,{" "}
-      {remainingMinutes} minutes, {remainingSeconds} seconds
+      Drug effects on Dreamers are disappearing. Jail guard will have no reason
+      to keep them anymore.
+      <br />
+      They'll all be set free in in {remainingDays} days, {remainingHours}{" "}
+      hours, {remainingMinutes} minutes, {remainingSeconds} seconds and you
+      won't be able to mint them anymore.
     </Box>
   );
 }
