@@ -78,6 +78,8 @@ const launchDateString =
   localStorageLaunchDate ||
   "2022-02-02T09:00:00-08:00";
 
+export const jailClosingDate = dayjs("2022-02-09T09:00:00-08:00");
+
 export const candyShopOpeningDurationInDays = 2;
 export const candyShopOpeningDate = dayjs(launchDateString).tz(
   "America/Los_Angeles"

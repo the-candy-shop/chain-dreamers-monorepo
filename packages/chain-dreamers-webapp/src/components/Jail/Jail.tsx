@@ -12,6 +12,7 @@ import RunnerSearchBar from "./RunnersSearchBar";
 import ClearIcon from "@mui/icons-material/Clear";
 import LoadingDreamersPublicMintDialog from "../LoadingPublicDreamersMintDialog/LoadingDreamersPublicMintDialog";
 import Link from "@mui/material/Link";
+import RemainingTimeBlock from "./RemainingTimeBlock";
 
 function Jail() {
   const { mint, isMinting, isWaitingForPayment, fetchMintedDreamers } =
@@ -57,6 +58,7 @@ function Jail() {
 
   return (
     <Box display="flex" flexDirection="column" minHeight="calc(100vh - 191px)">
+      <RemainingTimeBlock />
       <Box marginTop="23px" marginBottom="40px" display="flex" flex={1}>
         <Box display="flex" flexDirection="column" flex={1} marginRight="12px">
           <Box flex={1} marginBottom="12px">

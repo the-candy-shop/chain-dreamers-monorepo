@@ -1,7 +1,7 @@
 import React from "react";
 import dayjs, { Dayjs } from "dayjs";
 import { useIsLaunched } from "./useIsLaunched";
-import { candyShopClosingDate } from "../config";
+import { candyShopClosingDate, jailClosingDate } from "../config";
 
 export const useIsOpen = (): {
   isCandyShopOpen: boolean;
@@ -13,7 +13,8 @@ export const useIsOpen = (): {
     isLaunched && candyShopClosingDate.isAfter(now.current)
   );
   const [isJailOpen, setIsJailOpen] = React.useState<boolean>(
-    candyShopClosingDate.isBefore(now.current)
+    candyShopClosingDate.isBefore(now.current) &&
+      jailClosingDate.isAfter(now.current)
   );
 
   React.useEffect(() => {
@@ -24,7 +25,9 @@ export const useIsOpen = (): {
         now.current = dayjs();
         const newIsCandyShopOpen =
           isLaunched && candyShopClosingDate.isAfter(now.current);
-        const newIsJailOpen = candyShopClosingDate.isBefore(now.current);
+        const newIsJailOpen =
+          candyShopClosingDate.isBefore(now.current) &&
+          jailClosingDate.isAfter(now.current);
 
         if (newIsCandyShopOpen !== isCandyShopOpen) {
           setIsCandyShopOpen(newIsCandyShopOpen);

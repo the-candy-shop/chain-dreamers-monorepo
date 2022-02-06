@@ -124,7 +124,9 @@ function Faq() {
               Dreamers will be mintable in the{" "}
               {isJailOpen && <InnerLink to="/jail">Jail</InnerLink>}
               {!isJailOpen && (
-                <CustomTooltip title={"Soon"}>
+                <CustomTooltip
+                  title={isLaunched && isCandyShopOpen ? "Soon" : "Closed"}
+                >
                   <Link>Jail</Link>
                 </CustomTooltip>
               )}
