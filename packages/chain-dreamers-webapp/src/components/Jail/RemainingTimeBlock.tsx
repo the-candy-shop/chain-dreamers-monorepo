@@ -28,7 +28,7 @@ function RemainingTimeBlock() {
         textAlign: "center",
       }}
     >
-      Drug effects on Dreamers are disappearing. Jail guard will have no reason
+      Drug effects on Dreamers are disappearing. Jail guards will have no reason
       to keep them anymore.
       <br />
       They'll all be set free in in {remainingDays} days, {remainingHours}{" "}

@@ -101,7 +101,7 @@ function Home() {
                   border: "1px solid #AC0BF7",
                 }}
               >
-                Drug effects on Dreamers are disappearing. Jail guard will have
+                Drug effects on Dreamers are disappearing. Jail guards will have
                 no reason to keep them anymore.
                 <br />
                 They'll all be set free in in{" "}
