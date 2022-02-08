@@ -38,6 +38,7 @@ function HeaderMenu({ label }: HeaderMenuProps) {
           position: "absolute",
           top: anchorEl?.offsetHeight,
           left: 0,
+          zIndex: 10,
         }}
       >
         <Grow appear in={open}>
